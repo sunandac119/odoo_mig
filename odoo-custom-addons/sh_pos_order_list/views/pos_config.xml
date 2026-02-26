@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_pos_config_form">
+        <field name="name">pos.config.form.view.inherit</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='iface_display_categ_images']/../../.." position="after">
+                <h2 name="orders_history">Order Screen Configuration</h2>
+                <div class="row mt16 o_settings_container">
+                    <div id="category_reference" class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <field name="sh_enable_order_list" />
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="sh_enable_order_list" />
+                        </div>
+                    </div>
+
+                    <div id="category_reference" class="col-12 col-lg-6 o_setting_box" attrs="{'invisible': [('sh_enable_order_list','!=',True)]}">
+                        <div class="o_setting_left_pane">
+                            <field name="sh_enable_re_order" />
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="sh_enable_re_order" />
+                            <div class="text-muted">
+                                ReOrder POS Order From Order Screen
+                            </div>
+                        </div>
+                    </div>
+                    <div id="category_reference" class="col-12 col-lg-6 o_setting_box" attrs="{'invisible': [('sh_enable_order_list','!=',True)],'required': [('sh_enable_order_list','=',True)]}">
+                        <div class="o_setting_left_pane">
+                            <!-- <field name="iface_display_categ_images"/> -->
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="sh_load_order_by" />
+                            <field name="sh_load_order_by" />
+                        </div>
+                    </div>
+                    <div id="category_reference" class="col-12 col-lg-6 o_setting_box" attrs="{'invisible': [('sh_enable_order_list','!=',True)]}">
+                        <div class="o_setting_left_pane">
+                            <field name="sh_enable_order_reprint" />
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="sh_enable_order_reprint" />
+                            <div class="text-muted">
+                                Print Order Receipt From Order Screen
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible': ['|',('sh_load_order_by','!=','session_wise'),('sh_enable_order_list','!=',True)]}">
+                        <div class="o_setting_left_pane"></div>
+                        <div class="o_setting_right_pane">
+                            <label for="sh_session_wise_option" />
+                            <div class="text-muted">
+                                Load Order of Current Session or Last No Of Session
+                            </div>
+                            <field name="sh_session_wise_option" widget="radio" />
+                            <div attrs="{'invisible': ['|',('sh_session_wise_option', '!=', 'last_no_session'),('sh_load_order_by' ,'!=', 'session_wise')]}">
+                                <field name="sh_last_no_session" style="width: 36px;" />
+                                <label for="sh_last_no_session" style="font-weight: normal;" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible': ['|',('sh_load_order_by','!=','day_wise'),('sh_enable_order_list','!=',True)]}">
+                        <div class="o_setting_left_pane"></div>
+                        <div class="o_setting_right_pane">
+                            <label for="sh_day_wise_option" />
+                            <div class="text-muted">
+                                Load Order of Current Days or Last No Of Days
+                            </div>
+                            <field name="sh_day_wise_option" widget="radio" />
+                            <div attrs="{'invisible': ['|',('sh_day_wise_option', '!=', 'last_no_day'),('sh_load_order_by' ,'!=', 'day_wise')]}">
+                                <field name="sh_last_no_days" style="width: 36px;" />
+                                <label for="sh_last_no_days" style="font-weight: normal;" />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="category_reference" class="col-12 col-lg-6 o_setting_box" attrs="{'invisible': [('sh_enable_order_list','!=',True)],'required': [('sh_enable_order_list','=',True)]}">
+                        <div class="o_setting_left_pane">
+                            <!-- <field name="iface_display_categ_images"/> -->
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="sh_mode" />
+                            <field name="sh_mode" widget="radio" />
+                        </div>
+                    </div>
+
+                    <div id="category_reference" class="col-12 col-lg-6 o_setting_box" attrs="{'invisible': [('sh_enable_order_list','!=',True)]}">
+                        <div class="o_setting_left_pane"></div>
+                        <div class="o_setting_right_pane">
+                            <label for="sh_how_many_order_per_page" /><br />
+                            <field name="sh_how_many_order_per_page" />
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

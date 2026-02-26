@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_pos_order_details_payment_form_view" model="ir.ui.view">
+        <field name="name">pos.order.payment.wizard.form.view</field>
+        <field name="model">pos.order.payment.wizard</field>
+        <field name="arch" type="xml">
+            <form string="POS order Payment Report">
+                <group>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                </group>
+                <group>
+                    <field name="pos_ids" widget="many2many_tags" />
+                </group>
+                <footer>
+                    <button name="generate_pdf_report" string="Print PDF" type="object" class="btn-primary"/>
+                    <button name="generate_report" string="Print Excel" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_report_pos_order_details_payment" model="ir.actions.act_window">
+        <field name="name">POS Payment Collection Report</field>
+        <field name="res_model">pos.order.payment.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+
+    <record id="view_pos_excel_report_download_form" model="ir.ui.view">
+        <field name="name">pos.payment.report.download.form</field>
+        <field name="model">pos.payment.report.download</field>
+        <field name="arch" type="xml">
+            <form string="POS Excel Report Details">
+                <field name="file_name" invisible="1"/>
+                <field name="excel_file" filename='file_name' readonly="1"/>
+                <footer>
+                    <button string="Cancel" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_pos_excel_report_download">
+        <field name="name">POS Payment Collection Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pos.payment.report.download</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_pos_excel_report_download_form"/>
+    </record>
+
+   <menuitem id="menu_report_pos_order_details_payment" name="POS Payment Collection Report" action="action_report_pos_order_details_payment" parent="point_of_sale.menu_point_rep" sequence="4"/>
+
+</odoo>

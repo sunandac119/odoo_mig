@@ -1,0 +1,26 @@
+<odoo>
+    <record id="view_wizard_bi_sales_filter_form" model="ir.ui.view">
+        <field name="name">wizard.bi.sales.filter.form</field>
+        <field name="model">wizard.bi.sales.filter</field>
+        <field name="arch" type="xml">
+            <form string="Filter Sales Summary">
+                <group>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="team_id"/>
+                </group>
+                <footer>
+                    <button string="View Report" type="object" name="open_report" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_open_sales_filter_wizard" model="ir.actions.act_window">
+        <field name="name">Filter Sales Summary</field>
+        <field name="res_model">wizard.bi.sales.filter</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

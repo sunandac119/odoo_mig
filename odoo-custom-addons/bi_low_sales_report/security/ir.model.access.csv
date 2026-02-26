@@ -1,0 +1,4 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+bi_low_sales_report.access_low_sales_report,access_low_sales_report,bi_low_sales_report.model_low_sales_report,base.group_user,1,1,1,1
+bi_low_sales_report.access_excel_report,access_excel_report,bi_low_sales_report.model_excel_report,base.group_user,1,1,1,1
+bi_low_sales_report.access_low_sales_report_pivot,access_low_sales_report_pivot,bi_low_sales_report.model_low_sales_report_pivot,base.group_user,1,1,1,1

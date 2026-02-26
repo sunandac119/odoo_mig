@@ -1,0 +1,6 @@
+<odoo>
+    <menuitem id="menu_bi_reporting_root" name="BI Reporting" sequence="1000"/>
+    <menuitem id="menu_bi_sales" name="Sales Summary" parent="menu_bi_reporting_root" action="action_bi_sales_summary_mv"/>
+    <menuitem id="menu_bi_inventory" name="Inventory Summary" parent="menu_bi_reporting_root" action="action_bi_inventory_summary_mv"/>
+    <menuitem id="menu_bi_expense" name="Expense Summary" parent="menu_bi_reporting_root" action="action_bi_expense_summary_mv"/>
+</odoo>

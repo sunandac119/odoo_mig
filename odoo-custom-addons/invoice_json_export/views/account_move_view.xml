@@ -1,0 +1,26 @@
+<odoo>
+    <record id="view_move_form_inherit_json_button" model="ir.ui.view">
+        <field name="name">account.move.form.export.json</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_export_json"
+                        type="object"
+                        string="Export JSON"
+                        class="btn-primary"
+                        attrs="{'invisible': [('move_type', 'not in', ['out_invoice', 'in_invoice'])]}"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_partner_form_inherit_debtor_code" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.debtor.code</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="debtor_code"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- <template id="pos_extend.assets" name="pos_extend assets"> -->
+    <template id="pos_extend_n_assets" inherit_id="point_of_sale.assets">
+       <xpath expr="." position="inside">
+            <link rel="stylesheet" type="text/scss" href="/pos_extend/static/src/scss/CashBoxPopup.scss"/>
+            <script type="text/javascript" src="/pos_extend/static/src/js/CashButton.js"/>
+            <script type="text/javascript" src="/pos_extend/static/src/js/CashBoxPopup.js"/>
+        </xpath>
+    </template>
+</odoo>

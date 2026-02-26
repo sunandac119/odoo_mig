@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_action_generate_skipped_barcode_lines"
+              name="Generate skipped barcode lines"
+              parent="stock.menu_stock_inventory_control"
+              action="action_generate_skipped_barcode_lines"
+              sequence="51"/>
+</odoo>

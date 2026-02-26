@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Users View -->
+    <record id="hide_user_menu" model="ir.ui.view">
+        <field name="name">hide.menu</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Hide Specific Menu" attrs="{'invisible': [('is_admin','=', True)]}">
+                    <tree>
+                        <field name="menu_id"/>
+                    </tree>
+                </page>
+            </xpath>
+            <field name="name" position="after">
+                <field name="is_admin" invisible="1"/>
+            </field>
+        </field>
+    </record>
+</odoo>

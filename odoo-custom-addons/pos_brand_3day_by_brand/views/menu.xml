@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_event_replenishment_root" name="Event Replenishment" sequence="10"/>
+    <menuitem id="menu_event_replenishment_reports" name="Reports" parent="menu_event_replenishment_root" sequence="10"/>
+    <menuitem id="menu_event_replenishment_compute" name="Yesterday Sales by Brand" parent="menu_event_replenishment_reports" action="action_event_replenishment_wizard" sequence="10"/>
+    <menuitem id="menu_event_replenishment_results" name="Results" parent="menu_event_replenishment_reports" action="action_event_replenishment_brand_day" sequence="20"/>
+</odoo>

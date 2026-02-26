@@ -1,0 +1,17 @@
+
+<odoo>
+    <record id="view_low_sales_report_mv_pivot" model="ir.ui.view">
+        <field name="name">low.sales.report.mv.pivot</field>
+        <field name="model">low.sales.report.mv</field>
+        <field name="arch" type="xml">
+            <pivot string="Low Sales Pivot">
+                <field name="warehouse_name" type="row"/>
+                <field name="product_name" type="row"/>
+                <field name="total_unit_qty_sold" type="measure"/>
+                <field name="sale_ctn_qty" type="measure"/>
+				<field name="unit_price" type="measure"/>
+                <field name="total_revenue" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+</odoo>

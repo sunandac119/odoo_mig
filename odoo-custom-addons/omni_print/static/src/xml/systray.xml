@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="omni_print.PrintTrayMenu">
+        <li class="dropdown o_print_tray_menu o_print_systray_item">
+            <a class="dropdown-toggle o-no-caret" data-toggle="dropdown" aria-expanded="false" title="Printer Status" href="#" role="button">
+                <i t-attf-class="fa fa-print {{
+                    widget.state.connection == 'online' ? 'text-success' :
+                    widget.state.connection == 'offline' ? 'text-muted' :
+                    'text-muted'
+                }}"/>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" role="menu">
+                <div t-if="widget.state.connection == 'unknown'" class="dropdown-item printer-status-unknown">
+                    Your print service status is unknown.
+                </div>
+                <div t-elif="widget.state.connection == 'online'" class="dropdown-item printer-status-online">
+                    Your print service is online.
+                </div>
+                <div t-elif="widget.state.connection == 'offline'" class="dropdown-item printer-status-offline">
+                    Your print service is offline.
+                </div>
+            </div>
+        </li>
+    </t>
+</templates>

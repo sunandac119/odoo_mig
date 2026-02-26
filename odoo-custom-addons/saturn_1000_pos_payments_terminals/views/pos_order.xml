@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="view_pos_pos_forms_views_inheriteds" model="ir.ui.view">
+            <field name="name">view.pos.pos.forms.views.inheriteds</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//form/sheet//notebook/page[@name='notes']" position="before">
+                    <!-- Add your fields or attributes here -->
+                    <page name="saturn_1000_payments_info" string="Saturn 1000 Payments Info">
+                        <group>
+                            <group>
+                                <field name="transaction_id" readonly="1"/>
+                                <field name="approval_code" readonly="1"/>
+                                <field name="payment_terminal_inv_no" readonly="1"/>
+                                <field name="trace_no" readonly="1"/>
+                                <field name="payments_terminal_id" readonly="1"/>
+                                <field name="retrival_ref_no" readonly="1"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+
+            </field>
+        </record>
+
+    </data>
+</odoo>

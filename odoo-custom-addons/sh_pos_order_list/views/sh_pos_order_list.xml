@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="0">
+    <template id="sh_assets_js_frontend" inherit_id="point_of_sale.assets">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/sh_pos_order_list/static/src/js/action_button.js" />
+            <script type="text/javascript" src="/sh_pos_order_list/static/src/js/models.js" />
+            <script type="text/javascript" src="/sh_pos_order_list/static/src/js/db.js" />
+            <script type="text/javascript" src="/sh_pos_order_list/static/src/js/screen.js" />
+            <script type="text/javascript" src="/sh_pos_order_list/static/src/js/order_line.js" />
+        </xpath>
+    </template>
+
+    <template id="sh_assets_frontend" inherit_id="point_of_sale.assets">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="/sh_pos_order_list/static/src/css/pos.css" />
+            <script type="text/javascript" src="/sh_pos_order_list/static/src/js/jquery.simplePagination.js" />
+            <link type="text/css" rel="stylesheet" href="/sh_pos_order_list/static/src/css/simplePagination.css" />
+        </xpath>
+    </template>
+</odoo>

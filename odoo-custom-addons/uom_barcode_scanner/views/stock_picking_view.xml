@@ -1,0 +1,112 @@
+<odoo>
+    <record id="stock_picking_form_barcode_2" model="ir.ui.view">
+        <field name="name">stock.picking.form.barcode</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="mode">extension</field>
+        <field name="priority">1001</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='move_ids_without_package']/form//field[@name='product_id']" position="before">
+                <field name="x_scanned_barcode" placeholder="Barcode"/>
+            </xpath>
+            <xpath expr="//field[@name='move_ids_without_package']/tree//field[@name='product_id']" position="before">
+                <field name="x_scanned_barcode" placeholder="Barcode"/>
+            </xpath>
+
+            <xpath expr="//field[@name='move_ids_without_package']/tree//field[@name='product_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='move_ids_without_package']//tree//field[@name='product_uom_qty']" position="attributes">
+                <attribute name="decoration-danger">product_uom_qty &lt;= 0</attribute>
+            </xpath>
+            <!-- <xpath expr="//field[@name='move_line_ids_without_package']" position="attributes">
+                <attribute name="context">{'tree_view_ref': 'uom_barcode_scanner.stock_move_line_tree_inherit_barcode_1'}</attribute>
+            </xpath> -->
+
+            <xpath expr="//field[@name='move_ids_without_package']/tree//field[@name='description_picking']" position="replace">
+                <field name="description_picking" string="Description"/>
+            </xpath>
+            
+            <xpath expr="//field[@name='move_line_ids_without_package']" position="replace">
+                <field name="move_line_ids_without_package"
+                   attrs="{'readonly': ['|', '|', ('show_operations', '=', False), ('state', '=', 'cancel'), '&amp;', ('state', '=', 'done'), ('is_locked', '=', True)]}"
+                   context="{'default_picking_id': id, 'default_location_id': location_id, 'default_location_dest_id': location_dest_id, 'default_company_id': company_id}">
+                   <tree editable="bottom" decoration-muted="(state == 'done' and is_locked == True)" decoration-danger="qty_done&gt;product_uom_qty and state!='done' and parent.picking_type_code != 'incoming'" decoration-success="qty_done==product_uom_qty and state!='done' and not result_package_id">
+                    <field name="x_scanned_barcode" placeholder="Barcode"/>
+                    <field name="description" placeholder="Description"/>
+                    <field name="product_id" required="1" context="{'default_type': 'product'}" attrs="{'readonly': ['|', ('state', '=', 'done'), ('move_id', '!=', False)]}" invisible="1"/>
+                    <field name="company_id" invisible="1"/>
+                    <field name="move_id" invisible="1"/>
+                    <field name="picking_id" invisible="1"/>
+                    <field name="product_uom_category_id" invisible="1"/>
+                    <field name="location_id" options="{'no_create': True}" attrs="{'column_invisible': [('parent.picking_type_code', '=', 'incoming')]}" groups="stock.group_stock_multi_locations" domain="[('id', 'child_of', parent.location_id), '|', ('company_id', '=', False), ('company_id', '=', company_id)]"/>
+                    <field name="location_dest_id" options="{'no_create': True}" attrs="{'column_invisible': [('parent.picking_type_code', '=', 'outgoing')]}" groups="stock.group_stock_multi_locations" domain="[('id', 'child_of', parent.location_dest_id), '|', ('company_id', '=', False), ('company_id', '=', company_id)]"/>
+                    <field name="package_id" groups="stock.group_tracking_lot"/>
+                    <field name="result_package_id" groups="stock.group_tracking_lot"/>
+                    <field name="lots_visible" invisible="1"/>
+                    <field name="owner_id" groups="stock.group_tracking_owner" attrs="{'column_invisible': [('parent.picking_type_code', '=', 'incoming')]}"/>
+                    <field name="state" invisible="1"/>
+                    <field name="lot_id" groups="stock.group_production_lot" attrs="{'column_invisible': [('parent.show_lots_text', '=', True)], 'invisible': [('lots_visible', '=', False)]}" context="{'default_product_id': product_id, 'default_company_id': company_id, 'active_picking_id': picking_id}" optional="show"/>
+                    <field name="lot_name" groups="stock.group_production_lot" attrs="{'column_invisible': [('parent.show_lots_text', '=', False)], 'invisible': [('lots_visible', '=', False)]}" context="{'default_product_id': product_id}"/>
+                    <field name="is_initial_demand_editable" invisible="1"/>
+                    <field name="product_uom_qty" readonly="1" attrs="{'column_invisible': ['|',('parent.immediate_transfer', '=', True),('parent.picking_type_code','=','incoming')]}" optional="show"/>
+                    <field name="is_locked" invisible="1"/>
+                    <field name="qty_done" attrs="{'readonly': [('state', 'in', ('done', 'cancel')), ('is_locked', '=', True)]}" force_save="1"/>
+                    <field name="product_uom_id" force_save="1" attrs="{'readonly': [('state', '!=', 'draft'), ('id', '!=', False)]}" groups="uom.group_uom"/>
+                </tree>
+                </field>
+            </xpath>
+            <xpath expr="//field[@name='move_line_ids_without_package']//tree//field[@name='qty_done']" position="attributes">
+                <attribute name="decoration-danger">qty_done &lt;= 0</attribute>
+            </xpath>
+            <xpath expr="//button[@name='button_validate']" position="after">
+                <button name="action_confirm_picking" type="object" string="Action Confirm Picking" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- <record id="stock_move_line_tree_inherit_barcode_1" model="ir.ui.view">
+        <field name="name">stock.move.line.form.inherited</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.view_stock_move_line_detailed_operation_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='qty_done']" position="before">
+                <field name="x_scanned_barcode_stock"/>
+            </xpath>
+        </field>
+    </record> -->
+
+    <record id="stock_request_inherit_from_view" model="ir.ui.view">
+        <field name="name">stock.request.form.inherited</field>
+        <field name="model">stock.request</field>
+        <field name="priority">1001</field>
+        <field name="inherit_id" ref="warehouse_stock_request_app.wh_stock_request_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='stock_line_ids']/tree//field[@name='product_id']" position="before">
+                <field name="x_scanned_barcode" placeholder="Barcode"/>
+            </xpath>
+            <xpath expr="//field[@name='stock_line_ids']/tree//field[@name='product_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <field name="partner_id" position="attributes">
+                <attribute name="options">{'no_create_edit': True, 'no_create': True}</attribute>
+            </field>
+        </field>
+    </record>
+
+
+    <!-- <record id="view_stock_inventory_form_inherited_view" model="ir.ui.view">
+        <field name="name">view.stock.inventory.form.inherited.view</field>
+        <field name="model">stock.inventory</field>
+        <field name="inherit_id" ref="stock.view_inventory_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_ids']" position="before">
+                <field string="Barcode" name="barcode_no"/>
+            </xpath>
+            <xpath expr="//field[@name='product_ids']" position="after">
+                <field string="UOM" name="uom_id"/>
+            </xpath>
+        </field>
+    </record> -->
+</odoo>

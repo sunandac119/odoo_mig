@@ -1,0 +1,13 @@
+How to launch Google Chrome in Kiosk Mode for POS Auto-Print:
+
+1. Create a shortcut to Chrome.
+2. Right-click the shortcut → Properties → Target:
+
+   "C:\Program Files\Google\Chrome\Application\chrome.exe" --kiosk-printing --kiosk https://your-odoo-url
+
+Example:
+"C:\Program Files\Google\Chrome\Application\chrome.exe" --kiosk-printing --kiosk https://mypos.example.com/web
+
+3. This will open directly into Odoo POS screen, and any window.print() will auto print without asking.
+
+Enjoy auto-printing POS reports!

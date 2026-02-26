@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="report_pos_brand_3day_pages">
+    <t t-call="web.html_container">
+      <t t-set="brands" t-value="data.get('brands') or []"/>
+      <t t-foreach="brands" t-as="b">
+        <!-- One brand per page (will auto-continue to next pages if long) -->
+        <t t-call="web.external_layout">
+          <div class="page">
+            <h2>
+              POS Sales — 3 Days
+              <small style="font-size: 12px; color: #666;">(Products grouped by Brand)</small>
+            </h2>
+            <p>
+              <strong>Brand:</strong> <t t-esc="b.get('brand') or 'No Brand'"/><br/>
+              <strong>Date:</strong> <t t-esc="data.get('date_from') or ''"/> — <t t-esc="data.get('date_to') or ''"/><br/>
+              <t t-if="data.get('teams')"><strong>Sales Team:</strong> <t t-esc="data.get('teams')"/></t><br t-if="data.get('teams')"/>
+              <t t-if="data.get('warehouses')"><strong>Warehouse:</strong> <t t-esc="data.get('warehouses')"/></t>
+            </p>
+
+            <p><strong>Total Sold Qty (Brand):</strong> <t t-esc="('%.2f' % (b.get('total_qty') or 0.0))"/></p>
+
+            <table class="table table-sm o_main_table" style="margin-top: 8px;">
+              <thead>
+                <tr>
+                  <th style="width:5%;">#</th>
+                  <th>Product</th>
+                  <th>Barcode</th>
+                  <th>UOM</th>
+                  <th class="text-right">Sold Qty (3 Days)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <t t-set="plist" t-value="b.get('products') or []"/>
+                <t t-foreach="plist" t-as="p">
+                  <tr>
+                    <td class="text-center"><t t-esc="loop.index"/></td>
+                    <td><t t-esc="p.get('name')"/></td>
+                    <td><t t-esc="p.get('barcode')"/></td>
+                    <td><t t-esc="p.get('uom')"/></td>
+                    <td class="text-right"><t t-esc="('%.2f' % (p.get('qty') or 0.0))"/></td>
+                  </tr>
+                </t>
+                <t t-if="not plist">
+                  <tr><td colspan="5" class="text-center">No products sold for this brand in the selected window.</td></tr>
+                </t>
+              </tbody>
+            </table>
+
+            <p style="margin-top:8px; font-size:11px; color:#666;">
+              * Orders filtered by state in (paid, done, invoiced). Brand taken from Product Template’s Brand, otherwise “No Brand”.
+            </p>
+          </div>
+        </t>
+      </t>
+      <t t-if="not brands">
+        <t t-call="web.external_layout">
+          <div class="page">
+            <h3>No data for the selected filters.</h3>
+          </div>
+        </t>
+      </t>
+    </t>
+  </template>
+</odoo>

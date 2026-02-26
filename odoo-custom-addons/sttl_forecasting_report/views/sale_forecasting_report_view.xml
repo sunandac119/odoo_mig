@@ -1,0 +1,258 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- total sale views and actions -->
+    <record id="view_sale_forecasting_report_graph" model="ir.ui.view">
+        <field name="name">sale.forecasting.report.report.graph</field>
+        <field name="model">sale.forecasting.report</field>
+        <field name="arch" type="xml">
+            <graph string="Sale Forecasting Report Analysis" type="line" sample="1"
+                disable_linking="1">
+                <field name="qty_ordered" type="measure" />
+                <field name="qty_received" type="measure" />
+                <field name="qty_billed" type="measure" />
+                <field name="forecasting_price" type="measure" />
+                <field name="forecasting_date" />
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_sale_forecasting_report_tree" model="ir.ui.view">
+        <field name="name">sale.forecasting.report.tree</field>
+        <field name="model">sale.forecasting.report</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="forecasting_price"/>
+                <field name="forecasting_date"/>
+                <!-- <field name="name"/> -->
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_sale_forecasting_report_search" model="ir.ui.view">
+        <field name="name">sale.forecasting.report.search</field>
+        <field name="model">sale.forecasting.report</field>
+        <field name="arch" type="xml">
+            <search string="Sale Forecasting Report">
+                <field name="forecasting_date" />
+                <field name="forecasting_price" />
+                <separator />
+                <group expand="1" string="Group By">
+                    <separator orientation="vertical" />
+                    <filter string="Forecasting Date" name="forecasting_date"
+                        context="{'group_by':'forecasting_date'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_sale_forecasting_report_details" model="ir.actions.act_window">
+        <field name="name">Sale Forecasting Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.forecasting.report</field>
+        <field name="view_mode">graph,search,pivot</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a Sale Forecasting Report in your address book
+            </p>
+        </field>
+    </record>
+
+    <!-- sales person views and actions -->
+    <record id="view_salesperson_forecasting_report_tree" model="ir.ui.view">
+        <field name="name">salesperson.forecasting.report.tree</field>
+        <field name="model">salesperson.forecasting</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="forecasting_month"/>
+                <field name="salesperson_id"/>
+                <field name="total_forecasted_sale"/>
+                <field name="total_forecasted_qty_ordered"/>
+                <field name="total_forecasted_qty_delivered"/>
+                <field name="total_forecasted_qty_invoiced"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_salesperson_forecasting_report_graph" model="ir.ui.view">
+        <field name="name">salesperson.forecasting.report.graph</field>
+        <field name="model">salesperson.forecasting</field>
+        <field name="arch" type="xml">
+            <graph string="Salesperson Forecasting Report Analysis" type="line" sample="1"
+                disable_linking="1">
+                <field name="total_forecasted_qty_ordered" type="measure" />
+                <field name="total_forecasted_qty_delivered" type="measure" />
+                <field name="total_forecasted_qty_invoiced" type="measure" />
+                <field name="total_forecasted_sale" type="measure" />
+                <field name="forecasting_month" />
+                <field name="salesperson_id" />
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_salesperson_forecasting_report_search" model="ir.ui.view">
+        <field name="name">salesperson.forecasting.report.search</field>
+        <field name="model">salesperson.forecasting</field>
+        <field name="arch" type="xml">
+            <search string="Salesperson Forecasting Report">
+                <field name="forecasting_month" />
+                <field name="total_forecasted_sale" />
+                <field name="salesperson_id" />
+                <field name="total_forecasted_qty_ordered" />
+                <field name="total_forecasted_qty_delivered" />
+                <field name="total_forecasted_qty_invoiced" />
+                <separator />
+                <group expand="1" string="Group By">
+                    <separator orientation="vertical" />
+                    <filter string="Forecasting Date" name="forecasting_month"
+                        context="{'group_by':'forecasting_month'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_salesperson_forecasting_report_details" model="ir.actions.act_window">
+        <field name="name">Salesperson Forecasting Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">salesperson.forecasting</field>
+        <field name="view_mode">graph,search,pivot</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a Salesperson Forecasting Report in your address book
+            </p>
+        </field>
+    </record>
+
+    <!-- customer view and actions -->
+    <record id="view_salescustomer_forecasting_report_tree" model="ir.ui.view">
+        <field name="name">salescustomer.forecasting.report.tree</field>
+        <field name="model">salescustomer.forecasting</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="forecasting_month"/>
+                <field name="customer_id"/>
+                <field name="total_forecasted_sale"/>
+                <field name="total_forecasted_qty_ordered"/>
+                <field name="total_forecasted_qty_delivered"/>
+                <field name="total_forecasted_qty_invoiced"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_salescustomer_forecasting_report_graph" model="ir.ui.view">
+        <field name="name">salescustomer.forecasting.report.graph</field>
+        <field name="model">salescustomer.forecasting</field>
+        <field name="arch" type="xml">
+            <graph string="Sales Customer Forecasting Report Analysis" type="line" sample="1"
+                disable_linking="1">
+                <field name="total_forecasted_qty_ordered" type="measure" />
+                <field name="total_forecasted_qty_delivered" type="measure" />
+                <field name="total_forecasted_qty_invoiced" type="measure" />
+                 <field name="total_forecasted_sale" type="measure" />
+                <field name="forecasting_month" />
+                <field name="customer_id" />
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_salescustomer_forecasting_report_search" model="ir.ui.view">
+        <field name="name">salescustomer.forecasting.report.search</field>
+        <field name="model">salescustomer.forecasting</field>
+        <field name="arch" type="xml">
+            <search string="Sales Customer Forecasting Report">
+                <field name="forecasting_month" />
+                <field name="customer_id" />
+                <field name="total_forecasted_sale" />
+                <field name="total_forecasted_qty_ordered"/>
+                <field name="total_forecasted_qty_delivered"/>
+                <field name="total_forecasted_qty_invoiced"/>
+                <separator />
+                <group expand="1" string="Group By">
+                    <separator orientation="vertical" />
+                    <filter string="Forecasting Date" name="forecasting_month"
+                        context="{'group_by':'forecasting_month'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_salescustomer_forecasting_report_details" model="ir.actions.act_window">
+        <field name="name">Sales Customer Forecasting Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">salescustomer.forecasting</field>
+        <field name="view_mode">graph,search,pivot</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a Customer Forecasting Report in your address book
+            </p>
+        </field>
+    </record>
+
+    <!-- product view and actions -->
+    <record id="view_salesproduct_forecasting_report_tree" model="ir.ui.view">
+        <field name="name">salesproduct.forecasting.report.tree</field>
+        <field name="model">salesproduct.forecasting</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="forecasting_month"/>
+                <field name="product_id"/>
+                <field name="total_forecasted_sale"/>
+                <field name="total_forecasted_qty_ordered"/>
+                <field name="total_forecasted_qty_delivered"/>
+                <field name="total_forecasted_qty_invoiced"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_salesproduct_forecasting_report_graph" model="ir.ui.view">
+        <field name="name">salesproduct.forecasting.report.graph</field>
+        <field name="model">salesproduct.forecasting</field>
+        <field name="arch" type="xml">
+            <graph string="Sales Product Forecasting Report Analysis" type="line" sample="1"
+                disable_linking="1">
+                <field name="total_forecasted_qty_ordered" type="measure" />
+                <field name="total_forecasted_qty_delivered" type="measure" />
+                <field name="total_forecasted_qty_invoiced" type="measure" />
+                <field name="total_forecasted_sale" type="measure" />
+                <field name="forecasting_month" />
+                <field name="product_id" />
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_salesproduct_forecasting_report_search" model="ir.ui.view">
+        <field name="name">salesproduct.forecasting.report.search</field>
+        <field name="model">salesproduct.forecasting</field>
+        <field name="arch" type="xml">
+            <search string="Sales Product Forecasting Report">
+                <field name="forecasting_month" />
+                <field name="total_forecasted_sale" />
+                <field name="total_forecasted_qty_ordered" />
+                <field name="total_forecasted_qty_delivered" />
+                <field name="total_forecasted_qty_invoiced" />
+                <field name="product_id" />
+                <separator />
+                <group expand="1" string="Group By">
+                    <separator orientation="vertical" />
+                    <filter string="Forecasting Date" name="forecasting_month"
+                        context="{'group_by':'forecasting_month'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_salesproduct_forecasting_report_details" model="ir.actions.act_window">
+        <field name="name">Sales Product Forecasting Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">salesproduct.forecasting</field>
+        <field name="view_mode">graph,search,pivot</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a Product Forecasting Report in your address book
+            </p>
+        </field>
+    </record>
+</odoo>

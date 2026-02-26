@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <record id="view_order_form_inherit_extends" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <field name="price_unit" position="after">
+                    <field name="standard_price" />
+                </field>
+            </field>
+        </record>
+
+        <record id="view_excel_report" model="ir.ui.view">
+            <field name="name">view.excel.report</field>
+            <field name="model">excel.report</field>
+            <field name="arch" type="xml">
+                <form string="Genrated xls File">
+                    <group>
+                        <field name="file_name" invisible="1"/>
+                        <field name="excel_file" readonly="1" filename="file_name"/>
+                    </group>
+                    <footer>
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>

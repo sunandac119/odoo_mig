@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="knk_view_order_form_inh" model="ir.ui.view">
+            <field name="name">view.order.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='order_lines']//form//field[@name='price_unit']" position="after">
+                    <field name="product_packaging_qty" attrs="{'invisible': [('product_id', '=', False)]}"/>
+                    <field name="packaging_price" attrs="{'invisible': [('product_id', '=', False)]}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_order_product_search_inh" model="ir.ui.view">
+            <field name="name">view.order.product.search.inh</field>
+            <field name="model">sale.report</field>
+            <field name="inherit_id" ref="sale.view_order_product_search" />
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='status']" position="after">
+                    <filter string="Product Packaging" name="product_packaging" context="{'group_by':'product_packaging'}" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

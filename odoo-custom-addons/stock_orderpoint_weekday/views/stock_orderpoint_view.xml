@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_warehouse_orderpoint_form" model="ir.ui.view">
+        <field name="name">stock.warehouse.orderpoint.form</field>
+        <field name="model">stock.warehouse.orderpoint</field>
+        <field name="inherit_id" ref="stock.view_warehouse_orderpoint_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group" position="inside">
+                <field name="weekday_ids">
+                    <tree editable="bottom">
+                        <field name="sequence" widget="handle" />
+                        <field name="orderpoint_id" invisible="1" />
+                        <field name="type_update" />
+                        <field
+              name="weekday"
+              attrs="{'required': [('type_update', '=', 'weekday')]}"
+            />
+                        <field
+              name="specific_day"
+              attrs="{'required': [('type_update', '=', 'specific')]}"
+            />
+                        <field name="quantity" />
+                        <field name="factor" />
+                        <field
+              name="company_id"
+              optional="hide"
+              readonly="1"
+              groups="base.group_multi_company"
+            />
+                    </tree>
+                </field>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="stock_warehouse_orderpoint_view_tree_editable" model="ir.ui.view">
+        <field name="model">stock.warehouse.orderpoint</field>
+        <field name="inherit_id" ref="stock.view_warehouse_orderpoint_tree_editable" />
+        <field name="arch" type="xml">
+            <field name="qty_to_order" position="before">
+                <field
+          name="weekday_ids"
+          string="Special Rules"
+          widget="many2many_tags"
+          readonly="1"
+          optional="hide"
+        />
+            </field>
+        </field>
+    </record>
+
+    <record id="stock_warehouse_orderpoint_view_tree" model="ir.ui.view">
+        <field name="model">stock.warehouse.orderpoint</field>
+        <field
+      name="inherit_id"
+      ref="stock.view_warehouse_orderpoint_tree_editable_config"
+    />
+        <field name="arch" type="xml">
+            <field name="qty_multiple" position="after">
+                <field
+          name="weekday_ids"
+          string="Special Rules"
+          widget="many2many_tags"
+          readonly="1"
+          optional="hide"
+        />
+            </field>
+        </field>
+    </record>
+</odoo>

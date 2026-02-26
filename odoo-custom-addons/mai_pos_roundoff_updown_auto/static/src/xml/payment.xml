@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+   <!--  <t t-extend="PaymentScreen">
+        <t t-jquery="div.top-content" t-operation="replace">
+            <div class='top-content'>
+                <span class='button back'>
+                    <i class='fa fa-angle-double-left'></i>
+                    Back
+                </span>
+                <h1>Payment</h1>
+                <t t-if="widget.pos.config.enable_rounding">
+                    <span class='button rounding' style="margin-left: 220px;">
+                        Rounding
+                        <i t-att-class="widget.pos.get_order().get_rounding_status() ? 'fa fa-toggle-on' : 'fa fa-toggle-off'" id="pos-rounding" aria-hidden="true" style="color: #ACCE45"></i>
+                    </span>
+                </t>
+                <span class='button next'>
+                    Validate
+                    <i class='fa fa-angle-double-right'></i>
+                </span>
+            </div>
+        </t>
+    </t> -->
+
+    <t t-name="PaymentScreen" t-inherit="point_of_sale.PaymentScreen" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('next')]" position="before">
+            <div t-if="env.pos.config.enable_rounding" style="margin-left: 220px;" class="button rounding" t-on-click="toggleButton">
+                <span>
+                    Rounding
+                    <i t-att-class="{
+                        'fa fa-toggle-on': currentOrder.get_rounding_status() != false,
+                        'fa fa-toggle-off': currentOrder.get_rounding_status() == false
+                    }" id="pos-rounding" aria-hidden="true" style="color: #ACCE45"></i>
+                </span>
+            </div>
+        </xpath>
+    </t>
+
+
+    <t t-name="PaymentScreenStatus" t-inherit="point_of_sale.PaymentScreenStatus" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('total')]" position="replace">
+            <div class='total'>
+                <t t-esc="env.pos.format_currency(currentOrder.getNetTotalTaxIncluded())"/>
+            </div>
+        </xpath>
+
+        <xpath expr="//div[hasclass('payment-status-total-due')]" position="replace">
+            <t t-esc="env.pos.format_currency(currentOrder.getNetTotalTaxIncluded())"/>
+        </xpath>
+    </t>
+
+
+</templates>

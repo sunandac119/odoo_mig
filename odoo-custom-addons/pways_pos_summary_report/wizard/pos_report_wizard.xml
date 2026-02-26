@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+		<record id="pos_report_wizard_view_form" model="ir.ui.view">
+			<field name="name">pos_report_wizard_view_form.form</field>
+			<field name="model">pos.report.wizard</field>
+			<field name="arch" type="xml">
+				<form string="Select period">
+					<group>
+						<group>
+							<field name="start_at"/>
+						</group>
+						<group>
+							<field name="stop_at"/>
+						</group>
+						<group colspan="6">
+							<field name="shop_ids" widget="many2many_tags"/>
+						</group>
+					</group>
+					<footer>
+						<button name="print_pos_report_xls" type="object" string="Print XLS" class="oe_highlight"/>
+						<button name="print_pos_report_pdf" type="object" string="Print PDF" class="oe_highlight"/>                        
+						<button special="cancel" string="Cancel"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+
+
+        <record id="action_pos_summary" model="ir.actions.act_window">
+            <field name="name">POS Summary Report</field>
+            <field name="res_model">pos.report.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_pos_summary"
+            action="action_pos_summary"
+            parent="point_of_sale.menu_point_rep"
+            groups="pways_pos_summary_report.group_pos_summary"
+            sequence="5"/>
+    </data>
+</odoo>

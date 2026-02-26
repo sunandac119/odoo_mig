@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  
+  <!-- Inherit the product template form to add UOM filtering -->
+  <record id="view_product_template_form_uom_filter" model="ir.ui.view">
+    <field name="name">product.template.form.uom.filter</field>
+    <field name="model">product.template</field>
+    <field name="inherit_id" ref="product.product_template_only_form_view"/>
+    <field name="arch" type="xml">
+      
+      <!-- First, make sure uom_category_id field is visible (add it if not present) -->
+      <xpath expr="//field[@name='uom_id']" position="before">
+        <field name="uom_category_id" invisible="1"/>
+      </xpath>
+      
+      <!-- Add domain to Unit of Measure field to filter by UOM Category -->
+      <xpath expr="//field[@name='uom_id']" position="attributes">
+        <attribute name="domain">[('category_id', '=', uom_category_id), ('active', '=', True)]</attribute>
+        <attribute name="options">{'no_create': True}</attribute>
+      </xpath>
+      
+      <!-- Add domain to Purchase Unit of Measure field to filter by UOM Category -->
+      <xpath expr="//field[@name='uom_po_id']" position="attributes">
+        <attribute name="domain">[('category_id', '=', uom_category_id), ('active', '=', True)]</attribute>
+        <attribute name="options">{'no_create': True}</attribute>
+      </xpath>
+      
+    </field>
+  </record>
+
+  <!-- Rest of your existing views remain the same -->
+  <record id="view_pricelist_item_form_inherit" model="ir.ui.view">
+    <field name="name">product.pricelist.item.form.inherit</field>
+    <field name="model">product.pricelist.item</field>
+    <field name="inherit_id" ref="product.product_pricelist_item_form_view"/>
+    <field name="arch" type="xml">
+      
+      <xpath expr="//field[@name='applied_on']" position="after">
+        <field name="product_tmpl_id" 
+               string="Products"
+               attrs="{'invisible': [('applied_on', 'not in', ['1_product', '0_product_variant'])],
+                       'required': [('applied_on', 'in', ['1_product', '0_product_variant'])]}"
+               options="{'no_create': True}"/>
+      </xpath>
+      
+      <xpath expr="//field[@name='product_tmpl_id']" position="after">
+        <field name="product_id" 
+               string="Variants"
+               domain="[('product_tmpl_id', '=', product_tmpl_id)]"
+               attrs="{'invisible': [('applied_on', '!=', '0_product_variant')],
+                       'required': [('applied_on', '=', '0_product_variant')]}"
+               options="{'no_create': True}"/>
+      </xpath>
+      
+      <xpath expr="//field[@name='product_id']" position="after">
+        <field name="pricelist_uom_id" 
+               string="Pricelist UOM"
+               attrs="{'invisible': [('applied_on', 'not in', ['1_product', '0_product_variant'])]}"
+               options="{'no_create': True}"/>
+      </xpath>
+      
+    </field>
+  </record>
+
+  <record id="view_pricelist_item_tree_inherit" model="ir.ui.view">
+    <field name="name">product.pricelist.item.tree.inherit</field>
+    <field name="model">product.pricelist.item</field>
+    <field name="inherit_id" ref="product.product_pricelist_item_tree_view"/>
+    <field name="arch" type="xml">
+      
+      <xpath expr="//field[@name='name']" position="after">
+        <field name="product_tmpl_id" string="Products" optional="show"/>
+        <field name="product_id" string="Variants" optional="show"/>
+        <field name="pricelist_uom_id" string="Pricelist UOM" optional="show"/>
+        <field name="min_quantity" optional="show"/>
+      </xpath>
+      
+    </field>
+  </record>
+
+  <record id="view_pricelist_form_inherit" model="ir.ui.view">
+    <field name="name">product.pricelist.form.inherit</field>
+    <field name="model">product.pricelist</field>
+    <field name="inherit_id" ref="product.product_pricelist_view"/>
+    <field name="arch" type="xml">
+      
+      <xpath expr="//field[@name='item_ids']" position="replace">
+        <field name="item_ids" nolabel="1" context="{'default_base':'list_price', 'default_compute_price': 'fixed', 'default_applied_on': '0_product_variant'}" groups="product.group_product_pricelist">
+          <tree string="Pricelist Items" editable="bottom" create="true" edit="true" delete="true">
+            <field name="company_id" invisible="1"/>
+            <field name="applied_on" invisible="1"/>
+            <field name="base" invisible="1"/>
+            <field name="compute_price" invisible="1"/>
+            <field name="price_discount" invisible="1"/>
+            <field name="currency_id" invisible="1"/>
+            
+            <field name="product_tmpl_id" 
+                   string="Products" 
+                   optional="show"
+                   domain="[('company_id', 'in', [company_id, False])]"
+                   options="{'no_create': True}"/>
+            <field name="product_id" 
+                   string="Variants" 
+                   optional="show" 
+                   domain="[('product_tmpl_id', '=', product_tmpl_id), ('company_id', 'in', [company_id, False])]"
+                   options="{'no_create': True}"/>
+            <field name="pricelist_uom_id" 
+                   string="Pricelist UOM" 
+                   optional="show"
+                   options="{'no_create': True}"/>
+            <field name="min_quantity" string="Min. Quantity" optional="show"/>
+            <field name="price" string="Price" options="{'currency_field': 'currency_id'}"/>
+            <field name="date_start" string="Start Date" optional="hide"/>
+            <field name="date_end" string="End Date" optional="hide"/>
+          </tree>
+        </field>
+      </xpath>
+      
+    </field>
+  </record>
+
+  <record id="view_product_template_form_barcode" model="ir.ui.view">
+    <field name="name">product.template.barcode.uom.form</field>
+    <field name="model">product.template</field>
+    <field name="inherit_id" ref="product.product_template_only_form_view"/>
+    <field name="arch" type="xml">
+      <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+        <button name="action_view_barcodes" type="object" class="oe_stat_button" icon="fa-barcode">
+          <field name="barcode_count" widget="statinfo" string="Barcodes"/>
+        </button>
+      </xpath>
+      
+      <xpath expr="//page[@name='variants']" position="after">
+        <page string="POS UoM" name="pos_uom">
+          <div class="alert alert-info" role="alert">
+            <strong>Note:</strong> Define specific barcodes and prices for different units of measure. 
+            Pricelist prices will take priority over these sale prices when applicable.
+          </div>
+          
+          <field name="barcode_uom_ids" context="{'default_product_id': active_id}">
+            <tree editable="bottom">
+              <field name="product_id" invisible="1"/>
+              <field name="uom_category_id"/>
+              <field name="uom_id" 
+                     string="Unit of Measure"
+                     domain="[('category_id', '=', uom_category_id), ('active', '=', True)]"
+                     options="{'no_create': True}"
+                     required="1"/>
+              <field name="barcode" 
+                     string="Barcode" 
+                     placeholder="Enter unique barcode..."
+                     required="1"/>
+              <field name="sale_price" 
+                     string="Sale Price (Fallback)"
+                     widget="monetary"
+                     help="This price is used when no pricelist applies"/>
+              <field name="active" invisible="1"/>
+              <field name="company_id" invisible="1"/>
+            </tree>
+            <form>
+              <sheet>
+                <div class="oe_button_box" name="button_box">
+                  <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                    <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
+                  </button>
+                </div>
+                <div class="oe_title">
+                  <h1>
+                    <field name="barcode" placeholder="Enter unique barcode..."/>
+                  </h1>
+                </div>
+                <group>
+                  <group>
+                    <field name="product_id" readonly="1"/>
+                    <field name="uom_category_id" invisible="1"/>
+                    <field name="uom_id" 
+                           string="Unit of Measure"
+                           domain="[('category_id', '=', uom_category_id), ('active', '=', True)]"
+                           options="{'no_create': True}"/>
+                  </group>
+                  <group>
+                    <field name="sale_price" 
+                           string="Sale Price (Fallback)"
+                           widget="monetary"
+                           help="This price is used when no pricelist applies"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                  </group>
+                </group>
+                <div class="alert alert-info" role="alert">
+                  <strong>Pricing Priority:</strong>
+                  <ol>
+                    <li>Pricelist price (if applicable pricelist exists)</li>
+                    <li>POS UoM specific price (this sale price)</li>
+                    <li>Standard product list price with UOM conversion</li>
+                  </ol>
+                </div>
+              </sheet>
+            </form>
+          </field>
+        </page>
+      </xpath>
+    </field>
+  </record>
+
+  <record id="view_product_barcode_uom_tree" model="ir.ui.view">
+    <field name="name">product.barcode.uom.tree</field>
+    <field name="model">product.barcode.uom</field>
+    <field name="arch" type="xml">
+      <tree decoration-muted="not active" default_order="product_id, uom_id">
+        <field name="product_id" string="Product"/>
+        <field name="uom_id" string="Unit of Measure"/>
+        <field name="barcode" string="Barcode"/>
+        <field name="sale_price" string="Sale Price (Fallback)" widget="monetary"/>
+        <field name="active" invisible="1"/>
+        <field name="company_id" invisible="1"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="view_product_barcode_uom_form" model="ir.ui.view">
+    <field name="name">product.barcode.uom.form</field>
+    <field name="model">product.barcode.uom</field>
+    <field name="arch" type="xml">
+      <form>
+        <header>
+          <button name="toggle_active" type="object" string="Archive" class="btn-secondary"
+                  attrs="{'invisible': [('active', '=', False)]}"/>
+          <button name="toggle_active" type="object" string="Unarchive" class="btn-secondary"
+                  attrs="{'invisible': [('active', '=', True)]}"/>
+        </header>
+        <sheet>
+          <div class="oe_button_box" name="button_box">
+            <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+              <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
+            </button>
+          </div>
+          <div class="oe_title">
+            <h1>
+              <field name="barcode" placeholder="Enter unique barcode..."/>
+            </h1>
+          </div>
+          <group>
+            <group>
+              <field name="product_id" options="{'no_create': True}"/>
+              <field name="uom_category_id" invisible="1"/>
+              <field name="uom_id" 
+                     string="Unit of Measure"
+                     domain="[('category_id', '=', uom_category_id), ('active', '=', True)]"
+                     options="{'no_create': True}"/>
+            </group>
+            <group>
+              <field name="sale_price" 
+                     string="Sale Price (Fallback)"
+                     widget="monetary"
+                     help="This price is used when no pricelist applies"/>
+              <field name="company_id" groups="base.group_multi_company"/>
+            </group>
+          </group>
+          <div class="alert alert-info" role="alert">
+            <strong>Pricing Priority:</strong>
+            <ol>
+              <li>Pricelist price (if applicable pricelist exists)</li>
+              <li>POS UoM specific price (this sale price)</li>
+              <li>Standard product list price with UOM conversion</li>
+            </ol>
+          </div>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="view_product_barcode_uom_search" model="ir.ui.view">
+    <field name="name">product.barcode.uom.search</field>
+    <field name="model">product.barcode.uom</field>
+    <field name="arch" type="xml">
+      <search>
+        <field name="product_id" string="Product"/>
+        <field name="uom_id" string="Unit of Measure"/>
+        <field name="barcode" string="Barcode"/>
+        <separator/>
+        <filter name="active" string="Active" domain="[('active', '=', True)]"/>
+        <filter name="inactive" string="Archived" domain="[('active', '=', False)]"/>
+        <separator/>
+        <filter name="has_sale_price" string="Has Sale Price" domain="[('sale_price', '>', 0)]"/>
+        <filter name="no_sale_price" string="No Sale Price" domain="[('sale_price', '=', 0)]"/>
+        <separator/>
+        <group expand="0" string="Group By">
+          <filter name="group_product" string="Product" context="{'group_by': 'product_id'}"/>
+          <filter name="group_uom" string="Unit of Measure" context="{'group_by': 'uom_id'}"/>
+          <filter name="group_company" string="Company" context="{'group_by': 'company_id'}" groups="base.group_multi_company"/>
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <record id="action_product_barcode_uom" model="ir.actions.act_window">
+    <field name="name">Product Barcodes by UoM</field>
+    <field name="res_model">product.barcode.uom</field>
+    <field name="view_mode">tree,form</field>
+    <field name="context">{'search_default_active': 1}</field>
+    <field name="help" type="html">
+      <p class="o_view_nocontent_smiling_face">
+        Create your first product barcode!
+      </p>
+      <p>
+        Manage different barcodes for the same product based on different units of measure and sale prices.
+        This is useful for POS systems where the same product might be sold in different quantities.
+      </p>
+      <p>
+        <strong>Pricing Priority:</strong><br/>
+        1. Pricelist price (if applicable pricelist exists)<br/>
+        2. POS UoM specific price (fallback sale price)<br/>
+        3. Standard product list price with UOM conversion
+      </p>
+    </field>
+  </record>
+  
+  <record id="view_order_form_inherit_barcode" model="ir.ui.view">
+    <field name="name">sale.order.form.inherit.barcode</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.view_order_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='order_line']" position="attributes">
+        <attribute name="context">{'default_order_id': active_id, 'pricelist_id': pricelist_id}</attribute>
+      </xpath>
+    </field>
+  </record>
+
+  <menuitem id="menu_product_barcode_uom"
+            name="Product Barcodes"
+            parent="sale.product_menu_catalog"
+            action="action_product_barcode_uom"
+            sequence="20"/>
+
+</odoo>

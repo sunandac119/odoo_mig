@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_purchase_order_line_search_barcode" model="ir.ui.view">
+        <field name="name">purchase.order.line.search.barcode</field>
+        <field name="model">purchase.order.line</field>
+        <field name="arch" type="xml">
+            <search string="Purchase Order Line Search">
+                <field name="pos_template_barcode"/>
+                <field name="product_id"/>
+                <field name="order_id"/>
+            </search>
+        </field>
+    </record>
+</odoo>

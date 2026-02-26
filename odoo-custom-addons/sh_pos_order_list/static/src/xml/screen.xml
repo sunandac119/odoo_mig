@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="OrderListScreen" owl="1">
+        <div class="templateproductlist-screen screen">
+            <div class="screen-content">
+                <section class="top-content sh_top_content">
+                    <div class='sh_filter_buttons'>                    
+	                    <button class="button back sh_service_back_btn" t-on-click="back">
+	                        <t t-if="!env.isMobile">Discard</t>
+	                        <t t-else="">
+	                            <i class="fa fa-undo"></i>
+	                        </t>
+	                    </button>
+                        <button class="button back sh_refresh_order" t-on-click="sh_refresh_page">
+                            <i class="fa fa-refresh"></i>
+	                    </button>
+	                    <button class='button sh_paid_order' t-on-click='sh_paid_order_filter'>
+	                        <span>Paid</span>
+	                    </button>
+	                    <button class='button sh_posted_order' t-on-click='sh_posted_order_filter'>
+	                        <span>Posted</span>
+	                    </button>
+	                    <button class='button sh_invoiced_order' t-on-click='sh_invoiced_order_filter'>
+	                        <span>Invoiced</span>
+	                    </button>
+                    </div>
+                    <div class="searchbox-client top-content-center sh_searchbox_client_service">
+                        <input placeholder="Search..." size="1" class="sh_pos_order_search" t-on-keyup="updateOrderList" />
+                        <span class="search-clear-order-list"></span>
+                        <input type="date" name="date1" id="date1" t-on-change="change_date" />
+                    </div>
+                </section>
+                <section class="full-content sh_full_content_service_management sh_order_list_full_content">
+                    <div class="window">
+                        <section class="subwindow">
+                            <div class="subwindow-container">
+                                <div class="subwindow-container-fix touch-scrollable scrollable-y order-list-scroll sh_order_screen">
+                                    <table class="template-list sh_order_list">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 14%; padding-left: 10px;">Name</th>
+                                                <th style="width: 29%;">Order Ref.</th>
+                                                <th style="width: 17%;">Customer</th>
+                                                <t t-if="env.pos.config.floor_ids and env.pos.config.floor_ids.length > 0">
+                                                    <th style="width: 7%;">Table</th>
+                                                </t>
+                                                <th style="width: 16%;">Date</th>
+                                                <th style="width: 10%;" class="pos_order_total_header">Total</th>
+                                                <th style="width: 7%;" class="pos_order_state_th">State</th>
+                                                <t t-if="env.pos.config.sh_enable_order_reprint">
+                                                    <th></th>
+                                                </t>
+                                                <t t-if="env.pos.config.sh_enable_re_order">
+                                                    <th></th>
+                                                </t>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="template-list-contents">
+                                            <t t-foreach="posorderdetail" t-as="pos_order" t-key="pos_order.id">
+                                                <t t-if="pos_order.state != 'cancel'">
+                                                    <tr t-att-data-id="pos_order.sh_uid" class="sh_order_line" t-on-click="clickLine" t-att-data-order-id="pos_order.id">
+                                                        <td><t t-esc="pos_order.name" /></td>
+                                                        <td>
+                                                            <t t-esc="pos_order.pos_reference" />
+                                                        </td>
+                                                        <td>
+                                                            <t t-if="pos_order.partner_id and pos_order.partner_id[1]">
+                                                                <t t-esc="pos_order.partner_id[1]" />
+                                                            </t>
+                                                            <t t-elif="pos_order.partner_id and env.pos.db.get_partner_by_id(pos_order.partner_id) and env.pos.db.get_partner_by_id(pos_order.partner_id).name">
+                                                                <t t-esc="env.pos.db.get_partner_by_id(pos_order.partner_id).name" />
+                                                            </t>
+                                                            <t t-else="">
+                                                                -
+                                                            </t>
+                                                        </td>
+                                                        <t t-if="env.pos.config.floor_ids and env.pos.config.floor_ids.length > 0">
+                                                            <td>
+                                                                <t t-if="pos_order.table_id[1]">
+                                                                    <t t-esc="pos_order.table_id[1]" />
+                                                                </t>
+                                                                <t t-else="">
+                                                                    -
+                                                                </t>
+                                                            </td>
+                                                        </t>
+                                                        <td>
+                                                            <t t-if="pos_order.sh_order_date">
+                                                                <t t-esc="pos_order.sh_order_date" />
+                                                            </t>
+                                                            <t t-else="">
+                                                                <t t-esc="pos_order.date_order" />
+                                                            </t>
+                                                        </td>
+                                                        <td class="pos_order_total_td"><t t-esc="env.pos.format_currency(pos_order.amount_total)" /></td>
+                                                        <td class="pos_order_state">
+                                                            <t t-if="pos_order.state == 'draft'">
+                                                                New
+                                                            </t>
+                                                            <t t-if="pos_order.state == 'cancel'">
+                                                                Cancelled
+                                                            </t>
+                                                            <t t-if="pos_order.state == 'paid'">
+                                                                Paid
+                                                            </t>
+                                                            <t t-if="pos_order.state == 'done'">
+                                                                Posted
+                                                            </t>
+                                                            <t t-if="pos_order.state == 'invoiced'">
+                                                                Invoiced
+                                                            </t>
+                                                        </td>
+                                                        <t t-if="env.pos.config.sh_enable_order_reprint">
+                                                            <td>
+                                                                <i class="fa fa-print print_order" aria-hidden="true" t-on-click="print_pos_order"></i>
+                                                            </td>
+                                                        </t>
+                                                        <t t-if="env.pos.config.sh_enable_re_order">
+                                                            <td>
+                                                                <t t-if="pos_order.state != 'done' and pos_order.state != 'cancel'">
+                                                                    <i class="fa fa-retweet re_order_icon" aria-hidden="true" t-on-click="reorder_pos_order"></i>
+                                                                </t>
+                                                            </td>
+                                                        </t>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="11">
+                                                            <table class="inner_data_table">
+                                                                <tr t-att-id="pos_order.pos_reference.split(' ')[1]" class="order_data_row order_data_header">
+                                                                    <th>Product</th>
+                                                                    <th>Qty.</th>
+                                                                    <th>Discount (%)</th>
+                                                                    <th>Unit Price</th>
+                                                                    <th>Sub Total</th>
+                                                                </tr>
+                                                                <t t-if="pos_order.sh_line_id">
+                                                                    <t t-foreach="pos_order.sh_line_id" t-as="pos_order_line">
+                                                                        <t t-if="env.pos.db.order_line_by_uid and env.pos.db.order_line_by_uid[pos_order_line]">
+                                                                            <tr t-att-id="env.pos.db.order_line_by_uid[pos_order_line].sh_line_id" class="order_data_row order-data" style="border-bottom: 1px solid #ccc;">
+                                                                                <td>
+                                                                                    <t t-if="env.pos.db.get_product_by_id(env.pos.db.order_line_by_uid[pos_order_line].product_id)">
+                                                                                        <t t-if="env.pos.db.get_product_by_id(env.pos.db.order_line_by_uid[pos_order_line].product_id).display_name">
+                                                                                            <t t-esc="env.pos.db.get_product_by_id(env.pos.db.order_line_by_uid[pos_order_line].product_id).display_name" />
+                                                                                        </t>
+                                                                                    </t>
+                                                                                </td>
+                                                                                <!-- <td><t t-esc="widget.pos.db.order_line_by_uid[pos_order_line].quantity" /></td> -->
+                                                                                <td><t t-esc="env.pos.db.order_line_by_uid[pos_order_line].qty" /></td>
+                                                                                <td><t t-esc="env.pos.db.order_line_by_uid[pos_order_line].discount" /></td>
+                                                                                <td>
+                                                                                    <t t-if="env.pos.db.get_product_by_id(env.pos.db.order_line_by_uid[pos_order_line].product_id)">
+                                                                                        <t
+                                                                                            t-if="env.pos.db.get_product_by_id(env.pos.db.order_line_by_uid[pos_order_line].product_id) and env.pos.db.get_product_by_id(env.pos.db.order_line_by_uid[pos_order_line].product_id).lst_price"
+                                                                                        >
+                                                                                            <t t-esc="env.pos.format_currency(env.pos.db.get_product_by_id(env.pos.db.order_line_by_uid[pos_order_line].product_id).lst_price)" />
+                                                                                        </t>
+                                                                                    </t>
+                                                                                </td>
+                                                                                <td><t t-esc="env.pos.format_currency(env.pos.db.order_line_by_uid[pos_order_line].qty * env.pos.db.order_line_by_uid[pos_order_line].price_unit)" /></td>
+                                                                            </tr>
+                                                                        </t>
+                                                                    </t>
+                                                                </t>
+                                                                <t t-else="">
+                                                                    <t t-foreach="pos_order.lines" t-as="pos_order_line" t-key="pos_order_line.id">
+                                                                        <t t-if="env.pos.db.order_line_by_id and env.pos.db.order_line_by_id[pos_order_line]">
+                                                                            <tr t-att-id="env.pos.db.order_line_by_id[pos_order_line].id" class="order_data_row order-data" style="border-bottom: 1px solid #ccc;">
+                                                                                <td>
+                                                                                    <t t-esc="env.pos.db.order_line_by_id[pos_order_line].product_id[1]" />
+                                                                                    <t t-if="!env.pos.db.get_product_by_id(env.pos.db.order_line_by_id[pos_order_line].product_id[0])">
+                                                                                        <span style="color: red;"> ( Not available in POS . Please update product. )</span>
+                                                                                    </t>
+                                                                                </td>
+
+                                                                                <td>
+                                                                                    <t t-if="env.pos.db.get_product_by_id(env.pos.db.order_line_by_id[pos_order_line].product_id[0])">
+                                                                                        <t t-esc="env.pos.db.order_line_by_id[pos_order_line].qty" />
+                                                                                    </t>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <t t-if="env.pos.db.get_product_by_id(env.pos.db.order_line_by_id[pos_order_line].product_id[0])">
+                                                                                        <t t-esc="env.pos.db.order_line_by_id[pos_order_line].discount" />
+                                                                                    </t>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <t t-if="env.pos.db.get_product_by_id(env.pos.db.order_line_by_id[pos_order_line].product_id[0])">
+                                                                                        <t
+                                                                                            t-if="env.pos.db.get_product_by_id(env.pos.db.order_line_by_id[pos_order_line].product_id[0]) and env.pos.db.get_product_by_id(env.pos.db.order_line_by_id[pos_order_line].product_id[0]).lst_price"
+                                                                                        >
+                                                                                            <t t-esc="env.pos.format_currency(env.pos.db.get_product_by_id(env.pos.db.order_line_by_id[pos_order_line].product_id[0]).lst_price)" />
+                                                                                        </t>
+                                                                                    </t>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <t t-if="env.pos.db.get_product_by_id(env.pos.db.order_line_by_id[pos_order_line].product_id[0])">
+                                                                                        <t t-esc="env.pos.format_currency(env.pos.db.order_line_by_id[pos_order_line].qty * env.pos.db.order_line_by_id[pos_order_line].price_unit)" />
+                                                                                    </t>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </t>
+                                                                    </t>
+                                                                </t>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </t>
+                                            </t>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+                <div class="sh_pagination"></div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="TemplateServiceOrderData" owl="1">
+        <tr class="order_data_row" t-att-id="props.service_order.id">
+            <td>Product</td>
+            <td>Qty.</td>
+            <td>Unit Price</td>
+        </tr>
+    </t>
+</templates>

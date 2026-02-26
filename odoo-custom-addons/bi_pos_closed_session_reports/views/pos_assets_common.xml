@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="bi_pos_closed_session_reports_assets" inherit_id="point_of_sale.assets">
+        <xpath expr="." position="inside">
+            <script type="text/javascript"
+                    src="/bi_pos_closed_session_reports/static/src/js/Screens/ProductScreen/ControlButtons/SessionReport.js"/>
+        </xpath>
+    </template>
+</odoo>

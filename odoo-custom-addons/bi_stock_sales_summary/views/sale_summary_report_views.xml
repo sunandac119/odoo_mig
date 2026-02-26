@@ -1,0 +1,27 @@
+<odoo>
+  <record id="view_sale_summary_report_tree" model="ir.ui.view">
+    <field name="name">bi.sales.summary.mv.tree</field>
+    <field name="model">bi.sales.summary.mv</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="x_order_date"/>
+        <field name="x_vendor_name"/>
+        <field name="x_sales_team"/>
+        <field name="x_product_name"/>
+        <field name="x_parent_product_name"/>
+        <field name="x_pos_qty"/>
+        <field name="x_pos_sales"/>
+        <field name="x_credit_qty"/>
+        <field name="x_credit_sales"/>
+        <field name="x_total_qty"/>
+        <field name="x_total_sales"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="action_bi_sales_summary_mv" model="ir.actions.act_window">
+    <field name="name">Sales Summary</field>
+    <field name="res_model">bi.sales.summary.mv</field>
+    <field name="view_mode">tree</field>
+  </record>
+</odoo>

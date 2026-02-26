@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_purchase_return_order_form_barcode" model="ir.ui.view">
+        <field name="name">purchase.return.form.barcode</field>
+        <field name="model">purchase.return</field>
+        <field name="inherit_id" ref="wedo_purchase_return_managment.purchase_return_form"/>
+        <field name="arch" type="xml">
+            <group>
+                <field name="partner_id"
+                       widget="many2one"
+                       options="{'no_open': True}"
+                       placeholder="Select Customer"/>
+            </group>
+            <group>
+                <field name="return_journal_id"
+                       widget="many2one"
+                       options="{'no_open': True}"/>
+            </group>
+            <group>
+                <field name="picking_type_id"
+                       widget="many2one"
+                       options="{'no_open': True}"/>
+            </group>
+            <!-- Add barcode field in the tree view of order_line_ids -->
+            <xpath expr="//field[@name='order_line_ids']/tree/field[@name='product_id']" position="before">
+                <field name="x_scanned_barcode" placeholder="Barcode"/>
+            </xpath> 
+            <xpath expr="//field[@name='order_line_ids']/tree/field[@name='product_id']" position="before">
+                <field name="name" placeholder="Description"/>
+            </xpath> 
+            <xpath expr="//field[@name='order_line_ids']/tree/field[@name='product_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="vendor_display" context="{'show_code': True}" />
+            </xpath>
+            <!-- <field name="partner_id" position="before"> -->
+            <!-- </field> -->
+            <xpath expr="//field[@name='order_line_ids']//tree//field[@name='qty_return']" position="attributes">
+                <attribute name="decoration-danger">qty_return &lt;= 0</attribute>
+            </xpath>
+
+            <field name="partner_id" position="attributes">
+                <attribute name="context">{'show_code': True}</attribute>
+                <attribute name="options">{'no_create_edit': True, 'no_create': True}</attribute>
+                <!-- <attribute name="readonly">1</attribute> -->
+            </field>
+        </field>
+    </record>
+</odoo>

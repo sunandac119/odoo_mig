@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_invoice_document" inherit_id="account.report_invoice_document">
+        <xpath expr="//t/div[1]" position="before">
+            <br/>
+            <div class="row">
+                <div class="col-6">
+                    Supplier TIN:
+                    <t t-out="o.company_id.partner_id.tin"/>
+                    <br/>
+                    Supplier Registration Number:
+                    <t t-out="o.company_id.partner_id.brn"/>
+                    <br/>
+                    Supplier SST ID:
+                    <t t-out="o.company_id.partner_id.sst"/>
+                    <br/>
+                    Supplier MSIC Code:
+                    <t t-out="o.company_id.partner_id.msic_code_id.code"/>
+                    <br/>
+                </div>
+                <!--                <hr/>-->
+                <div>
+                    E-INVOICE
+                    <br/>
+                    Unique Identifier No:
+                    <span t-out="o.lhdn_uuid"/>
+                    <br/>
+                    Invoice Date and Time:
+                    <span t-out="o.invoice_issue_time"/>
+                    <br/>
+                    <img t-if="o.lhdn_uuid and o.lhdn_longid"
+                         t-att-src="'/report/barcode/?barcode_type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('QR','https://preprod.myinvois.hasil.gov.my/'+o.lhdn_uuid+'/share/'+o.lhdn_longid, 400, 400)"
+                         alt="QR Code" style="height:100px"/>
+
+                </div>
+            </div>
+            <hr/>
+            <div>
+                <div class="col-6">
+                    Buyer TIN:
+                    <t t-out="o.partner_id.tin"/>
+                    <br/>
+                    Buyer Name:
+                    <t t-out="o.partner_id.name"/>
+                    <br/>
+                    Buyer Registration Number:
+                    <t t-out="o.partner_id.brn"/>
+                    <br/>
+                    Buyer Address: NA
+                    <br/>
+                    Buyer Contact Number:
+                    <t t-out="o.partner_id.mobile"/>
+                    <br/>
+                    Buyer Email:
+                    <t t-out="o.partner_id.email"/>
+                    <br/>
+                    Buyer SST Registration ID:
+                    <t t-out="o.partner_id.brn"/>
+                </div>
+            </div>
+        </xpath>
+
+        <!--        <xpath expr="//div[hasclass('page mb-4')]" position="inside">-->
+        <!--            <div>-->
+        <!--                yash-->
+        <!--            </div>-->
+        <!--        </xpath>-->
+
+    </template>
+</odoo>

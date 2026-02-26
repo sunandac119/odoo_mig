@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data noupdate="1">
+
+    <record id="sa_consolidate_child_to_parent" model="ir.actions.server">
+      <field name="name">Consolidate Child On-hand (+/-) to Parent (by Location)</field>
+      <field name="model_id" ref="stock.model_stock_quant"/>
+      <field name="state">code</field>
+      <field name="code"><![CDATA[
+Quant    = env["stock.quant"]
+Product  = env["product.product"]
+PT       = env["product.template"]
+Location = env["stock.location"]
+
+internal_locs = Location.search([("usage", "=", "internal")])
+if not internal_locs:
+    result = "No internal locations."
+else:
+    child_tmpls = PT.search([("parent_template_id", "!=", False), ("unit_qty", ">", 0.0)])
+    if not child_tmpls:
+        result = "No child templates to consolidate."
+    else:
+        parent_variant_cache = {}
+        child_to_parent = {}
+        for ct in child_tmpls:
+            pt = ct.parent_template_id
+            if not pt:
+                continue
+            if pt.id not in parent_variant_cache:
+                pv = pt.product_variant_id or pt.product_variant_ids[:1]
+                if not pv:
+                    continue
+                parent_variant_cache[pt.id] = pv
+            parent_prod = parent_variant_cache[pt.id]
+            for cp in ct.product_variant_ids:
+                child_to_parent[cp.id] = (parent_prod, ct.unit_qty)
+
+        if not child_to_parent:
+            result = "No child products mapped to parents."
+        else:
+            groups = Quant.read_group(
+                domain=[
+                    ("product_id", "in", list(child_to_parent.keys())),
+                    ("location_id", "in", internal_locs.ids),
+                    ("quantity", "!=", 0.0),
+                ],
+                fields=["product_id", "location_id", "quantity:sum"],
+                groupby=["product_id", "location_id"],
+                lazy=False,
+            )
+            if not groups:
+                result = "No non-zero child quants to consolidate."
+            else:
+                parent_products = list({child_to_parent[pid][0].id for pid in child_to_parent})
+                parent_groups = Quant.read_group(
+                    domain=[
+                        ("product_id", "in", parent_products),
+                        ("location_id", "in", internal_locs.ids),
+                    ],
+                    fields=["product_id", "location_id", "quantity:sum"],
+                    groupby=["product_id", "location_id"],
+                    lazy=False,
+                )
+                parent_qty_map = {}
+                for g in parent_groups:
+                    key = (g["product_id"][0], g["location_id"][0])
+                    parent_qty_map[key] = g["quantity_sum"]
+
+                by_loc = {}
+                for g in groups:
+                    loc_id = g["location_id"][0]
+                    child_pid = g["product_id"][0]
+                    qty = g["quantity_sum"]
+                    by_loc.setdefault(loc_id, []).append((child_pid, qty))
+
+                created = 0
+                for loc_id, items in by_loc.items():
+                    loc = Location.browse(loc_id)
+                    parent_deltas = {}
+                    inv_lines = []
+
+                    for child_pid, qty_child in items:
+                        parent_prod, unit_qty = child_to_parent.get(child_pid, (False, 0.0))
+                        if not parent_prod or not unit_qty:
+                            continue
+                        delta = qty_child * unit_qty
+                        parent_deltas[parent_prod.id] = parent_deltas.get(parent_prod.id, 0.0) + delta
+
+                        child_prod = Product.browse(child_pid)
+                        inv_lines.append((0, 0, {
+                            "product_id": child_prod.id,
+                            "product_uom_id": child_prod.uom_id.id,
+                            "location_id": loc.id,
+                            "product_qty": 0.0,
+                        }))
+
+                    for parent_pid, delta in parent_deltas.items():
+                        theo = parent_qty_map.get((parent_pid, loc.id), 0.0)
+                        parent_prod = Product.browse(parent_pid)
+                        inv_lines.append((0, 0, {
+                            "product_id": parent_prod.id,
+                            "product_uom_id": parent_prod.uom_id.id,
+                            "location_id": loc.id,
+                            "product_qty": theo + delta,
+                        }))
+
+                    if inv_lines:
+                        inv = env["stock.inventory"].create({
+                            "name": "Auto Consolidation to Parent - %s" % (loc.complete_name or loc.display_name),
+                            "company_id": loc.company_id.id,
+                            "location_ids": [(6, 0, [loc.id])],
+                            "prefill_counted_quantity": "no",
+                            "line_ids": inv_lines,
+                        })
+                        inv.action_validate()
+                        created += 1
+
+                result = "Inventories created: %s" % created
+      ]]></field>
+    </record>
+
+    <record id="cron_consolidate_child_to_parent" model="ir.cron">
+      <field name="name">Consolidate Child On-hand (+/-) to Parent (by Location)</field>
+      <field name="model_id" ref="stock.model_stock_quant"/>
+      <field name="state">code</field>
+      <field name="code">env.ref("parent_onhand_consolidation_sa.sa_consolidate_child_to_parent").run()</field>
+      <field name="interval_number">1</field>
+      <field name="interval_type">days</field>
+      <field name="numbercall">-1</field>
+      <field name="doall">False</field>
+      <field name="active">True</field>
+    </record>
+
+  </data>
+</odoo>

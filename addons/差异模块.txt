@@ -1,0 +1,12 @@
+l10n_ar
+l10n_be_invoice_bba
+l10n_ch
+survey
+test_mail
+test_mass_mailing
+web
+website_event_meet
+
+
+改动:
+publisher_warranty_url从http://services.openerp.com/publisher-warranty/ 改为http://odoo.mudery.com/publisher-warranty/

@@ -1,0 +1,45 @@
+# -*- coding: utf-8 -*-
+# Part of Softhealer Technologies.
+{
+    "name": "Account Statement | Customer Account Statement | Customer Overdue Statement | Vendor Bank Statement | Vendor Bank Overdue Statement",
+    "author": "Softhealer Technologies",
+    "website": "https://www.softhealer.com",
+    "support": "support@softhealer.com",
+    "version": "14.0.16",
+    "category": "Accounting",
+    "summary": "Bank Statement, Customer Bank Statement,Supplier Statement,Vendor Statement,Overdue Statement,Print Customer Statement Report,Print Vendor Statement,Payment Reminder,customer payment followup, Odoo",
+    "description": """This module allows customers or vendors to see statements as well as overdue statement details. You can send statements by email to the customers and vendors. You can also see customers/vendors mail log history with statements and overdue statements. You can also send statements automatically weekly, monthly & daily, or you can send statements using cron job also. You can filter statements by dates, statements & overdue statements. You can group by statements by the statement type, mail sent status & customers/vendors. You can print statements and overdue statements.""",
+    "depends": [
+        'account'
+    ],
+    "data": [
+        'security/security.xml',
+        'security/ir.model.access.csv',
+        'views/user.xml',
+        'wizard/mail_compose_view.xml',
+        'views/mail_history.xml',
+        'views/res_config_setting.xml',
+        'views/res_partner.xml',
+        'report/customer_statement_report.xml',
+        'report/customer_due_statement_report.xml',
+        'report/vendor_statement_report.xml',
+        'report/vendor_due_statement_report.xml',
+        'report/customer_filter_statement_report.xml',
+        'report/vender_filtered_statement_report.xml',
+        'data/email_data.xml',
+        'data/statement_cron.xml',
+        'views/assets.xml',
+        'views/sh_statement_config_menu.xml',
+        'views/customer_statement_portal_templates.xml',
+        'views/vendor_statement_portal_templates.xml',
+        'wizard/partner_statement_mass_action.xml',
+        'wizard/partner_config_update_wizard.xml',
+    ],
+    "images": ["static/description/background.png", ],
+    "license": "OPL-1",
+    "installable": True,
+    "auto_install": False,
+    "application": True,
+    "price": "80",
+    "currency": "EUR"
+}

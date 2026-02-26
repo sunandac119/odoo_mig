@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="template" xml:space="preserve">
+
+    <!-- <t t-name="CashButton" owl="1">
+        <span class="control-button" style="margin-top:20px;" t-on-click="onClick">Cash In/Out</span>
+    </t> -->
+    
+    <t t-inherit="point_of_sale.CashBoxOpening" t-inherit-mode="extension">
+       <xpath expr="//div/h1[1]" position="before">
+            <span class="control-button" style="margin-top:20px;" t-on-click="onClick()">CASH IN</span>
+            <!-- <CashButton/> -->
+        </xpath>
+    </t>
+    <t t-inherit="pos_extend.CashBoxPopup" t-inherit-mode="extension">
+       <xpath expr="//div[hasclass('confirm')]" position="before">
+            <span class="button highlight print_report" t-on-click="print_report()">Print</span>
+            <!-- <CashButton/> -->
+        </xpath>
+    </t>
+
+</templates>

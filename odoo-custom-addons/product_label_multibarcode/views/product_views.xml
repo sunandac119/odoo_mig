@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Button on Product Template form -->
+    <record id="view_product_template_form_inherit_labels" model="ir.ui.view">
+        <field name="name">product.template.form.inherit.multiuom.labels</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet//div[@name='button_box']" position="inside">
+                <button name="%(action_open_label_barcode_wizard)d"
+                        type="action"
+                        class="oe_stat_button"
+                        icon="fa-barcode"
+                        string="Print Labels (Multi-UoM)"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Button on Product Variant form -->
+    <record id="view_product_product_form_inherit_labels" model="ir.ui.view">
+        <field name="name">product.product.form.inherit.multiuom.labels</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet//div[@name='button_box']" position="inside">
+                <button name="%(action_open_label_barcode_wizard)d"
+                        type="action"
+                        class="oe_stat_button"
+                        icon="fa-barcode"
+                        string="Print Labels (Multi-UoM)"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

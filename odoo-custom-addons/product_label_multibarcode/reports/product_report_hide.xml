@@ -1,0 +1,10 @@
+<odoo>
+    <data noupdate="0">
+
+        <record id="stock.stock_replenishment_report_product_template_action"
+                model="ir.actions.report">
+            <field name="binding_model_id" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

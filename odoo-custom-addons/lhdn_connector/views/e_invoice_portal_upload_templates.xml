@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="portal_my_home_e_invoice_portal_upload" name="e-Invoice" inherit_id="portal.portal_my_home"
+              customize_show="True">
+
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="icon" t-value="'/lhdn_connector/static/description/lhdn_icon_64_64.svg'"/>
+                <t t-set="title">e-Invoice Upload</t>
+                <t t-set="url" t-value="'/my/e_invoice_upload'"/>
+                <t t-set="text">Uploade Your File Here “ XML , CSV , PDF , JPEG for E-Invoice Validation ”</t>
+                <!--                <t t-set="placeholder_count" t-value="'knowledge_count'"/>-->
+                <t t-set="config_card" t-value="True"/>
+            </t>
+        </xpath>
+    </template>
+
+
+    <template id="portal_e_invoice_upload" name="e-Invoice Upload">
+
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">e-Invoices</t>
+            </t>
+            <div>
+                <form id="e_invoice_form_submit" action="/post_e_invoice_files" method="POST"
+                      enctype="multipart/form-data">
+                    <h2>
+                        <strong>Upload Your Invoice PDF Here:</strong>
+                    </h2>
+                    <div class="row">
+                        <!--                        <div class="col-6">-->
+                        <!--                            <label class="label form-label">Invoice Number</label>-->
+                        <!--                            <input type="text" class="form-control"/>-->
+                        <!--                        </div>-->
+
+                        <div class="col-12">
+                            <label class="label form-label">File</label>
+                            <!--                            <input type="file" class="form-control"/>-->
+                            <input type="file" id="files" name="files" multiple="multiple" class="form-control"/>
+                        </div>
+                    </div>
+                    <br/>
+                    <!--                    <div id="fileList"></div>-->
+                    <button type="submit" class="btn btn-primary">
+                        Upload
+                    </button>
+                    <br/>
+                </form>
+            </div>
+            <h4>Today's total remaining processings invoices ==>
+                <span t-out="remains_to_process"/>
+            </h4>
+            <t t-if="not invoices">
+                <p class="alert alert-warning">There are currently no invoices and payments for your account.</p>
+            </t>
+            <t t-if="invoices" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>Invoice #</th>
+                        <th>Invoice Internal ref</th>
+                        <th>Invoice Date</th>
+                        <!--                    <th class='d-none d-md-table-cell'>Due Date</th>-->
+                        <th>Invoice Status</th>
+                        <th>LHDN Status</th>
+                        <!--                    <th class="text-end">Amount Due</th>-->
+                        <th>Is Sended in Peppol Network?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="invoices" t-as="invoice">
+                        <tr>
+                            <td>
+                                <a t-att-href="invoice.get_portal_url()" t-att-title="invoice.name">
+                                    <t t-out="invoice.name" t-if="invoice.name != '/'"/>
+                                    <em t-else="">Draft Invoice</em>
+                                </a>
+                            </td>
+                            <td>
+                                <span t-field="invoice.portal_ai_inv_number"/>
+                            </td>
+                            <td>
+                                <span t-field="invoice.invoice_date"/>
+                            </td>
+                            <!--                        <td class='d-none d-md-table-cell'><span t-field="invoice.invoice_date_due"/></td>-->
+                            <td name="invoice_status">
+                                <t t-if="invoice.state == 'posted'" name="invoice_status_posted">
+                                    <span t-if="invoice.payment_state in ('paid', 'in_payment')"
+                                          class="badge rounded-pill text-bg-success">
+                                        <i class="fa fa-fw fa-check" aria-label="Paid" title="Paid" role="img"/>
+                                        <span class="d-none d-md-inline">Paid</span>
+                                    </span>
+                                    <span t-elif="invoice.payment_state == 'reversed'"
+                                          class="badge rounded-pill text-bg-success">
+                                        <i class="fa fa-fw fa-check" aria-label="Reversed" title="Reversed" role="img"/>
+                                        <span class="d-none d-md-inline">Reversed</span>
+                                    </span>
+                                    <span t-else="" class="badge rounded-pill text-bg-info"
+                                          name="invoice_status_waiting_for_payment">
+                                        <i class="fa fa-fw fa-clock-o" aria-label="Opened" title="Opened" role="img"/>
+                                        <span class="d-none d-md-inline">Waiting for Payment</span>
+                                    </span>
+                                </t>
+                                <t t-elif="invoice.state == 'cancel'">
+                                    <span class="badge rounded-pill text-bg-warning">
+                                        <i class="fa fa-fw fa-remove" aria-label="Cancelled" title="Cancelled"
+                                           role="img"/>
+                                        <span class="d-none d-md-inline">Cancelled</span>
+                                    </span>
+                                </t>
+                            </td>
+                            <td>
+                                <span t-field="invoice.lhdn_invoice_status"/>
+                                <button t-if="invoice.lhdn_invoice_status != 'validated'" type="button"
+                                        class="fa fa-refresh get_lhdn_documents_status" t-att-data-id="invoice.id">
+                                </button>
+
+                            </td>
+                            <td>
+                                <t t-if="invoice.is_sended_in_peppol">
+                                    Yes
+                                </t>
+                                <t t-else="">
+                                    No
+                                    <button type="button" class="fa fa-send-o submit_invoice_ins_peppol_network"
+                                            t-att-data-id="invoice.id" icon="fa-refresh text-primary">
+                                    </button>
+                                </t>
+                            </td>
+                            <!--                        <td class="text-end"><span t-out="-invoice.amount_residual if invoice.move_type == 'out_refund' else invoice.amount_residual" t-options='{"widget": "monetary", "display_currency": invoice.currency_id}'/></td>-->
+                        </tr>
+                    </t>
+                </tbody>
+            </t>
+
+        </t>
+
+    </template>
+</odoo>

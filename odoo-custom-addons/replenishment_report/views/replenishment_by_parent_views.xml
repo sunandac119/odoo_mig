@@ -1,0 +1,29 @@
+
+<odoo>
+    <menuitem id="menu_replenishment_by_parent"
+              name="Replenishment by Parent"
+              parent="stock.menu_stock_root"
+              action="action_replenishment_by_parent"/>
+
+    <record id="view_replenishment_by_parent_list" model="ir.ui.view">
+        <field name="name">product.replenishment.by.parent.list</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <tree string="Replenishment by Parent">
+                <field name="parent_template_id"/>
+                <field name="available_qty"/>
+                <field name="unit_qty"/>
+                <field name="ctn_qty"/>
+                <field name="vendor"/>
+                <field name="parent_available_qty"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_replenishment_by_parent" model="ir.actions.act_window">
+        <field name="name">Replenishment by Parent</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_replenishment_by_parent_list"/>
+    </record>
+</odoo>

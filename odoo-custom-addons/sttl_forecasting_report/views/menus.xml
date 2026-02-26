@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- sale menus -->
+
+    <menuitem id="sale.forecasting_report" name="Forecasting" parent="sale.sale_menu_root"
+        sequence="5"/>
+
+    <menuitem id="menu_forecasting_report" name="Forecasting Report" sequence="100"
+        action="action_sale_forecasting_report_details" parent="sale.forecasting_report" />
+
+    <menuitem id="menu_salesperson_forecasting_report" name="Salesperson Forecasting Report" sequence="120"
+        action="action_salesperson_forecasting_report_details" parent="sale.forecasting_report" />
+
+    <menuitem id="menu_salescustomer_forecasting_report" name="Customer Forecasting Report" sequence="130"
+        action="action_salescustomer_forecasting_report_details" parent="sale.forecasting_report" />
+
+    <menuitem id="menu_salesproduct_forecasting_report" name="Product Forecasting Report" sequence="140"
+        action="action_salesproduct_forecasting_report_details" parent="sale.forecasting_report" />
+
+
+    <!-- purchase menus -->
+    <menuitem id="purchase.purchase_report" name="Reporting" parent="purchase.menu_purchase_root"
+        sequence="99" groups="purchase.group_purchase_manager"/>
+
+    <menuitem id="purchase_report_analysis" name="Purchase"
+        parent="purchase.purchase_report" action="purchase.action_purchase_order_report_all"
+        sequence="2" groups="purchase.group_purchase_manager"/>
+
+    <menuitem id="purchase.forecasting_report" name="Forecasting" parent="purchase.menu_purchase_root"
+        sequence="99" groups="purchase.group_purchase_manager"/>
+
+    <menuitem id="purchase_predict_report" name="Forecasting Purchase"
+        parent="purchase.forecasting_report" action="action_forecasting_purchase_report_details"
+        sequence="4" groups="purchase.group_purchase_manager"/>
+
+    <menuitem id="menu_purchase_person_forecasting_report" name="Purchase Representative Forecasting Report" sequence="120"
+        action="action_purchase_person_forecasting_report_details" parent="purchase.forecasting_report"/>
+
+    <menuitem id="menu_purchase_vendor_forecasting_report" name="Purchase Vendor Forecasting Report" sequence="130"
+        action="action_purchase_vendor_forecasting_report_details" parent="purchase.forecasting_report"/>
+
+    <menuitem id="menu_purchase_product_forecasting_report" name="Purchase Product Forecasting Report" sequence="140"
+        action="action_purchase_product_forecasting_report_details" parent="purchase.forecasting_report"/>
+
+</odoo>

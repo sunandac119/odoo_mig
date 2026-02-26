@@ -1,0 +1,18 @@
+<odoo>
+    <record id="purchase_order_form_barcode" model="ir.ui.view">
+        <field name="name">purchase.order.form.barcode</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <!-- Add barcode field in form view of order lines -->
+            <xpath expr="//field[@name='order_line']/form//field[@name='product_id']" position="before">
+                <field name="x_scanned_barcode" placeholder="Scan POS UOM Barcode"/>
+            </xpath>
+
+            <!-- Add barcode field in tree view of order lines -->
+            <xpath expr="//field[@name='order_line']/tree//field[@name='product_id']" position="before">
+                <field name="x_scanned_barcode" placeholder="Scan Barcode"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

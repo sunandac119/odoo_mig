@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="product_add_to_cart_ajax_av_product" inherit_id="website_sale.product">
+		<xpath expr="//a[@id='add_to_cart']" position="replace">
+			<t t-set="add_to_cart_ajax_value" t-value="request.env['website'].get_current_website()"/>
+			<t t-if="add_to_cart_ajax_value.is_cart_ajax_field == True">
+				<a role="button" id="add_to_cart" t-att-data-value="add_to_cart_ajax_value.is_cart_ajax_field" class="btn btn-primary btn-lg mt16 js_add_cart_ajax a-submit d-block d-sm-inline-block" href="#"><i class="fa fa-shopping-cart"/> Add to Cart</a>
+			</t>
+			<t t-else="">
+				<a role="button" id="add_to_cart" class="btn btn-primary btn-lg mt16 js_check_product a-submit d-block d-sm-inline-block" href="#"><i class="fa fa-shopping-cart"/> Add to Cart</a>
+			</t>
+		</xpath>
+	</template>
+
+	<template id="product_add_to_cart_ajax_av_products_add_to_cart" inherit_id="website_sale.products_add_to_cart" name="Ajax Add to Cart">
+        <xpath expr="//a[hasclass('a-submit')]" position="replace">
+            <t t-set="add_to_cart_ajax_value" t-value="request.env['website'].get_current_website()"/>
+            <t t-if="product_variant_id and add_to_cart_ajax_value.is_cart_ajax_field == True">
+                <a href="#" id="add_to_cart" t-att-data-value="add_to_cart_ajax_value.is_cart_ajax_field" role="button" class="btn btn-secondary a-submit" aria-label="Shopping cart" title="Shopping cart">
+                    <span class="fa fa-shopping-cart"/>
+                </a>
+            </t>
+            <t t-if="product_variant_id and add_to_cart_ajax_value.is_cart_ajax_field != True">
+            	<a href="#" role="button" class="btn btn-secondary a-submit" aria-label="Shopping cart" title="Shopping cart">
+                    <span class="fa fa-shopping-cart"/>
+                </a>
+            </t>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_candy_repack_wizard,candy.repack.wizard,model_candy_repack_wizard,candy_pool_repack.group_candy_repack_user,1,1,1,0
+access_candy_repack_line,candy.repack.line,model_candy_repack_line,candy_pool_repack.group_candy_repack_user,1,1,1,0

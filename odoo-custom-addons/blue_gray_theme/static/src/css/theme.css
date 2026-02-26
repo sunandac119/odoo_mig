@@ -1,0 +1,13 @@
+.o_main_navbar {
+    position: relative;
+    height: 46px;
+    border-bottom: 1px solid #000000;
+    background-color: #0c3f5c;
+    color: white;
+}
+#oe_main_menu_navbar {
+  background-color: #0c3f5c;
+}
+.o_web_client {
+    background-color: #444;
+}

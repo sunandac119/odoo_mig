@@ -1,0 +1,16 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-extend="PointOfSaleChrome">
+        <t t-jquery=".pos-rightheader" t-operation="append">
+            <div class="last-refresh-indicator">
+                <t t-if="env.pos.last_refresh_time">
+                    <span>
+                        🔄 Last sync:
+                        <t t-esc="env.pos.last_refresh_time.toLocaleTimeString()"/>
+                    </span>
+                </t>
+            </div>
+        </t>
+    </t>
+</templates>

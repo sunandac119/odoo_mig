@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="group_payment_first_approval" model="res.groups">
+            <field name="name">Payment First Approval</field>
+            <field name="category_id" ref="base.module_category_usability"/>
+        </record>
+        <record id="group_payment_second_approval" model="res.groups">
+            <field name="name">Payment Second Approval</field>
+            <field name="category_id" ref="base.module_category_usability"/>
+        </record>
+	</data>
+</odoo>

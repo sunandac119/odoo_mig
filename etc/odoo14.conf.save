@@ -1,0 +1,93 @@
+[options]
+; This is the password that allows database operations:
+admin_passwd = adminjajan
+db_host = False
+db_port = False
+db_user = odoo14
+db_password = False
+addons_path = /opt/odoo14/odoo/addons,/opt/odoo14/odoo-custom-addons
+#addons_path = /opt/odoo14/odoo/addons
+#dbfilter = ^%h*$
+#dbfilter = ^s3.jajanviral\.com\.my$
+proxy_mode = True
+workers = 4
+Error:
+Odoo Server Error
+
+Traceback (most recent call last):
+  File "/opt/odoo14/odoo/odoo/addons/base/models/ir_http.py", line 237, in _dispatch
+    result = request.dispatch()
+  File "/opt/odoo14/odoo/odoo/http.py", line 696, in dispatch
+    result = self._call_function(**self.params)
+  File "/opt/odoo14/odoo/odoo/http.py", line 370, in _call_function
+    return checked_call(self.db, *args, **kwargs)
+  File "/opt/odoo14/odoo/odoo/service/model.py", line 94, in wrapper
+    return f(dbname, *args, **kwargs)
+  File "/opt/odoo14/odoo/odoo/http.py", line 358, in checked_call
+    result = self.endpoint(*a, **kw)
+  File "/opt/odoo14/odoo/odoo/http.py", line 919, in __call__
+    return self.method(*args, **kw)
+  File "/opt/odoo14/odoo/odoo/http.py", line 544, in response_wrap
+    response = f(*args, **kw)
+  File "/opt/odoo14/odoo/addons/web/controllers/main.py", line 1374, in call_button
+    action = self._call_kw(model, method, args, kwargs)
+  File "/opt/odoo14/odoo/addons/web/controllers/main.py", line 1362, in _call_kw
+    return call_kw(request.env[model], method, args, kwargs)
+  File "/opt/odoo14/odoo/odoo/api.py", line 406, in call_kw
+    result = _call_kw_multi(method, model, args, kwargs)
+  File "/opt/odoo14/odoo/odoo/api.py", line 391, in _call_kw_multi
+    result = method(recs, *args, **kwargs)
+  File "<decorator-gen-74>", line 2, in button_immediate_install
+  File "/opt/odoo14/odoo/odoo/addons/base/models/ir_module.py", line 72, in check_and_log
+    return method(self, *args, **kwargs)
+  File "/opt/odoo14/odoo/odoo/addons/base/models/ir_module.py", line 453, in button_immediate_install
+    return self._button_immediate_function(self.env.registry[self._name].button_install)
+  File "/opt/odoo14/odoo/odoo/addons/base/models/ir_module.py", line 571, in _button_immediate_function
+    modules.registry.Registry.new(self._cr.dbname, update_module=True)
+  File "/opt/odoo14/odoo/odoo/modules/registry.py", line 89, in new
+    odoo.modules.load_modules(registry._db, force_demo, status, update_module)
+  File "/opt/odoo14/odoo/odoo/modules/loading.py", line 418, in load_modules
+    Module.update_list()
+  File "<decorator-gen-84>", line 2, in update_list
+  File "/opt/odoo14/odoo/odoo/addons/base/models/ir_module.py", line 72, in check_and_log
+    return method(self, *args, **kwargs)
+  File "/opt/odoo14/odoo/odoo/addons/base/models/ir_module.py", line 757, in update_list
+    mod._update_dependencies(terp.get('depends', []), terp.get('auto_install'))
+  File "/opt/odoo14/odoo/odoo/addons/base/models/ir_module.py", line 874, in _update_dependencies
+    self._cr.execute('UPDATE ir_module_module_dependency SET auto_install_required = (name = any(%s)) WHERE module_id = %s',
+  File "<decorator-gen-5>", line 2, in execute
+  File "/opt/odoo14/odoo/odoo/sql_db.py", line 101, in check
+    return f(self, *args, **kwargs)
+  File "/opt/odoo14/odoo/odoo/sql_db.py", line 301, in execute
+    res = self._obj.execute(query, params)
+Exception
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/odoo14/odoo/odoo/http.py", line 652, in _handle_exception
+    return super(JsonRequest, self)._handle_exception(exception)
+  File "/opt/odoo14/odoo/odoo/http.py", line 317, in _handle_exception
+    raise exception.with_traceback(None) from new_cause
+psycopg2.errors.LockNotAvailable: canceling statement due to lock timeout
+CONTEXT:  while updating tuple (46,117) in relation "ir_module_module_dependency"
+limit_memory_hard = 53687091200
+limit_memory_soft = 42949672960
+limit_request = 8192
+limit_time_cpu = 800
+#limit_time_real = 3600
+limit_time_real = 7200
+max_cron_threads = 3
+logfile = /var/log/odoo/odoo141.log
+#db_maxconn =300
+server_wide_modules = web,base,psutil
+; Other configurations
+
+; Enable Redis caching
+;cache = redis
+;redis_host = 127.0.0.1
+;redis_port = 6379
+;redis_dbindex = 0  ; Default Redis database index
+
+
+

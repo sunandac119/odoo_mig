@@ -1,0 +1,13 @@
+.page {
+    page-break-before: auto;
+    page-break-after: auto;
+}
+.table {
+    width: 100%;
+    font-size: 10pt;
+    border-collapse: collapse;
+}
+.table th, .table td {
+    padding: 5px;
+    text-align: left;
+}

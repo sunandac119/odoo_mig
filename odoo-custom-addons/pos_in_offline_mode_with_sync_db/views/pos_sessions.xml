@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <record id="view_pos_session_forms_inheriteds" model="ir.ui.view">
+            <field name="name">view.pos.session.forms.inheriteds</field>
+            <field name="model">pos.session</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_session_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='config_id']" position="after">
+                    <field name="is_synced_with_server" readonly="1" force_save="1"/>
+                    <field name="remote_server_db_id" readonly="1" force_save="1"/>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

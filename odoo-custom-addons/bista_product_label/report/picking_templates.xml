@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="0">
+
+		<template id="label_transfer_template_view_pdf_inherit" inherit_id="stock.label_transfer_template_view_pdf">
+			<xpath expr="//t[@t-if='move_line.lot_name or move_line.lot_id']/img" position="replace">
+				<t t-if="picking.get_qr_picking_operations_settings()">
+					<div t-options="{'width': 150, 'height': 150}">
+						<img t-att-src="'/report/barcode/QR/%s' % move_line.lot_name" style="width:100%; height:4rem;"/>
+					</div>
+				</t>
+				<t t-else="">
+					<img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', move_line.lot_name, 600, 150)" style="width:100%;height:4rem" alt="Barcode"/>
+				</t>
+			</xpath>
+		</template>
+
+	</data>
+</odoo>

@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <data>
+
+        <!-- Inactive COA Default -->
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_current_assets'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_current_assets" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_configurable_chart_template_liquidity_transfer'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_configurable_chart_template_liquidity_transfer" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_stock_valuation'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_stock_valuation" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_stock_in'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_stock_in" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_stock_out'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_stock_out" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_receivable'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_receivable" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_to_receive_rec'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_to_receive_rec" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_tax_paid'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_tax_paid" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_tax_receivable'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_tax_receivable" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_prepayments'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_prepayments" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_fixed_assets'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_fixed_assets" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_non_current_assets'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_non_current_assets" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_current_liabilities'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_current_liabilities" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_payable'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_payable" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_to_receive_pay'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_to_receive_pay" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_tax_received'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_tax_received" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_tax_payable'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_tax_payable" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_non_current_liabilities'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_non_current_liabilities" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_capital'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_capital" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_dividends'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_dividends" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_income'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_income" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_income_currency_exchange'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_income_currency_exchange" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_cash_diff_income'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_cash_diff_income" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_other_income'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_other_income" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+         <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_cost_of_goods_sold'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_cost_of_goods_sold" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+         <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_expense'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_expense" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+         <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_expense_invest'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_expense_invest" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+         <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_expense_rent'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_expense_rent" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+         <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_expense_finance'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_expense_finance" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+         <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_expense_salary'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_expense_salary" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+         <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_expense_currency_exchange'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_expense_currency_exchange" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+         <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_cash_diff_expense'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_cash_diff_expense" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+         <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_expense_rd'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_expense_rd" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+         <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_expense_sales'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_expense_sales" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','1_pos_receivable'),('module','=','l10n_generic_coa')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="l10n_generic_coa.1_pos_receivable" model="account.account">
+            <field name="active" eval="False"/>
+         </record>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','data_account_type_equity'),('module','=','account')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="account.data_account_type_equity" model="account.account.type">
+            <field name="name">Capital</field>
+         </record>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','data_account_type_non_current_liabilities'),('module','=','account')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="account.data_account_type_non_current_liabilities" model="account.account.type">
+            <field name="name">Longterm Liabilities</field>
+         </record>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('name','=','data_account_type_revenue'),('module','=','account')]"/>
+            </function>
+            <value eval=" {'noupdate': False} "/>
+        </function>
+        <record id="account.data_account_type_revenue" model="account.account.type">
+            <field name="name">Sales</field>
+         </record>
+
+
+
+        <function name="write" model="account.account">
+            <function name="search" model="account.account">
+                <value eval="[('code','=','101501')]"/>
+            </function>
+            <value eval=" {'active': False} "/>
+        </function>
+
+        <function name="write" model="account.account">
+            <function name="search" model="account.account">
+                <value eval="[('code','=','101502')]"/>
+            </function>
+            <value eval=" {'active': False} "/>
+        </function>
+
+        <function name="write" model="account.account">
+            <function name="search" model="account.account">
+                <value eval="[('code','=','101503')]"/>
+            </function>
+            <value eval=" {'active': False} "/>
+        </function>
+
+        <function name="write" model="account.account">
+            <function name="search" model="account.account">
+                <value eval="[('code','=','999999')]"/>
+            </function>
+            <value eval=" {'active': False} "/>
+        </function>
+
+        <function name="write" model="account.account">
+            <function name="search" model="account.account">
+                <value eval="[('code','=','101401')]"/>
+            </function>
+            <value eval=" {'active': False} "/>
+        </function>
+
+        <function name="write" model="account.account">
+            <function name="search" model="account.account">
+                <value eval="[('code','=','101402')]"/>
+            </function>
+            <value eval=" {'active': False} "/>
+        </function>
+
+        <function name="write" model="account.account">
+            <function name="search" model="account.account">
+                <value eval="[('code','=','101403')]"/>
+            </function>
+            <value eval=" {'active': False} "/>
+        </function>
+
+        <function name="write" model="account.account">
+            <function name="search" model="account.account">
+                <value eval="[('code','=','101404')]"/>
+            </function>
+            <value eval=" {'active': False} "/>
+        </function>
+
+        <!-- END Inactive COA Default -->
+
+    </data>
+</odoo>

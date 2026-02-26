@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="ir_cron_pos_data_sends_to_remote_server" model="ir.cron">
+            <field name="name">Remote Data Send: Sendings ans Pos Data to the Remote Server</field>
+            <field name="model_id" ref="model_pos_session"/>
+            <field name="state">code</field>
+            <field name="code">model.pos_data_send_to_the_server()</field>
+            <!--            <field name="user_id" ref="base.user_root" />-->
+            <field name="interval_number">5</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field name="active">False</field>
+        </record>
+
+        <record id="ir_cron_remote_servers_data_synced" model="ir.cron">
+            <field name="name">Remote Data Synced: Gettings ans latest updateds data froms ans remote server</field>
+            <field name="model_id" ref="model_res_company"/>
+            <field name="state">code</field>
+            <field name="code">model.fetch_remote_updateds_data_cron()</field>
+            <!--            <field name="user_id" ref="base.user_root" />-->
+            <field name="interval_number">25</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field name="active">False</field>
+        </record>
+
+    </data>
+</odoo>

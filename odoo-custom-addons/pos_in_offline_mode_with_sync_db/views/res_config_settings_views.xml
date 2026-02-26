@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="res_config_settings_view_forms_ionheriteds" model="ir.ui.view">
+            <field name="name">res.config.settings.view.forms.inheriteds</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="point_of_sale.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//div[@data-key='point_of_sale']" position="inside">
+                    <!-- Add your fields or attributes here -->
+                    <h2>Sync Server Configurations</h2>
+                    <div class="row mt16 o_settings_container" name="product_setting_container">
+
+                        <div class="row mt16 o_settings_container" name="synced_server_configurations_container">
+                            <div class="col-12 col-lg-6 o_setting_box" id="synced_server_data_configurations">
+                                <div class="o_setting_right_pane">
+                                    <div>
+                                        <!--                                    <label string="Inventory Management" for="update_stock_quantities"/>-->
+                                        <!--                                    <span class="fa fa-lg fa-building-o" title="Values set here are company-specific."-->
+                                        <!--                                          aria-label="Values set here are company-specific."-->
+                                        <!--                                          groups="base.group_multi_company" role="img"/>-->
+                                        <!--                                    <div class="text-muted">-->
+                                        <!--                                        Update quantities in stock-->
+                                        <!--                                    </div>-->
+                                        <!--                                    <div class="content-group mt16 o_light_label">-->
+                                        <!--                                        <field name="update_stock_quantities" colspan="4" nolabel="1" widget="radio"/>-->
+                                        <!--                                    </div>-->
+                                        <label string="Current Running Server DB" for="current_running_db_server"/>
+                                        <field name="current_running_db_server"/>
+                                        <div class="content-group mt16 o_light_label"
+                                             attrs="{'invisible': [('current_running_db_server','=', 'remote_server')]}">
+                                            <label string="Remote Server Url" for="remote_server_url"/>
+                                            <field name="remote_server_url"/>
+                                            <label string="Remote Server DB" for="remote_server_db"/>
+                                            <field name="remote_server_db"/>
+                                            <label string="Remote Server Admin User Name"
+                                                   for="remote_server_admin_user_name"/>
+                                            <field name="remote_server_admin_user_name"/>
+                                            <label string="Remote Server Admin User Passwords"
+                                                   for="remote_server_admin_user_password"/>
+                                            <field name="remote_server_admin_user_password"/>
+
+                                            <label string="Remote Server Data Last Synced Date Time"
+                                                   for="remote_server_last_synced_data_time"/>
+                                            <field name="remote_server_last_synced_data_time"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

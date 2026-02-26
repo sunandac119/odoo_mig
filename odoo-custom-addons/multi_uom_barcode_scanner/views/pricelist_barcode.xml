@@ -1,0 +1,23 @@
+<odoo>
+    <record id="product_pricelist_item_form_barcode" model="ir.ui.view">
+        <field name="name">product.pricelist.item.form.barcode</field>
+        <field name="model">product.pricelist.item</field>
+        <field name="inherit_id" ref="product.product_pricelist_item_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_tmpl_id']" position="before">
+                <field name="x_scanned_barcode" placeholder="Scan POS UOM Barcode" attrs="{'invisible': [('applied_on', '!=', '1_product')]}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_pricelist_view_barcode" model="ir.ui.view">
+        <field name="name">product.pricelist.view.barcode</field>
+        <field name="model">product.pricelist</field>
+        <field name="inherit_id" ref="product.product_pricelist_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='item_ids']/tree//field[@name='product_tmpl_id']" position="before">
+                <field name="x_scanned_barcode" placeholder="Scan Barcode"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,8 @@
+<odoo>
+    <data noupdate="0">
+        <record id="group_report_users" model="res.groups">
+            <field name="name">Report Users</field>
+            <field name="category_id" ref="base.module_category_hidden"/>
+        </record>
+    </data>
+</odoo>

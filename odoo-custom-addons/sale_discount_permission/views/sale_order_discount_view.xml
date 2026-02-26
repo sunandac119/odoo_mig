@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <!-- Inherit Sale Order Form -->
+    <record id="view_order_form_inherit_discount" model="ir.ui.view">
+      <field name="name">sale.order.form.discount.readonly</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.view_order_form"/>
+      <field name="arch" type="xml">
+        <!-- Add invisible field to support attrs -->
+        <field name="order_line" position="before">
+          <field name="can_edit_discount" invisible="1"/>
+        </field>
+
+        <!-- Update discount field in order_line tree -->
+        <xpath expr="//field[@name='order_line']/tree//field[@name='discount']" position="attributes">
+          <attribute name="attrs">{'readonly': [('parent.can_edit_discount', '=', False)]}</attribute>
+        </xpath>
+
+        <!-- Update discount field in order_line form -->
+        <xpath expr="//field[@name='order_line']/form//field[@name='discount']" position="attributes">
+          <attribute name="attrs">{'readonly': [('parent.can_edit_discount', '=', False)]}</attribute>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

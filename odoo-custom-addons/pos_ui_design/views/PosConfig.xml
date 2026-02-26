@@ -1,0 +1,37 @@
+<odoo>
+    <data>
+
+        <record id="pos_config_ui" model="ir.ui.view">
+            <field name="name">pos.config.ui</field>
+            <field name="model">pos.config</field>
+            <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+            <field name="arch" type="xml">
+                <div id="iface_invoicing" position="before">
+                    <div class="col-12 col-lg-6 o_setting_box"
+                         id="ui_design">
+                        <div class="o_setting_left_pane">
+                            <field name="active_design_layout"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="active_design_layout"/>
+                            <span class="fa fa-lg fa-pencil-alt" title="Active UI Design" role="img"
+                                  aria-label="Active UI Design"/>
+                            <div class="text-muted">
+                                Active UI Design
+                            </div>
+                            <label for="load_design_of_pos_config_id"/>
+                            <span class="fa fa-lg fa-edit" title="POS Theme Template" role="img"
+                                  aria-label="POS Theme Template"/>
+                            <div class="content-group mt16" attrs="{'invisible': [('active_design_layout', '=', False)]}">
+                                <field name="load_design_of_pos_config_id"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>
+

@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="chain_shon_ss_odoo_connector.list">
+      <field name="name">chain_shon_ss_odoo_connector list</field>
+      <field name="model">chain_shon_ss_odoo_connector.chain_shon_ss_odoo_connector</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="chain_shon_ss_odoo_connector.action_window">
+      <field name="name">chain_shon_ss_odoo_connector window</field>
+      <field name="res_model">chain_shon_ss_odoo_connector.chain_shon_ss_odoo_connector</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="chain_shon_ss_odoo_connector.action_server">
+      <field name="name">chain_shon_ss_odoo_connector server</field>
+      <field name="model_id" ref="model_chain_shon_ss_odoo_connector_chain_shon_ss_odoo_connector"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="chain_shon_ss_odoo_connector" id="chain_shon_ss_odoo_connector.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="chain_shon_ss_odoo_connector.menu_1" parent="chain_shon_ss_odoo_connector.menu_root"/>
+    <menuitem name="Menu 2" id="chain_shon_ss_odoo_connector.menu_2" parent="chain_shon_ss_odoo_connector.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="chain_shon_ss_odoo_connector.menu_1_list" parent="chain_shon_ss_odoo_connector.menu_1"
+              action="chain_shon_ss_odoo_connector.action_window"/>
+    <menuitem name="Server to list" id="chain_shon_ss_odoo_connector" parent="chain_shon_ss_odoo_connector.menu_2"
+              action="chain_shon_ss_odoo_connector.action_server"/>
+-->
+  </data>
+</odoo>

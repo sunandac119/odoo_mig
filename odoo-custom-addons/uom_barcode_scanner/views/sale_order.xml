@@ -1,0 +1,58 @@
+<odoo>
+    <record id="view_order_form_barcode" model="ir.ui.view">
+        <field name="name">sale.order.form.barcode</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <!-- Add barcode field in form view of order lines -->
+            <xpath expr="//field[@name='order_line']//form//field[@name='product_id']" position="before">
+                <field name="x_scanned_barcode" placeholder="Barcode"
+                       attrs="{'invisible': [('display_type', '!=', False)]}"/>
+            </xpath>
+
+            <!-- Add barcode field in tree view of order lines -->
+            <xpath expr="//field[@name='order_line']//tree//field[@name='product_id']" position="before">
+                <field name="x_scanned_barcode" placeholder="Barcode"/>
+            </xpath>
+
+            <xpath expr="//field[@name='order_line']//tree//field[@name='product_id']" position="after">
+                <field name="name" placeholder="Description"/>
+            </xpath>
+            
+            <xpath expr="//field[@name='order_line']//tree//field[@name='product_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='order_line']//tree//field[@name='product_uom_qty']" position="attributes">
+                <attribute name="decoration-danger">product_uom_qty &lt;= 0</attribute>
+            </xpath>
+
+
+            <field name="partner_id" position="attributes">
+                <attribute name="options">{'no_create_edit': True, 'no_create': True}</attribute>
+            </field>
+
+            <!-- <xpath expr="//field[@name='order_line']" position="attributes">
+                <attribute name="widget">one2many_enter_qty</attribute>
+            </xpath> -->
+        </field>
+    </record>
+
+    <record id="view_sale_order_form_inherit_invoice_button" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.invoice.button</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet//div[@name='button_box']" position="inside">
+                <button name="action_view_so_invoice"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-pencil-square-o"
+                        attrs="{'invisible': [('so_invoice_count','=', 0)]}">
+                    <field name="so_invoice_count" widget="statinfo"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

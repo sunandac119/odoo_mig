@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="action_report_stock_request" model="ir.actions.report">
+            <field name="name">Stock Request</field>
+            <field name="model">stock.request</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">warehouse_stock_request_app.report_stock_req</field>
+            <field name="report_file">warehouse_stock_request_app.report_stock_req</field>
+            <field name="binding_model_id" ref="model_stock_request"/>
+            <field name="binding_type">report</field>
+        </record>
+</odoo>

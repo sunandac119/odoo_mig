@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record model="res.groups" id="group_import_pos_order_users">
+        <field name="name">Import POS Order</field>
+    </record>
+</odoo>

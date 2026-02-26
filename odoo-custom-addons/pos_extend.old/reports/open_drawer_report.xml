@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_open_drawer">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t>
+                    <style>
+                        @media print {
+                            @page {
+                                size: 80mm 5mm; /* Set the desired paper size */
+                                margin: 0;
+                            }
+                            body {
+                                margin: 0;
+                                font-family: Arial, sans-serif; /* Adjust font-family if needed */
+                            }
+                        }
+                    </style>
+                    Open Drawer Report
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

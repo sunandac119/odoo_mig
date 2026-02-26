@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="product_expiry_label">
+            <t t-set="print_date" t-value="datetime.datetime.now()"/>
+            <t t-set="expire_days" t-value="product.x_studio_expiry_day"/>
+            <t t-set="expire_date" t-value="print_date + datetime.timedelta(days=expire_days)"/>
+
+
+            <div class="row">
+                <div class="col">
+                </div>
+            </div>
+            <div class="row">
+            </div>
+            <div class="row">
+                <div class="col">
+                </div>
+            </div>
+            <div class="row">
+            </div>
+
+            <div class="row">
+            </div>
+            <div class="row">
+                <div class="col">
+                    <span t-field="product.display_name"
+                          style="font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 500; line-height: 1.2;"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <span t-field="product.barcode" t-options-widget="&quot;barcode&quot;"
+                          t-options-symbology="&quot;Code128&quot;" t-options-height="100"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                </div>
+            </div>
+
+            <div class="row">
+            </div>
+            <div class="row">
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <span t-field="product.product_variant_id.barcode"
+                          style="font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 500; line-height: 1.2;"/>
+                </div>
+            </div>
+            <div class="row">
+            </div>
+            <div class="row">
+            </div>
+
+
+            <div class="row">
+                <div class="col">
+                </div>
+            </div>
+            <div class="row">
+                <div class="h1">
+                    <span t-field="product.list_price" t-options-widget="&quot;monetary&quot;"
+                          style="font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 500; line-height: 1.2;"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col" style="font-size:20px">EXPIRE DATE :
+                    <span t-esc="expire_date.strftime('%d-%m-%Y')" style="font-size:30px"/>
+                </div>
+            </div>
+
+
+        </template>
+        <template id="product_label_noprice_50mm_30mm">
+            <div style="display: inline-table;height:14rem">
+                <table class="table table-bordered mb-0" style="border: 2px solid black">
+                    <tr>
+                        <th class="table-active text-right small" style="height: 4rem">
+                            <strong t-field="product.display_name" class="small"/>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td style="height: 2rem" class="text-right small">
+                            <strong style="width:100px">Price :</strong>
+                            <strong t-field="product.lst_price"
+                                    t-options="{'widget': 'monetary', 'display_currency': product.company_id.currency_id}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-middle text-right small" style="height: 6rem">
+                            <t t-if="product.barcode">
+                                <img alt="Barcode" t-if="len(product.barcode) == 13"
+                                     t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', quote_plus(product.barcode or ''), 600, 150)"
+                                     style="height::4rem;width:200px"/>
+                                <img alt="Barcode" t-elif="len(product.barcode) == 8"
+                                     t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN8', quote_plus(product.barcode or ''), 600, 150)"
+                                     style="width:100%;height::4rem;"/>
+                                <img alt="Barcode" t-else=""
+                                     t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', quote_plus(product.barcode or ''), 600, 150)"
+                                     style="width:100%;height::4rem;"/>
+                                <span t-field="product.barcode" style="display:inline-block;display:inline-block"/>
+                            </t>
+                            <t t-else="">
+                                <span class="text-muted">No barcode available</span>
+                            </t>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </template>
+        <template id="product_label_noprice_inherit"
+                  inherit_id="product_label_multibarcode.product_label_noprice_50mm_30mm">
+            <xpath expr="/t/div/table/tr[2]/td/strong[1]" position="attributes">
+                <attribute name="style" separator=";" remove="width:100px"/>
+            </xpath>
+            <xpath expr="/t[1]/div[1]/table[1]/tr[2]/td[1]" position="replace"/>
+            <xpath expr="/t[1]/div[1]/table[1]/tr[1]/th[1]" position="replace"/>
+            <xpath expr="/t/div" position="before">
+                <div class="row">
+                    <div class="col">
+                        <span t-field="product.display_name"/>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="/t/div[2]/table/tr[3]/td/t[1]/img[1]" position="attributes">
+                <attribute name="style" separator=";" add="width:300px" remove="width:200px"/>
+            </xpath>
+            <xpath expr="/t/div[2]/table/tr[3]/td/t[1]/span" position="attributes">
+                <attribute name="style" separator=";" add="width:100px"/>
+            </xpath>
+            <xpath expr="/t/div[2]/table/tr[3]/td/t[1]/span" position="attributes">
+                <attribute name="style" separator=";" add="width:50px" remove="width:100px"/>
+            </xpath>
+            <xpath expr="/t/div[2]/table/tr[3]/td/t[1]/span" position="attributes">
+                <attribute name="style" separator=";" add="width:200px" remove="width:50px"/>
+            </xpath>
+            <xpath expr="/t/div[2]/table/tr[3]/td/t[1]/span" position="attributes">
+                <attribute name="style" separator=";" add="width:300px" remove="width:200px"/>
+            </xpath>
+            <xpath expr="/t/div[2]/table/tr[3]/td/t[1]/img[1]" position="attributes">
+                <attribute name="style" separator=";" add="width:200px" remove="width:300px"/>
+            </xpath>
+            <xpath expr="/t/div[2]/table/tr[3]/td/t[1]/span" position="attributes">
+                <attribute name="style" separator=";" remove="width:300px"/>
+            </xpath>
+            <xpath expr="/t[1]/div[2]" position="replace"/>
+            <xpath expr="/t/div" position="after">
+                <div class="row">
+                    <div class="col">
+                        <span t-field="product.barcode"/>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-widget">"barcode"</attribute>
+            </xpath>
+            <xpath expr="/t/div[2]/div/span" position="attributes">
+                <attribute name="style" separator=";" add="width:200px;display:inline-block"/>
+            </xpath>
+            <xpath expr="/t/div[2]/div/span" position="attributes">
+                <attribute name="style" separator=";" add="width:50px" remove="width:200px"/>
+            </xpath>
+            <xpath expr="/t/div[2]/div/span" position="attributes">
+                <attribute name="style" separator=";" remove="width:50px"/>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">50</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-height">30</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">500</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">100</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">60</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">70</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">90</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">150</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">200</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">150</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">180</attribute>
+            </xpath>
+            <xpath expr="/t/div[2]" position="after">
+                <div class="row">
+                    <div class="col">
+                        <span t-field="product.barcode"/>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-height">50</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">200</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-if">len(product.barcode) == 13</attribute>
+            </xpath>
+            <xpath expr="/t/div[2]/div/span" position="attributes">
+                <attribute name="class" separator=" " add="small"/>
+            </xpath>
+            <xpath expr="/t/div[2]/div/span" position="attributes">
+                <attribute name="class" separator=" " remove="small"/>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-symbology">"EAN13"</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">150</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-if"/>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-symbology"/>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-symbology">"Code128"</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">200</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-height">60</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-height">55</attribute>
+            </xpath>
+            <xpath expr="/t/div[1]/div/span" position="attributes">
+                <attribute name="class" separator=" " add="small"/>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-height">50</attribute>
+            </xpath>
+            <xpath expr="/t/div[2]/div/span" position="attributes">
+                <attribute name="style" separator=";" add="margin-right:5px"/>
+            </xpath>
+            <xpath expr="/t/div[2]/div/span" position="attributes">
+                <attribute name="style" separator=";" add="margin-right:10px" remove="margin-right:5px"/>
+            </xpath>
+            <xpath expr="/t/div[2]/div/span" position="attributes">
+                <attribute name="style" separator=";" add="margin-right:50px" remove="margin-right:10px"/>
+            </xpath>
+            <xpath expr="/t/div[2]/div/span" position="attributes">
+                <attribute name="style" separator=";" remove="margin-right:50px"/>
+            </xpath>
+            <xpath expr="/t/div[2]/div/span" position="attributes">
+                <attribute name="style" separator=";" add="width:100px"/>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">0</attribute>
+            </xpath>
+            <xpath expr="/t/div[2]/div/span" position="attributes">
+                <attribute name="style" separator=";" add="width:150px" remove="width:100px"/>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-height">0</attribute>
+            </xpath>
+            <xpath expr="/t/div[2]/div/span" position="attributes">
+                <attribute name="style" separator=";" add="width:50px" remove="width:150px"/>
+            </xpath>
+            <xpath expr="/t/div[2]/div/span" position="attributes">
+                <attribute name="style" separator=";" add="width:200px" remove="width:50px"/>
+            </xpath>
+            <xpath expr="/t/div[2]/div/span" position="attributes">
+                <attribute name="style" separator=";" add="width:150px" remove="width:200px"/>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-height">50</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">180</attribute>
+            </xpath>
+            <xpath expr="/t/div[2]/div/span" position="attributes">
+                <attribute name="style" separator=";" add="width:180px" remove="width:150px"/>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">200</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">250</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">230</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-height">55</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-symbology">"EAN13"</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">0</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-height">0</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-height">50</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">180</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-symbology">"Code128"</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">300</attribute>
+            </xpath>
+            <xpath expr="/t/div[2]/div/span" position="attributes">
+                <attribute name="style" separator=";" add="width:100px" remove="width:180px"/>
+            </xpath>
+            <xpath expr="/t/div[2]/div/span" position="attributes">
+                <attribute name="style" separator=";" add="width:80px" remove="width:100px"/>
+            </xpath>
+            <xpath expr="/t/div[2]/div/span" position="attributes">
+                <attribute name="style" separator=";" add="width:90px" remove="width:80px"/>
+            </xpath>
+            <xpath expr="/t/div[2]/div/span" position="attributes">
+                <attribute name="style" separator=";" add="width:50px" remove="width:90px"/>
+            </xpath>
+            <xpath expr="/t/div[2]/div/span" position="attributes">
+                <attribute name="style" separator=";" remove="width:50px"/>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">0</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-height">0</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">250</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">100</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-height">50</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">300</attribute>
+            </xpath>
+            <xpath expr="/t/div[3]/div/span" position="attributes">
+                <attribute name="class" separator=" " add="small"/>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">100</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">180</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">160</attribute>
+            </xpath>
+            <xpath expr="/t/div[2]/div/span" position="attributes">
+                <attribute name="style" separator=";" add="width:100px"/>
+            </xpath>
+            <xpath expr="/t/div[1]/div/span" position="attributes">
+                <attribute name="style" separator=";" add="width:100px;display:inline-block"/>
+            </xpath>
+            <xpath expr="/t/div[1]/div/span" position="attributes">
+                <attribute name="style" separator=";" add="width:200px" remove="width:100px"/>
+            </xpath>
+            <xpath expr="/t/div[2]/div/span" position="attributes">
+                <attribute name="style" separator=";" add="width:200px" remove="width:100px"/>
+            </xpath>
+            <xpath expr="/t/div[3]/div/span" position="attributes">
+                <attribute name="style" separator=";" add="width:200px;display:inline-block"/>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-height">45</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-symbology">"EAN13"</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[1]/div[1]/span[1]" position="replace"/>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-symbology">"Code128"</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">290</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">280</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">250</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">300</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">320</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">310</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">320</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-width">400</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[2]/div[1]" position="replace"/>
+            <xpath expr="/t[1]/div[3]/div[1]/span[1]" position="replace"/>
+            <xpath expr="/t/div[3]" position="after">
+                <div class="row">
+                    <div class="col">
+                        <span t-field="product.barcode"/>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="/t[1]/div[4]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-widget">"barcode"</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[4]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-symbology">"Code128"</attribute>
+            </xpath>
+            <xpath expr="/t/div[3]" position="after">
+                <div class="row">
+                    <div class="col">
+                        <span>New Text Block</span>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="/t[1]/div[4]/div[1]" position="replace"/>
+            <xpath expr="/t[1]/div[5]/div[1]" position="replace"/>
+            <xpath expr="/t/div[5]" position="after">
+                <div class="row">
+                    <div class="col">
+                        <span style="font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 500; line-height: 1.2;"
+                              t-field="product.display_name"/>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="/t/div[6]" position="after">
+                <div class="row">
+                    <div class="col">
+                        <span t-field="product.barcode"/>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="/t[1]/div[7]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-widget">"barcode"</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[7]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-symbology">"Code128"</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[7]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-height">55</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[7]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-height">100</attribute>
+            </xpath>
+            <xpath expr="/t[1]/div[7]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-height">200</attribute>
+            </xpath>
+            <xpath expr="/t/div[7]" position="after">
+                <div class="row">
+                    <div class="col">
+                        <span t-field="product.barcode"/>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="/t/div[6]/div/span" position="attributes">
+                <attribute name="class" separator=" " add="h1"/>
+            </xpath>
+            <xpath expr="/t/div[8]/div/span" position="attributes">
+                <attribute name="class" separator=" " add="h1"/>
+            </xpath>
+            <xpath expr="/t[1]/div[7]/div[1]/span[1]" position="attributes">
+                <attribute name="t-options-height">100</attribute>
+            </xpath>
+            <xpath expr="/t/div[7]" position="after">
+                <div class="row">
+                    <div class="col">
+                        <span style="font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 500; line-height: 1.2;"
+                              t-field="product.barcode"/>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="/t/div[8]/div/span" position="attributes">
+                <attribute name="class" separator=" " add="h1"/>
+            </xpath>
+            <xpath expr="/t[1]/div[9]/div[1]/span[1]" position="attributes">
+                <attribute name="t-field">product.x_studio_char_field_mBvFt</attribute>
+            </xpath>
+        </template>
+
+        <template id="product_label_price_50mm_30mm">
+
+            <div class="row">
+                <div class="col">
+                </div>
+            </div>
+            <div class="row">
+            </div>
+            <div class="row">
+                <div class="col">
+                </div>
+            </div>
+            <div class="row">
+            </div>
+
+            <div class="row">
+            </div>
+            <div class="row">
+                <div class="col">
+                    <span t-field="product.display_name"
+                          style="font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 500; line-height: 1.2;"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <span t-field="product.barcode" t-options-widget="&quot;barcode&quot;"
+                          t-options-symbology="&quot;Code128&quot;" t-options-height="90"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <span t-field="product.barcode"
+                          style="font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 500; line-height: 1.2;"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <span t-field="product.lst_price" t-options-widget="&quot;monetary&quot;"
+                          style="font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 500; line-height: 1.2;"/>
+                </div>
+            </div>
+        </template>
+        <template id="report_simple_label_copy_3_copy_8_custom">
+            <div class="row">
+              <div class="col">
+                </div>
+            </div>
+            <div class="row">
+              </div>
+            <div class="row">
+              <div class="col">
+                </div>
+            </div>
+            <div class="row">
+              </div>
+          
+            <div class="row">
+              </div>
+            <div class="row">
+              <div class="col">
+                <span t-field="product.display_name" style="font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 500; line-height: 1.2;"/><br/>
+                <span style="font-size: 29px;" t-field="product.parent_template_id.x_studio_ingredient_1"/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+              </div>
+            </div>
+        </template>
+
+    </data>
+</odoo>

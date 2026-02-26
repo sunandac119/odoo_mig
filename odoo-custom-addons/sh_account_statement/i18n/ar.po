@@ -1,0 +1,2299 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sh_account_statement
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-29 05:27+0000\n"
+"PO-Revision-Date: 2021-01-29 05:27+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "&amp;nbsp;"
+msgstr "&amp;nbsp;"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_partner__sh_customer_zero_to_thiry
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_partner__sh_vendor_zero_to_thiry
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_users__sh_customer_zero_to_thiry
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_users__sh_vendor_zero_to_thiry
+msgid "0-30"
+msgstr "0-30."
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_doc
+msgid "0-30(Days)"
+msgstr "0-30 (أيام)"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_partner__sh_customer_thirty_to_sixty
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_partner__sh_vendor_thirty_to_sixty
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_users__sh_customer_thirty_to_sixty
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_users__sh_vendor_thirty_to_sixty
+msgid "30-60"
+msgstr "30-60."
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_doc
+msgid "30-60(Days)"
+msgstr "30-60 (أيام)"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_partner__sh_customer_sixty_to_ninety
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_partner__sh_vendor_sixty_to_ninety
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_users__sh_customer_sixty_to_ninety
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_users__sh_vendor_sixty_to_ninety
+msgid "60-90"
+msgstr "60-90."
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_doc
+msgid "60-90(Days)"
+msgstr "60-90 (أيام)"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_partner__sh_customer_ninety_plus
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_partner__sh_vendor_ninety_plus
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_users__sh_customer_ninety_plus
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_users__sh_vendor_ninety_plus
+msgid "90+"
+msgstr "90+"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_doc
+msgid "90+(Days)"
+msgstr "90+ (أيام)"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_filtered_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_filtered_statement_doc
+msgid ""
+"<br/>\n"
+"                    Date To -"
+msgstr ""
+"<br/>\n"
+"                    تاريخ الى -"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_due_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_due_statement_doc
+msgid ""
+"<br/>\n"
+"                    Hello Sir/Madam,<br/>\n"
+"                    Some payments are still due.<br/>\n"
+"                    Please find details are below.<br/>\n"
+"                    <br/>\n"
+"                    Thanks and Regards<br/>"
+msgstr ""
+"<br/>\n"
+"                    مرحبا يا سيدي / سيدتي،<br/>\n"
+"                    بعض المدفوعات لا تزال مستحقة.<br/>\n"
+"                    يرجى البحث عن التفاصيل أدناه.<br/>\n"
+"                    <br/>\n"
+"                    شكرا مع تحياتي<br/>"
+
+#. module: sh_account_statement
+#: model:mail.template,body_html:sh_account_statement.sh_customer_due_statement_mail_template
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"        \t\t<table border=\"0\" width=\"100%\" cellpadding=\"0\" bgcolor=\"#ededed\" style=\"padding: 20px; background-color: #ededed; border-collapse:separate;\" summary=\"o_mail_notification\">\n"
+"                    <tbody>\n"
+"                      <!-- HEADER -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#875A7B\" style=\"min-width: 590px; background-color: rgb(135,90,123); padding: 20px; border-collapse:separate;\">\n"
+"                            <tr>\n"
+"                              <td valign=\"middle\">\n"
+"                                  <span style=\"font-size:20px; color:white; font-weight: bold;\">\n"
+"                                      Customer Overdue Statement\n"
+"                                  </span>\n"
+"                              </td>\n"
+"                              <td valign=\"middle\" align=\"right\">\n"
+"                                  <img src=\"/logo.png?company=${object.company_id.id}\" style=\"padding: 0px; margin: 0px; height: auto; width: 80px;\" alt=\"${object.company_id.name}\"/>\n"
+"                              </td>\n"
+"                            </tr>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"\n"
+"                      <!-- CONTENT -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#ffffff\" style=\"min-width: 590px; background-color: rgb(255, 255, 255); padding: 20px; border-collapse:separate;\">\n"
+"                            <tbody>\n"
+"                              <td valign=\"top\" style=\"font-family:Arial,Helvetica,sans-serif; color: #555; font-size: 14px;\">\n"
+"                                <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"\t\t\t\t\t\t\t    \tDear ${object.name},\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tWe have attached your account overdue statement.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tPlease clear of your overdue payments as soon as possible.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tDownload your overdue statement.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tIf you have any concern regarding overdue statement then feel free to contact us.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t    </p>\n"
+"                              </td>\n"
+"                            </tbody>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"\n"
+"                      <!-- FOOTER -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#875A7B\" style=\"min-width: 590px; background-color: rgb(135,90,123); padding: 20px; border-collapse:separate;\">\n"
+"                            <tr>\n"
+"                              <td valign=\"middle\" align=\"left\" style=\"color: #fff; padding-top: 10px; padding-bottom: 10px; font-size: 12px;\">\n"
+"                                ${object.company_id.name}<br/>\n"
+"                                ${object.company_id.phone or ''}\n"
+"                              </td>\n"
+"                              <td valign=\"middle\" align=\"right\" style=\"color: #fff; padding-top: 10px; padding-bottom: 10px; font-size: 12px;\">\n"
+"                                % if object.company_id.email:\n"
+"                                <a href=\"mailto:${object.company_id.email}\" style=\"text-decoration:none; color: white;\">${object.company_id.email}</a><br/>\n"
+"                                % endif\n"
+"                                % if object.company_id.website:\n"
+"                                    <a href=\"${object.company_id.website}\" style=\"text-decoration:none; color: white;\">\n"
+"                                        ${object.company_id.website}\n"
+"                                    </a>\n"
+"                                % endif\n"
+"                              </td>\n"
+"                            </tr>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"                    </tbody>\n"
+"                </table>\n"
+"        \t</div>\n"
+"        "
+msgstr ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"        \t\t<table border=\"0\" width=\"100%\" cellpadding=\"0\" bgcolor=\"#ededed\" style=\"padding: 20px; background-color: #ededed; border-collapse:separate;\" summary=\"o_mail_notification\">\n"
+"                    <tbody>\n"
+"                      <!-- HEADER -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#875A7B\" style=\"min-width: 590px; background-color: rgb(135,90,123); padding: 20px; border-collapse:separate;\">\n"
+"                            <tr>\n"
+"                              <td valign=\"middle\">\n"
+"                                  <span style=\"font-size:20px; color:white; font-weight: bold;\">\n"
+"                                      بيان تجاوز العملاء\n"
+"                                  </span>\n"
+"                              </td>\n"
+"                              <td valign=\"middle\" align=\"right\">\n"
+"                                  <img src=\"/logo.png?company=${object.company_id.id}\" style=\"padding: 0px; margin: 0px; height: auto; width: 80px;\" alt=\"${object.company_id.name}\"/>\n"
+"                              </td>\n"
+"                            </tr>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"\n"
+"                      <!-- CONTENT -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#ffffff\" style=\"min-width: 590px; background-color: rgb(255, 255, 255); padding: 20px; border-collapse:separate;\">\n"
+"                            <tbody>\n"
+"                              <td valign=\"top\" style=\"font-family:Arial,Helvetica,sans-serif; color: #555; font-size: 14px;\">\n"
+"                                <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"\t\t\t\t\t\t\t    \tالعزيز ${object.name},\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tلقد أرفقنا حساب حسابك المتأخر.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tيرجى مسح مدفوعاتك المتأخرة في أقرب وقت ممكن.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tقم بتنزيل بيانك المتأخر.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tإذا كان لديك أي قلق بشأن البيان المتأخر، فلا تتردد في الاتصال بنا.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t    </p>\n"
+"                              </td>\n"
+"                            </tbody>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"\n"
+"                      <!-- FOOTER -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#875A7B\" style=\"min-width: 590px; background-color: rgb(135,90,123); padding: 20px; border-collapse:separate;\">\n"
+"                            <tr>\n"
+"                              <td valign=\"middle\" align=\"left\" style=\"color: #fff; padding-top: 10px; padding-bottom: 10px; font-size: 12px;\">\n"
+"                                ${object.company_id.name}<br/>\n"
+"                                ${object.company_id.phone or ''}\n"
+"                              </td>\n"
+"                              <td valign=\"middle\" align=\"right\" style=\"color: #fff; padding-top: 10px; padding-bottom: 10px; font-size: 12px;\">\n"
+"                                % if object.company_id.email:\n"
+"                                <a href=\"mailto:${object.company_id.email}\" style=\"text-decoration:none; color: white;\">${object.company_id.email}</a><br/>\n"
+"                                % endif\n"
+"                                % if object.company_id.website:\n"
+"                                    <a href=\"${object.company_id.website}\" style=\"text-decoration:none; color: white;\">\n"
+"                                        ${object.company_id.website}\n"
+"                                    </a>\n"
+"                                % endif\n"
+"                              </td>\n"
+"                            </tr>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"                    </tbody>\n"
+"                </table>\n"
+"        \t</div>\n"
+"        "
+
+#. module: sh_account_statement
+#: model:mail.template,body_html:sh_account_statement.sh_customer_statement_mail_template
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"        \t\t<table border=\"0\" width=\"100%\" cellpadding=\"0\" bgcolor=\"#ededed\" style=\"padding: 20px; background-color: #ededed; border-collapse:separate;\" summary=\"o_mail_notification\">\n"
+"                    <tbody>\n"
+"                      <!-- HEADER -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#875A7B\" style=\"min-width: 590px; background-color: rgb(135,90,123); padding: 20px; border-collapse:separate;\">\n"
+"                            <tr>\n"
+"                              <td valign=\"middle\">\n"
+"                                  <span style=\"font-size:20px; color:white; font-weight: bold;\">\n"
+"                                      Customer Statement\n"
+"                                  </span>\n"
+"                              </td>\n"
+"                              <td valign=\"middle\" align=\"right\">\n"
+"                                  <img src=\"/logo.png?company=${object.company_id.id}\" style=\"padding: 0px; margin: 0px; height: auto; width: 80px;\" alt=\"${object.company_id.name}\"/>\n"
+"                              </td>\n"
+"                            </tr>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"\n"
+"                      <!-- CONTENT -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#ffffff\" style=\"min-width: 590px; background-color: rgb(255, 255, 255); padding: 20px; border-collapse:separate;\">\n"
+"                            <tbody>\n"
+"                              <td valign=\"top\" style=\"font-family:Arial,Helvetica,sans-serif; color: #555; font-size: 14px;\">\n"
+"                                <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"\t\t\t\t\t\t\t    \tDear ${object.name},\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tWe have attached your account statement.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tDownload your statement.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tIf you have any concern regarding statement then feel free to contact us.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t    </p>\n"
+"                              </td>\n"
+"                            </tbody>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"\n"
+"                      <!-- FOOTER -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#875A7B\" style=\"min-width: 590px; background-color: rgb(135,90,123); padding: 20px; border-collapse:separate;\">\n"
+"                            <tr>\n"
+"                              <td valign=\"middle\" align=\"left\" style=\"color: #fff; padding-top: 10px; padding-bottom: 10px; font-size: 12px;\">\n"
+"                                ${object.company_id.name}<br/>\n"
+"                                ${object.company_id.phone or ''}\n"
+"                              </td>\n"
+"                              <td valign=\"middle\" align=\"right\" style=\"color: #fff; padding-top: 10px; padding-bottom: 10px; font-size: 12px;\">\n"
+"                                % if object.company_id.email:\n"
+"                                <a href=\"mailto:${object.company_id.email}\" style=\"text-decoration:none; color: white;\">${object.company_id.email}</a><br/>\n"
+"                                % endif\n"
+"                                % if object.company_id.website:\n"
+"                                    <a href=\"${object.company_id.website}\" style=\"text-decoration:none; color: white;\">\n"
+"                                        ${object.company_id.website}\n"
+"                                    </a>\n"
+"                                % endif\n"
+"                              </td>\n"
+"                            </tr>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"                    </tbody>\n"
+"                </table>\n"
+"        \t</div>\n"
+"        "
+msgstr ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"        \t\t<table border=\"0\" width=\"100%\" cellpadding=\"0\" bgcolor=\"#ededed\" style=\"padding: 20px; background-color: #ededed; border-collapse:separate;\" summary=\"o_mail_notification\">\n"
+"                    <tbody>\n"
+"                      <!-- HEADER -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#875A7B\" style=\"min-width: 590px; background-color: rgb(135,90,123); padding: 20px; border-collapse:separate;\">\n"
+"                            <tr>\n"
+"                              <td valign=\"middle\">\n"
+"                                  <span style=\"font-size:20px; color:white; font-weight: bold;\">\n"
+"                                      كشف العميل\n"
+"                                  </span>\n"
+"                              </td>\n"
+"                              <td valign=\"middle\" align=\"right\">\n"
+"                                  <img src=\"/logo.png?company=${object.company_id.id}\" style=\"padding: 0px; margin: 0px; height: auto; width: 80px;\" alt=\"${object.company_id.name}\"/>\n"
+"                              </td>\n"
+"                            </tr>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"\n"
+"                      <!-- CONTENT -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#ffffff\" style=\"min-width: 590px; background-color: rgb(255, 255, 255); padding: 20px; border-collapse:separate;\">\n"
+"                            <tbody>\n"
+"                              <td valign=\"top\" style=\"font-family:Arial,Helvetica,sans-serif; color: #555; font-size: 14px;\">\n"
+"                                <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"\t\t\t\t\t\t\t    \tالعزيز ${object.name},\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tلقد أرفقنا بيان حسابك.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tقم بتنزيل العبارات الخاصة بك.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tإذا كان لديك أي قلق بشأن البيان، فلا تتردد في الاتصال بنا.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t    </p>\n"
+"                              </td>\n"
+"                            </tbody>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"\n"
+"                      <!-- FOOTER -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#875A7B\" style=\"min-width: 590px; background-color: rgb(135,90,123); padding: 20px; border-collapse:separate;\">\n"
+"                            <tr>\n"
+"                              <td valign=\"middle\" align=\"left\" style=\"color: #fff; padding-top: 10px; padding-bottom: 10px; font-size: 12px;\">\n"
+"                                ${object.company_id.name}<br/>\n"
+"                                ${object.company_id.phone or ''}\n"
+"                              </td>\n"
+"                              <td valign=\"middle\" align=\"right\" style=\"color: #fff; padding-top: 10px; padding-bottom: 10px; font-size: 12px;\">\n"
+"                                % if object.company_id.email:\n"
+"                                <a href=\"mailto:${object.company_id.email}\" style=\"text-decoration:none; color: white;\">${object.company_id.email}</a><br/>\n"
+"                                % endif\n"
+"                                % if object.company_id.website:\n"
+"                                    <a href=\"${object.company_id.website}\" style=\"text-decoration:none; color: white;\">\n"
+"                                        ${object.company_id.website}\n"
+"                                    </a>\n"
+"                                % endif\n"
+"                              </td>\n"
+"                            </tr>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"                    </tbody>\n"
+"                </table>\n"
+"        \t</div>\n"
+"        "
+
+#. module: sh_account_statement
+#: model:mail.template,body_html:sh_account_statement.sh_customer_filter_statement_mail_template
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"        \t\t<table border=\"0\" width=\"100%\" cellpadding=\"0\" bgcolor=\"#ededed\" style=\"padding: 20px; background-color: #ededed; border-collapse:separate;\" summary=\"o_mail_notification\">\n"
+"                    <tbody>\n"
+"                      <!-- HEADER -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#875A7B\" style=\"min-width: 590px; background-color: rgb(135,90,123); padding: 20px; border-collapse:separate;\">\n"
+"                            <tr>\n"
+"                              <td valign=\"middle\">\n"
+"                                  <span style=\"font-size:20px; color:white; font-weight: bold;\">\n"
+"                                      Customer Statement By Date\n"
+"                                  </span>\n"
+"                              </td>\n"
+"                              <td valign=\"middle\" align=\"right\">\n"
+"                                  <img src=\"/logo.png?company=${object.company_id.id}\" style=\"padding: 0px; margin: 0px; height: auto; width: 80px;\" alt=\"${object.company_id.name}\"/>\n"
+"                              </td>\n"
+"                            </tr>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"\n"
+"                      <!-- CONTENT -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#ffffff\" style=\"min-width: 590px; background-color: rgb(255, 255, 255); padding: 20px; border-collapse:separate;\">\n"
+"                            <tbody>\n"
+"                              <td valign=\"top\" style=\"font-family:Arial,Helvetica,sans-serif; color: #555; font-size: 14px;\">\n"
+"                                <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"\t\t\t\t\t\t\t    \tDear ${object.name},\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tWe have attached your account statement.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tDownload your statement.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tIf you have any concern regarding statement then feel free to contact us.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t    </p>\n"
+"                              </td>\n"
+"                            </tbody>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"\n"
+"                      <!-- FOOTER -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#875A7B\" style=\"min-width: 590px; background-color: rgb(135,90,123); padding: 20px; border-collapse:separate;\">\n"
+"                            <tr>\n"
+"                              <td valign=\"middle\" align=\"left\" style=\"color: #fff; padding-top: 10px; padding-bottom: 10px; font-size: 12px;\">\n"
+"                                ${object.company_id.name}<br/>\n"
+"                                ${object.company_id.phone or ''}\n"
+"                              </td>\n"
+"                              <td valign=\"middle\" align=\"right\" style=\"color: #fff; padding-top: 10px; padding-bottom: 10px; font-size: 12px;\">\n"
+"                                % if object.company_id.email:\n"
+"                                <a href=\"mailto:${object.company_id.email}\" style=\"text-decoration:none; color: white;\">${object.company_id.email}</a><br/>\n"
+"                                % endif\n"
+"                                % if object.company_id.website:\n"
+"                                    <a href=\"${object.company_id.website}\" style=\"text-decoration:none; color: white;\">\n"
+"                                        ${object.company_id.website}\n"
+"                                    </a>\n"
+"                                % endif\n"
+"                              </td>\n"
+"                            </tr>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"                    </tbody>\n"
+"                </table>\n"
+"        \t</div>\n"
+"        "
+msgstr ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"        \t\t<table border=\"0\" width=\"100%\" cellpadding=\"0\" bgcolor=\"#ededed\" style=\"padding: 20px; background-color: #ededed; border-collapse:separate;\" summary=\"o_mail_notification\">\n"
+"                    <tbody>\n"
+"                      <!-- HEADER -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#875A7B\" style=\"min-width: 590px; background-color: rgb(135,90,123); padding: 20px; border-collapse:separate;\">\n"
+"                            <tr>\n"
+"                              <td valign=\"middle\">\n"
+"                                  <span style=\"font-size:20px; color:white; font-weight: bold;\">\n"
+"                                      بيان العملاء حسب التاريخ\n"
+"                                  </span>\n"
+"                              </td>\n"
+"                              <td valign=\"middle\" align=\"right\">\n"
+"                                  <img src=\"/logo.png?company=${object.company_id.id}\" style=\"padding: 0px; margin: 0px; height: auto; width: 80px;\" alt=\"${object.company_id.name}\"/>\n"
+"                              </td>\n"
+"                            </tr>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"\n"
+"                      <!-- CONTENT -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#ffffff\" style=\"min-width: 590px; background-color: rgb(255, 255, 255); padding: 20px; border-collapse:separate;\">\n"
+"                            <tbody>\n"
+"                              <td valign=\"top\" style=\"font-family:Arial,Helvetica,sans-serif; color: #555; font-size: 14px;\">\n"
+"                                <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"\t\t\t\t\t\t\t    \tالعزيز ${object.name},\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tلقد أرفقنا بيان حسابك.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tقم بتنزيل العبارات الخاصة بك.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tإذا كان لديك أي قلق بشأن البيان، فلا تتردد في الاتصال بنا.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t    </p>\n"
+"                              </td>\n"
+"                            </tbody>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"\n"
+"                      <!-- FOOTER -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#875A7B\" style=\"min-width: 590px; background-color: rgb(135,90,123); padding: 20px; border-collapse:separate;\">\n"
+"                            <tr>\n"
+"                              <td valign=\"middle\" align=\"left\" style=\"color: #fff; padding-top: 10px; padding-bottom: 10px; font-size: 12px;\">\n"
+"                                ${object.company_id.name}<br/>\n"
+"                                ${object.company_id.phone or ''}\n"
+"                              </td>\n"
+"                              <td valign=\"middle\" align=\"right\" style=\"color: #fff; padding-top: 10px; padding-bottom: 10px; font-size: 12px;\">\n"
+"                                % if object.company_id.email:\n"
+"                                <a href=\"mailto:${object.company_id.email}\" style=\"text-decoration:none; color: white;\">${object.company_id.email}</a><br/>\n"
+"                                % endif\n"
+"                                % if object.company_id.website:\n"
+"                                    <a href=\"${object.company_id.website}\" style=\"text-decoration:none; color: white;\">\n"
+"                                        ${object.company_id.website}\n"
+"                                    </a>\n"
+"                                % endif\n"
+"                              </td>\n"
+"                            </tr>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"                    </tbody>\n"
+"                </table>\n"
+"        \t</div>\n"
+"        "
+
+#. module: sh_account_statement
+#: model:mail.template,body_html:sh_account_statement.sh_vendor_due_statement_mail_template
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"        \t\t<table border=\"0\" width=\"100%\" cellpadding=\"0\" bgcolor=\"#ededed\" style=\"padding: 20px; background-color: #ededed; border-collapse:separate;\" summary=\"o_mail_notification\">\n"
+"                    <tbody>\n"
+"                      <!-- HEADER -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#875A7B\" style=\"min-width: 590px; background-color: rgb(135,90,123); padding: 20px; border-collapse:separate;\">\n"
+"                            <tr>\n"
+"                              <td valign=\"middle\">\n"
+"                                  <span style=\"font-size:20px; color:white; font-weight: bold;\">\n"
+"                                      Vendor Overdue Statement\n"
+"                                  </span>\n"
+"                              </td>\n"
+"                              <td valign=\"middle\" align=\"right\">\n"
+"                                  <img src=\"/logo.png?company=${object.company_id.id}\" style=\"padding: 0px; margin: 0px; height: auto; width: 80px;\" alt=\"${object.company_id.name}\"/>\n"
+"                              </td>\n"
+"                            </tr>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"\n"
+"                      <!-- CONTENT -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#ffffff\" style=\"min-width: 590px; background-color: rgb(255, 255, 255); padding: 20px; border-collapse:separate;\">\n"
+"                            <tbody>\n"
+"                              <td valign=\"top\" style=\"font-family:Arial,Helvetica,sans-serif; color: #555; font-size: 14px;\">\n"
+"                                <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"\t\t\t\t\t\t\t    \tDear ${object.name},\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tWe have attached your account overdue statement.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tPlease clear of your overdue payments as soon as possible.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tDownload your overdue statement.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tIf you have any concern regarding overdue statement then feel free to contact us.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t    </p>\n"
+"                              </td>\n"
+"                            </tbody>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"\n"
+"                      <!-- FOOTER -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#875A7B\" style=\"min-width: 590px; background-color: rgb(135,90,123); padding: 20px; border-collapse:separate;\">\n"
+"                            <tr>\n"
+"                              <td valign=\"middle\" align=\"left\" style=\"color: #fff; padding-top: 10px; padding-bottom: 10px; font-size: 12px;\">\n"
+"                                ${object.company_id.name}<br/>\n"
+"                                ${object.company_id.phone or ''}\n"
+"                              </td>\n"
+"                              <td valign=\"middle\" align=\"right\" style=\"color: #fff; padding-top: 10px; padding-bottom: 10px; font-size: 12px;\">\n"
+"                                % if object.company_id.email:\n"
+"                                <a href=\"mailto:${object.company_id.email}\" style=\"text-decoration:none; color: white;\">${object.company_id.email}</a><br/>\n"
+"                                % endif\n"
+"                                % if object.company_id.website:\n"
+"                                    <a href=\"${object.company_id.website}\" style=\"text-decoration:none; color: white;\">\n"
+"                                        ${object.company_id.website}\n"
+"                                    </a>\n"
+"                                % endif\n"
+"                              </td>\n"
+"                            </tr>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"                    </tbody>\n"
+"                </table>\n"
+"        \t</div>\n"
+"        "
+msgstr ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"        \t\t<table border=\"0\" width=\"100%\" cellpadding=\"0\" bgcolor=\"#ededed\" style=\"padding: 20px; background-color: #ededed; border-collapse:separate;\" summary=\"o_mail_notification\">\n"
+"                    <tbody>\n"
+"                      <!-- HEADER -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#875A7B\" style=\"min-width: 590px; background-color: rgb(135,90,123); padding: 20px; border-collapse:separate;\">\n"
+"                            <tr>\n"
+"                              <td valign=\"middle\">\n"
+"                                  <span style=\"font-size:20px; color:white; font-weight: bold;\">\n"
+"                                      بيان تأخر البائع\n"
+"                                  </span>\n"
+"                              </td>\n"
+"                              <td valign=\"middle\" align=\"right\">\n"
+"                                  <img src=\"/logo.png?company=${object.company_id.id}\" style=\"padding: 0px; margin: 0px; height: auto; width: 80px;\" alt=\"${object.company_id.name}\"/>\n"
+"                              </td>\n"
+"                            </tr>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"\n"
+"                      <!-- CONTENT -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#ffffff\" style=\"min-width: 590px; background-color: rgb(255, 255, 255); padding: 20px; border-collapse:separate;\">\n"
+"                            <tbody>\n"
+"                              <td valign=\"top\" style=\"font-family:Arial,Helvetica,sans-serif; color: #555; font-size: 14px;\">\n"
+"                                <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"\t\t\t\t\t\t\t    \tالعزيز ${object.name},\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tلقد أرفقنا حساب حسابك المتأخر.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tيرجى مسح مدفوعاتك المتأخرة في أقرب وقت ممكن.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tقم بتنزيل بيانك المتأخر.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tإذا كان لديك أي قلق بشأن البيان المتأخر، فلا تتردد في الاتصال بنا.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t    </p>\n"
+"                              </td>\n"
+"                            </tbody>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"\n"
+"                      <!-- FOOTER -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#875A7B\" style=\"min-width: 590px; background-color: rgb(135,90,123); padding: 20px; border-collapse:separate;\">\n"
+"                            <tr>\n"
+"                              <td valign=\"middle\" align=\"left\" style=\"color: #fff; padding-top: 10px; padding-bottom: 10px; font-size: 12px;\">\n"
+"                                ${object.company_id.name}<br/>\n"
+"                                ${object.company_id.phone or ''}\n"
+"                              </td>\n"
+"                              <td valign=\"middle\" align=\"right\" style=\"color: #fff; padding-top: 10px; padding-bottom: 10px; font-size: 12px;\">\n"
+"                                % if object.company_id.email:\n"
+"                                <a href=\"mailto:${object.company_id.email}\" style=\"text-decoration:none; color: white;\">${object.company_id.email}</a><br/>\n"
+"                                % endif\n"
+"                                % if object.company_id.website:\n"
+"                                    <a href=\"${object.company_id.website}\" style=\"text-decoration:none; color: white;\">\n"
+"                                        ${object.company_id.website}\n"
+"                                    </a>\n"
+"                                % endif\n"
+"                              </td>\n"
+"                            </tr>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"                    </tbody>\n"
+"                </table>\n"
+"        \t</div>\n"
+"        "
+
+#. module: sh_account_statement
+#: model:mail.template,body_html:sh_account_statement.sh_vendor_statement_mail_template
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"        \t\t<table border=\"0\" width=\"100%\" cellpadding=\"0\" bgcolor=\"#ededed\" style=\"padding: 20px; background-color: #ededed; border-collapse:separate;\" summary=\"o_mail_notification\">\n"
+"                    <tbody>\n"
+"                      <!-- HEADER -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#875A7B\" style=\"min-width: 590px; background-color: rgb(135,90,123); padding: 20px; border-collapse:separate;\">\n"
+"                            <tr>\n"
+"                              <td valign=\"middle\">\n"
+"                                  <span style=\"font-size:20px; color:white; font-weight: bold;\">\n"
+"                                      Vendor Statement\n"
+"                                  </span>\n"
+"                              </td>\n"
+"                              <td valign=\"middle\" align=\"right\">\n"
+"                                  <img src=\"/logo.png?company=${object.company_id.id}\" style=\"padding: 0px; margin: 0px; height: auto; width: 80px;\" alt=\"${object.company_id.name}\"/>\n"
+"                              </td>\n"
+"                            </tr>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"\n"
+"                      <!-- CONTENT -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#ffffff\" style=\"min-width: 590px; background-color: rgb(255, 255, 255); padding: 20px; border-collapse:separate;\">\n"
+"                            <tbody>\n"
+"                              <td valign=\"top\" style=\"font-family:Arial,Helvetica,sans-serif; color: #555; font-size: 14px;\">\n"
+"                                <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"\t\t\t\t\t\t\t    \tDear ${object.name},\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tWe have attached your account statement.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tDownload your statement.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tIf you have any concern regarding statement then feel free to contact us.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t    </p>\n"
+"                              </td>\n"
+"                            </tbody>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"\n"
+"                      <!-- FOOTER -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#875A7B\" style=\"min-width: 590px; background-color: rgb(135,90,123); padding: 20px; border-collapse:separate;\">\n"
+"                            <tr>\n"
+"                              <td valign=\"middle\" align=\"left\" style=\"color: #fff; padding-top: 10px; padding-bottom: 10px; font-size: 12px;\">\n"
+"                                ${object.company_id.name}<br/>\n"
+"                                ${object.company_id.phone or ''}\n"
+"                              </td>\n"
+"                              <td valign=\"middle\" align=\"right\" style=\"color: #fff; padding-top: 10px; padding-bottom: 10px; font-size: 12px;\">\n"
+"                                % if object.company_id.email:\n"
+"                                <a href=\"mailto:${object.company_id.email}\" style=\"text-decoration:none; color: white;\">${object.company_id.email}</a><br/>\n"
+"                                % endif\n"
+"                                % if object.company_id.website:\n"
+"                                    <a href=\"${object.company_id.website}\" style=\"text-decoration:none; color: white;\">\n"
+"                                        ${object.company_id.website}\n"
+"                                    </a>\n"
+"                                % endif\n"
+"                              </td>\n"
+"                            </tr>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"                    </tbody>\n"
+"                </table>\n"
+"        \t</div>\n"
+"        "
+msgstr ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"        \t\t<table border=\"0\" width=\"100%\" cellpadding=\"0\" bgcolor=\"#ededed\" style=\"padding: 20px; background-color: #ededed; border-collapse:separate;\" summary=\"o_mail_notification\">\n"
+"                    <tbody>\n"
+"                      <!-- HEADER -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#875A7B\" style=\"min-width: 590px; background-color: rgb(135,90,123); padding: 20px; border-collapse:separate;\">\n"
+"                            <tr>\n"
+"                              <td valign=\"middle\">\n"
+"                                  <span style=\"font-size:20px; color:white; font-weight: bold;\">\n"
+"                                      بيان البائع\n"
+"                                  </span>\n"
+"                              </td>\n"
+"                              <td valign=\"middle\" align=\"right\">\n"
+"                                  <img src=\"/logo.png?company=${object.company_id.id}\" style=\"padding: 0px; margin: 0px; height: auto; width: 80px;\" alt=\"${object.company_id.name}\"/>\n"
+"                              </td>\n"
+"                            </tr>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"\n"
+"                      <!-- CONTENT -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#ffffff\" style=\"min-width: 590px; background-color: rgb(255, 255, 255); padding: 20px; border-collapse:separate;\">\n"
+"                            <tbody>\n"
+"                              <td valign=\"top\" style=\"font-family:Arial,Helvetica,sans-serif; color: #555; font-size: 14px;\">\n"
+"                                <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"\t\t\t\t\t\t\t    \tالعزيز ${object.name},\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tلقد أرفقنا بيان حسابك.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tقم بتنزيل العبارات الخاصة بك.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tإذا كان لديك أي قلق بشأن البيان، فلا تتردد في الاتصال بنا.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t    </p>\n"
+"                              </td>\n"
+"                            </tbody>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"\n"
+"                      <!-- FOOTER -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#875A7B\" style=\"min-width: 590px; background-color: rgb(135,90,123); padding: 20px; border-collapse:separate;\">\n"
+"                            <tr>\n"
+"                              <td valign=\"middle\" align=\"left\" style=\"color: #fff; padding-top: 10px; padding-bottom: 10px; font-size: 12px;\">\n"
+"                                ${object.company_id.name}<br/>\n"
+"                                ${object.company_id.phone or ''}\n"
+"                              </td>\n"
+"                              <td valign=\"middle\" align=\"right\" style=\"color: #fff; padding-top: 10px; padding-bottom: 10px; font-size: 12px;\">\n"
+"                                % if object.company_id.email:\n"
+"                                <a href=\"mailto:${object.company_id.email}\" style=\"text-decoration:none; color: white;\">${object.company_id.email}</a><br/>\n"
+"                                % endif\n"
+"                                % if object.company_id.website:\n"
+"                                    <a href=\"${object.company_id.website}\" style=\"text-decoration:none; color: white;\">\n"
+"                                        ${object.company_id.website}\n"
+"                                    </a>\n"
+"                                % endif\n"
+"                              </td>\n"
+"                            </tr>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"                    </tbody>\n"
+"                </table>\n"
+"        \t</div>\n"
+"        "
+
+#. module: sh_account_statement
+#: model:mail.template,body_html:sh_account_statement.sh_vendor_filter_statement_mail_template
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"        \t\t<table border=\"0\" width=\"100%\" cellpadding=\"0\" bgcolor=\"#ededed\" style=\"padding: 20px; background-color: #ededed; border-collapse:separate;\" summary=\"o_mail_notification\">\n"
+"                    <tbody>\n"
+"                      <!-- HEADER -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#875A7B\" style=\"min-width: 590px; background-color: rgb(135,90,123); padding: 20px; border-collapse:separate;\">\n"
+"                            <tr>\n"
+"                              <td valign=\"middle\">\n"
+"                                  <span style=\"font-size:20px; color:white; font-weight: bold;\">\n"
+"                                      Vendor Statement By Date\n"
+"                                  </span>\n"
+"                              </td>\n"
+"                              <td valign=\"middle\" align=\"right\">\n"
+"                                  <img src=\"/logo.png?company=${object.company_id.id}\" style=\"padding: 0px; margin: 0px; height: auto; width: 80px;\" alt=\"${object.company_id.name}\"/>\n"
+"                              </td>\n"
+"                            </tr>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"\n"
+"                      <!-- CONTENT -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#ffffff\" style=\"min-width: 590px; background-color: rgb(255, 255, 255); padding: 20px; border-collapse:separate;\">\n"
+"                            <tbody>\n"
+"                              <td valign=\"top\" style=\"font-family:Arial,Helvetica,sans-serif; color: #555; font-size: 14px;\">\n"
+"                                <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"\t\t\t\t\t\t\t    \tDear ${object.name},\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tWe have attached your account statement.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tDownload your statement.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tIf you have any concern regarding statement then feel free to contact us.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t    </p>\n"
+"                              </td>\n"
+"                            </tbody>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"\n"
+"                      <!-- FOOTER -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#875A7B\" style=\"min-width: 590px; background-color: rgb(135,90,123); padding: 20px; border-collapse:separate;\">\n"
+"                            <tr>\n"
+"                              <td valign=\"middle\" align=\"left\" style=\"color: #fff; padding-top: 10px; padding-bottom: 10px; font-size: 12px;\">\n"
+"                                ${object.company_id.name}<br/>\n"
+"                                ${object.company_id.phone or ''}\n"
+"                              </td>\n"
+"                              <td valign=\"middle\" align=\"right\" style=\"color: #fff; padding-top: 10px; padding-bottom: 10px; font-size: 12px;\">\n"
+"                                % if object.company_id.email:\n"
+"                                <a href=\"mailto:${object.company_id.email}\" style=\"text-decoration:none; color: white;\">${object.company_id.email}</a><br/>\n"
+"                                % endif\n"
+"                                % if object.company_id.website:\n"
+"                                    <a href=\"${object.company_id.website}\" style=\"text-decoration:none; color: white;\">\n"
+"                                        ${object.company_id.website}\n"
+"                                    </a>\n"
+"                                % endif\n"
+"                              </td>\n"
+"                            </tr>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"                    </tbody>\n"
+"                </table>\n"
+"        \t</div>\n"
+"        "
+msgstr ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"        \t\t<table border=\"0\" width=\"100%\" cellpadding=\"0\" bgcolor=\"#ededed\" style=\"padding: 20px; background-color: #ededed; border-collapse:separate;\" summary=\"o_mail_notification\">\n"
+"                    <tbody>\n"
+"                      <!-- HEADER -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#875A7B\" style=\"min-width: 590px; background-color: rgb(135,90,123); padding: 20px; border-collapse:separate;\">\n"
+"                            <tr>\n"
+"                              <td valign=\"middle\">\n"
+"                                  <span style=\"font-size:20px; color:white; font-weight: bold;\">\n"
+"                                      بيان البائع حسب التاريخ\n"
+"                                  </span>\n"
+"                              </td>\n"
+"                              <td valign=\"middle\" align=\"right\">\n"
+"                                  <img src=\"/logo.png?company=${object.company_id.id}\" style=\"padding: 0px; margin: 0px; height: auto; width: 80px;\" alt=\"${object.company_id.name}\"/>\n"
+"                              </td>\n"
+"                            </tr>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"\n"
+"                      <!-- CONTENT -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#ffffff\" style=\"min-width: 590px; background-color: rgb(255, 255, 255); padding: 20px; border-collapse:separate;\">\n"
+"                            <tbody>\n"
+"                              <td valign=\"top\" style=\"font-family:Arial,Helvetica,sans-serif; color: #555; font-size: 14px;\">\n"
+"                                <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"\t\t\t\t\t\t\t    \tالعزيز ${object.name},\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tلقد أرفقنا بيان حسابك.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tقم بتنزيل العبارات الخاصة بك.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t\t\tإذا كان لديك أي قلق بشأن البيان، فلا تتردد في الاتصال بنا.\n"
+"\t\t\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t    </p>\n"
+"                              </td>\n"
+"                            </tbody>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"\n"
+"                      <!-- FOOTER -->\n"
+"                      <tr>\n"
+"                        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                          <table width=\"590\" border=\"0\" cellpadding=\"0\" bgcolor=\"#875A7B\" style=\"min-width: 590px; background-color: rgb(135,90,123); padding: 20px; border-collapse:separate;\">\n"
+"                            <tr>\n"
+"                              <td valign=\"middle\" align=\"left\" style=\"color: #fff; padding-top: 10px; padding-bottom: 10px; font-size: 12px;\">\n"
+"                                ${object.company_id.name}<br/>\n"
+"                                ${object.company_id.phone or ''}\n"
+"                              </td>\n"
+"                              <td valign=\"middle\" align=\"right\" style=\"color: #fff; padding-top: 10px; padding-bottom: 10px; font-size: 12px;\">\n"
+"                                % if object.company_id.email:\n"
+"                                <a href=\"mailto:${object.company_id.email}\" style=\"text-decoration:none; color: white;\">${object.company_id.email}</a><br/>\n"
+"                                % endif\n"
+"                                % if object.company_id.website:\n"
+"                                    <a href=\"${object.company_id.website}\" style=\"text-decoration:none; color: white;\">\n"
+"                                        ${object.company_id.website}\n"
+"                                    </a>\n"
+"                                % endif\n"
+"                              </td>\n"
+"                            </tr>\n"
+"                          </table>\n"
+"                        </td>\n"
+"                      </tr>\n"
+"                    </tbody>\n"
+"                </table>\n"
+"        \t</div>\n"
+"        "
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "<span class=\"o_stat_text\">Log History</span>"
+msgstr "<span class=\"o_stat_text\">سجل التاريخ</span>"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_portal
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_portal
+msgid "<strong>0-30(Days)</strong>"
+msgstr "<strong>0-30 (أيام)</strong>"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_portal
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_portal
+msgid "<strong>30-60(Days)</strong>"
+msgstr "<strong>30-60 (أيام)</strong>"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_portal
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_portal
+msgid "<strong>60-90(Days)</strong>"
+msgstr "<strong>60-90 (أيام)</strong>"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_portal
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_portal
+msgid "<strong>90+(Days)</strong>"
+msgstr "<strong>90+ (أيام)</strong>"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_portal
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_portal
+msgid "<strong>Balance Amount</strong>"
+msgstr "<strong>مقدار وسطي</strong>"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_portal
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_portal
+msgid "<strong>Total</strong>"
+msgstr "<strong>مجموع</strong>"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_due_statement__sh_account
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_statement__sh_account
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_res_partner_filter_statement__sh_account
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_due_statement__sh_account
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_filter_statement__sh_account
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_statement__sh_account
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_due_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_filtered_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_due_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_filtered_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_doc
+msgid "Account"
+msgstr "الحساب"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_statement_config_setting_view
+msgid "Account Statement Auto Send Configuration"
+msgstr "بيان الحساب إرسال التكوين التلقائي"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_statement_config_setting_view
+msgid "Account Statement Mail Log History Configuration"
+msgstr "بيان حساب البريد سجل البريد"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_statement_config_setting_view
+msgid "Account Statement Menu Display in portal configuration"
+msgstr "عرض قائمة عبارة الحساب في تكوين البوابة"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_due_yearly_month__april
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_yearly_month__april
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_due_yearly_month__april
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_yearly_month__april
+msgid "April"
+msgstr "أبريل"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_due_yearly_month__august
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_yearly_month__august
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_due_yearly_month__august
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_yearly_month__august
+msgid "August"
+msgstr "أغسطس"
+
+#. module: sh_account_statement
+#: model:ir.actions.server,name:sh_account_statement.cron_send_statement_auto_ir_actions_server
+#: model:ir.cron,cron_name:sh_account_statement.cron_send_statement_auto
+#: model:ir.cron,name:sh_account_statement.cron_send_statement_auto
+msgid "Auto Send Statements"
+msgstr "إرسال تلقائي البيانات"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_due_statement__sh_due_customer_balance
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_statement__sh_customer_balance
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_res_partner_filter_statement__sh_filter_balance
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_due_statement__sh_due_vendor_balance
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_filter_statement__sh_vendor_filter_balance
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_statement__sh_vendor_balance
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_due_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_filtered_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_portal
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_due_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_filtered_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_portal
+msgid "Balance"
+msgstr "توازن"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_due_statement__sh_due_vendor_invoice_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_filter_statement__sh_vendor_filter_invoice_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_statement__sh_vendor_invoice_date
+msgid "Bill Date"
+msgstr "تاريخ الفاتورة"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_due_statement__sh_due_vendor_due_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_filter_statement__sh_vendor_filter_due_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_statement__sh_vendor_due_date
+msgid "Bill Due Date"
+msgstr "فاتورة تاريخ الاستحقاق"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_due_statement__name
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_filter_statement__name
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_statement__name
+msgid "Bill Number"
+msgstr "رقم الفاتوره"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_partner__sh_compute_boolean
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_users__sh_compute_boolean
+msgid "Boolean"
+msgstr "منطقية"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_display_due_statement__both
+msgid "Both"
+msgstr "كلاهما"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__sh_partner_mail_history__sh_mail_status__cancel
+msgid "Cancelled"
+msgstr "ألغيت"
+
+#. module: sh_account_statement
+#: model:ir.model,name:sh_account_statement.model_res_company
+msgid "Companies"
+msgstr "شركات"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_partner__company_id
+msgid "Company"
+msgstr "شركة"
+
+#. module: sh_account_statement
+#: model:ir.model,name:sh_account_statement.model_res_config_settings
+msgid "Config Settings"
+msgstr "إعدادات التكوين"
+
+#. module: sh_account_statement
+#: model:ir.model,name:sh_account_statement.model_res_partner
+msgid "Contact"
+msgstr "اتصال"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_due_statement__create_uid
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_statement__create_uid
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_partner_mail_history__create_uid
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_res_partner_filter_statement__create_uid
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_due_statement__create_uid
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_filter_statement__create_uid
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_statement__create_uid
+msgid "Created by"
+msgstr "انشأ من قبل"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_due_statement__create_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_statement__create_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_partner_mail_history__create_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_res_partner_filter_statement__create_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_due_statement__create_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_filter_statement__create_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_statement__create_date
+msgid "Created on"
+msgstr "تم إنشاؤها على"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_due_statement__currency_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_statement__currency_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_res_partner_filter_statement__currency_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_due_statement__currency_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_filter_statement__currency_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_statement__currency_id
+msgid "Currency"
+msgstr "عملة"
+
+#. module: sh_account_statement
+#: model:mail.template,report_name:sh_account_statement.sh_customer_due_statement_mail_template
+msgid "Customer Account Overdue Statement"
+msgstr "حساب حساب العملاء المتأخرة"
+
+#. module: sh_account_statement
+#: model:mail.template,subject:sh_account_statement.sh_customer_due_statement_mail_template
+msgid ""
+"Customer Account Overdue Statement from ${object.company_id.name} - "
+"${object.name}"
+msgstr ""
+"حساب العملاء تأخر بيان من ${object.company_id.name} - "
+"${object.name}"
+
+#. module: sh_account_statement
+#: model:mail.template,report_name:sh_account_statement.sh_customer_statement_mail_template
+msgid "Customer Account Statement"
+msgstr "بيان حساب العملاء"
+
+#. module: sh_account_statement
+#: model:mail.template,report_name:sh_account_statement.sh_customer_filter_statement_mail_template
+msgid "Customer Account Statement By Date"
+msgstr "بيان حساب العملاء حسب التاريخ"
+
+#. module: sh_account_statement
+#: model:mail.template,subject:sh_account_statement.sh_customer_filter_statement_mail_template
+#: model:mail.template,subject:sh_account_statement.sh_customer_statement_mail_template
+msgid ""
+"Customer Account Statement from ${object.company_id.name} - ${object.name}"
+msgstr ""
+"بيان حساب العميل من ${object.company_id.name} - ${object.name}"
+
+#. module: sh_account_statement
+#: model:ir.model,name:sh_account_statement.model_sh_customer_due_statement
+msgid "Customer Due Statement"
+msgstr "بيان العملاء المستحق"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Customer Due Statements"
+msgstr "البيانات المستحقة العملاء"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_partner__sh_filter_customer_statement_ids
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_users__sh_filter_customer_statement_ids
+msgid "Customer Filtered Statements"
+msgstr "بيانات تصفية العملاء"
+
+#. module: sh_account_statement
+#: model:ir.actions.report,name:sh_account_statement.action_report_sh_customer_due_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__sh_partner_mail_history__sh_statement_type__customer_overdue_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_mail_history_search_view
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_search_view
+msgid "Customer Overdue Statement"
+msgstr "بيان تجاوز العملاء"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_customer_due_statement_action
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_customer_due_statement_action
+msgid "Customer Overdue Statement Action"
+msgstr "عمل بيان تجاوز العميل"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_customer_due_statement_auto_send
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_customer_due_statement_auto_send
+msgid "Customer Overdue Statement Auto Send"
+msgstr "بيان تجاوز العميل إرسال السيارات"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_cust_due_create_log_history
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_cust_due_create_log_history
+msgid "Customer Overdue Statement Mail Log History"
+msgstr "النظام يطرح العملاء سجل البريد التاريخ"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_partner__sh_customer_due_statement_ids
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_users__sh_customer_due_statement_ids
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Customer Overdue Statements"
+msgstr "البيانات المتأخرة العملاء"
+
+#. module: sh_account_statement
+#: model:ir.actions.report,name:sh_account_statement.action_report_sh_customer_statement
+#: model:ir.model,name:sh_account_statement.model_sh_customer_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__sh_partner_mail_history__sh_statement_type__customer_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_mail_history_search_view
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_search_view
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Customer Statement"
+msgstr "كشف العميل"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_customer_statement_action
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_customer_statement_action
+msgid "Customer Statement Action"
+msgstr "بيان بيان العملاء"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_customer_statement_auto_send
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_customer_statement_auto_send
+msgid "Customer Statement Auto Send"
+msgstr "بيان العملاء"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__sh_partner_mail_history__sh_statement_type__customer_statement_filter
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_mail_history_search_view
+msgid "Customer Statement By Date"
+msgstr "بيان العملاء حسب التاريخ"
+
+#. module: sh_account_statement
+#: model:ir.actions.report,name:sh_account_statement.action_report_sh_customer_filtered_statement
+msgid "Customer Statement Filter By Date"
+msgstr "مرشح بيان العملاء حسب التاريخ"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Customer Statement Filters"
+msgstr "عوامل تصفية بيان العملاء"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_cust_create_log_history
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_cust_create_log_history
+msgid "Customer Statement Mail Log History"
+msgstr "بيان بريد كشف حساب البريد"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_partner__sh_customer_statement_ids
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_users__sh_customer_statement_ids
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.portal_my_home_customer_statements
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.portal_my_home_menu_customer_statements
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_portal
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Customer Statements"
+msgstr "بيانات العملاء"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Customer Statements By Filter"
+msgstr "بيانات العملاء عن طريق مرشح"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Customer Statements by Filter"
+msgstr "بيانات العملاء عن طريق مرشح"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_partner_mail_history__sh_partner_id
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_mail_history_search_view
+msgid "Customer/Vendor"
+msgstr "العملاء / البائع"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_customer_due_statement_action__daily
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_customer_statement_action__daily
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vendor_due_statement_action__daily
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vendor_statement_action__daily
+msgid "Daily"
+msgstr "يوميا"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_cus_daily_statement_template_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_cus_due_daily_statement_template_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_vend_daily_statement_template_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_vend_due_daily_statement_template_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_cus_daily_statement_template_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_cus_due_daily_statement_template_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_vend_daily_statement_template_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_vend_due_daily_statement_template_id
+msgid "Daily Mail Template"
+msgstr "قالب البريد اليومي"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_due_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_filtered_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_due_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_filtered_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_doc
+msgid "Date"
+msgstr "تاريخ"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_filtered_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_filtered_statement_doc
+msgid "Date From -"
+msgstr "التاريخ من -"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_due_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_due_statement_doc
+msgid "Date:"
+msgstr "تاريخ:"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_due_yearly_month__december
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_yearly_month__december
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_due_yearly_month__december
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_yearly_month__december
+msgid "December"
+msgstr "ديسمبر"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__sh_partner_mail_history__sh_mail_status__exception
+msgid "Delivery Failed"
+msgstr "فشل التسليم"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_display_due_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_display_due_statement
+msgid "Display Due/Overdue Statements"
+msgstr "عرض أقصى / تصريحات المتأخرة"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__display_name
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_partner__display_name
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_due_statement__display_name
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_statement__display_name
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_partner_mail_history__display_name
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_res_partner_filter_statement__display_name
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_due_statement__display_name
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_filter_statement__display_name
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_statement__display_name
+msgid "Display Name"
+msgstr "اسم العرض"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_search_view
+msgid "Don't Send Overdue Statement Auto"
+msgstr "لا ترسل بيان تأخر السيارات"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_search_view
+msgid "Don't Send Statement Auto"
+msgstr "لا ترسل بيان السيارات"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_partner__sh_dont_send_due_statement_auto
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_users__sh_dont_send_due_statement_auto
+msgid "Don't send Overdue statement auto ?"
+msgstr "لا ترسل بيان متأخرة السيارات؟"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_partner__sh_dont_send_statement_auto
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_users__sh_dont_send_statement_auto
+msgid "Don't send statement auto ?"
+msgstr "لا ترسل البيان السيارات؟"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_portal
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_portal
+msgid "Download Overdue Statement"
+msgstr "تحميل العبارة المتأخرة"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_portal
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_portal
+msgid "Download Statement"
+msgstr "تحميل بيان"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_due_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_filtered_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_due_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_filtered_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_doc
+msgid "Due Date"
+msgstr "تاريخ الاستحقاق"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_statement_config_setting_view
+msgid "Due/Overdue Statement Display configuration"
+msgstr "DUAL / OverDue بيان عرض التكوين"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_partner__end_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_users__end_date
+msgid "End Date"
+msgstr "تاريخ الانتهاء"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_cust_due_monthly_end
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_cust_monthly_end
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_vend_due_monthly_end
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_vend_monthly_end
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_cust_due_monthly_end
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_cust_monthly_end
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_vend_due_monthly_end
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_vend_monthly_end
+msgid "End of month"
+msgstr "نهاية الشهر"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_due_yearly_month__february
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_yearly_month__february
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_due_yearly_month__february
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_yearly_month__february
+msgid "February"
+msgstr "شهر فبراير"
+
+#. module: sh_account_statement
+#: model:ir.model,name:sh_account_statement.model_sh_res_partner_filter_statement
+msgid "Filter Customer Statement"
+msgstr "تصفية بيان العملاء"
+
+#. module: sh_account_statement
+#: model:ir.model,name:sh_account_statement.model_sh_vendor_filter_statement
+msgid "Filter Vendor Statement"
+msgstr "تصفية بائع البيان"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_due_week_day__4
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_week_day__4
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_due_week_day__4
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_week_day__4
+msgid "Friday"
+msgstr "يوم الجمعة"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_portal
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_portal
+msgid "Gap Between Days"
+msgstr "الفجوة بين الأيام"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Get Customer Statement"
+msgstr "الحصول على بيان العملاء"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Get Vendor Statement"
+msgstr "الحصول على بيان البائع"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_mail_history_search_view
+msgid "Group By"
+msgstr "مجموعة من"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__id
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__id
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_partner__id
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_due_statement__id
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_statement__id
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_partner_mail_history__id
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_res_partner_filter_statement__id
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_due_statement__id
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_filter_statement__id
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_statement__id
+msgid "ID"
+msgstr "بطاقة تعريف"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_due_statement__sh_due_customer_invoice_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_statement__sh_customer_invoice_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_res_partner_filter_statement__sh_filter_invoice_date
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_portal
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_portal
+msgid "Invoice Date"
+msgstr "تاريخ الفاتورة"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_due_statement__sh_due_customer_due_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_statement__sh_customer_due_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_res_partner_filter_statement__sh_filter_due_date
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_portal
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_portal
+msgid "Invoice Due Date"
+msgstr "تاريخ استحقاق الفاتورة"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_due_statement__name
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_statement__name
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_res_partner_filter_statement__name
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_portal
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_portal
+msgid "Invoice Number"
+msgstr "فاتورة رقم"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_due_yearly_month__january
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_yearly_month__january
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_due_yearly_month__january
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_yearly_month__january
+msgid "January"
+msgstr "يناير"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_due_yearly_month__july
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_yearly_month__july
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_due_yearly_month__july
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_yearly_month__july
+msgid "July"
+msgstr "تموز"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_due_yearly_month__june
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_yearly_month__june
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_due_yearly_month__june
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_yearly_month__june
+msgid "June"
+msgstr "يونيه"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company____last_update
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings____last_update
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_partner____last_update
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_due_statement____last_update
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_statement____last_update
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_partner_mail_history____last_update
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_res_partner_filter_statement____last_update
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_due_statement____last_update
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_filter_statement____last_update
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_statement____last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_due_statement__write_uid
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_statement__write_uid
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_partner_mail_history__write_uid
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_res_partner_filter_statement__write_uid
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_due_statement__write_uid
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_filter_statement__write_uid
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_statement__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_due_statement__write_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_statement__write_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_partner_mail_history__write_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_res_partner_filter_statement__write_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_due_statement__write_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_filter_statement__write_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_statement__write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث على"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_partner_mail_history__sh_current_date
+msgid "Log Date"
+msgstr "تاريخ تسجيل"
+
+#. module: sh_account_statement
+#: model:ir.actions.act_window,name:sh_account_statement.sh_mail_history_action
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_mail_history_form_view
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_mail_history_search_view
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_mail_history_tree_view
+msgid "Mail Log History"
+msgstr "سجل سجل البريد"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_partner_mail_history__sh_mail_id
+msgid "Mail Reference"
+msgstr "مرجع البريد"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_mail_history_search_view
+msgid "Mail Sent Date"
+msgstr "البريد المرسل التاريخ"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_partner_mail_history__sh_mail_status
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_mail_history_search_view
+msgid "Mail Sent Status"
+msgstr "البريد المرسلة الحالة"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_due_yearly_month__march
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_yearly_month__march
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_due_yearly_month__march
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_yearly_month__march
+msgid "March"
+msgstr "مارس"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_due_yearly_month__may
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_yearly_month__may
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_due_yearly_month__may
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_yearly_month__may
+msgid "May"
+msgstr "يمكن"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_due_week_day__0
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_week_day__0
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_due_week_day__0
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_week_day__0
+msgid "Monday"
+msgstr "الاثنين"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_cust_due_yearly_month
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_cust_yearly_month
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_vend_due_yearly_month
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_vend_yearly_month
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_cust_due_yearly_month
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_cust_yearly_month
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_vend_due_yearly_month
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_vend_yearly_month
+msgid "Month"
+msgstr "شهر"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_customer_due_statement_action__monthly
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_customer_statement_action__monthly
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vendor_due_statement_action__monthly
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vendor_statement_action__monthly
+msgid "Monthly"
+msgstr "شهريا"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_cust_due_monthly_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_cust_monthly_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_vend_due_monthly_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_vend_monthly_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_cust_due_monthly_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_cust_monthly_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_vend_due_monthly_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_vend_monthly_date
+msgid "Monthly Day"
+msgstr "اليوم الشهري"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_cust_due_monthly_template_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_cust_monthly_template_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_vend_due_monthly_template_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_vend_monthly_template_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_cust_due_monthly_template_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_cust_monthly_template_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_vend_due_monthly_template_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_vend_monthly_template_id
+msgid "Monthly Mail Template"
+msgstr "قالب البريد الشهري"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_partner_mail_history__name
+msgid "Name"
+msgstr "اسم"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_due_yearly_month__november
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_yearly_month__november
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_due_yearly_month__november
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_yearly_month__november
+msgid "November"
+msgstr "شهر نوفمبر"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_due_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_filtered_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_due_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_filtered_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_doc
+msgid "Number"
+msgstr "عدد"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_due_yearly_month__october
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_yearly_month__october
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_due_yearly_month__october
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_yearly_month__october
+msgid "October"
+msgstr "اكتوبر"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_display_due_statement__due
+msgid "Only Due"
+msgstr "فقط المستحق"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_display_due_statement__overdue
+msgid "Only Overdue"
+msgstr "المتأخرة فقط"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__sh_partner_mail_history__sh_mail_status__outgoing
+msgid "Outgoing"
+msgstr "منفتح"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_portal
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_portal
+msgid "Overdue Statements"
+msgstr "بيانات متأخرة"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_due_statement__sh_due_customer_paid_amount
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_statement__sh_customer_paid_amount
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_res_partner_filter_statement__sh_filter_paid_amount
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_due_statement__sh_due_vendor_paid_amount
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_filter_statement__sh_vendor_filter_paid_amount
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_statement__sh_vendor_paid_amount
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_due_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_filtered_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_portal
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_due_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_filtered_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_portal
+msgid "Paid Amount"
+msgstr "المبلغ المدفوع"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_due_statement__partner_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_statement__partner_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_res_partner_filter_statement__partner_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_due_statement__partner_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_filter_statement__partner_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_statement__partner_id
+msgid "Partner"
+msgstr "شريك"
+
+#. module: sh_account_statement
+#: model:ir.model,name:sh_account_statement.model_sh_partner_mail_history
+msgid "Partner Mail History"
+msgstr "تاريخ البريد الشريك"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Print Customer Statement"
+msgstr "طباعة بيان العملاء"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Print Filter Customer Statement"
+msgstr "طباعة مرشح بيان عملاء"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Print Filter Vendor Statement"
+msgstr "طباعة تصفية البائع بيان"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Print Overdue Customer Statement"
+msgstr "طباعة بيان العملاء المتأخرة"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Print Overdue Vendor Statement"
+msgstr "طباعة بيان البائع المتأخر"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Print Vendor Customer Statement"
+msgstr "بيان طباعة بائع العملاء"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Print Vendor Statement"
+msgstr "طباعة بائع البيان"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__sh_partner_mail_history__sh_mail_status__received
+msgid "Received"
+msgstr "تم الاستلام"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_due_week_day__5
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_week_day__5
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_due_week_day__5
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_week_day__5
+msgid "Saturday"
+msgstr "يوم السبت"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_statement_config_setting_view
+msgid "See all mail log history"
+msgstr "انظر جميع سجلات سجل البريد"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Send Customer Statement"
+msgstr "إرسال بيان العملاء"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Send Filter Customer Statement"
+msgstr "إرسال مرشح بيان العملاء"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Send Filter Vendor Statement"
+msgstr "إرسال بيان مرشح البائع"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Send Overdue Customer Statement"
+msgstr "إرسال بيان العملاء المتأخرة"
+
+#. module: sh_account_statement
+#: model:ir.actions.server,name:sh_account_statement.sh_send_overdue_statement_action
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_portal
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_portal
+msgid "Send Overdue Statement"
+msgstr "إرسال بيان المتأخرة"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Send Overdue Vendor Statement"
+msgstr "إرسال بيان البائع المتأخر"
+
+#. module: sh_account_statement
+#: model:ir.actions.server,name:sh_account_statement.sh_send_statement_action
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_portal
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_portal
+msgid "Send Statement"
+msgstr "إرسال البيان"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Send Vendor Customer Statement"
+msgstr "إرسال بيان عملاء البائع"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Send Vendor Statement"
+msgstr "إرسال بيان البائع"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__sh_partner_mail_history__sh_mail_status__sent
+msgid "Sent"
+msgstr "مرسل"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_due_yearly_month__september
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_yearly_month__september
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_due_yearly_month__september
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_yearly_month__september
+msgid "September"
+msgstr "شهر تسعة"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_display_customer_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_display_customer_statement
+msgid "Show Customer Statement Menu in portal ?"
+msgstr "إظهار قائمة بيان العملاء في البوابة؟"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_display_vendor_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_display_vendor_statement
+msgid "Show Vendor Statement Menu in portal ?"
+msgstr "عرض قائمة بيان البائع في البوابة؟"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_partner__start_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_users__start_date
+msgid "Start Date"
+msgstr "تاريخ البدء"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_partner_mail_history__sh_statement_type
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_mail_history_search_view
+msgid "Statement Type"
+msgstr "نوع البيان"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_due_week_day__6
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_week_day__6
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_due_week_day__6
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_week_day__6
+msgid "Sunday"
+msgstr "يوم الأحد"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_portal
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_portal
+msgid "There are currently no statements for your account."
+msgstr "لا يوجد حاليا أي بيانات لحسابك."
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_due_week_day__3
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_week_day__3
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_due_week_day__3
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_week_day__3
+msgid "Thursday"
+msgstr "يوم الخميس"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "To"
+msgstr "ل"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_due_statement__sh_today
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_due_statement__sh_today
+msgid "Today"
+msgstr "اليوم"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_partner__sh_customer_total
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_partner__sh_vendor_total
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_users__sh_customer_total
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_users__sh_vendor_total
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_doc
+msgid "Total"
+msgstr "مجموع"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_due_statement__sh_due_customer_amount
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_customer_statement__sh_customer_amount
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_res_partner_filter_statement__sh_filter_amount
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_due_statement__sh_due_vendor_amount
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_filter_statement__sh_vendor_filter_amount
+#: model:ir.model.fields,field_description:sh_account_statement.field_sh_vendor_statement__sh_vendor_amount
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_due_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_filtered_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_customer_statement_portal
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_due_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_filtered_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_doc
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_portal
+msgid "Total Amount"
+msgstr "المبلغ الإجمالي"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Total Balance"
+msgstr "مجموع الرصيد"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Total Due Amount"
+msgstr "إجمالي المبلغ المستحق"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Total Due Balance"
+msgstr "مجموع التوازن المستحق"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Total Due Paid Amount"
+msgstr "إجمالي القيمة المدفوعة"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Total Filter Amount"
+msgstr "إجمالي مبلغ التصفية"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Total Filter Balance"
+msgstr "مجموع الرصيد المرشح"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Total Filter Paid Amount"
+msgstr "إجمالي حجم المرشح المدفوع"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Total Paid Amount"
+msgstr "إجمالي المبلغ المدفوع"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_due_week_day__1
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_week_day__1
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_due_week_day__1
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_week_day__1
+msgid "Tuesday"
+msgstr "يوم الثلاثاء"
+
+#. module: sh_account_statement
+#: model:mail.template,report_name:sh_account_statement.sh_vendor_due_statement_mail_template
+msgid "Vendor Account Overdue Statement"
+msgstr "بيان حساب البائع"
+
+#. module: sh_account_statement
+#: model:mail.template,subject:sh_account_statement.sh_vendor_due_statement_mail_template
+msgid ""
+"Vendor Account Overdue Statement from ${object.company_id.name} - "
+"${object.name}"
+msgstr ""
+"حساب البائع يطارد بيان من ${object.company_id.name} - "
+"${object.name}"
+
+#. module: sh_account_statement
+#: model:mail.template,report_name:sh_account_statement.sh_vendor_statement_mail_template
+msgid "Vendor Account Statement"
+msgstr "بيان حساب البائع"
+
+#. module: sh_account_statement
+#: model:mail.template,report_name:sh_account_statement.sh_vendor_filter_statement_mail_template
+msgid "Vendor Account Statement By Date"
+msgstr "بيان حساب البائع حسب التاريخ"
+
+#. module: sh_account_statement
+#: model:mail.template,subject:sh_account_statement.sh_vendor_filter_statement_mail_template
+#: model:mail.template,subject:sh_account_statement.sh_vendor_statement_mail_template
+msgid ""
+"Vendor Account Statement from ${object.company_id.name} - ${object.name}"
+msgstr ""
+"بيان حساب البائع من ${object.company_id.name} - ${object.name}"
+
+#. module: sh_account_statement
+#: model:ir.model,name:sh_account_statement.model_sh_vendor_due_statement
+msgid "Vendor Due Statement"
+msgstr "البائع الواجب بيان"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_partner__sh_filter_vendor_statement_ids
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_users__sh_filter_vendor_statement_ids
+msgid "Vendor Filtered Statements"
+msgstr "بيانات تصفية البائع"
+
+#. module: sh_account_statement
+#: model:ir.actions.report,name:sh_account_statement.action_report_sh_vendor_due_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__sh_partner_mail_history__sh_statement_type__vendor_overdue_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_mail_history_search_view
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_search_view
+msgid "Vendor Overdue Statement"
+msgstr "بيان تأخر البائع"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_vendor_due_statement_action
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_vendor_due_statement_action
+msgid "Vendor Overdue Statement Action"
+msgstr "بائع تأخر بيان بيان"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_vendor_due_statement_auto_send
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_vendor_due_statement_auto_send
+msgid "Vendor Overdue Statement Auto Send"
+msgstr "بائع تأخر بيان إرسال السيارات"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_vend_due_create_log_history
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_vend_due_create_log_history
+msgid "Vendor Overdue Statement Mail Log History"
+msgstr "البائع المتأخرة بيان سجل البريد التاريخ"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_partner__sh_vendor_due_statement_ids
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_users__sh_vendor_due_statement_ids
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Vendor Overdue Statements"
+msgstr "بيانات متأخرة البائع"
+
+#. module: sh_account_statement
+#: model:ir.actions.report,name:sh_account_statement.action_report_sh_vendor_statement
+#: model:ir.model,name:sh_account_statement.model_sh_vendor_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__sh_partner_mail_history__sh_statement_type__vendor_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_mail_history_search_view
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_search_view
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Vendor Statement"
+msgstr "بيان البائع"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_vendor_statement_action
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_vendor_statement_action
+msgid "Vendor Statement Action"
+msgstr "بيان بيان البائع"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_vendor_statement_auto_send
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_vendor_statement_auto_send
+msgid "Vendor Statement Auto Send"
+msgstr "بيان البائع إرسال السيارات"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__sh_partner_mail_history__sh_statement_type__vendor_statement_filter
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_mail_history_search_view
+msgid "Vendor Statement By Date"
+msgstr "بيان البائع حسب التاريخ"
+
+#. module: sh_account_statement
+#: model:ir.actions.report,name:sh_account_statement.action_report_sh_vendor_filtered_statement
+msgid "Vendor Statement Filter By Date"
+msgstr "مرشح بيان البائع حسب التاريخ"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Vendor Statement Filters"
+msgstr "مرشحات بيان البائع"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_vend_create_log_history
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_vend_create_log_history
+msgid "Vendor Statement Mail Log History"
+msgstr "بائع بيان البريد سجل البريد"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_partner__sh_vendor_statement_ids
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_users__sh_vendor_statement_ids
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.portal_my_home_menu_vendor_statements
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.portal_my_home_vendor_statements
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_portal
+msgid "Vendor Statements"
+msgstr "بخصوص البائع"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Vendor Statements By Filter"
+msgstr "بخصوص البائع عن طريق مرشح"
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_res_partner_view
+msgid "Vendor Statements by Filter"
+msgstr "بخصوص البائع عن طريق المرشح"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_due_week_day__2
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_cust_week_day__2
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_due_week_day__2
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vend_week_day__2
+msgid "Wednesday"
+msgstr "الأربعاء"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_cust_due_week_day
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_cust_week_day
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_vend_due_week_day
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_vend_week_day
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_cust_due_week_day
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_cust_week_day
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_vend_due_week_day
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_vend_week_day
+msgid "Week Day"
+msgstr "يوم الأسبوع"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_customer_due_statement_action__weekly
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_customer_statement_action__weekly
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vendor_due_statement_action__weekly
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vendor_statement_action__weekly
+msgid "Weekly"
+msgstr "أسبوعي"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_cust_due_weekly_statement_template_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_cust_weekly_statement_template_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_vend_due_weekly_statement_template_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_vend_weekly_statement_template_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_cust_due_weekly_statement_template_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_cust_weekly_statement_template_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_vend_due_weekly_statement_template_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_vend_weekly_statement_template_id
+msgid "Weekly Mail Template"
+msgstr "قالب البريد الأسبوعي"
+
+#. module: sh_account_statement
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_customer_due_statement_action__yearly
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_customer_statement_action__yearly
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vendor_due_statement_action__yearly
+#: model:ir.model.fields.selection,name:sh_account_statement.selection__res_company__sh_vendor_statement_action__yearly
+msgid "Yearly"
+msgstr "سنوي"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_cust_due_yearly_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_cust_yearly_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_vend_due_yearly_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_vend_yearly_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_cust_due_yearly_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_cust_yearly_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_vend_due_yearly_date
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_vend_yearly_date
+msgid "Yearly Day"
+msgstr "اليوم السنوي"
+
+#. module: sh_account_statement
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_cust_due_yearly_template_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_cust_yearly_template_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_vend_due_yearly_template_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_company__sh_vend_yearly_template_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_cust_due_yearly_template_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_cust_yearly_template_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_vend_due_yearly_template_id
+#: model:ir.model.fields,field_description:sh_account_statement.field_res_config_settings__sh_vend_yearly_template_id
+msgid "Yearly Mail Template"
+msgstr "قالب البريد السنوي"
+
+#. module: sh_account_statement
+#: code:addons/sh_account_statement/models/res_partner.py:0
+#, python-format
+msgid "start date must be less than end date."
+msgstr "يجب أن يكون تاريخ البدء أقل من تاريخ الانتهاء."
+
+#. module: sh_account_statement
+#: model_terms:ir.ui.view,arch_db:sh_account_statement.sh_vendor_statement_portal
+msgid "vendor Statements"
+msgstr "بخصوص البائع"

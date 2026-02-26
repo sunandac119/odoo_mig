@@ -1,0 +1,22 @@
+<odoo>
+  <record id="view_stock_ordering_report_tree" model="ir.ui.view">
+    <field name="name">bi.ordering.report.mv.tree</field>
+    <field name="model">bi.ordering.report.mv</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="product_tmpl_id"/>
+        <field name="x_product_name"/>
+        <field name="x_parent_product_name"/>
+        <field name="x_product_categ"/>
+        <field name="x_total_sold_qty"/>
+        <field name="x_total_sales"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="action_bi_ordering_report_mv" model="ir.actions.act_window">
+    <field name="name">Stock Ordering</field>
+    <field name="res_model">bi.ordering.report.mv</field>
+    <field name="view_mode">tree</field>
+  </record>
+</odoo>

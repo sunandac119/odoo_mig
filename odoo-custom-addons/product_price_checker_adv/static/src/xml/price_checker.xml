@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template xml:space="preserve">
+  <t t-name="ProductPriceChecker">
+    <div class="container checker">
+      <div class="checker_clock bg-black-50 p-3 py-md-2 m-0 mt-md-5 me-md-5 h2 text-white font-monospace"/>
+      <div class="row mt64">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <img class="mx-auto" src='/web/binary/company_logo' style="max-height: 50px;height: 100%;width: 100%;object-fit: contain;" alt="Logo"/>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+
+      <div class="card-body px-0 py-0">        
+        <div class="row mt16">
+          <div class="col-md-4 text-center" style="background-color:#e0e2e6 ;">
+            
+            <div class=" mt-5 pt-4 me-4">
+              <p class="h5">Please enter the barcode</p>
+            </div>
+
+            <div class="col-md-8 offset-md-2 o_product_price_checker_pin_pad mb32">
+              <div class="row g-0">
+                <div class="col-12 p-1 mb8 mt8">
+                  <input class="checker_input border-0 bg-white fs-1 text-center" type="text" t-attf-value="{{widget.checker_input}}"/>
+                </div>
+              </div>
+              <div class="row g-0">
+                <div class="col-4 p-1">
+                  <a href="#" class="o_product_price_checker_button btn btn-secondary border btn-block btn-lg checker_button_1 d-flex align-items-center justify-content-center">
+                    1
+                  </a>
+                </div>
+
+                <div class="col-4 p-1">
+                  <a href="#" class="o_product_price_checker_button btn btn-secondary border btn-block btn-lg checker_button_2 d-flex align-items-center justify-content-center">
+                    2
+                  </a>
+                </div>
+
+                <div class="col-4 p-1">
+                  <a href="#" class="o_product_price_checker_button btn btn-secondary border btn-block btn-lg checker_button_3 d-flex align-items-center justify-content-center">
+                    3
+                  </a>
+                </div>
+
+                <div class="col-4 p-1">
+                  <a href="#" class="o_product_price_checker_button btn btn-secondary border btn-block btn-lg checker_button_4 d-flex align-items-center justify-content-center">
+                    4
+                  </a>
+                </div>
+
+                <div class="col-4 p-1">
+                  <a href="#" class="o_product_price_checker_button btn btn-secondary border btn-block btn-lg checker_button_5 d-flex align-items-center justify-content-center">
+                    5
+                  </a>
+                </div>
+
+                <div class="col-4 p-1">
+                  <a href="#" class="o_product_price_checker_button btn btn-secondary border btn-block btn-lg checker_button_6 d-flex align-items-center justify-content-center">
+                    6
+                  </a>
+                </div>
+
+                <div class="col-4 p-1">
+                  <a href="#" class="o_product_price_checker_button btn btn-secondary border btn-block btn-lg checker_button_7 d-flex align-items-center justify-content-center">
+                    7
+                  </a>
+                </div>
+
+                <div class="col-4 p-1">
+                  <a href="#" class="o_product_price_checker_button btn btn-secondary border btn-block btn-lg checker_button_8 d-flex align-items-center justify-content-center">
+                    8
+                  </a>
+                </div>
+
+                <div class="col-4 p-1">
+                  <a href="#" class="o_product_price_checker_button btn btn-secondary border btn-block btn-lg checker_button_9 d-flex align-items-center justify-content-center">
+                    9
+                  </a>
+                </div>
+
+                <div class="col-4 p-1">
+                  <a href="#" class="o_product_price_checker_button btn btn-warning btn-block btn-lg checker_button_c d-flex align-items-center justify-content-center">
+                    Clear
+                  </a>
+                </div>
+
+                <div class="col-4 p-1">
+                  <a href="#" class="o_product_price_checker_button btn btn-secondary border btn-block btn-lg checker_button_0 d-flex align-items-center justify-content-center">
+                    0
+                  </a>
+                </div>
+
+                <div class="col-4 p-1">
+                  <a href="#" class="o_product_price_checker_button btn btn-primary btn-block btn-lg checker_button_b d-flex align-items-center justify-content-center" style="text-transform: capitalize !important">
+                    Back
+                  </a>
+                </div>
+                <div class="col-12 p-1">
+                  <a href="#" class="o_product_price_checker_button btn btn-primary btn-block btn-lg checker_button_k d-flex align-items-center justify-content-center" style="text-transform: capitalize !important">
+                    Ok
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-md-8 py-2" style="background-color: white;border: 1px solid #e0e2e6;">
+            <div class="mx-4 my-4">
+              <div class="row">
+                <div class="col-md-8">
+                  <p class="h2 mb-3">
+                    <strong>
+                      <t t-if="widget.product_name">
+                        <t style="font-size: 5.0em;" t-esc="widget.product_name"/>
+                      </t>
+                      <t t-else="">
+                        No products were found or chosen.
+                      </t>
+                    </strong>
+                  </p>
+                  <p class="text-muted checker_description">
+                    <t t-if="widget.product_description_sale">
+                      <t t-esc="widget.product_description_sale"/>
+                    </t>
+                    <t t-else="">
+                     
+                    </t>                
+                  </p>                  
+                </div>
+                <div class="col-md-4">
+                  <t t-if="widget.product_id">
+                    <img t-attf-src="/web/image?model=product.product&amp;field=image_1920&amp;id=#{widget.product_id}" class="card-img-top" alt="Apple Computer" style="width: 90px;height: 90px; float: right;"/>
+                  </t>
+                  <t t-else="">
+                    <img src="/product_price_checker_adv/static/src/img/nop.svg" class="card-img-top" alt="Apple Computer" style="width: 90px;height: 90px; float: right;"/>
+                  </t>
+                </div>
+              </div>
+              
+              <div class="row">                
+                <div class="col-md-5">
+                  <t t-if="widget.product_id">
+                    <p class="text-primary mb8 new-section" style="font-size: 14px;" t-if="widget.product_id"> Details </p>               
+                    <ol class="list-unstyled mb-0 pt-0 pb-0">
+                      <p class="my-3 fw-bold text-muted text-center"></p>
+                      <li class="mb-3">
+                        <i class="fa fa-arrow-right text-success me-3"></i>
+                        <strong>Unit</strong>
+                        <small>:</small>
+                        <strong><t t-esc="widget.product_uom_id" t-options='{"widget"}'/></strong>
+                      </li>
+                      <li class="mb-3">
+                        <i class="fa fa-arrow-right text-success me-3"></i>
+                        <strong>Barcode</strong>
+                        <small>:</small>
+                        <strong><t t-esc="widget.product_barcode"/></strong>
+                      </li>
+                      <li class="mb-3">
+                        <i class="fa fa-arrow-right text-success me-3"></i>
+                        <strong>Reference</strong>
+                        <small>:</small>
+                        <strong><t t-esc="widget.product_code"/></strong>
+                      </li>
+					                        <li class="mb-3">
+                        <i class="fa fa-arrow-right text-success me-3"></i>
+                        <strong>Price</strong>
+                        <small>:</small>
+                        <strong style="font-size: 3.0em; color: darkblue;">RM  <t t-esc="widget.product_price"/></strong>
+                      </li>
+                    </ol>
+                  </t>
+                </div>
+                
+                <div class="col-md-7">
+                  <t t-if="widget.product_id">
+                    <p class="text-primary mb8 new-section" style="font-size: 14px;" t-if="widget.product_id">Offers Pricelists</p>
+					<t t-if="widget.product_pricelists">                  
+						<div class="product_pricelists_div">
+							<table class="table table-fixed-checker">
+								<thead>
+									<tr>
+										<th class="col-4 text-left">Pricelist Name</th>
+										<th class="col-2 text-center">Price</th>                      
+									</tr>
+								</thead>
+								<tbody>
+									<t t-foreach="widget.product_pricelists" t-as="pricelist">
+										<tr t-foreach="pricelist['items']" t-as="item">
+											<td class="col-4 text-left"><span t-esc="pricelist['pricelist_name']"/></td>
+											<td class="col-2 text-center"><span t-esc="item['price']"/></td>                                
+										</tr> 
+									</t>                                      
+								</tbody>
+							</table>
+						</div>
+					</t>
+                    <t t-else="">
+                      <div class="product_pricelists_err">
+                        <p>No offers found.</p>
+                      </div>
+                    </t>
+                  </t>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </t>
+</template>

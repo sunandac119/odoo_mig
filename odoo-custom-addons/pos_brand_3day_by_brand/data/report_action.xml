@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <report
+      id="action_report_pos_brand_3day_by_brand"
+      model="pos.brand.3day.by.brand.wizard"
+      string="POS 3-Day Sales by Brand"
+      report_type="qweb-pdf"
+      name="pos_brand_3day_by_brand.report_pos_brand_3day_by_brand"
+      file="pos_brand_3day_by_brand.report_pos_brand_3day_by_brand"
+      print_report_name="'POS_Brand_3Days_' + (object.date_from or '') + '_' + (object.date_to or '')"
+  />
+</odoo>

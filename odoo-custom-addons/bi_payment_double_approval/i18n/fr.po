@@ -1,0 +1,180 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* bi_payment_double_approval
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-24 14:07+0000\n"
+"PO-Revision-Date: 2021-03-24 14:07+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: bi_payment_double_approval
+#: model:ir.model,name:bi_payment_double_approval.model_account_payment_approval_config
+msgid "Account Payment Approval Configuration"
+msgstr "Configuration d'approbation de paiement de compte"
+
+#. module: bi_payment_double_approval
+#: model:ir.model,name:bi_payment_double_approval.model_res_config_settings
+msgid "Config Settings"
+msgstr "Paramètres de config"
+
+#. module: bi_payment_double_approval
+#: model_terms:ir.ui.view,arch_db:bi_payment_double_approval.view_account_payment_form_inherit
+msgid "Confirm"
+msgstr "Confirmer"
+
+#. module: bi_payment_double_approval
+#: model:ir.model.fields,field_description:bi_payment_double_approval.field_account_payment_approval_config__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: bi_payment_double_approval
+#: model:ir.model.fields,field_description:bi_payment_double_approval.field_account_payment_approval_config__create_date
+msgid "Created on"
+msgstr "Créé sur"
+
+#. module: bi_payment_double_approval
+#: model:ir.model.fields,field_description:bi_payment_double_approval.field_account_payment_approval_config__display_name
+msgid "Display Name"
+msgstr "Afficher un nom"
+
+#. module: bi_payment_double_approval
+#: model:ir.model.fields,field_description:bi_payment_double_approval.field_account_payment__account_first_approval
+#: model:ir.model.fields,field_description:bi_payment_double_approval.field_account_payment_approval_config__account_first_approval
+#: model:ir.model.fields,field_description:bi_payment_double_approval.field_res_config_settings__account_first_approval
+#: model:ir.model.fields.selection,name:bi_payment_double_approval.selection__account_payment__state__first_approve
+msgid "First Approval"
+msgstr "Première approbation"
+
+#. module: bi_payment_double_approval
+#: model:ir.model.fields,field_description:bi_payment_double_approval.field_account_payment_approval_config__id
+msgid "ID"
+msgstr "identifiant"
+
+#. module: bi_payment_double_approval
+#: code:addons/bi_payment_double_approval/models/inherited_account_payment.py:0
+#, python-format
+msgid ""
+"It is not allowed to delete a payment that already created a journal entry "
+"since it would create a gap in the numbering. You should create the journal "
+"entry again and cancel it thanks to a regular revert."
+msgstr ""
+"La suppression d'un règlement qui a déjà créé une entrée de journal n'est "
+"pas autorisée car cela créerait une discontinuité dans la numérotation. Vous"
+" devriez recréer l'entrée de journal et l'annuler via une annulation "
+"classique."
+
+#. module: bi_payment_double_approval
+#: model:ir.model.fields,field_description:bi_payment_double_approval.field_account_payment_approval_config____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: bi_payment_double_approval
+#: model:ir.model.fields,field_description:bi_payment_double_approval.field_account_payment_approval_config__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: bi_payment_double_approval
+#: model:ir.model.fields,field_description:bi_payment_double_approval.field_account_payment_approval_config__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: bi_payment_double_approval
+#: model:ir.model.fields,field_description:bi_payment_double_approval.field_account_payment_approval_config__account_first_approval_minimum_amount
+#: model:ir.model.fields,field_description:bi_payment_double_approval.field_account_payment_approval_config__account_second_approval_minimum_amount
+#: model:ir.model.fields,field_description:bi_payment_double_approval.field_res_config_settings__account_first_approval_minimum_amount
+#: model:ir.model.fields,field_description:bi_payment_double_approval.field_res_config_settings__account_second_approval_minimum_amount
+msgid "Minimum Amount"
+msgstr "Montant minimal"
+
+#. module: bi_payment_double_approval
+#: model_terms:ir.ui.view,arch_db:bi_payment_double_approval.res_config_settings_view_form_extended
+#: model:res.groups,name:bi_payment_double_approval.group_payment_first_approval
+msgid "Payment First Approval"
+msgstr "Première approbation du paiement"
+
+#. module: bi_payment_double_approval
+#: model_terms:ir.ui.view,arch_db:bi_payment_double_approval.res_config_settings_view_form_extended
+#: model:res.groups,name:bi_payment_double_approval.group_payment_second_approval
+msgid "Payment Second Approval"
+msgstr "Deuxième approbation de paiement"
+
+#. module: bi_payment_double_approval
+#: model:ir.model,name:bi_payment_double_approval.model_account_payment
+msgid "Payments"
+msgstr "Paiements"
+
+#. module: bi_payment_double_approval
+#: model:ir.model.fields,field_description:bi_payment_double_approval.field_account_payment__account_second_approval
+#: model:ir.model.fields,field_description:bi_payment_double_approval.field_account_payment_approval_config__account_second_approval
+#: model:ir.model.fields,field_description:bi_payment_double_approval.field_res_config_settings__account_second_approval
+#: model:ir.model.fields.selection,name:bi_payment_double_approval.selection__account_payment__state__second_approve
+#: model_terms:ir.ui.view,arch_db:bi_payment_double_approval.view_account_payment_form_inherit
+msgid "Second Approval"
+msgstr "Deuxième approbation"
+
+#. module: bi_payment_double_approval
+#: code:addons/bi_payment_double_approval/models/inherited_res_config_setting.py:0
+#, python-format
+msgid "Second approval amount must be greater than First approval amount"
+msgstr "Le montant de la deuxième approbation doit être supérieur au montant de la première approbation"
+
+#. module: bi_payment_double_approval
+#: code:addons/bi_payment_double_approval/models/inherited_account_payment.py:0
+#: code:addons/bi_payment_double_approval/models/inherited_account_payment.py:0
+#: code:addons/bi_payment_double_approval/models/inherited_account_payment.py:0
+#: code:addons/bi_payment_double_approval/models/inherited_account_payment.py:0
+#: code:addons/bi_payment_double_approval/models/inherited_account_payment.py:0
+#: code:addons/bi_payment_double_approval/models/inherited_account_payment.py:0
+#, python-format
+msgid "Sorry, you are not allowed to access this document."
+msgstr "Désolé, vous n'êtes pas autorisé à accéder à ce document."
+
+#. module: bi_payment_double_approval
+#: model:ir.model.fields,field_description:bi_payment_double_approval.field_account_payment__state
+msgid "Status"
+msgstr "État"
+
+#. module: bi_payment_double_approval
+#: code:addons/bi_payment_double_approval/models/inherited_account_payment.py:0
+#, python-format
+msgid "The payment cannot be processed because the invoice is not open!"
+msgstr "Le paiement ne peut pas être traité car la facture n'est pas ouverte!"
+
+#. module: bi_payment_double_approval
+#: code:addons/bi_payment_double_approval/models/inherited_account_payment.py:0
+#, python-format
+msgid ""
+"This method should only be called to process a single invoice's payment."
+msgstr ""
+
+#. module: bi_payment_double_approval
+#: model_terms:ir.ui.view,arch_db:bi_payment_double_approval.view_account_payment_form_inherit
+#: model_terms:ir.ui.view,arch_db:bi_payment_double_approval.view_account_payment_invoice_form_inherit
+msgid "Validate"
+msgstr "Valider"
+
+#. module: bi_payment_double_approval
+#: code:addons/bi_payment_double_approval/models/inherited_account_payment.py:0
+#, python-format
+msgid "You cannot delete a payment that is already posted."
+msgstr "Vous ne pouvez pas supprimer un paiement qui a déjà été comptabilisé."
+
+#. module: bi_payment_double_approval
+#: code:addons/bi_payment_double_approval/models/inherited_account_payment.py:0
+#, python-format
+msgid "You cannot delete an payment which is not draft or cancelled."
+msgstr "Vous ne pouvez pas supprimer un paiement qui n'est pas brouillon ou annulé."
+
+#. module: bi_payment_double_approval
+#: code:addons/bi_payment_double_approval/models/inherited_account_payment.py:0
+#, python-format
+msgid "You have to define a sequence for %s in your company."
+msgstr "Vous devez définir une séquence pour %s dans votre société."

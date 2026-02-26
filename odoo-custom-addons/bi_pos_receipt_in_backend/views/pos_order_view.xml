@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id="assets_backend" name="iap assets" inherit_id="web.assets_backend">
+			<xpath expr="." position="inside">
+				<link rel="stylesheet" type="text/scss" href="/bi_pos_receipt_in_backend/static/src/css/backend.css"/>
+			</xpath>
+		</template>
+		<record id="pos_order_view_inherit" model="ir.ui.view">
+			<field name="name">pos.order.view.inherit</field>
+			<field name="model">pos.order</field>
+			<field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//button[@name='refund']" position="after">
+                    <button name="send_receipt_by_email" type="object" string="Send by Email"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

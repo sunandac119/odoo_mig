@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- Wizard -->
+  <record id="view_pos_brand_3day_pages_wizard_form" model="ir.ui.view">
+    <field name="name">pos.brand.3day.pages.wizard.form</field>
+    <field name="model">pos.brand.3day.pages.wizard</field>
+    <field name="arch" type="xml">
+      <form string="POS 3-Day Sales by Brand">
+        <group>
+          <group>
+            <field name="date_from"/>
+            <field name="date_to"/>
+          </group>
+          <group>
+            <field name="team_ids" widget="many2many_tags" options="{'no_create': True}"/>
+            <field name="warehouse_ids" widget="many2many_tags" options="{'no_create': True}"/>
+          </group>
+        </group>
+        <footer>
+          <button name="action_print_pdf" type="object" class="btn-primary" string="Print PDF"/>
+          <button special="cancel" class="btn-secondary" string="Cancel"/>
+        </footer>
+      </form>
+    </field>
+  </record>
+
+  <record id="action_pos_brand_3day_pages_wizard" model="ir.actions.act_window">
+    <field name="name">3-Day POS Sales by Brand</field>
+    <field name="res_model">pos.brand.3day.pages.wizard</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+  </record>
+
+  <!-- Inventory → Reporting (Custom) -->
+  <menuitem id="menu_inventory_reporting_custom"
+            name="Reporting (Custom)"
+            parent="stock.menu_stock_root"
+            sequence="96"/>
+  <menuitem id="menu_pos_brand_3day_pages_wizard"
+            name="POS Sales by Brand (3 Days)"
+            parent="menu_inventory_reporting_custom"
+            action="action_pos_brand_3day_pages_wizard"
+            sequence="1"/>
+  <!-- TIP: If you want it directly under the native Reporting menu, change parent to stock.menu_stock_report (if present). -->
+</odoo>

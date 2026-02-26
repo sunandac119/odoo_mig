@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_chain_shon_ss_odoo_connector_chain_shon_ss_odoo_connector,chain_shon_ss_odoo_connector.chain_shon_ss_odoo_connector,model_chain_shon_ss_odoo_connector_chain_shon_ss_odoo_connector,base.group_user,1,1,1,1

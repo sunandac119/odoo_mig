@@ -1,0 +1,29 @@
+date 12th April 2021
+version 14.0.0.1
+issue solve:-
+	Used Paper formate to print report and the module works fine.
+-------------------------------------------------------------------------------.
+
+Date :-14th Dec 2021.
+version:- 14.0.0.2
+improvment point:-
+        --> add a Control button and print Pdf Report of current session Data.
+-------------------------------------------------------------------------------.
+
+Date :-18th feb 2021.
+version:- 14.0.0.3
+improvment point:-
+        --> report print of control button but printed value of  decimal point more then 2 so solve it.
+-------------------------------------------------------------------------------.
+
+Date :- 7th March 2022.
+version:- 14.0.0.4
+improvment point:-
+        --> issue of diffrance calculation issue solve and refund payment issue solve in v14
+-------------------------------------------------------------------------------.
+
+=> 14.0.0.5 : Improved an index as per latest improvements.
+
+
+Version 14.0.0.6 : (02-02-2023)
+        - Update close session report in this payment method details comes wrong fixed that issue.

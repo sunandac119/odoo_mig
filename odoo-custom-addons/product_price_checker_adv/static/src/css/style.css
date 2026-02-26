@@ -1,0 +1,53 @@
+.checker, .checker::after, .checker::before {
+	-webkit-user-select: none;
+	-webkit-user-drag: none;
+	-webkit-app-region: no-drag;
+	cursor: default;
+}
+
+.checker_description {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.checker_clock {
+    position: absolute;
+    top: 0;
+    left: auto;
+    bottom: auto;
+    right: 0;
+}
+
+.checker input::-webkit-outer-spin-button,
+.checker input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.checker input[type=number] {
+    -moz-appearance: textfield; /* Firefox */
+}
+
+.product_pricelists_div{
+    width: 100%;
+    max-height: 177px;
+    overflow: auto;
+}
+.table-fixed-checker thead th {
+    background: white !important;
+} 
+.table-fixed-checker thead tr {
+    box-shadow: 0 5px 10px #dae4fb;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 100;
+}
+.product_pricelists_err{
+    background-color: #e0e2e6;
+    min-height: 177px;
+    text-align: center;
+    line-height: 177px;
+    overflow: hidden;
+}

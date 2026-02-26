@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ===================================================== -->
+    <!-- 1️⃣ Restrict UoM by UoM Category on Product Template -->
+    <!-- ===================================================== -->
+    <record id="view_product_template_form_uom_filter_id" model="ir.ui.view">
+        <field name="name">product.template.form.uom.filter</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+
+            <!-- Ensure uom_category_id is visible -->
+            <xpath expr="//field[@name='uom_id']" position="before">
+                <field name="uom_category_id"/>
+            </xpath>
+
+            <!-- Filter Sales UoM -->
+            <xpath expr="//field[@name='uom_id']" position="attributes">
+                <attribute name="domain">
+                    [('category_id', '=', uom_category_id), ('active', '=', True)]
+                </attribute>
+                <attribute name="options">{'no_create': True}</attribute>
+            </xpath>
+
+            <!-- Filter Purchase UoM -->
+            <xpath expr="//field[@name='uom_po_id']" position="attributes">
+                <attribute name="domain">
+                    [('category_id', '=', uom_category_id), ('active', '=', True)]
+                </attribute>
+                <attribute name="options">{'no_create': True}</attribute>
+            </xpath>
+
+        </field>
+    </record>
+
+
+    <!-- ======================================== -->
+    <!-- 2️⃣ POS UoM Barcode Tab on Product Form -->
+    <!-- ======================================== -->
+    <record id="view_product_template_form_barcode_id" model="ir.ui.view">
+        <field name="name">product.template.barcode.uom.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+
+            <!-- Barcode button in header -->
+            <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                <button name="action_view_barcodes"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-barcode">
+                    <field name="barcode_count" widget="statinfo" string="Barcodes"/>
+                </button>
+            </xpath>
+
+            <!-- New POS UoM tab -->
+            <xpath expr="//page[@name='variants']" position="after">
+                <page string="POS UoM" name="pos_uom">
+
+                    <div class="alert alert-info" role="alert">
+                        <strong>Note:</strong>
+                        Define specific barcodes and prices for different units of measure.
+                        Pricelist prices will take priority over these sale prices when applicable.
+                    </div>
+
+                    <field name="barcode_uom_ids"
+                           context="{'default_product_id': active_id}">
+
+                        <tree editable="bottom">
+                            <field name="product_id" invisible="1"/>
+                            <field name="uom_category_id"/>
+                            <field name="description"/>
+                            <field name="uom_id"
+                                   string="Unit of Measure"
+                                   domain="[('category_id','=',uom_category_id),('active','=',True)]"
+                                   options="{'no_create': True}"
+                                   required="1"/>
+                            <field name="barcode" required="1"/>
+                            <field name="sale_price"
+                                   widget="monetary"/>
+                            <field name="active" invisible="1"/>
+                            <field name="company_id" invisible="1"/>
+                        </tree>
+
+                        <form>
+                            <sheet>
+                                <div class="oe_button_box" name="button_box">
+                                    <button name="toggle_active"
+                                            type="object"
+                                            class="oe_stat_button"
+                                            icon="fa-archive">
+                                        <field name="active"
+                                               widget="boolean_button"
+                                               options='{"terminology":"archive"}'/>
+                                    </button>
+                                </div>
+
+                                <div class="oe_title">
+                                    <h1>
+                                        <field name="barcode"/>
+                                    </h1>
+                                </div>
+
+                                <group>
+                                    <group>
+                                        <field name="description" readonly="1"/>
+                                        <field name="uom_category_id" invisible="1"/>
+                                        <field name="uom_id"
+                                               domain="[('category_id','=',uom_category_id),('active','=',True)]"
+                                               options="{'no_create': True}"/>
+                                    </group>
+                                    <group>
+                                        <field name="sale_price"
+                                               widget="monetary"/>
+                                        <field name="company_id"
+                                               groups="base.group_multi_company"/>
+                                    </group>
+                                </group>
+                            </sheet>
+                        </form>
+
+                    </field>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+
+
+    <!-- ======================================= -->
+    <!-- 3️⃣ Make Supplier UoM Editable -->
+    <!-- ======================================= -->
+    <record id="product_supplierinfo_tree_view2_inherit" model="ir.ui.view">
+        <field name="name">product.supplierinfo.tree.inherit</field>
+        <field name="model">product.supplierinfo</field>
+        <field name="inherit_id" ref="purchase.product_supplierinfo_tree_view2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_uom']" position="attributes">
+                <attribute name="readonly">0</attribute>
+            </xpath>
+        </field>
+    </record>
+
+
+    <!-- ======================================= -->
+    <!-- 4️⃣ Improve Product Search -->
+    <!-- ======================================= -->
+    <record id="product_template_search_view_inherit" model="ir.ui.view">
+        <field name="name">product.template.search.barcode.uom</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//search" position="inside">
+                <field name="barcode_uom_ids" string="Barcode line"/>
+            </xpath>
+
+            <xpath expr="//search/field[@name='name']" position="replace">
+                <field name="name"
+                       string="Product"
+                       filter_domain="[
+                           '|','|','|','|',
+                           ('default_code','ilike',self),
+                           ('product_variant_ids.default_code','ilike',self),
+                           ('name','ilike',self),
+                           ('barcode','ilike',self),
+                           ('barcode_uom_ids.barcode','ilike',self)
+                       ]"/>
+            </xpath>
+
+        </field>
+    </record>
+
+
+    <!-- ======================================= -->
+    <!-- 5️⃣ Product Variant Extra Field -->
+    <!-- ======================================= -->
+    <record id="product_product_form_view_inherits" model="ir.ui.view">
+        <field name="name">product.product.form.view.inherits</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='default_code']" position="after">
+                <field name="is_weight"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

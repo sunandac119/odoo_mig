@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Chief Cashier group allowed to process refunds -->
+    <record id="group_pos_chief_cashier" model="res.groups">
+        <field name="name">POS Chief Cashier</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+        <field name="implied_ids" eval="[(4, ref('point_of_sale.group_pos_user'))]"/>
+    </record>
+</odoo>

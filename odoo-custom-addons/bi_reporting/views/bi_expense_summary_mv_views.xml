@@ -1,0 +1,21 @@
+<odoo>
+    <record id="view_bi_expense_summary_mv_tree" model="ir.ui.view">
+        <field name="name">bi.expense.summary.mv.tree</field>
+        <field name="model">bi.expense.summary.mv</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="x_expense_date"/>
+                <field name="x_team"/>
+                <field name="x_expense_name"/>
+                <field name="x_total_amount"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_bi_expense_summary_mv" model="ir.actions.act_window">
+        <field name="name">BI Expense Summary</field>
+        <field name="res_model">bi.expense.summary.mv</field>
+        <field name="view_mode">tree,pivot</field>
+        <field name="target">current</field>
+    </record>
+</odoo>

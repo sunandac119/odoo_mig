@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- 13th Month Data Deletion Cron -->
+        <record id="13th_month_sale_order_data_deletion" model="ir.cron">
+            <field name="name">Data Unlink: 13th Month Sale Order Data Deletion</field>
+            <field name="model_id" ref="base.model_res_config_settings"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_delete_old_sales_order()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="active" eval="True"/>
+            <field name="nextcall" eval="(DateTime.now().replace(hour=10, minute=00, second=0) + timedelta(days=1)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+
+        <record id="13th_month_purchase_order_data_deletion" model="ir.cron">
+            <field name="name">Data Unlink: 13th Month Purchase Order Data Deletion</field>
+            <field name="model_id" ref="base.model_res_config_settings"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_delete_old_purchase_order()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="active" eval="True"/>
+            <field name="nextcall" eval="(DateTime.now().replace(hour=11, minute=30, second=0) + timedelta(days=1)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+        
+        <record id="13th_month_data_manufacture_deletion" model="ir.cron">
+            <field name="name">Data Unlink: 13th Month Manufacture Order Data Deletion</field>
+            <field name="model_id" ref="base.model_res_config_settings"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_delete_old_mrp_order()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="active" eval="True"/>
+            <field name="nextcall" eval="(DateTime.now().replace(hour=13, minute=00, second=0) + timedelta(days=1)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+
+        <record id="13th_month_data_account_move_deletion" model="ir.cron">
+            <field name="name">Data Unlink: 13th Month Invoice Data Deletion</field>
+            <field name="model_id" ref="base.model_res_config_settings"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_delete_old_invoices()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="active" eval="True"/>
+            <field name="nextcall" eval="(DateTime.now().replace(hour=14, minute=30, second=0) + timedelta(days=1)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+
+    </data>
+</odoo>
+

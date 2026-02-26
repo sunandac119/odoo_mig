@@ -1,0 +1,46 @@
+
+=> 14.0.0.1 : Add French, Spanish , Arabic and Dutch translation in module also improved an index.
+
+Version 14.0.0.2 : (23-08-22)
+		- Remove Partner required validation.
+		- Update import xls file.
+
+Version 14.0.0.3 : (02-02-2023)
+	-- Update the code for the import order and added new field for the samle file pos_reference.
+	
+=> 14.0.0.4 : Improved an index as per latest changes.
+
+Version 14.0.0.5 : (15-05-2023)
+    - Add option in wizard (Draft,confirm), when confirm select , picking automatically.
+    - Custom Sequence/default odoo sequence added. , Create order according to that sequence.
+    - Select Product by : Name, Barcode, Internal Ref code , product name according to that.
+
+Version 14.0.0.6 : (25-05-2023)
+	- fix issue of stage in imported order (draft/confrim)
+
+Version 14.0.0.7 : (26-05-2023)
+    - fix issue of confirm stage with default sequence and add payment.
+    
+=> 14.0.0.8 : Improved an index as per latest improvements.
+
+Version 14.0.0.9 : (23-08-2023)
+	Improvement
+		- Add the "Import POS Order" group on the User page.
+		- Add create customer box to create customer at the time of import.
+
+Version 14.0.1.0 : (25-08-2023)
+	- Add validation when used same name of Tax & User that time show validation message.
+
+Version 14.0.1.1 : (28-08-2023)
+	- Add validation when used same name of pos order that time show validation message.
+	
+=> 14.0.1.2 : Improved an index as per latest improvements.
+
+Version 14.0.1.3 : (11-09-2023)
+	- Random file is added that time facing traceback error so fix that and add validation for 'Wrong File Data Format!'
+
+Version 14.0.1.4 : (05-04-2024)
+	- Add functionality related to Multiple product added in one pos order.
+
+Version 14.0.1.5 (08/04/2024)
+	- Fixed issue related to 2 payment lines when confirm stage ordre imported.

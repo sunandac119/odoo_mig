@@ -1,0 +1,67 @@
+.cash_popup{
+    max-width: 1000px !important;
+}
+
+.cash_popup > table{
+    width: 980px;
+    margin: 10px;
+}
+
+// footer button
+.cash_popup .confirm ,.cash_popup .cancel,.cash_popup .print_report{
+    float: left !important;
+    width: fit-content !important;
+    margin-left: 5px;
+    //padding: 0px 5px 0px 5px;
+    padding: 0px 9px;
+}
+.cash_popup .confirm{
+    background: #018380 !important;
+    border: solid 1px #00a09d !important;
+    color: white !important;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.cash_in,.cash_out{
+    float: left !important;
+    padding: 0 !important;
+    margin-left: 10px !important;
+}
+
+.cash_popup input {
+    min-height: 30px !important;
+    font-size: 10px !important;
+}
+.cash_popup td {
+    padding: 3px !important;
+}
+.cash_popup td span{
+    font-size: 14px !important;
+}
+.cash_popup th {
+    font-size: 13px !important;
+}
+.cash_popup body{
+    padding: 12px !important;
+}
+
+.cash_popup .title{
+    float: left !important;
+    background: transparent !important;
+    border: none !important;
+    font-size: 13px !important;
+}

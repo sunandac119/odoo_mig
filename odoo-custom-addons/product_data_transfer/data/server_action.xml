@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Update product uom -->
+        <record id="product_data_transfer_server_action" model="ir.actions.server">
+            <field name="name">Update Product UOM</field>
+            <field name="model_id" ref="product.model_product_template"/>
+            <field name="binding_model_id" ref="product.model_product_template"/>
+            <field name="state">code</field>
+            <field name="code">records.action_set_product()</field>
+        </record>
+
+
+        <!-- Generate barcode uom lines -->
+        <record id="action_generate_barcode_uom_lines" model="ir.actions.server">
+            <field name="name">Action Generate Barcode UOM Lines</field>
+            <field name="model_id" ref="product.model_product_template"/>
+            <field name="binding_model_id" ref="product.model_product_template"/>
+            <field name="state">code</field>
+            <field name="code">records.action_generate_barcode_uom_lines()</field>
+        </record>
+
+        <!-- Update uom history -->
+        <record id="action_update_uom_history" model="ir.actions.server">
+            <field name="name">Update UOM history</field>
+            <field name="model_id" ref="product.model_product_template"/>
+            <field name="binding_model_id" ref="product.model_product_template"/>
+            <field name="state">code</field>
+            <field name="code">records.action_update_uom_history()</field>
+        </record>
+
+        <!-- Update po,so line uom history -->
+        <record id="action_update_po_so_line_uom_history" model="ir.actions.server">
+            <field name="name">Update PO,SO line UOM history</field>
+            <field name="model_id" ref="product.model_product_template"/>
+            <field name="binding_model_id" ref="product.model_product_template"/>
+            <field name="state">code</field>
+            <field name="code">records.action_update_po_so_line_uom_history()</field>
+        </record>
+
+        <!-- Update ml, sml line uom history -->
+        <record id="action_update_barcode_and_description" model="ir.actions.server">
+            <field name="name">Update SM, SML barcode and description history</field>
+            <field name="model_id" ref="product.model_product_template"/>
+            <field name="binding_model_id" ref="product.model_product_template"/>
+            <field name="state">code</field>
+            <field name="code">records.action_update_barcode_and_description()</field>
+        </record>
+
+        <!-- Update po,so line uom history -->
+        <record id="action_update_barcode_and_description_po_so" model="ir.actions.server">
+            <field name="name">Update PO, SO barcode and description history</field>
+            <field name="model_id" ref="product.model_product_template"/>
+            <field name="binding_model_id" ref="product.model_product_template"/>
+            <field name="state">code</field>
+            <field name="code">records.action_update_barcode_and_description_po_so()</field>
+        </record>
+
+        <!-- Delete stock picking records -->
+        <!-- <record id="action_delete_stock_picking" model="ir.actions.server">
+            <field name="name">Action delete picking</field>
+            <field name="model_id" ref="stock.model_stock_picking"/>
+            <field name="binding_model_id" ref="stock.model_stock_picking"/>
+            <field name="state">code</field>
+            <field name="code">records.action_delete_picking()</field>
+        </record> -->
+
+
+        <!-- Delete stock move and move lines recods -->
+        <record id="action_delete_stock_move_line" model="ir.actions.server">
+            <field name="name">Action delete stock moves</field>
+            <field name="model_id" ref="stock.model_stock_move_line"/>
+            <field name="binding_model_id" ref="stock.model_stock_move_line"/>
+            <field name="state">code</field>
+            <field name="code">records.action_delete_stock_moves()</field>
+        </record>
+
+        <!-- update prouct pricelist record -->
+        <record id="action_product_pricelist" model="ir.actions.server">
+            <field name="name">Action update product pricelist</field>
+            <field name="model_id" ref="product.model_product_pricelist"/>
+            <field name="binding_model_id" ref="product.model_product_pricelist"/>
+            <field name="state">code</field>
+            <field name="code">records.action_product_pricelist()</field>
+        </record>
+        
+        <!-- Update manufacturing history -->
+        <record id="action_update_manufacturing_history" model="ir.actions.server">
+            <field name="name">Update manufacturing history</field>
+            <field name="model_id" ref="product.model_product_template"/>
+            <field name="binding_model_id" ref="product.model_product_template"/>
+            <field name="state">code</field>
+            <field name="code">records.action_update_manufacturing_history()</field>
+        </record>
+
+        <!-- Update product history -->
+        <record id="action_update_product_history" model="ir.actions.server">
+            <field name="name">Update product history</field>
+            <field name="model_id" ref="product.model_product_template"/>
+            <field name="binding_model_id" ref="product.model_product_template"/>
+            <field name="state">code</field>
+            <field name="code">records.action_update_product_history()</field>
+        </record>
+
+        <!-- Archive child product -->
+        <record id="action_archive_child_products" model="ir.actions.server">
+            <field name="name">Archive child product</field>
+            <field name="model_id" ref="product.model_product_template"/>
+            <field name="binding_model_id" ref="product.model_product_template"/>
+            <field name="state">code</field>
+            <field name="code">records.action_archive_and_export_xlsx()</field>
+        </record>
+
+        <!-- Generate product sheet which are parent and not multi barcode lines -->
+        <record id="action_generate_skipped_barcode_lines" model="ir.actions.server">
+            <field name="name">Generate skipped barcode lines</field>
+            <field name="model_id" ref="product.model_product_template"/>
+            <field name="state">code</field>
+            <field name="code">action = env['product.template'].action_generate_skipped_barcode_lines()</field>
+        </record>
+
+        <!-- Server Action to delete expire pricelist -->
+        <record id="action_delete_expired_rules_pricelist" model="ir.actions.server">
+            <field name="name">Delete Expired Pricelist Rules</field>
+            <field name="model_id" ref="product.model_product_pricelist"/>
+            <field name="binding_model_id" ref="product.model_product_pricelist"/> <!-- Attach to Pricelist -->
+            <field name="state">code</field>
+            <field name="code">records.action_delete_expired_rules()</field>
+        </record>
+
+        <!-- Server Action to export the vendors related product excel -->
+       <record id="action_export_vendors_products_xlsx" model="ir.actions.server">
+            <field name="name">Export Vendor Products</field>
+            <field name="model_id" ref="product.model_res_partner"/>
+            <field name="binding_model_id" ref="product.model_res_partner"/> 
+            <field name="state">code</field>
+            <field name="code">action = env.ref('product_data_transfer.action_vendor_export_wizard').read()[0]
+action['context'] = {'default_vendor_ids': records.ids}
+action
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<odoo>
+    <data noupdate="1">
+        <record id="purchase_forecasting_scheduler" model="ir.cron">
+            <field name="name">Purchase Forecasting Scheduler</field>
+            <field name="model_id" ref="model_purchase_forecasting_report" />
+            <field name="state">code</field>
+            <field name="code">model.purchase_forecasting_data()</field>
+            <field name='interval_number'>1</field>
+            <field name='interval_type'>months</field>
+            <field name="numbercall">-1</field>
+        </record>
+        <record id="purchaseperson_forecasting_scheduler" model="ir.cron">
+            <field name="name">Purchase Representative Forecasting Scheduler</field>
+            <field name="model_id" ref="model_purchaseperson_forecasting" />
+            <field name="state">code</field>
+            <field name="code">model.purchaseperson_forecasting()</field>
+            <field name='interval_number'>1</field>
+            <field name='interval_type'>months</field>
+            <field name="numbercall">-1</field>
+        </record>
+        <record id="purchasevendor_forecasting_scheduler" model="ir.cron">
+            <field name="name">Purchase Vendor Forecasting Scheduler</field>
+            <field name="model_id" ref="model_purchasevendor_forecasting" />
+            <field name="state">code</field>
+            <field name="code">model.purchasevendor_forecasting()</field>
+            <field name='interval_number'>1</field>
+            <field name='interval_type'>months</field>
+            <field name="numbercall">-1</field>
+        </record>
+        <record id="purchaseproduct_forecasting_scheduler" model="ir.cron">
+            <field name="name">Purchase Product Forecasting Scheduler</field>
+            <field name="model_id" ref="model_purchaseproduct_forecasting" />
+            <field name="state">code</field>
+            <field name="code">model.purchaseproduct_forecasting()</field>
+            <field name='interval_number'>1</field>
+            <field name='interval_type'>months</field>
+            <field name="numbercall">-1</field>
+        </record>
+
+        <record id="sale_forecasting_scheduler" model="ir.cron">
+            <field name="name">Sale Forecasting Scheduler</field>
+            <field name="model_id" ref="model_sale_forecasting_report" />
+            <field name="state">code</field>
+            <field name="code">model.sale_forecasting_data()</field>
+            <field name='interval_number'>1</field>
+            <field name='interval_type'>months</field>
+            <field name="numbercall">-1</field>
+        </record>
+        <record id="salesperson_forecasting_scheduler" model="ir.cron">
+            <field name="name">Salesperson Forecasting Scheduler</field>
+            <field name="model_id" ref="model_salesperson_forecasting" />
+            <field name="state">code</field>
+            <field name="code">model.saleperson_forecasting()</field>
+            <field name='interval_number'>1</field>
+            <field name='interval_type'>months</field>
+            <field name="numbercall">-1</field>
+        </record>
+        <record id="salescustomer_forecasting_scheduler" model="ir.cron">
+            <field name="name">Sales Customer Forecasting Scheduler</field>
+            <field name="model_id" ref="model_salescustomer_forecasting" />
+            <field name="state">code</field>
+            <field name="code">model.salecustomer_forecasting()</field>
+            <field name='interval_number'>1</field>
+            <field name='interval_type'>months</field>
+            <field name="numbercall">-1</field>
+        </record>
+        <record id="salesproduct_forecasting_scheduler" model="ir.cron">
+            <field name="name">Sales Product Forecasting Scheduler</field>
+            <field name="model_id" ref="model_salesproduct_forecasting" />
+            <field name="state">code</field>
+            <field name="code">model.saleproduct_forecasting()</field>
+            <field name='interval_number'>1</field>
+            <field name='interval_type'>months</field>
+            <field name="numbercall">-1</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id="pw_disable_pos_features_assets" inherit_id="point_of_sale.assets">
+			<xpath expr="." position="inside">
+				<link rel="stylesheet" href="/pw_disable_pos_features/static/src/css/pw_disable_pos_features.css" />
+				<script type="text/javascript" src="/pw_disable_pos_features/static/src/js/pw_disable_pos_features.js"/>
+			</xpath>
+		</template>
+	</data>
+</odoo>

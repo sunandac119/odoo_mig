@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_warhouse_stock_request">
+        <t t-call="web.external_layout">
+            <br/>
+            <div class="page">
+                <div class="oe_structure"/>
+                <t t-foreach="docs" t-as="0">
+                    <center>
+                        <h2><span t-field="doc.name"/></h2>
+                    </center>
+                    
+                    <br/>
+                    <table class="table table-condensed table-bordered">
+                        <tr>
+                            <th width="18%">Contact :</th>
+                            <td width="32%"><span t-field="doc.partner_id"/> </td>
+                            <th width="18%">Requested Date :</th>
+                            <td width="32%"><span t-field="doc.requested_date"/> </td>
+                        </tr>
+                        <tr>
+                            <th width="18%">Operation Type :</th>
+                            <td width="32%"><span t-field="doc.picking_type_id"/> </td>
+                            <th width="18%">Company :</th>
+                            <td width="32%"><span t-field="doc.company_id"/> </td>
+                        </tr>
+                        <tr>
+                            <th width="18%">Source Location :</th>
+                            <td width="32%"><span t-field="doc.stock_location_id"/> </td>
+                            <th width="18%">Created By : </th>
+                            <td width="32%"><span t-field="doc.requested_by"/> </td>
+                        </tr>
+                        <tr>
+                            <th width="25%">Destination Location :</th>
+                            <td width="32%"><span t-field="doc.delivery_location_id"/> </td>
+                            <th width="18%">Approved By :</th>
+                            <td width="32%"><span t-field="doc.approved_by"/> </td>
+                        </tr>
+                        <tr>
+                            <th width="18%">Status :</th>
+                            <td width="32%"><span t-field="doc.states"/> </td>
+                        </tr>
+                    </table>
+
+                    <br/>
+                    <center>
+                        <h2>Stock Request Line</h2>
+                    </center>
+                    <table  style="border-collapse: collapse;width: 100%;border: 2px solid #000;" class="table table-condensed">
+                        <tr style="background-color: #AFEAEE;">
+                            <td style="border:1px solid"><strong>Product</strong></td>
+                            <td style="border:1px solid"><strong>Description</strong></td>
+                            <td style="border:1px solid"><strong>Quantity</strong></td>
+                            <td style="border:1px solid"><strong>Unit of Measure</strong></td>
+                        </tr>
+
+                        <t t-foreach="doc.stock_line_ids" t-as="p">
+                        <tr>
+                            <td style="border:1px solid"><span t-field="p.product_id"/></td>
+                            <td style="border:1px solid"><span t-field="p.description"/></td>
+                            <td style="border:1px solid"><span t-field="p.product_qty"/></td>
+                            <td style="border:1px solid"><span t-field="p.product_uom"/></td>
+                        </tr>
+                        </t>
+                        
+                    </table>
+
+                    <br/>
+                    <div class="row mt32 mb32">
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Notes</strong>
+                            <p class="m-0" t-field="doc.notes"/>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+
+                    <div class="row mt32 mb32">
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Sender Signature</strong>
+                        </div>
+                        <div class="col-auto mw-100 mb-2" align="right">
+                            <strong>Receiver Signature</strong>
+                        </div>
+                    </div>
+                </t>
+
+            </div>
+        </t>
+    </template>
+
+	<template id="report_stock_req">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="warehouse_stock_request_app.report_warhouse_stock_request" t-lang="doc.partner_id.lang"/>
+        </t>
+    </t>
+
+    </template>
+</odoo>

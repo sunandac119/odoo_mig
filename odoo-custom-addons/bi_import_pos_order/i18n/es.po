@@ -1,0 +1,141 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* bi_import_pos_order
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-03 14:50+0000\n"
+"PO-Revision-Date: 2021-06-03 14:50+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: bi_import_pos_order
+#: code:addons/bi_import_pos_order/pos_order.py:0
+#: code:addons/bi_import_pos_order/pos_order.py:0
+#: code:addons/bi_import_pos_order/pos_order.py:0
+#, python-format
+msgid "\"%s\" Tax not in your system"
+msgstr "\"%s\" Impuestos no en su sistema"
+
+#. module: bi_import_pos_order
+#: model:ir.model.fields.selection,name:bi_import_pos_order.selection__gen_pos_order__import_option__csv
+msgid "CSV File"
+msgstr "Archivo CSV"
+
+#. module: bi_import_pos_order
+#: model_terms:ir.ui.view,arch_db:bi_import_pos_order.import_pos_view
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: bi_import_pos_order
+#: model:ir.model.fields,field_description:bi_import_pos_order.field_gen_pos_order__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: bi_import_pos_order
+#: model:ir.model.fields,field_description:bi_import_pos_order.field_gen_pos_order__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: bi_import_pos_order
+#: model:ir.model.fields,field_description:bi_import_pos_order.field_gen_pos_order__display_name
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#. module: bi_import_pos_order
+#: model:ir.model.fields,field_description:bi_import_pos_order.field_gen_pos_order__file_to_upload
+msgid "File"
+msgstr "Archivo"
+
+#. module: bi_import_pos_order
+#: model:ir.model.fields,field_description:bi_import_pos_order.field_gen_pos_order__id
+msgid "ID"
+msgstr "IDENTIFICACIÓN"
+
+#. module: bi_import_pos_order
+#: model_terms:ir.ui.view,arch_db:bi_import_pos_order.import_pos_view
+msgid "Import"
+msgstr "Importar"
+
+#. module: bi_import_pos_order
+#: model:ir.actions.act_window,name:bi_import_pos_order.action_pos_import
+#: model:ir.ui.menu,name:bi_import_pos_order.Import POS Order
+#: model_terms:ir.ui.view,arch_db:bi_import_pos_order.import_pos_view
+msgid "Import POS Order"
+msgstr "Importar pedido de punto de venta"
+
+#. module: bi_import_pos_order
+#: code:addons/bi_import_pos_order/pos_order.py:0
+#, python-format
+msgid "Invalid file!"
+msgstr "¡Archivo inválido!"
+
+#. module: bi_import_pos_order
+#: model:ir.model.fields,field_description:bi_import_pos_order.field_gen_pos_order____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: bi_import_pos_order
+#: model:ir.model.fields,field_description:bi_import_pos_order.field_gen_pos_order__write_uid
+msgid "Last Updated by"
+msgstr "Actualizado por última vez por"
+
+#. module: bi_import_pos_order
+#: model:ir.model.fields,field_description:bi_import_pos_order.field_gen_pos_order__write_date
+msgid "Last Updated on"
+msgstr "Ultima actualización en"
+
+#. module: bi_import_pos_order
+#: model:ir.model.fields,field_description:bi_import_pos_order.field_pos_order__custom_name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: bi_import_pos_order
+#: code:addons/bi_import_pos_order/pos_order.py:0
+#, python-format
+msgid "Not Valid Salesperson Name \"%s\""
+msgstr "Nombre de vendedor no válido \"%s\""
+
+#. module: bi_import_pos_order
+#: model:ir.model,name:bi_import_pos_order.model_pos_order
+msgid "Point of Sale Orders"
+msgstr "Órdenes de punto de venta"
+
+#. module: bi_import_pos_order
+#: model:ir.model.fields,field_description:bi_import_pos_order.field_gen_pos_order__import_option
+msgid "Select"
+msgstr "Seleccione"
+
+#. module: bi_import_pos_order
+#: code:addons/bi_import_pos_order/pos_order.py:0
+#, python-format
+msgid "Wrong Partner %s"
+msgstr "Socio equivocado %s"
+
+#. module: bi_import_pos_order
+#: code:addons/bi_import_pos_order/pos_order.py:0
+#, python-format
+msgid "Wrong Product %s"
+msgstr "Producto incorrecto %s"
+
+#. module: bi_import_pos_order
+#: code:addons/bi_import_pos_order/pos_order.py:0
+#, python-format
+msgid "Wrong Session %s"
+msgstr "Sesión incorrecta %s"
+
+#. module: bi_import_pos_order
+#: model:ir.model.fields.selection,name:bi_import_pos_order.selection__gen_pos_order__import_option__xls
+msgid "XLS File"
+msgstr "Archivo XLS"
+
+#. module: bi_import_pos_order
+#: model:ir.model,name:bi_import_pos_order.model_gen_pos_order
+msgid "gen.pos.order"
+msgstr ""

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="print_barcode_paperformat" model="report.paperformat">
+        <field name="name">Print Barcode Paperformat</field>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="dpi" eval="90"/>
+        <field name="margin_top" eval="10"/>
+        <field name="margin_right" eval="3"/>
+        <field name="margin_bottom" eval="5"/>
+        <field name="margin_left" eval="3"/>
+        <field name="header_spacing" eval="5"/>
+    </record>
+
+    <record id="print_barcode_report" model="ir.actions.report">
+        <field name="name">Print Barcode</field>
+        <field name="model">mrp.production</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">uom_barcode_scanner.print_mrp_barcode</field>
+        <field name="report_file">uom_barcode_scanner.print_mrp_barcode</field>
+        <field name="print_report_name">'Print Barcode'</field>
+        <field name="binding_model_id" ref="mrp.model_mrp_production"></field>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="uom_barcode_scanner.print_barcode_paperformat"/>
+    </record>
+    
+</odoo>

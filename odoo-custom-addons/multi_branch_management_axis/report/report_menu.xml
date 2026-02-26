@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--      <record id="paperformat_sale_order_report" model="report.paperformat">-->
+<!--        <field name="name">Sale Order report paperformat</field>-->
+<!--        <field name="default" eval="True"/>-->
+<!--        <field name="format">A4</field>-->
+<!--        <field name="page_height">0</field>-->
+<!--        <field name="page_width">0</field>-->
+<!--        <field name="orientation">Portrait</field>-->
+<!--        <field name="margin_top">40</field>-->
+<!--        <field name="margin_bottom">28</field>-->
+<!--        <field name="margin_left">7</field>-->
+<!--        <field name="margin_right">7</field>-->
+<!--        <field name="header_line" eval="False"/>-->
+<!--        <field name="header_spacing">35</field>-->
+<!--        <field name="dpi">90</field>-->
+<!--    </record>-->
+
+
+<!--    <report id="action_sale_order_excelreport"-->
+<!--        model="sale.order"-->
+<!--        string="Sale order- Xlsx"-->
+<!--        report_type="xlsx"-->
+<!--        name="multi_branch_management_axis.report_excel_sale_order"-->
+<!--        file="multi_branch_management_axis.report_excel_sale_order"/>-->
+<!--         paperformat="paperformat_sale_order_report"/>-->
+
+
+        <record id="paperformat_cashflow_report" model="report.paperformat">
+        <field name="name">Cash flow report paperformat</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">40</field>
+        <field name="margin_bottom">28</field>
+        <field name="margin_left">7</field>
+        <field name="margin_right">7</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">35</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <report id="action_cash_flow_report"
+        model="account.cash.flow"
+        string="Cash Flow Statement"
+        report_type="qweb-pdf"
+        name="multi_branch_management_axis.report_cashflow"
+        file="multi_branch_management_axis.report_cashflow"
+        paperformat="paperformat_cashflow_report"/>
+
+    <report id="action_cash_flow_excelreport"
+        model="account.cash.flow"
+        string="Cash Flow Statement"
+        report_type="xlsx"
+        name="multi_branch_management_axis.report_excel_cashflow"
+        file="multi_branch_management_axis.report_excel_cashflow"/>
+
+
+</odoo>

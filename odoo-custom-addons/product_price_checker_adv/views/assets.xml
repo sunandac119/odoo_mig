@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <template id="assets_backend" name="price checker assets backend" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" type="text/css" href="/product_price_checker_adv/static/src/css/style.css"/>
+            <script type="text/javascript" src="product_price_checker_adv/static/src/js/price_checker_kiosk.js"/>
+        </xpath>
+    </template>
+</odoo>

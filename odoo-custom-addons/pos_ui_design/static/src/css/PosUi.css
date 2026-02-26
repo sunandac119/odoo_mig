@@ -1,0 +1,151 @@
+.pos {
+    font-family: Raleway;
+    font-size: 1.08333333rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #666666;
+    text-align: left;
+}
+
+.pos .pos-content {
+    font-family: Raleway;
+    font-size: 1.08333333rem;
+    font-weight: 400;
+    line-height: 1.5;
+    top: 48px;
+    text-align: left;
+}
+
+.pos .color_box {
+    position: absolute;
+    right: 290px;
+    top: -5px;
+    background: #f1f1f2;
+    font-size: 16px;
+}
+.pos .color_box input {
+    width: 140px;
+    border: 1px solid #cecbcb;
+    padding: 10px 20px;
+    margin: 6px;
+    border-radius: 3px;
+    font-size: 13px;
+    min-height: 20px !important;
+    min-width: 50px !important;
+    font-size: 16px !important;
+    text-align: center;
+}
+
+.pos .fontsize_box {
+    position: absolute;
+    right: 410px;
+}
+
+.pos .fontsize_box input {
+    border: 1px solid #cecbcb;
+    padding: 10px 20px;
+    margin: 6px;
+    border-radius: 3px;
+    font-size: 13px;
+    min-height: 20px !important;
+    min-width: 50px !important;
+    font-size: 16px !important;
+    text-align: center;
+}
+.pos .numpad button {
+    border-left: 1px solid #cecbcb;
+}
+.pos .element-selected {
+    background: #6EC89B !important;
+    border: 2px dashed #c80a1d;
+}
+.pos .ready-design-ui {
+    border: 1px dashed #6ec89b;
+    cursor: pointer !important;
+}
+.pos .design-widget {
+    z-index: 1000;
+    max-width: 350px;
+    width: 250px;
+    background: gray;
+}
+.pos .design-widget li{
+    margin-bottom: 5px;
+    background: gray;
+}
+.pos .design-widget .button {
+    background: none;
+    margin: 10px;
+}
+.pos .design-widget .category {
+    text-transform: uppercase;
+    color: #000;
+    background: gray;
+}
+.pos .design-widget input {
+    min-height: 30px;
+    text-align: center;
+    width: 230px;
+}
+.pos .design-widget .form-control {
+    width: 230px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.pos .actionpad .button.set-customer {
+    display: inline;
+    float: left;
+    font-weight: 900;
+    font-size: 13px;
+    font-family: inherit;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    color: black;
+    cursor: pointer;
+    width: 106px;
+}
+
+.pos .actionpad .button.set-customer.decente {
+    padding-left: 10px;
+    width: 170px;
+    line-height: 50px;
+    padding-right: 10px;
+}
+
+.pos .actionpad .button.set-customer:hover {
+    background: #6ec89b;
+}
+.pos .actionpad .button.pay {
+    font-family: inherit;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 900;
+    display: inline-block;
+    float: left;
+    cursor: pointer;
+}
+
+.pos .actionpad .button.pay:hover {
+    background: #6ec89b !important;
+}
+.pos .customer-name {
+    line-height: 60px;
+    font-size: 13px;
+    margin-left: 5px;
+    text-align: center;
+    display: block;
+}
+.pos .actionpad .button.pay .pay-circle {
+    background: #4CAF50;
+    width: 40px;
+    line-height: 30px;
+    margin-top: 50px;
+}
+.pos .product .price-tag {
+    background: #009688;
+}
+.pos button {
+    font-family: Relaway;
+}

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="print_pos_payment_clonet">
+		<t t-call="web.html_container">
+		<t t-call="web.basic_layout">
+				<div class="page" style="font-size: 15px">
+		            <style type="text/css">
+		                table th, h4 {
+		                background-color: gray;
+		                }
+		            </style>
+					<div class="header">
+		                <div class="row mt32 mb32">
+		                	<div class="col-12">
+		                		<h2 class="text-center" style="font-size: 25px"><span t-esc="company_id.name"/></h2>
+		                	</div>
+		                </div>
+		            </div>
+				<div class="row mt32 mb32">
+					<div class="col-12">
+		                <div class="col-12 text-center">
+		                    <span t-field="company_id.partner_id" /> , <span t-field="company_id.partner_id.street" /> , <span t-field="company_id.partner_id.street2" /> , <span t-field="company_id.partner_id.city" /> , <span t-field="company_id.partner_id.zip" /> ,  <span t-field="company_id.partner_id.country_id" /> , <span t-field="company_id.partner_id.vat" />
+		                </div>
+		            </div>
+		        </div>
+				<h4 class="text-center">POS Payment Collection Report</h4>
+				<br />
+				<table class="table table-sm o_main_table table-bordered" style="width:100%;font-size: 13px;">
+					<colgroup>
+						<col width='8%'/>
+						<col width='10%'/>
+						<col width='10%'/>
+						<col width='12%'/>
+						<col width='6%'/>
+						<col width='7%'/>
+						<col width='7%'/>
+						<col width='7%'/>
+						<col width='7%'/>
+						<col width='7%'/>
+						<col width='7%'/>
+						<col width='7%'/>
+					</colgroup>
+					<thead>
+						<tr>
+							<th width='9%' class="text-center">Point Of Sale</th>
+							<th width='9%' class="text-center">Order Ref</th>
+							<th width='9%' class="text-center">Session</th>
+							<th width='9%' class="text-center">Date</th>
+							<th width='9%' class="text-center">Receipt Number</th>
+							<th width='9%' class="text-center">Return Order</th>
+							<th width='9%' class="text-center">Customer</th>
+							<th width='9%' class="text-center">Sales Person</th>
+							<t t-foreach="payment_method_list" t-as="pm">
+								<th width='7%' class="text-center"><span t-esc="pm"/></th>
+							</t>
+							<th width='9%' class="text-center">Total</th>
+						</tr>
+					</thead>
+					<t t-set="total_total" t-value="0"/>
+					<t t-set="payment_amount" t-value="0"/>
+					<tbody>
+						<tr t-foreach="lines" t-as="line">
+							<t t-set="line_total" t-value="0"/>
+							<t t-set="pos_id" t-value="request.env['pos.order'].browse(line.get('order_id'))"/>
+
+							<td class="text-center"><span t-esc="line.get('pos_name')" /></td>
+							<td class="text-center"><span t-esc="line.get('name')" /></td>
+							<td class="text-center"><span t-esc="line.get('session_name')" /></td>
+							<td class="text-center"><span t-esc="line.get('date_order')" /></td>
+							<td class="text-center"><span t-esc="line.get('receipt_ref')" /></td>
+							<td class="text-center"><span t-esc="line.get('return')" /></td>
+							<td class="text-center"><span t-esc="line.get('partner_id')" /></td>
+							<td class="text-center"><span t-esc="line.get('sales_person')" /></td>
+							<t t-foreach="payment_method_ids" t-as="p_id">
+								<t t-set="payment_amount" t-value="pos_id.get_order_paymnet_method(p_id)"/>
+								<t t-set="total_total" t-value="total_total + payment_amount"/>
+								<t t-set="line_total" t-value="line_total + payment_amount"/>
+								<td class="text-right"><span t-esc="payment_amount"/></td>
+							</t>
+							<td class="text-right"><span t-esc="line_total" /></td>
+						</tr>
+						<tr>
+							<td style="background-color: gray;" class="text-center" colspan="8"><b>TOTAL</b></td>
+							<t t-foreach="get_payment_method_total" t-as="p_id">
+								<td class="text-right" t-esc="p_id" t-options='{"widget": "float", "decimal_precision": "Product Price"}'/>
+							</t>
+						</tr>
+					</tbody>
+				</table>
+				<table style="width:40%;font-size: 13px;" class="table table-sm o_main_table table-bordered">
+					<thead>
+						<th class="text-center" style="background-color: gray;" colspan="2">PAYMENT DETAILS</th>
+					</thead>
+					<tbody>
+						<t t-set="total" t-value="0"/>
+						<t t-foreach="get_order_paymnet_method_summary" t-as="pm">
+							<tr>
+								<t t-set="total" t-value="total + pm.get('amount')"/>
+								<td width='20%' class="text-center"><span t-esc="pm.get('name')"/></td>
+								<td width='20%' class="text-center"><span t-esc="pm.get('amount')"  t-options='{"widget": "float", "decimal_precision": "Product Price"}'/></td>
+							</tr>
+						</t>
+						<tr>
+							<td width='20%' style="background-color: gray;" class="text-center">Total</td>
+							<td width='20%' class="text-center"><span t-esc="total"  t-options='{"widget": "float", "decimal_precision": "Product Price"}'/></td>
+						</tr>
+					</tbody>
+				</table>
+				</div>
+			</t>
+		</t>
+	</template>
+</odoo>

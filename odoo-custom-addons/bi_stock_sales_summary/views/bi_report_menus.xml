@@ -1,0 +1,11 @@
+<odoo>
+    <menuitem id="menu_bi_reporting_root" name="BI Reporting" sequence="10" />
+
+    <menuitem id="menu_bi_sales" name="Sales" parent="menu_bi_reporting_root" sequence="1" />
+    <menuitem id="menu_bi_sales_summary_mv" name="Sales Summary" parent="menu_bi_sales" action="action_bi_sales_summary_mv"/>
+
+    <menuitem id="menu_bi_inventory" name="Inventory" parent="menu_bi_reporting_root" sequence="2" />
+    <menuitem id="menu_bi_ordering_report_mv" name="Stock Ordering" parent="menu_bi_inventory" action="action_bi_ordering_report_mv"/>
+
+    <menuitem id="menu_bi_accounting" name="Accounting" parent="menu_bi_reporting_root" sequence="3" />
+</odoo>

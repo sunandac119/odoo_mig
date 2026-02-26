@@ -1,0 +1,249 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <!-- total forecasting -->
+    <record id="view_forecasting_purchase_report_graph" model="ir.ui.view">
+        <field name="name">purchase.forecasting.report.report.graph</field>
+        <field name="model">purchase.forecasting.report</field>
+        <field name="arch" type="xml">
+            <graph string="Forecasting Report Analysis" type="line" sample="1" disable_linking="1">
+                <field name="forecasting_date" />
+                <field name="qty_ordered" type="measure" />
+                <field name="qty_received" type="measure" />
+                <field name="qty_billed" type="measure" />
+                <field name="forecasting_price" type="measure" />
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_forecasting_purchase_report_search" model="ir.ui.view">
+        <field name="name">purchase.forecasting.report.search</field>
+        <field name="model">purchase.forecasting.report</field>
+        <field name="arch" type="xml">
+            <search string="Forecasting Report">
+
+                <field name="forecasting_date" />
+                <field name="forecasting_price" />
+                <separator />
+                <group expand="1" string="Group By">
+                    <separator orientation="vertical" />
+                    <filter string="Forecasting Date" name="forecasting_date"
+                        context="{'group_by':'forecasting_date'}" />
+                    <!-- <filter string="forecasting Price" name="forecasting_price"
+                        context="{'group_by':'forecasting_price'}" /> -->
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_forecasting_purchase_report_details" model="ir.actions.act_window">
+        <field name="name">Forecasting Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">purchase.forecasting.report</field>
+        <field name="view_mode">graph,search,pivot</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a Forecasting Report in your address book
+            </p>
+        </field>
+    </record>
+
+    <!-- purchase representative forecast -->
+    <record id="view_purchaseperson_forecasting_report_tree" model="ir.ui.view">
+        <field name="name">purchaseperson.forecasting.report.tree</field>
+        <field name="model">purchaseperson.forecasting</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="forecasting_month"/>
+                <field name="salesperson_id"/>
+                <field name="total_forecasted_purchase"/>
+                <field name="total_forecasted_qty_ordered"/>
+                <field name="total_forecasted_qty_received"/>
+                <field name="total_forecasted_qty_invoiced"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_purchaseperson_forecasting_report_graph" model="ir.ui.view">
+        <field name="name">purchaseperson.forecasting.report.graph</field>
+        <field name="model">purchaseperson.forecasting</field>
+        <field name="arch" type="xml">
+            <graph string="Purchase Representative Forecasting Report Analysis" type="line" sample="1"
+                disable_linking="1">
+                <field name="total_forecasted_qty_ordered" type="measure" />
+                <field name="total_forecasted_qty_received" type="measure" />
+                <field name="total_forecasted_qty_invoiced" type="measure" />
+                <field name="total_forecasted_purchase" type="measure" />
+                <field name="forecasting_month" />
+                <field name="salesperson_id" />
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_purchaseperson_forecasting_report_search" model="ir.ui.view">
+        <field name="name">purchaseperson.forecasting.report.search</field>
+        <field name="model">purchaseperson.forecasting</field>
+        <field name="arch" type="xml">
+            <search string="Purchase Representative Forecasting Report">
+                <field name="forecasting_month" />
+                <field name="total_forecasted_purchase" />
+                <field name="salesperson_id" />
+                <field name="total_forecasted_qty_ordered" />
+                <field name="total_forecasted_qty_received" />
+                <field name="total_forecasted_qty_invoiced" />
+                <separator />
+                <group expand="1" string="Group By">
+                    <separator orientation="vertical" />
+                    <filter string="Forecasting Date" name="forecasting_month"
+                        context="{'group_by':'forecasting_month'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_purchase_person_forecasting_report_details" model="ir.actions.act_window">
+        <field name="name">Purchase Representative Forecasting Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">purchaseperson.forecasting</field>
+        <field name="view_mode">graph,search,pivot</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a Purchase Representative Forecasting Report in your address book
+            </p>
+        </field>
+    </record>
+
+    <!-- purchase vendor forecast -->
+    <record id="view_purchasevendor_forecasting_report_tree" model="ir.ui.view">
+        <field name="name">purchasevendor.forecasting.report.tree</field>
+        <field name="model">purchasevendor.forecasting</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="forecasting_month"/>
+                <field name="customer_id"/>
+                <field name="total_forecasted_purchase"/>
+                <field name="total_forecasted_qty_ordered"/>
+                <field name="total_forecasted_qty_received"/>
+                <field name="total_forecasted_qty_invoiced"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_purchasevendor_forecasting_report_graph" model="ir.ui.view">
+        <field name="name">purchasevendor.forecasting.report.graph</field>
+        <field name="model">purchasevendor.forecasting</field>
+        <field name="arch" type="xml">
+            <graph string="Purchase Vendor Forecasting Report Analysis" type="line" sample="1"
+                disable_linking="1">
+                <field name="total_forecasted_qty_ordered" type="measure" />
+                <field name="total_forecasted_qty_received" type="measure" />
+                <field name="total_forecasted_qty_invoiced" type="measure" />
+                <field name="total_forecasted_purchase" type="measure" />
+                <field name="forecasting_month" />
+                <field name="customer_id" />
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_purchasevendor_forecasting_report_search" model="ir.ui.view">
+        <field name="name">purchasevendor.forecasting.report.search</field>
+        <field name="model">purchasevendor.forecasting</field>
+        <field name="arch" type="xml">
+            <search string="Purchase Vendor Forecasting Report">
+                <field name="forecasting_month" />
+                <field name="total_forecasted_purchase" />
+                <field name="customer_id" />
+                <field name="total_forecasted_qty_ordered" />
+                <field name="total_forecasted_qty_received" />
+                <field name="total_forecasted_qty_invoiced" />
+                <separator />
+                <group expand="1" string="Group By">
+                    <separator orientation="vertical" />
+                    <filter string="Forecasting Date" name="forecasting_month"
+                        context="{'group_by':'forecasting_month'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_purchase_vendor_forecasting_report_details" model="ir.actions.act_window">
+        <field name="name">Purchase Vendor Forecasting Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">purchasevendor.forecasting</field>
+        <field name="view_mode">graph,search,pivot</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a Purchase Vendor Forecasting Report in your address book
+            </p>
+        </field>
+    </record>
+
+    <!-- purchase product forecast -->
+    <record id="view_purchaseproduct_forecasting_report_tree" model="ir.ui.view">
+        <field name="name">purchaseproduct.forecasting.report.tree</field>
+        <field name="model">purchaseproduct.forecasting</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="forecasting_month"/>
+                <field name="product_id"/>
+                <field name="total_forecasted_purchase"/>
+                <field name="total_forecasted_qty_ordered"/>
+                <field name="total_forecasted_qty_received"/>
+                <field name="total_forecasted_qty_invoiced"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_purchaseproduct_forecasting_report_graph" model="ir.ui.view">
+        <field name="name">purchaseproduct.forecasting.report.graph</field>
+        <field name="model">purchaseproduct.forecasting</field>
+        <field name="arch" type="xml">
+            <graph string="Purchase Product Forecasting Report Analysis" type="line" sample="1"
+                disable_linking="1">
+                <field name="total_forecasted_qty_ordered" type="measure" />
+                <field name="total_forecasted_qty_received" type="measure" />
+                <field name="total_forecasted_qty_invoiced" type="measure" />
+                <field name="total_forecasted_purchase" type="measure" />
+                <field name="forecasting_month" />
+                <field name="product_id" />
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_purchaseproduct_forecasting_report_search" model="ir.ui.view">
+        <field name="name">purchaseproduct.forecasting.report.search</field>
+        <field name="model">purchaseproduct.forecasting</field>
+        <field name="arch" type="xml">
+            <search string="Purchase Product Forecasting Report">
+                <field name="forecasting_month" />
+                <field name="total_forecasted_purchase" />
+                <field name="product_id" />
+                <field name="total_forecasted_qty_ordered" />
+                <field name="total_forecasted_qty_received" />
+                <field name="total_forecasted_qty_invoiced" />
+                <separator />
+                <group expand="1" string="Group By">
+                    <separator orientation="vertical" />
+                    <filter string="Forecasting Date" name="forecasting_month"
+                        context="{'group_by':'forecasting_month'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_purchase_product_forecasting_report_details" model="ir.actions.act_window">
+        <field name="name">Purchase Product Forecasting Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">purchaseproduct.forecasting</field>
+        <field name="view_mode">graph,search,pivot</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a Purchase Product Forecasting Report in your address book
+            </p>
+        </field>
+    </record>
+</odoo>

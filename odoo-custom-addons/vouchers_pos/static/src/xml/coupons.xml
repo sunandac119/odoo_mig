@@ -1,0 +1,43 @@
+<templates id="coupon_template" xml:space="preserve">
+    <!-- template for coupons -->
+    <t t-name="VoucherWidget">
+        <div class='control-button' style="width: 70%; margin-top: 5px; margin-bottom: -5px;">
+            <div class="coupons">
+                <i class='fa fa-star' /> Coupons
+            </div>
+        </div>
+    </t>
+
+    <t t-name="CouponPopupWidget">
+        <div class="modal-dialog">
+            <div class="popup popup-text">
+                <p class="title"><t t-esc="widget.options.title || ''" /></p>
+                <input class="coupon_code" type='text' t-att-value="widget.options.value || ''"></input>
+                <button class="validate_coupon">Verify</button>
+                <div class="coupon_status">
+                    <p class="coupon_status_p"></p>
+                </div>
+                <div class="footer">
+                    <div class="button confirm-coupon" style="display:none;">
+                        Apply
+                    </div>
+                    <div class="button cancel">
+                        Cancel
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-extend="ProductScreenWidget">
+        <!-- Insert the voucher button after the pricelist button -->
+        <t t-jquery="div.o_pricelist_button" t-operation="after">
+            <div class="control-button">
+                <div class="coupons">
+                    <i class='fa fa-star' /> Coupons
+                </div>
+            </div>
+        </t>
+    </t>
+
+</templates>

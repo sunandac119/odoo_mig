@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <record id="view_partner_forms_inherited" model="ir.ui.view">
+            <field name="name">view.partner.forms.inherited</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[@name='internal_notes']" position="before">
+                    <page name="lhdn_connector_api" string="LHDN API Details">
+                        <group>
+                            <group>
+                                <field name="tin" required="1"/>
+<!--                                readonly="tin_status == 'validated'" force_save="1" -->
+                                <label for="tin_status"/>
+                                <div class="o_row">
+                                    <field name="tin_status"/>
+<!--                                    readonly="1" force_Save="1"-->
+                                    <button string="Validate TIN" name="validatings_tin_number" type="object"
+                                            class="oe_highlight" attrs="{'invisible':[('tin_status','=','validated')]}"/>
+                                </div>
+                                <!--                            <field name="tin_status"/>-->
+                                <field name="brn" required="1"/>
+<!--                                readonly="tin_status == 'validated'" force_save="1"-->
+                                <field name="special_identifier" required="1"/>
+                                <field name="sst"/>
+                                <field name="company_start_date"/>
+                                <field name="is_vendor_or_customer" required="1"/>
+                                <field name="old_brn"/>
+                                <field name="sst_group"/>
+                                <field name="tourism_tax_no"/>
+                                <field name="email_e_invoice"/>
+                                <field name="contact_e_invoice"/>
+                                <field name="whatsapp_number_e_invoice"/>
+                                <field name="msic_code_id" required="1"/>
+                            </group>
+                            <group>
+                                <label for="peppol_id"/>
+                                <div class="o_row">
+                                    <field name="peppol_id" />
+<!--                                    readonly="1" force_save="1"-->
+                                    <button name="register_peppol_participants" string="Register in Peppol SML"
+                                            type="object" class="oe_highlight"
+                                            attrs="{'invisible': [('peppol_status', 'in', ['registered', 'need_to_kyc'])]}"/>
+                                    <button name="peppol_kyc_needs_complete" string="Peppol KYC Complete"
+                                            type="object" class="oe_highlight"
+                                            attrs="{'invisible': [('peppol_status', 'in', ['registered', 'not_registered'])]}"/>
+                                </div>
+                                <field name="peppol_status"/>
+<!--                                readonly="1" force_save="1"-->
+                                <field name="peppol_sml_pdf_signed"/>
+                                <field name="send_documents_via_peppol"/>
+
+                                <!--                                <group>-->
+                                <label for="peppol_lookup_id"/>
+                                <div class="o_row" string="Peppol Lookup">
+                                    <field name="peppol_lookup_id"/>
+                                    <button name="peppol_id_sml_lookup" string="Peppol SML Lookup"
+                                            type="object" class="oe_highlight"/>
+                                    <button name="peppol_id_global_lookup" string="Peppol Global Lookup"
+                                            type="object" class="oe_highlight"/>
+                                </div>
+                                <!--                                </group>-->
+
+
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+
+            </field>
+        </record>
+
+    </data>
+</odoo>

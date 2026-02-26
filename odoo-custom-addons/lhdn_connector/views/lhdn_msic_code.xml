@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="lhdn_msic_code_view_form" model="ir.ui.view">
+            <field name="name">lhdn.msic.codeview.form</field>
+            <field name="model">lhdn.msic.code</field>
+            <field name="arch" type="xml">
+                <tree string="lhdn_msic_code_tree" editable="bottom">
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="lhdn_msic_code_action" model="ir.actions.act_window">
+            <field name="name">MSIC code</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">lhdn.msic.code</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+        <menuitem id="lhdn_msic_code_menu" name="MSIC Code"
+                  parent="lhdn_connector.menu_lhdn_connector"
+                  action="lhdn_connector.lhdn_msic_code_action"/>
+    </data>
+</odoo>

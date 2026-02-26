@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Sequences for Warhouse Stock Request -->
+        <record id="stock_request_sequence_id" model="ir.sequence">
+            <field name="name">Stock Request</field>
+            <field name="code">stock.request</field>
+            <field name="prefix">WSR/</field>
+            <field name="padding">4</field>
+        </record>
+    </data>
+</odoo>

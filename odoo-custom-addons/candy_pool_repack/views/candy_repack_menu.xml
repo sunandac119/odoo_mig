@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_candy_repack_wizard" model="ir.actions.act_window">
+        <field name="name">Candy Pool Repack</field>
+        <field name="res_model">candy.repack.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{}</field>
+    </record>
+
+    <menuitem id="menu_candy_repack_root"
+              name="Candy Pool"
+              parent="stock.menu_stock_root"
+              sequence="95"
+              groups="candy_pool_repack.group_candy_repack_user"/>
+
+    <menuitem id="menu_candy_repack_wizard"
+              name="Repack to Pool"
+              parent="candy_pool_repack.menu_candy_repack_root"
+              action="candy_pool_repack.action_candy_repack_wizard"
+              sequence="10"
+              groups="candy_pool_repack.group_candy_repack_user"/>
+</odoo>

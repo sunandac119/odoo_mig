@@ -1,0 +1,17 @@
+<odoo>
+  <record id="view_bom_form_inherit_actual_qty" model="ir.ui.view">
+    <field name="name">mrp.bom.form.estimate.produce.qty</field>
+    <field name="model">mrp.bom</field>
+    <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='product_qty']" position="after">
+        <field name="x_actual_component_qty"/>
+        <field name="x_estimated_final_qty" readonly="1"/>
+        <button name="action_recalculate_product_qty"
+                string="Recalculate Product Qty"
+                type="object"
+                class="btn-primary"/>
+      </xpath>
+    </field>
+  </record>
+</odoo>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="CashBoxPopup" owl="1">
+        <div role="dialog" class="modal-dialog">
+            <div class="popup cash_popup">
+                <header class="title">
+                    <t t-esc="props.title" />
+                </header>
+                <main class="body">
+                    <table class="table" id='table_coin_bill'>
+                        <thead>
+                            <th>#Coins/Bills</th>
+                            <th>Coin/Bill Value</th>
+                            <th>Subtotal</th>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="amount_list" t-as="amount"> 
+                                <tr>
+                                    <td>
+                                        <input type="text" name="coin_bill" id='txt_cb' t-on-keyup="_keyup_txt_cb" t-on-input="_input_txt" value='' placeholder='0'/>
+                                    </td>
+                                    <td>
+                                        <span class="" t-esc="symbol"/>
+                                        <input type="text" name="coin_bill_value" id='txt_cbv' t-on-keyup="_keyup_txt_cbv" t-on-input="_input_txt" t-att-value='amount' placeholder='0.00'/>
+                                    </td>
+                                    <td>
+                                        <span class="" t-esc="symbol"/>
+                                        <input type="text" name="cb_subtotal" id='txt_subtotal' disabled="disabled" value="" placeholder='0.00'/>
+                                    </td>
+                                    <td>
+                                        <button id='delete_item' t-on-click="_delete_item"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
+                            </t>
+                            <tr id="tr_add_item">
+                                <td colspan='3'>
+                                    <button id='add_item' t-on-click="_add_item">Add a item</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td style="border-top: 1px solid;">
+                                    Total : <span class="" t-esc="symbol"/>
+                                    <span class="total" id='total'>0.00</span>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </main>
+
+                <div class="footer">
+                    <!-- <div class="button highlight print" t-on-click="print_report">
+                        <t t-esc="props.printText" />
+                    </div> -->
+                    <div class="button highlight confirm" t-on-click="confirm">
+                        <t t-esc="props.confirmText" />
+                    </div>
+                    <div class="button cancel" t-on-click="cancel">
+                        <t t-esc="props.cancelText" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

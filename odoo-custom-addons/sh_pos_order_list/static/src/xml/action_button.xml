@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="OrderHistoryButton" owl="1">
+        <div class="control-button">
+            <a style="display: block;" class="btn btn-primary" t-on-click="trigger('click-order-history-button')">
+                <div style="display: inline-block; vertical-align: middle; align-items: center; height: 33px; line-height: 30px;">
+                    <i class="fa fa-history" aria-hidden="true"></i>
+                </div>
+                Order History
+            </a>
+        </div>
+    </t>
+</templates>

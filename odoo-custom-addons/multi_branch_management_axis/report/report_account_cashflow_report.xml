@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_cashflow">
+        <t t-call="web.html_container">
+
+            <t t-call="web.external_layout">
+
+                <div class="page">
+                   <div class="row">
+                        <h3 class="text-center w-100 my-3 d-block">Cash Flow Statement
+                        </h3>
+                        <table t-if="not yearly" class="table-condensed">
+                            <tr>
+                                <td width="250px">
+                                    <b>Start Date: </b><span t-esc="start_date" t-options="{'widget': 'date', 'format': 'dd MMMM yyyy'}"/>
+                                </td>
+                                <td>
+                                    <font color="white">.....</font>
+                                </td>
+                                <td width="250px">
+                                    <b>End Date: </b><span t-esc="end_date" t-options="{'widget': 'date', 'format': 'dd MMMM yyyy'}"/>
+                                </td>
+                                <td>
+                                    <font color="white">..........</font>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <table class="table-condensed" width="100%">
+                            <thead>
+                                <tr>
+                                  <td><font color="white">........</font></td>
+                                  <t t-if="yearly">
+                                      <t t-foreach="get_years" t-as="year">
+                                          <td class="text-right">
+                                              <b><t t-esc="year"/></b>
+                                          </td>
+                                      </t>
+                                  </t>
+                                  <t t-if="not yearly">
+                                      <td class="text-right">
+                                          <b>Balance</b>
+                                      </td>
+                                  </t>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span>
+                                            <b>Operating Activities</b>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <t t-if="get_data.get('operation_income', False)">
+                                    <tr>
+                                        <td>
+                                            <span class="set_space">
+                                                Income
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr t-foreach="get_data['operation_income']['account']"
+                                            t-as="account">
+                                        <td class="set_padd40">
+                                            <span t-att-style="style"
+                                                  t-esc="get_acc_details(account)['ac_no']"/>
+                                            <span t-att-style="style"
+                                                  t-esc="get_acc_details(account)['ac_nm']"/>
+                                        </td>
+                                        <t t-if="yearly">
+                                            <t t-foreach="get_years"
+                                               t-as="year">
+                                                <td class="text-right">
+                                                    <span t-att-style="style"
+                                                          t-esc="get_data['operation_income']['account'][account][year]"
+                                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                </td>
+                                            </t>
+                                        </t>
+                                        <t t-if="not yearly">
+                                            <td class="text-right">
+                                                <span t-att-style="style"
+                                                      t-esc="get_data['operation_income']['account'][account]"
+                                                      t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </t>
+                                <t t-if="get_data.get('operation_expense', False)">
+                                    <tr>
+                                        <td>
+                                            <span class="set_space">
+                                                Expense
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr t-foreach="get_data['operation_expense']['account']"
+                                        t-as="account">
+                                        <td class="set_padd40">
+                                            <span t-att-style="style"
+                                                  t-esc="get_acc_details(account)['ac_no']"/>
+                                            <span t-att-style="style"
+                                                  t-esc="get_acc_details(account)['ac_nm']"/>
+                                        </td>
+                                        <t t-if="yearly">
+                                            <t t-foreach="get_years" t-as="year">
+                                                <td class="text-right">
+                                                    <span t-esc="get_data['operation_expense']['account'][account][year]"
+                                                        t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                </td>
+                                            </t>
+                                        </t>
+                                        <t t-if="not yearly">
+                                            <td class="text-right">
+                                                <span t-esc="get_data['operation_expense']['account'][account]"
+                                                    t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </t>
+                                <t t-if="get_data.get('operation_current_asset', False)">
+                                    <tr>
+                                        <td>
+                                            <span class="set_space">
+                                                Current Assets
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr t-foreach="get_data['operation_current_asset']['account']"
+                                        t-as="account">
+                                        <td class="set_padd40">
+                                            <span t-att-style="style"
+                                                  t-esc="get_acc_details(account)['ac_no']"/>
+                                            <span t-att-style="style"
+                                                  t-esc="get_acc_details(account)['ac_nm']"/>
+                                        </td>
+                                        <t t-if="yearly">
+                                            <t t-foreach="get_years" t-as="year">
+                                                <td class="text-right">
+                                                    <span t-att-style="style"
+                                                          t-esc="get_data['operation_current_asset']['account'][account][year]"
+                                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                </td>
+                                            </t>
+                                        </t>
+                                        <t t-if="not yearly">
+                                            <td class="text-right">
+                                                <span t-att-style="style" t-esc="get_data['operation_current_asset']['account'][account]"
+                                                    t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </t>
+                                <t t-if="get_data.get('operation_current_liability', False)">
+                                    <tr>
+                                        <td>
+                                            <span class="set_space">
+                                                Current Liabilities
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr t-foreach="get_data['operation_current_liability']['account']"
+                                        t-as="account">
+                                        <td class="set_padd40">
+                                            <span t-att-style="style"
+                                                  t-esc="get_acc_details(account)['ac_no']"/>
+                                            <span t-att-style="style"
+                                                  t-esc="get_acc_details(account)['ac_nm']"/>
+                                        </td>
+                                        <t t-if="yearly">
+                                            <t t-foreach="get_years" t-as="year">
+                                                <td class="text-right">
+                                                    <span t-att-style="style"
+                                                        t-esc="get_data['operation_current_liability']['account'][account][year]" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                </td>
+                                            </t>
+                                        </t>
+                                        <t t-if="not yearly">
+                                            <td class="text-right">
+                                                <span t-att-style="style"
+                                                    t-esc="get_data['operation_current_liability']['account'][account]"
+                                                    t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </t>
+                                <tr>
+                                    <td>
+                                        <span class="set_space">
+                                            Net cash from operating activities
+                                        </span>
+                                    </td>
+                                    <t t-if="yearly">
+                                        <td t-foreach="get_years"
+                                            t-as="year" class="text-right total_border_top">
+                                            <b>
+                                                <span t-esc="get_total(get_data, year, ['operation_current_asset', 'operation_current_liability', 'operation_income', 'operation_expense'])"
+                                                t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </b>
+                                        </td>
+                                    </t>
+                                    <t t-if="not yearly">
+                                        <td class="text-right total_border_top">
+                                            <b>
+                                                <span t-esc="get_total(get_data, False, ['operation_current_asset', 'operation_current_liability', 'operation_income', 'operation_expense'])"
+                                                t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </b>
+                                        </td>
+                                    </t>
+                                </tr>
+                                <t t-if="get_data.get('investing', False)">
+                                    <tr>
+                                        <td>
+                                            <span>
+                                                <b>Investing Activities</b>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr t-foreach="get_data['investing']['account']"
+                                        t-as="account">
+                                        <td class="set_padd20">
+                                            <span t-att-style="style"
+                                                  t-esc="get_acc_details(account)['ac_no']"/>
+                                            <span t-att-style="style"
+                                                  t-esc="get_acc_details(account)['ac_nm']"/>
+                                        </td>
+                                        <t t-if="yearly">
+                                            <t t-foreach="get_years" t-as="year">
+                                                <td class="text-right">
+                                                    <span t-att-style="style"
+                                                          t-esc="get_data['investing']['account'][account][year]"
+                                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                </td>
+                                            </t>
+                                        </t>
+                                        <t t-if="not yearly">
+                                            <td class="text-right">
+                                                <span t-att-style="style"
+                                                      t-esc="get_data['investing']['account'][account]"
+                                                      t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="set_space">
+                                                Net cash from investing activities
+                                            </span>
+                                        </td>
+                                        <t t-if="yearly">
+                                            <td t-foreach="get_years"
+                                                t-as="year" class="text-right total_border_top">
+                                                <b>
+                                                    <span t-esc="get_data['investing']['total'][year]"
+                                                      t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                </b>
+                                            </td>
+                                        </t>
+                                        <t t-if="not yearly">
+                                            <td class="text-right total_border_top">
+                                                <b>
+                                                    <span t-esc="get_data['investing']['total']"
+                                                      t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                </b>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </t>
+
+                                <t t-if="get_data.get('financing', False)">
+                                    <tr>
+                                        <td>
+                                            <span>
+                                                <b>
+                                                    Financing Activities
+                                                </b>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr t-foreach="get_data['financing']['account']"
+                                        t-as="account">
+                                        <td class="set_padd20">
+                                            <span t-att-style="style"
+                                                  t-esc="get_acc_details(account)['ac_no']"/>
+                                            <span t-att-style="style"
+                                                  t-esc="get_acc_details(account)['ac_nm']"/>
+                                        </td>
+                                        <t t-if="yearly">
+                                            <t t-foreach="get_years" t-as="year">
+                                                <td class="text-right">
+                                                    <span t-att-style="style"
+                                                          t-esc="get_data['financing']['account'][account][year]"
+                                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                </td>
+                                            </t>
+                                        </t>
+                                        <t t-if="not yearly">
+                                            <td class="text-right">
+                                                <span t-att-style="style"
+                                                      t-esc="get_data['financing']['account'][account]"
+                                                      t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="set_space">
+                                                Net cash from financing activities
+                                            </span>
+                                        </td>
+                                        <t t-if="yearly">
+                                            <td t-foreach="get_years"
+                                                t-as="year" class="text-right total_border_top">
+                                                <b>
+                                                    <span t-esc="get_data['financing']['total'][year]"
+                                                        t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                </b>
+                                            </td>
+                                        </t>
+                                        <t t-if="not yearly">
+                                            <td class="text-right total_border_top">
+                                                <b>
+                                                    <span t-esc="get_data['financing']['total']"
+                                                        t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                </b>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </t>
+                                <tr class="total_border_top">
+                                    <td>
+                                        <span>
+                                            <b>
+                                                Operating + Financing + Investing
+                                            </b>
+                                        </span>
+                                    </td>
+                                    <t t-if="yearly">
+                                        <td t-foreach="get_years"
+                                            t-as="year" class="text-right">
+                                            <b>
+                                                <span t-esc="get_total(get_data, year, ['operation_current_asset', 'operation_current_liability', 'operation_income', 'operation_expense', 'financing', 'investing'])"
+                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </b>
+                                        </td>
+                                    </t>
+                                    <t t-if="not yearly">
+                                        <td class="text-right">
+                                            <b>
+                                                <span t-esc="get_total(get_data, False, ['operation_current_asset', 'operation_current_liability', 'operation_income', 'operation_expense', 'financing', 'investing'])"
+                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </b>
+                                        </td>
+                                    </t>
+                                </tr>
+                                <tr t-if="get_data.get('Cash',False)">
+                                    <td>
+                                        <span>
+                                            <b>
+                                                Cash
+                                            </b>
+                                        </span>
+                                    </td>
+                                    <t t-foreach="get_data['Cash']['account']"
+                                       t-as="account">
+                                        <t t-if="yearly">
+                                            <t t-foreach="get_years" t-as="year">
+                                                <td class="text-right">
+                                                    <b>
+                                                        <span t-esc="get_data['Cash']['account'][account][year]"
+                                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                    </b>
+                                                </td>
+                                            </t>
+                                        </t>
+                                        <t t-if="not yearly">
+                                            <td class="text-right">
+                                                <b>
+                                                    <span t-esc="get_data['Cash']['account'][account]"
+                                                      t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                </b>
+                                            </td>
+                                        </t>
+                                    </t>
+                                </tr>
+                                <tr t-if="get_data.get('Bank',False)">
+                                    <td>
+                                        <span>
+                                            <b>Bank</b>
+                                        </span>
+                                    </td>
+                                    <t t-foreach="get_data['Bank']['account']" t-as="account">
+                                        <t t-if="yearly">
+                                            <t t-foreach="get_years" t-as="year">
+                                                <td class="text-right">
+                                                    <b>
+                                                        <span t-esc="get_data['Bank']['account'][account][year]"
+                                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                    </b>
+                                                </td>
+                                            </t>
+                                        </t>
+                                        <t t-if="not yearly">
+                                            <td class="text-right">
+                                                <b>
+                                                    <span t-esc="get_data['Bank']['account'][account]"
+                                                      t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                </b>
+                                            </td>
+                                        </t>
+                                    </t>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

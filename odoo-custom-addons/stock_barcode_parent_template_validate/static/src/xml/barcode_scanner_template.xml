@@ -1,0 +1,10 @@
+<templates id="template" xml:space="preserve">
+    <t t-name="barcode_qr_scanner_template">
+        <div>
+            <button type="button" class="btn btn-primary scan-btn">
+                <i class="fa fa-barcode"/> Scan
+            </button>
+            <input type="text" t-att-value="value" readonly="readonly" class="form-control mt8"/>
+        </div>
+    </t>
+</templates>

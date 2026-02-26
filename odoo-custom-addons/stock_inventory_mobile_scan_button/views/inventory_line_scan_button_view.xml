@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <record id="view_inventory_line_barcode_inherit_scan_button" model="ir.ui.view">
+      <field name="name">stock.inventory.line.barcode.inherit.scan.button</field>
+      <field name="model">stock.inventory.line</field>
+      <field name="inherit_id" ref="stock_barcode.stock_inventory_line_barcode"/>
+      <field name="arch" type="xml">
+        <xpath expr="//div[field[@name='product_id']]" position="inside">
+          <button type="button"
+                  name="dummy_scan"
+                  string="📷 Scan"
+                  icon="fa-barcode"
+                  class="btn btn-sm btn-secondary o_mobile_scan_button ml-2"
+                  modifiers="{}"/>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

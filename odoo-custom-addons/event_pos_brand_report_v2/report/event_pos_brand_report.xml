@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <report
+        id="action_event_pos_brand_report"
+        model="event.pos.brand.wizard"
+        string="Event POS Brand Report (Team + CTN)"
+        report_type="qweb-pdf"
+        name="event_pos_brand_report_v2.report_pdf"
+        file="event_pos_brand_report_v2.report_pdf"
+        print_report_name="(object._get_report_filename())"
+    />
+</odoo>

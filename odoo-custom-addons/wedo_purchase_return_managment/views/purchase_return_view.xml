@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="purchase_return_form" model="ir.ui.view">
+            <field name="name">purchase.return.form</field>
+            <field name="model">purchase.return</field>
+            <field name="arch" type="xml">
+                <form string="Purchase Return">
+                    <header>
+                        <button name="action_confirm" states="draft" string="Confirm" type="object" class="oe_highlight"
+                                groups="wedo_purchase_return_managment.group_purchase_return_user"/>
+                        <button name="action_reset_draft" states="cancel,confirm" string="Reset Draft" type="object" class="oe_highlight"
+                                groups="wedo_purchase_return_managment.group_purchase_return_user"/>
+                        <button name="action_process" string="Process" type="object" states="confirm" class="oe_highlight"
+                                groups="wedo_purchase_return_managment.group_purchase_return_manager"/>
+                        <button name="action_cancel" type="object" states="done,draft" string="Cancel" class="oe_highlight"
+                                groups="wedo_purchase_return_managment.group_purchase_return_manager"/>
+                        <field name="state" widget="statusbar"  readonly="1"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="buttons">
+                            <button name="action_open_picking_invoice" type="object"
+                                    class="oe_stat_button" icon="fa-file-text"
+                                    attrs="{'invisible': [('invoice_count','=', 0)]}">
+                                <field name="invoice_count" widget="statinfo"/>
+                            </button>
+                            <button name="action_open_picking" type="object"
+                                    class="oe_stat_button" icon="fa-truck"
+                                    attrs="{'invisible': [('picking_count','=', 0)]}">
+                                <field name="picking_count" widget="statinfo"/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <span class="o_form_label"> Order Name </span>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="purchase"  attrs="{'readonly': [('state','!=', 'draft')]}"/>
+                                <field name="partner_id" widget="res_partner_many2one" context="{'res_partner_search_mode': 'supplier', 'show_vat': True}"
+                                       placeholder="Name, TIN, Email, or Reference"
+                                       attrs="{'readonly': [('state','!=', 'draft')]}"/>
+                                <field name="return_journal_id"  domain="[('type','=','purchase'),('company_id','=',company_id)]" attrs="{'readonly': [('state','!=', 'draft')]}"/>
+                                <field name="picking_ids" widget="many2many_tags" force_save="1" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="date_order"  attrs="{'readonly': [('state','!=', 'draft')]}"/>
+                                <field name="p_order_id" domain="[('partner_id','=',partner_id)]"
+                                       attrs="{'readonly': [('state','!=', 'draft')],'invisible': [('purchase','!=', True)],'required': [('purchase','=', True)]}"/>
+                                <field name="picking_type_id" options="{'no_create': True}"  attrs="{'readonly': [('state','!=', 'draft')]}" groups="stock.group_stock_multi_locations"/>
+                                <field name="company_id"  attrs="{'readonly': [('state','!=', 'draft')]}" invisible="1"/>
+                                <field name="default_location_dest_id_usage" invisible="1"/>
+                                <field name="user_id"  force_save="1"  invisible="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Lines">
+                                <field name="order_line_ids"
+                                       widget="section_and_note_one2many"
+                                       mode="tree"
+                                >
+                                    <tree string="Lines" editable="bottom">
+                                        <control>
+                                            <create name="add_product_control" string="Add a product"/>
+                                            <create name="add_section_control" string="Add a section" context="{'default_display_type': 'line_section'}"/>
+                                            <create name="add_note_control" string="Add a note" context="{'default_display_type': 'line_note'}"/>
+                                        </control>
+                                        <field name="purchase_order_id" invisible="1"/>
+                                        <field name="product_id" attrs="{'readonly': [('state','!=', 'draft'),('state','!=', False)]}" />
+                                        <field name="product_qty" readonly="1"  force_save="1"/>
+                                        <field name="product_uom" attrs="{'readonly': [('state','!=', 'draft'),('state','!=', False)]}"/>
+                                        <!--                                        <field-->
+                                        <!--                                                name="tax_id"-->
+                                        <!--                                                widget="many2many_tags"-->
+                                        <!--                                                options="{'no_create': True}"-->
+                                        <!--                                                attrs="{'readonly': [('state','!=', 'draft'),('state','!=', False)]}"-->
+                                        <!--                                                optional="show"-->
+                                        <!--                                        />                                        <field name="qty_return"  attrs="{'readonly': [('state','!=', 'draft'),('state','!=', False)]}"/>-->
+                                        <field name="price_unit" attrs="{'readonly': [('state','!=', 'draft'),('state','!=', False)]}"/>
+                                        <field name="qty_return"  attrs="{'readonly': [('state','!=', 'draft'),('state','!=', False)]}"/>
+                                        <field name="price_subtotal"/>
+                                        <field name="delivered_qty" />
+                                        <field name="invoiced_qty"/>
+                                        <field name="state" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="purchase_return_view_tree" model="ir.ui.view">
+            <field name="name">purchase.return.view.tree</field>
+            <field name="model">purchase.return</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="partner_id"/>
+                    <field name="p_order_id"/>
+                    <field name="date_order"/>
+                    <field name="state" invisible="0"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="purchase_return_search" model="ir.ui.view">
+            <field name="name">purchase.return.filter</field>
+            <field name="model">purchase.return</field>
+            <field name="arch" type="xml">
+                <search string="Purchase Return Filter">
+                    <field name="purchase"/>
+                    <field name="name"/>
+                    <field name="picking_ids"/>
+                    <field name="p_order_id"/>
+                    <field name="return_journal_id"/>
+                    <field name="partner_id"/>
+                    <field name="date_order"/>
+                    <field name="state"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Vendor" name="groupby_partner" domain="[]" context="{'group_by': 'partner_id'}"/>
+                        <filter string="Purchase" name="groupby_purchase" domain="[]" context="{'group_by': 'purchase'}"/>
+                        <filter string="State" name="groupby_state" domain="[]" context="{'group_by': 'state'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="purchase_return_action">
+            <field name="name">Purchase Return</field>
+            <field name="res_model">purchase.return</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="purchase_return_view_tree"/>
+            <field name="search_view_id" ref="purchase_return_search"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a request for return
+                </p>
+            </field>
+        </record>
+
+        <!-- Top menu item -->
+        <menuitem name="Purchase Return"
+                  id="menu_return_purchase_root" groups="wedo_purchase_return_managment.group_purchase_return_user"
+                  web_icon="wedo_purchase_return_managment,static/description/icon.png"
+                  sequence="4"/>
+
+        <menuitem id="menu_purchase_form_action" parent="menu_return_purchase_root" action="purchase_return_action" sequence="1" groups="wedo_purchase_return_managment.group_purchase_return_user"/>
+
+
+    </data>
+</odoo>

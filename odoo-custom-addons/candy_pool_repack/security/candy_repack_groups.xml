@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="group_candy_repack_user" model="res.groups">
+        <field name="name">Candy Repack User</field>
+        <field name="category_id" ref="base.module_category_inventory"/>
+    </record>
+
+    <record id="group_candy_repack_manager" model="res.groups">
+        <field name="name">Candy Repack Manager</field>
+        <field name="implied_ids" eval="[(4, ref('candy_pool_repack.group_candy_repack_user'))]"/>
+        <field name="category_id" ref="base.module_category_inventory"/>
+    </record>
+</odoo>

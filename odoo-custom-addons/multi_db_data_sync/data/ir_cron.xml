@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Sync data from production to reporting server -->
+        <record id="sale_order_sync_cron_action" model="ir.cron">
+            <field name="name">Database Sync: Daily Data Sync</field>
+            <field name="model_id" ref="base.model_res_config_settings"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_sync_data()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="active" eval="True"/>
+        </record>
+
+        <record id="validate_stock_pickings" model="ir.cron">
+            <field name="name">Database Sync: Validate Pickings</field>
+            <field name="model_id" ref="stock.model_stock_picking"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_validate_stock_picking()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+            <field name="active" eval="True"/>
+        </record>
+    </data>
+</odoo>

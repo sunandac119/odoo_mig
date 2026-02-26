@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <record id="debit_notes_view_actions" model="ir.actions.act_window">
+            <field name="name">Debit Notes</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.move</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="view_id" ref="account.view_out_invoice_tree"/>
+            <field name="domain">[('debit_origin_id','!=',False)]</field>
+<!--            <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>-->
+            <field name="context">{'create':False}</field>
+<!--            <field name="help" type="html">-->
+<!--                <p class="o_view_nocontent_smiling_face">-->
+<!--                    No request for consignment Purchase Order found. Let's create one!-->
+<!--                </p>-->
+<!--            </field>-->
+        </record>
+
+
+        <menuitem name="Debit Notes"
+                  id="menu_debit_notes"
+                  parent="account.menu_finance_receivables"
+                  action="lhdn_connector.debit_notes_view_actions"
+                  sequence="100"/>
+
+    </data>
+</odoo>

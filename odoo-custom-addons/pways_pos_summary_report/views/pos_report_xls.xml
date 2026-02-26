@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="assets_backend" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/pways_pos_summary_report/static/src/js/action_manager_report.js"
+            />
+        </xpath>
+    </template>
+    <data>
+        <record id="pos_xlsx" model="ir.actions.report">
+            <field name="name">POS Excel Report</field>
+            <field name="model">pos.order</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">pways_pos_summary_report.pos_xlsx</field>
+            <field name="report_file">pos_xlsx</field>
+        </record>
+
+        <record id="pos_pdf" model="ir.actions.report">
+            <field name="name">POS PDF Report</field>
+            <field name="model">pos.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">pways_pos_summary_report.report_pways_pos_summary</field>
+            <field name="report_file">pways_pos_summary_report.report_pways_pos_summary</field>
+        </record>		
+    </data>
+</odoo>

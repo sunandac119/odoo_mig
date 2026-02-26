@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="assets_backend" name="zebra printer" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/add_product_sale_order/static/src/js/sale_product_quantity.js"></script>
+            <script type="text/javascript" src="/add_product_sale_order/static/src/js/kanban_view/model.js"></script>
+            <script type="text/javascript" src="/add_product_sale_order/static/src/js/kanban_view/controller.js"></script>
+            <script type="text/javascript" src="/add_product_sale_order/static/src/js/kanban_view/renderer.js"></script>
+            <script type="text/javascript" src="/add_product_sale_order/static/src/js/kanban_view/record.js"></script>
+            <script type="text/javascript" src="/add_product_sale_order/static/src/js/kanban_view/view.js"></script>
+            <link rel="stylesheet" type="text/scss" href="/add_product_sale_order/static/src/scss/product_product_views.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/add_product_sale_order/static/src/scss/fsm_product_quantity.scss"/>
+        </xpath>
+    </template>
+</odoo>

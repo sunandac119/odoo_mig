@@ -1,0 +1,64 @@
+<odoo>
+  <data>
+
+    <record id="cash_box_out_form_inherit" model="ir.ui.view">
+        <field name="name">cash.box.out</field>
+        <field name="model">cash.box.out</field>
+        <field name="inherit_id" ref="account.cash_box_out_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//group" position="before">
+                <field name="cashbox_lines_ids" nolabel="1" context="{'default_currency_id': currency_id}">
+                            <tree editable="bottom">
+                                <field name="currency_id" invisible="1"/>
+                                <field name="number"/>
+                                <field name="coin_value" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                <field name="subtotal" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            </tree>
+                        </field>
+                <div>
+                            <group>
+                                <group class="oe_subtotal_footer oe_right" cols="6">
+                                    <field name="currency_id" invisible="1" />
+                                    <div class="o_td_label"></div>
+                                    <field name="total" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                </group>
+                            </group>
+                        </div>
+                <div>
+                    <button name="cash_in_action" string="Cash In" type="object" class="oe_highlight mr-2"/>
+                    <button name="cash_out_action" string="Cash Out" type="object" class="oe_highlight ml-2"/>
+                </div>
+            </xpath>
+            <xpath expr="//footer/button[@name='run']" position="before">
+                <button name="generate_cash_out_report" string="Print" type="object" class="btn-primary"/>
+            </xpath>
+
+            <xpath expr="//footer/button[@name='run']" position="before">
+                <button name="generate_cash_out_report_1" string="OPEN" type="object" class="btn-primary"/>
+            </xpath>			
+
+
+        </field>
+    </record>
+
+    <record id="view_account_bnk_stmt_check_inherit" model="ir.ui.view">
+        <field name="name">account.bank.statement.cashbox.ext</field>
+        <field name="model">account.bank.statement.cashbox</field>
+        <field name="inherit_id" ref="point_of_sale.view_account_bnk_stmt_cashbox_footer"/>
+        <field name="priority">1000</field>
+        <field name="arch" type="xml">
+            <!-- <xpath expr="//field[@name='cashbox_lines_ids']" position="before">
+              <button name="set_default_cashbox" type="object" string="Set Default Cash Opening new" />
+            </xpath> -->
+            <xpath expr="//footer/button" position="before">
+                <!-- <button name="set_default_cashbox" type="object" string="Set Default Cash Opening new" /> -->
+                <button name="generate_cash_out_report" string="Print" type="object" class="btn-primary"/>
+				<button name="generate_cash_out_report_1" string="OPEN" type="object" class="btn-primary"/> 				
+                <!-- <button string="Print" type="object" class="btn-primary"/> -->
+            </xpath>
+
+        </field>
+    </record>	
+  </data>
+</odoo>

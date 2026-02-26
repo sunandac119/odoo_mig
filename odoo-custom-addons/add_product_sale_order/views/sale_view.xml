@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding='utf-8' ?>
+<odoo>
+    <record id="sale_order_form_remove_external_link" model="ir.ui.view">
+        <field name="name">sale.order.form.remove.external.link</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="priority">200</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="options">{'no_open': True}</attribute>
+                <attribute name="widget">many2one</attribute>
+            </xpath>
+
+        </field>
+    </record>
+    <record id="view_order_form_inh" model="ir.ui.view">
+        <field name="name">view.order.form.inh</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page/field[@name='order_line']" position="before">
+                <button class="btn btn-primary ml-2" name="action_view_products"
+                    type="object" icon="fa-cart-plus" attrs="{'invisible': [('partner_id', '=', False)]}" string="Add Products">
+                    <!-- <div class="o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="line_product_count" string="Products" class="mr-1"/>
+                        </span>
+                    </div> -->
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

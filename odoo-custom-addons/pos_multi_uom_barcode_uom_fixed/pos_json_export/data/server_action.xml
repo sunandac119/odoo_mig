@@ -1,0 +1,9 @@
+<odoo>
+    <record id="action_export_pos_sales_json" model="ir.actions.server">
+        <field name="name">Export POS JSON</field>
+        <field name="model_id" ref="point_of_sale.model_pos_order"/>
+        <field name="binding_model_id" ref="point_of_sale.model_pos_order"/>
+        <field name="state">code</field>
+        <field name="code">action = records.action_export_pos_sales_json()</field>
+    </record>
+</odoo>

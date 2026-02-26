@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="assets_pos_ui_design" name="pos_ui_design assets" inherit_id="point_of_sale.assets">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="/pos_ui_design/static/src/lib/jquery-ui.css"/>
+            <link rel="stylesheet" href="/pos_ui_design/static/src/lib/material-dashboard.css"/>
+            <script type="text/javascript" src="/pos_ui_design/static/src/lib/jquery.ui.touch-punch.js"/>
+            <script type="text/javascript" src="/pos_ui_design/static/src/lib/jscolor.js"/>
+            <script type="text/javascript" src="/pos_ui_design/static/src/js/PosUi.js"/>
+            <link rel="stylesheet" href="/pos_ui_design/static/src/css/PosUi.css"/>
+            <link rel="stylesheet" href="/pos_ui_design/static/src/css/Fonts.css"/>
+        </xpath>
+    </template>
+</odoo>

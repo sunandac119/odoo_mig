@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="lhdn_item_classification_code_view_form" model="ir.ui.view">
+            <field name="name">lhdn.item.classification.code.view.form</field>
+            <field name="model">lhdn.item.classification.code</field>
+            <field name="arch" type="xml">
+                <tree string="lhdn_item_classification_code_tree" editable="bottom">
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="lhdn_item_classification_code_action" model="ir.actions.act_window">
+            <field name="name">Item Classification code</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">lhdn.item.classification.code</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+        <menuitem id="lhdn_item_classification_code_menu" name="Item Classification Code"
+                  parent="lhdn_connector.menu_lhdn_connector"
+                  action="lhdn_connector.lhdn_item_classification_code_action"/>
+    </data>
+</odoo>

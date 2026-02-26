@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ir_cron_event_replenishment_daily" model="ir.cron">
+        <field name="name">Event Replenishment: Yesterday Sales by Brand</field>
+        <field name="model_id" ref="model_event_replenishment_brand_day"/>
+        <field name="state">code</field>
+        <field name="code">model.run_compute()</field>
+        <field name="interval_type">days</field>
+        <field name="interval_number">1</field>
+        <field name="numbercall">-1</field>
+        <field name="active">True</field>
+        <field name="priority">5</field>
+    </record>
+</odoo>

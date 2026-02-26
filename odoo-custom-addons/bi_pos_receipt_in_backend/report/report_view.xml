@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id="receipt_entry_report_template_id">
+			<t t-call="web.html_container">
+				<t t-foreach="docs" t-as="doc">
+					<div class="page">
+						<t t-if='doc.company_id.logo'>
+							<img style="display: block;margin-left: auto;margin-right: auto;" t-att-src="'data:image/png;base64,%s' % to_text(doc.company_id.logo)" height="70" border="1" width="70"/>
+							<br/>
+						</t>
+
+						<div class="text-center">	
+							<div style="text-align:center;">
+								<t t-esc='doc.company_id.name'/>
+							</div>						
+							<div style="text-align:center;">
+								Tel: <t t-esc='doc.company_id.phone'/>
+							</div>
+							<div style="text-align:center;">
+								<t t-esc='doc.company_id.email'/>
+							</div>
+							<div style="text-align:center;">
+								<t t-esc='doc.company_id.website'/>
+							</div>
+							<div style="text-align:center;">------------------</div>
+							<!-- <br/> -->					
+							<div style="text-align:center;">
+								Served by <t t-esc='doc.user_id.name'/>
+							</div>
+							<br/>
+							<div style="text-align:center;">
+								<t t-esc='doc.partner_id.name'/>
+							</div>
+							<div style="text-align:center;">
+								<t t-esc='doc.partner_id.phone'/>
+							</div>
+							<br/>
+						</div>
+
+						<table class="table table-sm">
+							<thead>
+								<tr width="100%">
+									<th class="text-left">Description</th>
+									<th class="text-center">Quantity</th>
+									<th class="text-right">Sub.Total</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr t-foreach='doc.lines' t-as='line' width="100%">
+									<td class="text-left">
+										<span t-field='line.product_id'/><br/>
+										<span t-if='line.discount != 0'>
+											<div class="text-left" style="color:grey">
+												With a <t t-esc='line.discount' />% Discount
+											</div>
+										</span>
+									</td>
+									<td class="text-center" style="text-align: center;">
+										<span t-field='line.qty'/>
+									</td>
+									<td class="text-right" style="text-align: right;">
+										<span t-field='line.price_subtotal_incl'/>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<div>
+							<div style="text-align:right">-------------</div>
+							<br/>
+							<div width="100%" style="font-size:24px;">
+								<span class="text-center">Total:</span><span t-field='doc.amount_total' style="float:right;"/>
+							</div>
+							<br/>
+							<div width="100%">
+								<span class="text-center">Total Tax:</span><span t-field='doc.amount_tax' style="float:right;"/>
+							</div>
+							<br/>
+						</div>
+
+						<table class="table table-sm" width="100%">
+							<tbody>
+								<tr t-foreach='doc.payment_ids' t-as='pay'>
+									<td t-if="pay.amount &lt;= 0">
+										<span class="text-left" style="font-size:24px;">Change:</span>
+										<span t-field='pay.amount' style="float:right; font-size:24px;"/>
+									</td>
+									<td t-else="">
+										<span class="text-left"><t t-esc='pay.payment_method_id.name'/></span>
+										<span t-field='pay.amount' style="float:right;"/>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						
+						<div class="text-center">
+							<div style="text-align:center;">
+								<t t-esc='doc.date_order'/>
+							</div>
+							<div style="text-align:center;">
+								<t t-esc='doc.pos_reference'/>	
+							</div>
+						</div>					
+					</div>
+				</t>
+			</t>
+		</template>
+
+		<record id="pos_backend_receipt_paperformat" model="report.paperformat">
+			<field name="name">pos backend Receipt A6</field>
+			<field name="default" eval="True" />
+			<field name="format">A6</field>
+			<field name="page_height">0</field>
+			<field name="page_width">0</field>
+			<field name="orientation">Portrait</field>
+			<field name="margin_top">5</field>
+			<field name="margin_bottom">4</field>
+			<field name="margin_left">3</field>
+			<field name="margin_right">3</field>
+			<field name="header_line" eval="False"/>
+			<field name="header_spacing">2</field>
+			<!-- <field name="dpi">90</field> -->
+		</record>
+
+
+
+
+		<report id="receipt_entry_report_id"
+			string="POS PDF Receipt"
+			model="pos.order"
+			report_type="qweb-pdf"
+			file="bi_pos_receipt_in_backend.receipt_entry_report_template_id"
+			name="bi_pos_receipt_in_backend.receipt_entry_report_template_id"
+			paperformat="bi_pos_receipt_in_backend.pos_backend_receipt_paperformat"/>
+	</data>
+
+</odoo>

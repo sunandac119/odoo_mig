@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="print_product_stock_clonet">
+		<t t-call="web.html_container">
+		<t t-call="web.basic_layout">
+				<div class="page" style="font-size: 15px">
+		            <style type="text/css">
+		                table th, h4 {
+		                background-color: gray;
+		                }
+		            </style>
+					<div class="header">
+		                <div class="row mt32 mb32">
+		                	<div class="col-12">
+		                		<h2 class="text-center" style="font-size: 25px"><span t-esc="company_id.name"/></h2>
+		                	</div>
+		                </div>
+		            </div>
+				<div class="row mt32 mb32">
+					<div class="col-12">
+		                <div class="col-12 text-center">
+		                    <span t-field="company_id.partner_id" /> , <span t-field="company_id.partner_id.street" /> , <span t-field="company_id.partner_id.street2" /> , <span t-field="company_id.partner_id.city" /> , <span t-field="company_id.partner_id.zip" /> ,  <span t-field="company_id.partner_id.country_id" /> , <span t-field="company_id.partner_id.vat" />
+		                </div>
+		            </div>
+		        </div>
+				<h4 class="text-center">POS Product Stock Report </h4>
+
+				<br />
+				<table class="table table-sm o_main_table table-bordered" style="width:100%;font-size: 13px;">
+					<colgroup>
+						<col width='8%'/>
+						<col width='11%'/>
+						<col width='12%'/>
+						<col width='16%'/>
+						<col width='8%'/>
+						<col width='9%'/>
+						<col width='9%'/>
+						<col width='9%'/>
+						<col width='9%'/>
+						<col width='9%'/>
+					</colgroup>
+					<thead>
+						<tr>
+							<th class="text-center">DATE</th>
+							<th class="text-center">CATEGORY</th>
+							<th class="text-center">SUPPLIER</th>
+							<th class="text-center">PRODUCT NAME</th>
+							<!-- <th class="text-center">BRAND NAME</th> -->
+							<th class="text-center">B/F STOCK</th>
+							<th class="text-center">SOLD</th>
+							<th class="text-center">CLOSING STOCK</th>
+							<th class="text-center">B/F STOCK Amount</th>
+							<th class="text-center">SOLD Amount</th>
+							<th class="text-center">CLOSING STOCK Amount</th>
+						</tr>
+					</thead>
+					<t t-set="total_before_stock" t-value="0"/>
+					<t t-set="total_sold_qty" t-value="0"/>
+					<t t-set="total_close_stock" t-value="0"/>
+					<t t-set="total_before_stock_amount" t-value="0"/>
+					<t t-set="total_sold_stock_amount" t-value="0"/>
+					<t t-set="total_closing_stock_amount" t-value="0"/>
+					<tbody>
+						<tr t-foreach="lines" t-as="line">
+
+							<t t-set="total_before_stock" t-value="total_before_stock + line.get('before_stock') "/>
+							<t t-set="total_sold_qty" t-value="total_sold_qty + line.get('sold_qty') "/>
+							<t t-set="total_close_stock" t-value="total_close_stock + (line.get('before_stock') + line.get('sold_qty')) "/>
+
+							<t t-set="total_before_stock_amount" t-value="total_before_stock_amount + line.get('before_stock_amount') "/>
+							<t t-set="total_sold_stock_amount" t-value="total_sold_stock_amount + line.get('sold_stock_amount') "/>
+							<t t-set="total_closing_stock_amount" t-value="total_closing_stock_amount + (line.get('before_stock_amount') + line.get('sold_stock_amount')) "/>
+
+							<td class="text-center"><span t-esc="line.get('date')" /></td>
+							<td class="text-center"><span t-esc="line.get('name')" /></td>
+							<td class="text-center"><span t-esc="line.get('suppliers')" /></td>
+							<td class="text-center"><span t-esc="line.get('product_name')" /></td>
+							<!-- <td class="text-center"><span t-esc="line.get('brand_name')" /></td> -->
+
+
+							<td class="text-right"><span t-esc="line.get('before_stock')" t-options='{"widget": "float", "decimal_precision": "Product Price"}'/></td>
+							<td class="text-right"><span t-esc="line.get('sold_qty')" t-options='{"widget": "float", "decimal_precision": "Product Price"}'/></td>
+							<td class="text-right"><span t-esc="line.get('before_stock') + line.get('sold_qty')" t-options='{"widget": "float", "decimal_precision": "Product Price"}'/></td>
+
+
+
+							<td class="text-right"><span t-esc="line.get('before_stock_amount')" t-options='{"widget": "float", "decimal_precision": "Product Price"}'/></td>
+							<td class="text-right"><span t-esc="line.get('sold_stock_amount')" t-options='{"widget": "float", "decimal_precision": "Product Price"}'/></td>
+							<td class="text-right"><span t-esc="line.get('before_stock_amount') + line.get('sold_stock_amount')" t-options='{"widget": "float", "decimal_precision": "Product Price"}'/></td>
+						</tr>
+						<tr>
+							<td style="background-color: gray;" class="text-center" colspan="4"><b>GRAND TOTAL</b></td>
+							<td class="text-right"><strong><span t-esc="total_before_stock" t-options='{"widget": "float", "decimal_precision": "Product Price"}'/></strong></td>
+							<td class="text-right"><strong><span t-esc="total_sold_qty"  t-options='{"widget": "float", "decimal_precision": "Product Price"}'/></strong></td>
+							<td class="text-right"><strong><span t-esc="total_close_stock"  t-options='{"widget": "float", "decimal_precision": "Product Price"}'/></strong></td>
+
+							<td class="text-right"><strong><span t-esc="total_before_stock_amount" t-options='{"widget": "float", "decimal_precision": "Product Price"}'/></strong></td>
+							<td class="text-right"><strong><span t-esc="total_sold_stock_amount" t-options='{"widget": "float", "decimal_precision": "Product Price"}'/></strong></td>
+							<td class="text-right"><strong><span t-esc="total_closing_stock_amount" t-options='{"widget": "float", "decimal_precision": "Product Price"}'/></strong></td>
+						</tr>
+					</tbody>
+				</table>
+				</div>
+			</t>
+		</t>
+	</template>
+</odoo>

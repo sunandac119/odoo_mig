@@ -1,0 +1,18 @@
+
+<odoo>
+    <record id="view_product_replenishment_list" model="ir.ui.view">
+        <field name="name">product.replenishment.list</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <tree string="Replenishment List">
+                <field name="name"/>
+                <field name="on_hand_qty"/>
+                <field name="unit_qty"/>
+                <field name="ctn_qty"/>
+                <field name="parent_template_id"/>
+                <field name="uom"/>
+                <field name="total_on_hand_times_unit_qty"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

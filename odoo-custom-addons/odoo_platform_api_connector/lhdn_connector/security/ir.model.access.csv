@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+lhdn_connector.access_lhdn_item_classification_code,access_lhdn_item_classification_code,lhdn_connector.model_lhdn_item_classification_code,base.group_user,1,1,1,1
+lhdn_connector.access_lhdn_msic_code,access_lhdn_msic_code,lhdn_connector.model_lhdn_msic_code,base.group_user,1,1,1,1
+
+lhdn_connector.access_lhdn_setup,access_lhdn_setup,lhdn_connector.model_lhdn_setup,base.group_user,1,1,1,1
+
+lhdn_connector.access_csv_to_xlsx_wizard,access_csv_to_xlsx_wizard,lhdn_connector.model_csv_to_xlsx_wizard,base.group_user,1,1,1,1
+
+lhdn_connector.access_myinvoice_move,access_myinvoice_move,lhdn_connector.model_myinvoice_move,base.group_user,1,1,1,1

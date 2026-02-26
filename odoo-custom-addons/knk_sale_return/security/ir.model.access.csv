@@ -1,0 +1,5 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_return,access_sale_return,model_sale_return,base.group_user,1,1,1,1
+access_sale_return_line,access_sale_return_line,model_sale_return_line,base.group_user,1,1,1,1
+access_sale_order_return,access_sale_order_return,model_sale_order_return,base.group_user,1,1,1,1
+access_sale_order_return_line,access_sale_order_return_line,model_sale_order_return_line,base.group_user,1,1,1,1

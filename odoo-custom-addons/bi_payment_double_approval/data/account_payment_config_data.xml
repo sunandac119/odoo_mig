@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="account_payment_approval_config_data" model="account.payment.approval.config">
+            <field name="account_first_approval">false</field>
+            <field name="account_first_approval_minimum_amount">0.00</field>
+            <field name="account_second_approval">false</field>
+            <field name="account_second_approval_minimum_amount">0.00</field>
+
+            <field name="approval_vendor">false</field>
+            <field name="approval_customer">false</field>
+        </record>
+
+    </data>
+</odoo>

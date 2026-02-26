@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_pos_search_products_by_numbers_pos_search_products_by_numbers,pos_search_products_by_numbers.pos_search_products_by_numbers,model_pos_search_products_by_numbers_pos_search_products_by_numbers,base.group_user,1,1,1,1

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_backend" name="eg_ai_smart_dashboard_lite assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/eg_ai_smart_dashboard_lite/static/lib/js/spectrum.js"/>
+            <script type="text/javascript" src="/eg_ai_smart_dashboard_lite/static/lib/js/apexcharts.min.js"/>
+            <script type="text/javascript" src="/eg_ai_smart_dashboard_lite/static/lib/js/bootstrap-iconpicker.min.js"/>
+            <script type="text/javascript" src="/eg_ai_smart_dashboard_lite/static/lib/js/jquery.ui.touch-punch.min.js"/>
+            <script type="text/javascript" src="/eg_ai_smart_dashboard_lite/static/lib/js/gridstack.min.js"/>
+            <script type="text/javascript" src="/eg_ai_smart_dashboard_lite/static/lib/js/gridstack.jQueryUI.min.js"/>
+            <script type="text/javascript" src="/eg_ai_smart_dashboard_lite/static/src/js/ColorPickerWidget.js"/>
+            <script type="text/javascript" src="/eg_ai_smart_dashboard_lite/static/src/js/DashboardIconPicker.js"/>
+            <script type="text/javascript" src="/eg_ai_smart_dashboard_lite/static/src/js/graph_preview.js"/>
+            <script type="text/javascript" src="/eg_ai_smart_dashboard_lite/static/src/js/dashboard_board.js"/>
+            <link rel="stylesheet" href="/eg_ai_smart_dashboard_lite/static/lib/css/spectrum.css"/>
+            <link rel="stylesheet" href="/eg_ai_smart_dashboard_lite/static/lib/css/bootstrap-iconpicker.min.css"/>
+            <link rel="stylesheet" href="/eg_ai_smart_dashboard_lite/static/lib/css/gridstack.min.css"/>
+            <link rel="stylesheet" href="/eg_ai_smart_dashboard_lite/static/lib/css/apexcharts.css"/>
+            <link rel="stylesheet" href="/eg_ai_smart_dashboard_lite/static/src/css/custom_dashboard.css"/>
+        </xpath>
+    </template>
+</odoo>

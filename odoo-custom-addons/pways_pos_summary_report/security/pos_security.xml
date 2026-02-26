@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    	<record id="group_pos_summary" model="res.groups">
+            <field name="name">POS Summary Report</field>
+        </record>
+    </data>
+</odoo>

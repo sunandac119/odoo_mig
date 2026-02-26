@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <record id="product_price_checker" model="ir.actions.client">
+        <field name="name">product_price_checker</field>
+        <field name="tag">product_price_checker</field>
+        <field name="target">fullscreen</field>
+    </record>
+
+    <menuitem 
+        id="product_price_checker_root" 
+        name="Price Checker"
+        sequence="11" 
+        web_icon="product_price_checker_adv,static/description/icon.png"
+        groups="product_price_checker_adv.group_price_checker"/>
+    
+    <menuitem 
+        id="product_price_checker_menu" 
+        name="Price Checker"
+        parent="product_price_checker_root" 
+        sequence="9" 
+        action="product_price_checker"/>
+</odoo>

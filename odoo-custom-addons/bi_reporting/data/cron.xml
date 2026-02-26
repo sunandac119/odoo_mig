@@ -1,0 +1,29 @@
+<odoo>
+    <record id="ir_cron_refresh_sales_summary_mv" model="ir.cron">
+        <field name="name">Refresh Sales Summary MV</field>
+        <field name="model_id" ref="model_bi_sales_summary_mv"/>
+        <field name="state">code</field>
+        <field name="code">model.refresh_view()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+    </record>
+    <record id="ir_cron_refresh_inventory_summary_mv" model="ir.cron">
+        <field name="name">Refresh Inventory Summary MV</field>
+        <field name="model_id" ref="model_bi_inventory_summary_mv"/>
+        <field name="state">code</field>
+        <field name="code">model.refresh_view()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+    </record>
+    <record id="ir_cron_refresh_expense_summary_mv" model="ir.cron">
+        <field name="name">Refresh Expense Summary MV</field>
+        <field name="model_id" ref="model_bi_expense_summary_mv"/>
+        <field name="state">code</field>
+        <field name="code">model.refresh_view()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+    </record>
+</odoo>

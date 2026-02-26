@@ -1,0 +1,1325 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="ubl_21_lhdn_Invoice">
+
+            <Invoice xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+                     xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+                     xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+                     xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2">
+
+                <t t-if="is_for_peppol">
+                    <cbc:CustomizationID t-out="customization_id"/>
+                    <cbc:ProfileID t-out="profile_id"/>
+                </t>
+                <t t-if="is_contains_digi_sign">
+                    <ext:UBLExtensions>
+                        <ext:UBLExtension>
+                            <ext:ExtensionURI>urn:oasis:names:specification:ubl:dsig:enveloped:xades</ext:ExtensionURI>
+                            <ext:ExtensionContent>
+                                <!--  Please note that the signature values are sample values only  -->
+                                <sig:UBLDocumentSignatures
+                                        xmlns:sig="urn:oasis:names:specification:ubl:schema:xsd:CommonSignatureComponents-2"
+                                        xmlns:sac="urn:oasis:names:specification:ubl:schema:xsd:SignatureAggregateComponents-2"
+                                        xmlns:sbc="urn:oasis:names:specification:ubl:schema:xsd:SignatureBasicComponents-2">
+                                    <sac:SignatureInformation>
+                                        <cbc:ID>urn:oasis:names:specification:ubl:signature:1</cbc:ID>
+                                        <sbc:ReferencedSignatureID>urn:oasis:names:specification:ubl:signature:Invoice
+                                        </sbc:ReferencedSignatureID>
+                                        <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" Id="signature">
+                                            <ds:SignedInfo>
+                                                <ds:CanonicalizationMethod
+                                                        Algorithm="http://www.w3.org/2006/12/xml-c14n11" t-out=""/>
+                                                <ds:SignatureMethod
+                                                        Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"
+                                                        t-out=""/>
+                                                <ds:Reference Id="id-doc-signed-data" URI="">
+                                                    <ds:Transforms>
+                                                        <ds:Transform
+                                                                Algorithm="http://www.w3.org/TR/1999/REC-xpath-19991116">
+                                                            <ds:XPath>not(//ancestor-or-self::ext:UBLExtensions)
+                                                            </ds:XPath>
+                                                        </ds:Transform>
+                                                        <ds:Transform
+                                                                Algorithm="http://www.w3.org/TR/1999/REC-xpath-19991116">
+                                                            <ds:XPath>not(//ancestor-or-self::cac:Signature)</ds:XPath>
+                                                        </ds:Transform>
+                                                        <ds:Transform Algorithm="http://www.w3.org/2006/12/xml-c14n11"/>
+                                                    </ds:Transforms>
+                                                    <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"
+                                                                     t-out=""/>
+                                                    <ds:DigestValue t-out="signed_data_digest_values"/>
+                                                </ds:Reference>
+                                                <ds:Reference
+                                                        Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties"
+                                                        URI="#id-xades-signed-props">
+                                                    <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"
+                                                                     t-out=""/>
+                                                    <ds:DigestValue t-out="signed_propes_digest_value"/>
+                                                </ds:Reference>
+                                            </ds:SignedInfo>
+                                            <ds:SignatureValue t-out="signature_value"/>
+                                            <ds:KeyInfo>
+                                                <ds:X509Data>
+                                                    <ds:X509Certificate>
+                                                        MIIEQzCCAyugAwIBAgIhAOkUChItLeodmoK/A7B0XLcSUCvT4jgrSeYBOeZ1G8VPMA0GCSqGSIb3DQEBBQUAMIG9MQswCQYDVQQGEwJLTDEhMB8GA1UECgwYQ29udG9zbyBNYWxheXNpYSBTZG4gQmhkMSEwHwYDVQQLDBhDb250b3NvIE1hbGF5c2lhIFNkbiBCaGQxITAfBgNVBAMMGENvbnRvc28gTWFsYXlzaWEgU2RuIEJoZDEiMCAGCSqGSIb3DQEJARYTbm9lbWFpbEBjb250b3NvLmNvbTEhMB8GA1UEAwwYQ29udG9zbyBNYWxheXNpYSBTZG4gQmhkMB4XDTI0MDQwMzA5NTM1MFoXDTI3MDQwNDA5NTM1MFowgZoxCzAJBgNVBAYTAktMMSEwHwYDVQQKDBhDb250b3NvIE1hbGF5c2lhIFNkbiBCaGQxITAfBgNVBAsMGENvbnRvc28gTWFsYXlzaWEgU2RuIEJoZDEhMB8GA1UEAwwYQ29udG9zbyBNYWxheXNpYSBTZG4gQmhkMSIwIAYJKoZIhvcNAQkBFhNub2VtYWlsQGNvbnRvc28uY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA8yRxOigcbDzObxhNmVklzyJOItz4eSZHUv+JEy7nTosOg/wcFcDgrJDw6LZ/Mr6aW98VJ930hlSw52fOPiMnXTyJLF6ZjISPsTjlrn9eKnbWt6DWqFIDWDIaXVhAcfFRkKftSFgSIEO9NIb+kmV6K/LotWEiLglz6KZE3EopSF+pXa1LmwC8v0UhK8V8LcxqIe3dBq/jzyaWsLx5D4zdQqBSFEXrfp0A+N/93uAtQa35Fj3ypEpSzF/EQ6bDO/GwBKQm3lCny6AJB/I/kCbC/X+oMxkTOo9zW5hcdRiqmAa4iIrhORIOTlj5qfnngjulTnSMdK5kXSLJxC6SDlKtVwIDAQABo08wTTAdBgNVHQ4EFgQU2pvYc/z5Prqp8Dt8PM1C/df1ysQwHwYDVR0jBBgwFoAU2pvYc/z5Prqp8Dt8PM1C/df1ysQwCwYDVR0RBAQwAoIAMA0GCSqGSIb3DQEBBQUAA4IBAQBHzVHoQk+cAwunDlmrBjWYxfzmF3Adab81HKug+riDGiSG3bNntAwRVkDC4onG680Ucsuhxeyj18gkAtR/5ZWu3RDZwcYoBMuQzUSS9U5bwg5VqCqxEfTQCSERjuCa8lt99EcgY06e8a8WEwcY19LKVVwtrTJnlHvXhmcheumX3pfjPb5u0c0WKnbkj5mow75TuEmc0k1qow6Z6H5O6cPhX+eyNQSFZ3QnC0W2oIZTi96TVT4JH8LOPurZ5AdG9maQNIypaZ0gYPtAJISP+nxPOHmloicecdLLaMG/cvDf2+/bJR2P98dTuTZqgKrvWHkiMOma62MVx5dbcmbxgxU6
+                                                    </ds:X509Certificate>
+                                                </ds:X509Data>
+                                            </ds:KeyInfo>
+                                            <ds:Object>
+                                                <xades:QualifyingProperties
+                                                        xmlns:xades="http://uri.etsi.org/01903/v1.3.2#"
+                                                        Target="signature">
+                                                    <xades:SignedProperties Id="id-xades-signed-props">
+                                                        <xades:SignedSignatureProperties>
+                                                            <xades:SigningTime t-out="signing_time"/>
+                                                            <xades:SigningCertificate>
+                                                                <xades:Cert>
+                                                                    <xades:CertDigest>
+                                                                        <ds:DigestMethod
+                                                                                Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"
+                                                                                t-out=""/>
+                                                                        <ds:DigestValue t-out="digest_value"/>
+                                                                    </xades:CertDigest>
+                                                                    <xades:IssuerSerial>
+                                                                        <ds:X509IssuerName t-out="x509_issuer_name"/>
+                                                                        <!--                                                                                t-out="x509_serial_number"-->
+                                                                        <ds:X509SerialNumber>1</ds:X509SerialNumber>
+                                                                        <!--                                                                                t-out="x509_serial_number"/>-->
+                                                                        <!--                                                                        2475382886904809774818644480820936050208702411</ds:X509SerialNumber>-->
+                                                                    </xades:IssuerSerial>
+                                                                </xades:Cert>
+                                                            </xades:SigningCertificate>
+                                                        </xades:SignedSignatureProperties>
+                                                    </xades:SignedProperties>
+                                                </xades:QualifyingProperties>
+                                            </ds:Object>
+                                        </ds:Signature>
+                                    </sac:SignatureInformation>
+                                </sig:UBLDocumentSignatures>
+                            </ext:ExtensionContent>
+                        </ext:UBLExtension>
+                    </ext:UBLExtensions>
+                </t>
+                <cbc:ID t-out="vals['ID'][0].get('_')"/>
+                <cbc:IssueDate t-out="vals['IssueDate'][0].get('_')"/>
+                <cbc:IssueTime t-out="vals['IssueTime'][0].get('_')"/>
+
+                <t t-if="is_for_peppol">
+                    <cbc:InvoiceTypeCode t-if="peppol_invoice_type_code== 380" t-out="peppol_invoice_type_code"/>
+                    <cbc:TaxPointDate t-if="peppol_invoice_type_code==381" t-out="vals['IssueDate'][0].get('_')"/>
+<!--                        2023-11-30</cbc:TaxPointDate>-->
+                    <cbc:CreditNoteTypeCode t-if="peppol_invoice_type_code==381" t-out="peppol_invoice_type_code"/>
+                </t>
+                <t t-else="">
+                    <cbc:InvoiceTypeCode listVersionID="1.0" t-out="vals['InvoiceTypeCode'][0].get('_')"/>
+                </t>
+                <cbc:DocumentCurrencyCode t-out="vals['DocumentCurrencyCode'][0].get('_')"/>
+
+                <!-- need to setts this files-->
+                <t t-if="is_for_peppol">
+                    <cbc:BuyerReference>Cik Maria</cbc:BuyerReference>
+<!--                    <cac:InvoicePeriod> &lt;!&ndash; IBG-14 - INVOICING PERIOD &ndash;&gt;-->
+<!--                        <cbc:StartDate>2023-11-01</cbc:StartDate>-->
+<!--                        <cbc:EndDate>2023-11-30</cbc:EndDate>-->
+<!--                    </cac:InvoicePeriod>-->
+                </t>
+                <cac:InvoicePeriod t-foreach="vals.get('InvoicePeriod', [])" t-as="foreach_vals">
+                    <cbc:StartDate t-out="foreach_vals.get('StartDate')[0].get('_')"/>
+                    <cbc:EndDate t-out="foreach_vals.get('EndDate')[0].get('_')"/>
+<!--                    <cbc:Description t-out="foreach_vals.get('Description')[0].get('_')"/>-->
+                </cac:InvoicePeriod>
+                <cac:BillingReference t-if="vals.get('BillingReference')">
+                    <!--<t t-set="billing_reference_vals" t-value="vals.get('BillingReference')[0].get('AdditionalDocumentReference')[0].get('ID')[0].get('_')"/>-->
+                    <!--<cac:AdditionalDocumentReference>-->
+                    <!--    <cbc:ID t-out="billing_reference_vals"/>-->
+                    <!--                    <cbc:UUID t-out="billing_reference_vals.get('uuid')"/>-->
+                    <!--</cac:AdditionalDocumentReference>-->
+                    <t t-set="idr" t-value="vals.get('BillingReference')[0].get('InvoiceDocumentReference')[0]"/>
+                    <cac:InvoiceDocumentReference t-if="idr">
+                        <!--<cbc:DocumentUUID t-out="idr.get('UUID')[0].get('_')"/>-->
+                        <!--<cbc:UUID t-out="idr.get('UUID')[0].get('_')"/>-->
+                        <!--<cbc:ID t-out="idr.get('inv_number')[0].get('_')"/>-->
+
+                        <cbc:ID t-out="idr.get('inv_number')[0].get('_')"/>
+<!--                            INV/2024/00115</cbc:ID>-->
+                        <cbc:UUID t-out="idr.get('UUID')[0].get('_')"/>
+<!--                            3BKXFN0S0P8EEJH1JSVP541J10</cbc:UUID>-->
+                        <!--<cbc:IssueDate>2024-06-24</cbc:IssueDate>-->
+                    </cac:InvoiceDocumentReference>
+                </cac:BillingReference>
+                <cac:AdditionalDocumentReference t-foreach="vals.get('AdditionalDocumentReference',[])"
+                                                 t-as="foreach_vals">
+                    <cbc:ID t-if="foreach_vals.get('ID')" t-out="foreach_vals.get('ID')[0].get('_')"/>
+                    <cbc:DocumentType t-if="foreach_vals.get('DocumentType')"
+                                      t-out="foreach_vals.get('DocumentType')[0].get('_')"/>
+                    <cbc:DocumentDescription t-if="foreach_vals.get('DocumentDescription')"
+                                             t-out="foreach_vals.get('DocumentDescription')[0].get('_')"/>
+                </cac:AdditionalDocumentReference>
+                <cac:AccountingSupplierParty>
+                    <t t-set="accounting_supplier_vals" t-value="vals.get('AccountingSupplierParty', [])[0]"/>
+                    <cbc:AdditionalAccountID t-if="accounting_supplier_vals.get('AdditionalAccountID')"
+                                             t-att-schemeAgencyName="accounting_supplier_vals.get('AdditionalAccountID')[0].get('schemeAgencyName')"
+                                             t-out="accounting_supplier_vals.get('AdditionalAccountID')[0].get('_')"/>
+                    <cac:Party>
+                        <t t-set="accountsuppliervals" t-value="accounting_supplier_vals.get('Party',[])[0]"/>
+                        <t t-if="is_for_peppol">
+                            <cbc:EndpointID schemeID="0230" t-out="asp_endpoint_id"/>
+                        </t>
+                        <cbc:IndustryClassificationCode
+                                t-att-name="accountsuppliervals.get('IndustryClassificationCode')[0].get('name')"
+                                t-out="accountsuppliervals.get('IndustryClassificationCode')[0].get('_')">
+                        </cbc:IndustryClassificationCode>
+                        <t t-if="is_for_peppol">
+                            <cac:PartyIdentification>
+                                <cbc:ID schemeID="0230" t-out="asp_endpoint_id"/>
+                            </cac:PartyIdentification>
+                        </t>
+                        <t t-else="">
+                            <cac:PartyIdentification>
+                                <cbc:ID t-att-schemeID="accountsuppliervals.get('PartyIdentification')[0].get('ID')[0].get('schemeID')"
+                                        t-out="accountsuppliervals.get('PartyIdentification')[0].get('ID')[0].get('_')"/>
+                            </cac:PartyIdentification>
+                            <cac:PartyIdentification>
+                                <cbc:ID t-att-schemeID="accountsuppliervals.get('PartyIdentification')[1].get('ID')[0].get('schemeID')"
+                                        t-out="accountsuppliervals.get('PartyIdentification')[1].get('ID')[0].get('_')"/>
+                            </cac:PartyIdentification>
+                        </t>
+                        <cac:PostalAddress>
+                            <t t-set="accountsuppliervalsaddvals"
+                               t-value="accountsuppliervals.get('PostalAddress', [])[0]"/>
+                            <cbc:CityName t-out="accountsuppliervalsaddvals.get('CityName')[0].get('_')"/>
+                            <cbc:PostalZone t-out="accountsuppliervalsaddvals.get('PostalZone')[0].get('_')"/>
+                            <cbc:CountrySubentityCode
+                                    t-out="accountsuppliervalsaddvals.get('CountrySubentityCode')[0].get('_')"/>
+                            <t t-if="is_for_peppol and accountsuppliervalsaddvals.get('AddressLine')">
+                                <t t-set="aLine" t-value="accountsuppliervalsaddvals.get('AddressLine')[0]"/>
+                                <cac:AddressLine>
+                                    <cbc:Line t-out="aLine.get('Line')[0].get('_')"/>
+                                </cac:AddressLine>
+                            </t>
+                            <t t-else="">
+                                <cac:AddressLine t-foreach="accountsuppliervalsaddvals.get('AddressLine')" t-as="aLine">
+                                    <cbc:Line t-out="aLine.get('Line')[0].get('_')"/>
+                                </cac:AddressLine>
+                            </t>
+                            <cac:Country>
+                                <t t-set="country_vals" t-value="accountsuppliervalsaddvals.get('Country', [])[0]"/>
+                                <t t-if="is_for_peppol">
+                                    <cbc:IdentificationCode>MY</cbc:IdentificationCode>
+                                </t>
+                                <t t-else="">
+                                    <cbc:IdentificationCode
+                                            t-att-listID="country_vals.get('IdentificationCode')[0].get('listID')"
+                                            t-att-listAgencyID="country_vals.get('IdentificationCode')[0].get('listAgencyID')"
+                                            t-out="country_vals.get('IdentificationCode')[0].get('_')"/>
+                                </t>
+                            </cac:Country>
+                        </cac:PostalAddress>
+
+                        <cac:PartyTaxScheme
+                                t-if="is_for_peppol"> <!-- IBT-048 - Buyer tax registration MUST occur maximum once.  -->
+                            <cbc:CompanyID t-out="asp_tin"/>
+                            <cac:TaxScheme>
+                                <cbc:ID>GST</cbc:ID>
+                            </cac:TaxScheme>
+                        </cac:PartyTaxScheme>
+
+                        <cac:PartyTaxScheme t-if="is_for_peppol">
+                            <cbc:CompanyID t-out="asp_sst"/>
+                            <!--                            </cbc:CompanyID> -->
+                            <!-- IBT-031 - An Invoice shall have the Supplier’s STT Registration Number -->
+                            <cac:TaxScheme>
+                                <cbc:ID>VAT</cbc:ID>
+                            </cac:TaxScheme>
+                        </cac:PartyTaxScheme>
+                        <cac:PartyLegalEntity t-foreach="accountsuppliervals.get('PartyLegalEntity', [])"
+                                              t-as="foreach_vals">
+                            <cbc:RegistrationName t-out="foreach_vals.get('RegistrationName')[0].get('_')"/>
+                            <t t-if="is_for_peppol">
+                                <cbc:CompanyID t-out="asp_brn"/>
+                                <cbc:CompanyLegalForm t-out="foreach_vals.get('RegistrationName')[0].get('_')"/>
+                            </t>
+                            <!--                            <t t-else="">-->
+
+                            <!--                        <cbc:AdditionalAccountID schemeAgencyName="ATIGA"/>&lt;!&ndash; ==> Needs to an check the data&ndash;&gt;-->
+                            <!--                            </t>-->
+                        </cac:PartyLegalEntity>
+                        <cac:Contact>
+                            <t t-set="contact_vals" t-value="accountsuppliervals.get('Contact', [])[0]"/>
+                            <cbc:Telephone t-out="contact_vals.get('Telephone')[0].get('_')"/>
+                            <cbc:ElectronicMail t-if="contact_vals.get('ElectronicMail')"
+                                                t-out="contact_vals.get('ElectronicMail')[0].get('_')"/>
+                        </cac:Contact>
+
+                        <!--                ==> Needs to discuss with becsase large numbers od data is there isn dropdown fieled-->
+
+                    </cac:Party>
+                </cac:AccountingSupplierParty>
+                <cac:AccountingCustomerParty>
+                    <t t-set="accounting_customer_vals" t-value="vals.get('AccountingCustomerParty',[])[0]"/>
+                    <cac:Party>
+                        <t t-set="accountcustomervals" t-value="accounting_customer_vals.get('Party', [])[0]"/>
+                        <t t-if="is_for_peppol">
+                            <cbc:EndpointID schemeID="0230" t-out="acp_endpoint_id"/>
+                        </t>
+                        <t t-if="is_for_peppol">
+                            <cac:PartyIdentification>
+                                <cbc:ID schemeID="0230" t-out="acp_endpoint_id"/>
+                            </cac:PartyIdentification>
+                        </t>
+                        <t t-else="">
+                            <cac:PartyIdentification>
+                                <cbc:ID t-att-schemeID="accountcustomervals.get('PartyIdentification')[0].get('ID')[0].get('schemeID')"
+                                        t-out="accountcustomervals.get('PartyIdentification')[0].get('ID')[0].get('_')"/>
+                            </cac:PartyIdentification>
+                            <cac:PartyIdentification>
+                                <cbc:ID t-att-schemeID="accountcustomervals.get('PartyIdentification')[1].get('ID')[0].get('schemeID')"
+                                        t-out="accountcustomervals.get('PartyIdentification')[1].get('ID')[0].get('_')"/>
+                            </cac:PartyIdentification>
+                        </t>
+                        <cac:PostalAddress>
+                            <t t-set="accountcustomervalsaddvals"
+                               t-value="accountcustomervals.get('PostalAddress', [])[0]"/>
+                            <cbc:CityName t-out="accountcustomervalsaddvals.get('CityName')[0].get('_')"/>
+                            <cbc:PostalZone t-out="accountcustomervalsaddvals.get('PostalZone')[0].get('_')"/>
+                            <cbc:CountrySubentityCode
+                                    t-out="accountcustomervalsaddvals.get('CountrySubentityCode')[0].get('_')"/>
+
+                            <t t-if="is_for_peppol and accountsuppliervalsaddvals.get('AddressLine')">
+                                <t t-set="aLine" t-value="accountsuppliervalsaddvals.get('AddressLine')[0]"/>
+                                <cac:AddressLine>
+                                    <cbc:Line t-out="aLine.get('Line')[0].get('_')"/>
+                                </cac:AddressLine>
+                            </t>
+                            <t t-else="">
+                                <cac:AddressLine t-foreach="accountsuppliervalsaddvals.get('AddressLine')" t-as="aLine">
+                                    <cbc:Line t-out="aLine.get('Line')[0].get('_')"/>
+                                </cac:AddressLine>
+                            </t>
+                            <cac:Country>
+                                <t t-set="country_vals" t-value="accountcustomervalsaddvals.get('Country', [])[0]"/>
+                                <t t-if="is_for_peppol">
+                                    <cbc:IdentificationCode>MY</cbc:IdentificationCode>
+                                </t>
+                                <t t-else="">
+                                    <cbc:IdentificationCode
+                                            t-att-listID="country_vals.get('IdentificationCode')[0].get('listID')"
+                                            t-att-listAgencyID="country_vals.get('IdentificationCode')[0].get('listAgencyID')"
+                                            t-out="country_vals.get('IdentificationCode')[0].get('_')"/>
+                                </t>
+                            </cac:Country>
+                        </cac:PostalAddress>
+
+                        <!--<cac:PartyTaxScheme t-if="is_for_peppol"> -->
+                        <!-- IBT-048 - Buyer tax registration MUST occur maximum once.  -->
+                        <!--    <cbc:CompanyID t-out="acp_tin"/>-->
+                        <!--    <cac:TaxScheme>-->
+                        <!--        <cbc:ID>GST</cbc:ID>-->
+                        <!--    </cac:TaxScheme>-->
+                        <!--</cac:PartyTaxScheme>-->
+
+                        <cac:PartyTaxScheme t-if="is_for_peppol">
+                            <cbc:CompanyID
+                                    t-out="acp_sst"/><!-- IBT-031 - An Invoice shall have the Supplier’s STT Registration Number -->
+                            <cac:TaxScheme>
+                                <cbc:ID>VAT</cbc:ID>
+                            </cac:TaxScheme>
+                        </cac:PartyTaxScheme>
+
+
+                        <cac:PartyLegalEntity t-foreach="accountcustomervals.get('PartyLegalEntity', [])"
+                                              t-as="foreach_vals">
+                            <cbc:RegistrationName t-out="foreach_vals.get('RegistrationName')[0].get('_')"/>
+                            <t t-if="is_for_peppol">
+                                <cbc:CompanyID t-out="acp_brn"/>
+                                <cbc:CompanyLegalForm t-out="foreach_vals.get('RegistrationName')[0].get('_')"/>
+                            </t>
+
+                            <!--                        <cbc:AdditionalAccountID schemeAgencyName="ATIGA"/>&lt;!&ndash; ==> Needs to an check the data&ndash;&gt;-->
+                        </cac:PartyLegalEntity>
+                        <cac:Contact>
+                            <t t-set="contact_vals" t-value="accountcustomervals.get('Contact', [])[0]"/>
+                            <cbc:Telephone t-out="contact_vals.get('Telephone')[0].get('_')"/>
+                            <cbc:ElectronicMail t-if="contact_vals.get('ElectronicMail')"
+                                                t-out="contact_vals.get('ElectronicMail')[0].get('_')"/>
+                        </cac:Contact>
+                    </cac:Party>
+                </cac:AccountingCustomerParty>
+                <cac:Delivery t-foreach="vals.get('Delivery', [])" t-as="foreach_vals">
+                    <!--        <t t-call="{{DeliveryType_template}}">-->
+                    <t t-set="deliveryvals" t-value="foreach_vals"/>
+                    <cac:DeliveryParty t-if="deliveryvals.get('DeliveryParty')">
+                        <t t-set="deliverypartyvals" t-value="deliveryvals.get('DeliveryParty')[0]"/>
+
+                        <t t-if=" not is_for_peppol">
+
+                            <cac:PartyIdentification t-if="deliverypartyvals.get('PartyIdentification')">
+                                <cbc:ID t-att-schemeID="deliverypartyvals.get('PartyIdentification')[0].get('ID')[0].get('schemeID')"
+                                        t-out="deliverypartyvals.get('PartyIdentification')[0].get('ID')[0].get('_')"/>
+                            </cac:PartyIdentification>
+                            <cac:PartyIdentification t-if="deliverypartyvals.get('PartyIdentification')">
+                                <cbc:ID t-att-schemeID="deliverypartyvals.get('PartyIdentification')[1].get('ID')[0].get('schemeID')"
+                                        t-out="deliverypartyvals.get('PartyIdentification')[1].get('ID')[0].get('_')"/>
+                            </cac:PartyIdentification>
+                        </t>
+                        <cac:PostalAddress t-if="deliverypartyvals.get('PostalAddress')">
+                            <t t-set="deliverypartyaddvals" t-value="deliverypartyvals.get('PostalAddress', [])[0]"/>
+                            <cbc:CityName t-out="deliverypartyaddvals.get('CityName')[0].get('_')"/>
+                            <cbc:PostalZone t-out="deliverypartyaddvals.get('PostalZone')[0].get('_')"/>
+                            <cbc:CountrySubentityCode
+                                    t-out="deliverypartyaddvals.get('CountrySubentityCode')[0].get('_')"/>
+                            <cac:AddressLine t-foreach="deliverypartyaddvals.get('AddressLine')" t-as="aLine">
+                                <cbc:Line t-out="aLine.get('Line')[0].get('_')"/>
+                            </cac:AddressLine>
+                            <cac:Country>
+                                <t t-set="country_vals" t-value="deliverypartyaddvals.get('Country', [])[0]"/>
+                                <t t-if="is_for_peppol">
+                                    <cbc:IdentificationCode>MY</cbc:IdentificationCode>
+                                </t>
+                                <t t-else="">
+                                    <cbc:IdentificationCode
+                                            t-att-listID="country_vals.get('IdentificationCode')[0].get('listID')"
+                                            t-att-listAgencyID="country_vals.get('IdentificationCode')[0].get('listAgencyID')"
+                                            t-out="country_vals.get('IdentificationCode')[0].get('_')"/>
+                                </t>
+                            </cac:Country>
+                        </cac:PostalAddress>
+                        <cac:PartyLegalEntity t-foreach="deliverypartyvals.get('PartyLegalEntity', [])"
+                                              t-as="foreach_vals">
+                            <cbc:RegistrationName t-out="foreach_vals.get('RegistrationName')[0].get('_')"/>
+                            <!--                        <cbc:AdditionalAccountID schemeAgencyName="ATIGA"/>&lt;!&ndash; ==> Needs to an check the data&ndash;&gt;-->
+                        </cac:PartyLegalEntity>
+                    </cac:DeliveryParty>
+                    <cac:Shipment t-if="deliveryvals.get('Shipment')">
+                        <!--                    ==> Remainings to fills this fields data [Freights amountings chargeaas data]-->
+                        <cac:FreightAllowanceCharge>
+                            <cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+                            <!--                    <cbc:Amount currencyID="MYR" t-out="">100</cbc:Amount>-->
+                            <cbc:AllowanceChargeReason>Sample Description</cbc:AllowanceChargeReason>
+                        </cac:FreightAllowanceCharge>
+                    </cac:Shipment>
+                    <!--        </t>-->
+                </cac:Delivery>
+                <cac:PaymentMeans t-foreach="vals.get('PaymentMeans', [])" t-as="foreach_vals">
+                    <t t-set="paymentmeansvals" t-value="foreach_vals"/>
+                    <!--        Needs to an helps usings this givens link ==>https://sdk.myinvois.hasil.gov.my/codes/payment-methods/-->
+                    <cbc:PaymentMeansCode t-out="paymentmeansvals.get('PaymentMeansCode')[0].get('_')"/>
+                    <cac:PayeeFinancialAccount>
+                        <t t-set="payee_financial_account_vals"
+                           t-value="paymentmeansvals.get('PayeeFinancialAccount', [])[0]"/>
+                        <cbc:ID t-out="payee_financial_account_vals.get('ID')[0].get('_')"/>
+                    </cac:PayeeFinancialAccount>
+                </cac:PaymentMeans>
+                <cac:PaymentTerms t-foreach="vals.get('PaymentTerms', [])" t-as="foreach_vals">
+                    <t t-set="paymenttermvals" t-value="foreach_vals"/>
+                    <cbc:Note t-out="paymenttermvals.get('Note')[0].get('_')"/>
+                </cac:PaymentTerms>
+                <cac:PrepaidPayment t-if="vals.get('PrepaidPayment')">
+                    <cbc:ID t-out="vals.get('PrepaidPayment')[0].get('ID')[0].get('ID')"/>
+                    <cbc:PaidAmount
+                            t-att-currencyID="vals.get('PrepaidPayment')[0].get('PaidAmount')[0].get('currencyId')"
+                            t-out="vals.get('PrepaidPayment')[0].get('PaidAmount')[0].get('_')"/>
+                    <cbc:PaidDate t-out="vals.get('PrepaidPayment')[0].get('PaidDate')[0].get('_')"/>
+                    <cbc:PaidTime t-out="vals.get('PrepaidPayment')[0].get('PaidTime')[0].get('_')"/>
+                </cac:PrepaidPayment>
+                <cac:AllowanceCharge t-foreach="vals.get('AllowanceCharge', [])" t-as="foreach_vals">
+                    <t t-set="allwancechargevals" t-value="foreach_vals"/>
+                    <cbc:ChargeIndicator t-out="allwancechargevals.get('ChargeIndicator')[0].get('_')"/>
+                    <cbc:AllowanceChargeReason t-out="allwancechargevals.get('AllowanceChargeReason')[0].get('_')"/>
+                    <cbc:Amount t-att-currencyID="allwancechargevals.get('Amount')[0].get('currencyID')"
+                                t-out="allwancechargevals.get('Amount')[0].get('_')"/>
+                </cac:AllowanceCharge>
+
+
+                <cac:TaxTotal t-foreach="vals.get('TaxTotal', [])" t-as="foreach_vals_tt">
+                    <t t-set="taxtotalvals" t-value="foreach_vals_tt"/>
+                    <cbc:TaxAmount t-if="taxtotalvals.get('TaxAmount')"
+                                   t-att-currencyID="taxtotalvals.get('TaxAmount')[0].get('currencyID')"
+                                   t-out="taxtotalvals.get('TaxAmount')[0].get('_')"/>
+                    <t t-if="is_for_peppol">
+                        <cac:TaxSubtotal t-foreach="peppol_tax_subtotal_group" t-as="foreach_vals">
+                            <cbc:TaxableAmount t-if="foreach_vals.get('TaxableAmount')"
+                                               t-att-currencyID="foreach_vals.get('TaxableAmount').get('currency_id')"
+                                               t-out="foreach_vals.get('TaxableAmount').get('amount')"/>
+                            <cbc:TaxAmount t-if="foreach_vals.get('TaxAmount')"
+                                           t-att-currencyID="foreach_vals.get('TaxAmount').get('currency_id')"
+                                           t-out="foreach_vals.get('TaxAmount').get('amount')"/>
+                            <cac:TaxCategory t-if="foreach_vals.get('TaxCategory')">
+                                <!--                                <t t-set="taxccategvals" t-value="foreach_vals.get('TaxCategory', [])[0]"/>-->
+                                <!--                                <t t-if="is_for_peppol">-->
+                                <cbc:ID t-out="foreach_vals.get('TaxCategory').get('ID')"/>
+                                <!--                                T</cbc:ID>-->
+                                <!--                                Needs to check accordinglys to the fileas-->
+                                <cbc:Percent t-out="foreach_vals.get('TaxCategory').get('Percent')"/>
+                                <!--                                15</cbc:Percent>-->
+                                <!--                                </t>-->
+                                <!--                                <t t-else="">-->
+                                <!--                                    <cbc:ID t-out="taxccategvals.get('ID')[0].get('_')"/>-->
+                                <!--                                </t>-->
+                                <cac:TaxScheme>
+                                    <!--                                    <t t-set="tax_scheme_vals" t-value="taxccategvals.get('TaxScheme', [])[0]"/>-->
+                                    <!--                                    <t t-if="is_for_peppol">-->
+                                    <cbc:ID>VAT</cbc:ID>
+                                    <!--                                    </t>-->
+                                    <!--                                    <t t-else="">-->
+                                    <!--                                        <cbc:ID t-att-schemeID="tax_scheme_vals.get('ID')[0].get('schemeID')"-->
+                                    <!--                                                t-att-schemeAgencyID="tax_scheme_vals.get('ID')[0].get('schemeAgencyID')"-->
+                                    <!--                                                t-out="tax_scheme_vals.get('ID')[0].get('_')"/>-->
+                                    <!--                        NEEDA TO USE THIS LINKS ==>https://sdk.myinvois.hasil.gov.my/codes/tax-types/-->
+                                    <!--                            <cbc:TaxTypeCode t-out="tax_scheme_vals.get('tax_type_code'0"/>-->
+                                    <!--                                    </t>-->
+                                </cac:TaxScheme>
+                                <!--                        <cbc:TaxExemptionReasonCode t-out="taxccategvals.get('tax_exemption_reason_code')"/>-->
+                            </cac:TaxCategory>
+                        </cac:TaxSubtotal>
+                    </t>
+                    <t t-else="">
+                        <cac:TaxSubtotal t-foreach="taxtotalvals.get('TaxSubtotal', [])" t-as="foreach_vals">
+                            <cbc:TaxableAmount t-if="foreach_vals.get('TaxableAmount')"
+                                               t-att-currencyID="foreach_vals.get('TaxableAmount')[0].get('currencyID')"
+                                               t-out="foreach_vals.get('TaxableAmount')[0].get('_')"/>
+                            <cbc:TaxAmount t-if="foreach_vals.get('TaxAmount')"
+                                           t-att-currencyID="foreach_vals.get('TaxAmount')[0].get('currencyID')"
+                                           t-out="foreach_vals.get('TaxAmount')[0].get('_')"/>
+                            <cac:TaxCategory t-if="foreach_vals.get('TaxCategory')">
+                                <t t-set="taxccategvals" t-value="foreach_vals.get('TaxCategory', [])[0]"/>
+                                <cbc:ID t-out="taxccategvals.get('ID')[0].get('_')"/>
+                                <cac:TaxScheme>
+                                    <t t-set="tax_scheme_vals" t-value="taxccategvals.get('TaxScheme', [])[0]"/>
+                                    <cbc:ID t-att-schemeID="tax_scheme_vals.get('ID')[0].get('schemeID')"
+                                            t-att-schemeAgencyID="tax_scheme_vals.get('ID')[0].get('schemeAgencyID')"
+                                            t-out="tax_scheme_vals.get('ID')[0].get('_')"/>
+                                    <!--                        NEEDA TO USE THIS LINKS ==>https://sdk.myinvois.hasil.gov.my/codes/tax-types/-->
+                                    <!--                            <cbc:TaxTypeCode t-out="tax_scheme_vals.get('tax_type_code'0"/>-->
+                                    <!--                                    </t>-->
+                                </cac:TaxScheme>
+                                <!--                        <cbc:TaxExemptionReasonCode t-out="taxccategvals.get('tax_exemption_reason_code')"/>-->
+                            </cac:TaxCategory>
+                        </cac:TaxSubtotal>
+                    </t>
+
+                </cac:TaxTotal>
+
+
+                <cac:LegalMonetaryTotal>
+                    <t t-set="legalmonetarytotalvals" t-value="vals.get('LegalMonetaryTotal', [])[0]"/>
+                    <cbc:LineExtensionAmount t-if="legalmonetarytotalvals.get('LineExtensionAmount')"
+                                             t-att-currencyID="legalmonetarytotalvals.get('LineExtensionAmount')[0].get('currencyID')"
+                                             t-out="legalmonetarytotalvals.get('LineExtensionAmount')[0].get('_')"/>
+                    <cbc:TaxExclusiveAmount
+                            t-att-currencyID="legalmonetarytotalvals.get('TaxExclusiveAmount')[0].get('currencyID')"
+                            t-out="legalmonetarytotalvals.get('TaxExclusiveAmount')[0].get('_')"/>
+                    <cbc:TaxInclusiveAmount
+                            t-att-currencyID="legalmonetarytotalvals.get('TaxInclusiveAmount')[0].get('currencyID')"
+                            t-out="legalmonetarytotalvals.get('TaxInclusiveAmount')[0].get('_')"/>
+                    <cbc:AllowanceTotalAmount t-if="legalmonetarytotalvals.get('AllowanceTotalAmount')"
+                                              t-att-currencyID="legalmonetarytotalvals.get('AllowanceTotalAmount')[0].get('currencyID')"
+                                              t-out="legalmonetarytotalvals.get('AllowanceTotalAmount')[0].get('_')"/>
+                    <cbc:ChargeTotalAmount t-if="legalmonetarytotalvals.get('ChargeTotalAmount')"
+                                           t-att-currencyID="legalmonetarytotalvals.get('ChargeTotalAmount')[0].get('currencyID')"
+                                           t-out="legalmonetarytotalvals.get('ChargeTotalAmount')[0].get('_')"/>
+                    <cbc:PayableRoundingAmount t-if="legalmonetarytotalvals.get('PayableRoundingAmount')"
+                                               t-att-currencyID="legalmonetarytotalvals.get('PayableRoundingAmount')[0].get('currencyID')"
+                                               t-out="legalmonetarytotalvals.get('PayableRoundingAmount')[0].get('_')"/>
+                    <cbc:PayableAmount
+                            t-att-currencyID="legalmonetarytotalvals.get('PayableAmount')[0].get('currencyID')"
+                            t-out="legalmonetarytotalvals.get('PayableAmount')[0].get('_')"/>
+                </cac:LegalMonetaryTotal>
+
+                <cac:InvoiceLine t-foreach="vals.get('InvoiceLine', [])" t-as="foreach_vals">
+                    <t t-set="invvals" t-value="foreach_vals"/>
+                    <cbc:ID t-out="invvals.get('ID')[0].get('_')"/>
+                    <cbc:InvoicedQuantity t-if="invvals.get('InvoicedQuantity')"
+                                          t-att-unitCode="invvals.get('InvoicedQuantity')[0].get('unitCode')"
+                                          t-out="invvals.get('InvoicedQuantity')[0].get('_')"/>
+                    <cbc:LineExtensionAmount t-att-currencyID="invvals.get('LineExtensionAmount')[0].get('currencyID')"
+                                             t-out="invvals.get('LineExtensionAmount')[0].get('_')"/>
+                    <cac:AllowanceCharge t-foreach="invvals.get('AllowanceCharge', [])" t-as="foreach_vals">
+                        <t t-set="lineallowancevals" t-value="foreach_vals"/>
+                        <cbc:ChargeIndicator t-out="lineallowancevals.get('ChargeIndicator')[0].get('_')"/>
+                        <cbc:AllowanceChargeReason t-out="lineallowancevals.get('AllowanceChargeReason')[0].get('_')"/>
+                        <cbc:MultiplierFactorNumeric
+                                t-out="lineallowancevals.get('MultiplierFactorNumeric')[0].get('_')"/>
+                        <cbc:Amount t-att-currencyID="lineallowancevals.get('Amount')[0].get('currencyID')"
+                                    t-out="lineallowancevals.get('Amount')[0].get('_')"/>
+                    </cac:AllowanceCharge>
+                    <t t-if="not is_for_peppol">
+                        <cac:TaxTotal t-foreach="invvals.get('TaxTotal', [])" t-as="foreach_vals">
+                            <t t-set="linetaxtotalvals" t-value="foreach_vals"/>
+                            <cbc:TaxAmount t-if="linetaxtotalvals.get('TaxAmount')"
+                                           t-att-currencyID="linetaxtotalvals.get('TaxAmount')[0].get('currencyID')"
+                                           t-out="linetaxtotalvals.get('TaxAmount')[0].get('_')"/>
+                            <cac:TaxSubtotal t-foreach="linetaxtotalvals.get('TaxSubtotal', [])" t-as="foreach_vals">
+                                <cbc:TaxableAmount t-if="foreach_vals.get('TaxableAmount')"
+                                                   t-att-currencyID="foreach_vals.get('TaxableAmount')[0].get('currencyID')"
+                                                   t-out="foreach_vals.get('TaxableAmount')[0].get('_')"/>
+                                <cbc:TaxAmount t-if="foreach_vals.get('TaxAmount')"
+                                               t-att-currencyID="foreach_vals.get('TaxAmount')[0].get('currencyID')"
+                                               t-out="foreach_vals.get('TaxAmount')[0].get('_')"/>
+                                <cac:TaxCategory t-if="foreach_vals.get('TaxCategory')">
+                                    <t t-set="linetaxcategvals" t-value="foreach_vals.get('TaxCategory', [])[0]"/>
+
+                                    <t t-if="is_for_peppol">
+                                        <cbc:ID>T</cbc:ID>
+                                    </t>
+                                    <t t-else="">
+                                        <cbc:ID t-out="linetaxcategvals.get('ID')[0].get('_')"/>
+                                    </t>
+                                    <cbc:Percent t-out="linetaxcategvals.get('Percent')[0].get('_')"/>
+                                    <cbc:TaxExemptionReason t-if="linetaxcategvals.get('TaxExemptionReason')"
+                                                            t-out="linetaxcategvals.get('TaxExemptionReason')[0].get('_')"/>
+                                    <cac:TaxScheme t-if="linetaxcategvals.get('TaxScheme')">
+                                        <t t-set="tax_scheme_vals" t-value="linetaxcategvals.get('TaxScheme', [])[0]"/>
+
+                                        <t t-if="is_for_peppol">
+                                            <cbc:ID>VAT</cbc:ID>
+                                        </t>
+                                        <t t-else="">
+
+                                            <cbc:ID schemeID="UN/ECE 5153" schemeAgencyID="6"
+                                                    t-out="tax_scheme_vals.get('id')"/>
+                                            <!--                        NEEDA TO USE THIS LINKS ==>https://sdk.myinvois.hasil.gov.my/codes/tax-types/-->
+                                            <cbc:TaxTypeCode t-out="tax_scheme_vals.get('ID')[0].get('_')"/>
+                                        </t>
+                                    </cac:TaxScheme>
+                                </cac:TaxCategory>
+                            </cac:TaxSubtotal>
+                        </cac:TaxTotal>
+                    </t>
+                    <cac:Item>
+                        <t t-set="item_vals" t-value="invvals.get('Item', [])[0]"/>
+                        <t t-if="is_for_peppol">
+                            <cbc:Name t-out="item_vals.get('Description')[0].get('_')"/>
+                        </t>
+                        <t t-else="">
+                            <cbc:Description t-out="item_vals.get('Description')[0].get('_')"/>
+                        </t>
+                        <cac:OriginCountry t-if="item_vals.get('OriginCountry') and item_vals.get('OriginCountry')[0]">
+                            <cbc:IdentificationCode
+                                    t-out="item_vals.get('OriginCountry')[0].get('IdentificationCode')[0].get('_')"/>
+                        </cac:OriginCountry>
+                        <t t-if="not is_for_peppol">
+                            <cac:CommodityClassification t-foreach="item_vals.get('CommodityClassification', [])"
+                                                         t-as="foreach_vals">
+                                <cbc:ItemClassificationCode
+                                        t-att-listID="foreach_vals.get('ItemClassificationCode')[0].get('listID')"
+                                        t-out="foreach_vals.get('ItemClassificationCode')[0].get('_')"/>
+                            </cac:CommodityClassification>
+                        </t>
+                        <t t-if="is_for_peppol">
+                            <t t-set="lineTaxPercent"
+                               t-value="invvals.get('TaxTotal', [])[0].get('TaxSubtotal',[])[0].get('TaxCategory',[])[0].get('Percent',[])[0].get('_')"/>
+
+                            <cac:ClassifiedTaxCategory><!-- IBG-30 - LINE TAX INFORMATION -->
+                                <cbc:ID>T</cbc:ID> <!-- IBT-151 - Invoiced item TAX category code -->
+                                <cbc:Percent t-out="lineTaxPercent"/>
+                                <!--                                15</cbc:Percent>-->
+                                <!-- IBT-152 - Invoiced item TAX rate -->
+                                <cac:TaxScheme>
+                                    <cbc:ID>VAT</cbc:ID> <!-- IBT-167 - Tax Scheme -->
+                                </cac:TaxScheme>
+                            </cac:ClassifiedTaxCategory>
+                        </t>
+                        <!--                    <cac:OriginCountry>-->
+                        <!--                        <cbc:IdentificationCode t-out="">-->
+                        <!--                    </cac:OriginCountry>-->
+                    </cac:Item>
+
+                    <cac:Price>
+                        <t t-set="pricevals" t-value="invvals.get('Price', [])[0]"/>
+                        <cbc:PriceAmount t-att-currencyID="pricevals.get('PriceAmount')[0].get('currencyID')"
+                                         t-out="pricevals.get('PriceAmount')[0].get('_')"/>
+                    </cac:Price>
+                    <cac:ItemPriceExtension>
+                        <t t-set="itempriceextvals" t-value="invvals.get('ItemPriceExtension', [])[0]"/>
+
+                        <cbc:Amount t-att-currencyID="itempriceextvals.get('Amount')[0].get('currencyID')"
+                                    t-out="itempriceextvals.get('Amount')[0].get('_')"/>
+                    </cac:ItemPriceExtension>
+
+                </cac:InvoiceLine>
+
+
+                <!--            <cbc:TaxCurrencyCode-->
+                <!--                    t-out="vals.get('tax_currency_code')"/>-->
+                <!--        <cac:TaxExchangeRate>-->
+                <!--            <cbc:CalculationRate t-out=""/>-->
+                <!--        </cac:TaxExchangeRate>-->
+                <!--            <cbc:Note t-foreach="vals.get('note_vals', [])" t-as="note_vals"-->
+                <!--                      t-out="note_vals.get('note')"/>-->
+
+
+            </Invoice>
+
+        </template>
+
+
+        <template id="peppol_21_credit_note">
+
+            <CreditNote xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2"
+                        xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+                        xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2 http://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/maindoc/UBL-CreditNote-2.1.xsd"
+                        xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2">
+                <t t-if="is_for_peppol">
+                    <cbc:CustomizationID t-out="customization_id"/>
+                    <cbc:ProfileID t-out="profile_id"/>
+                </t>
+                <t t-if="is_contains_digi_sign">
+                    <ext:UBLExtensions>
+                        <ext:UBLExtension>
+                            <ext:ExtensionURI>urn:oasis:names:specification:ubl:dsig:enveloped:xades</ext:ExtensionURI>
+                            <ext:ExtensionContent>
+                                <!--  Please note that the signature values are sample values only  -->
+                                <sig:UBLDocumentSignatures
+                                        xmlns:sig="urn:oasis:names:specification:ubl:schema:xsd:CommonSignatureComponents-2"
+                                        xmlns:sac="urn:oasis:names:specification:ubl:schema:xsd:SignatureAggregateComponents-2"
+                                        xmlns:sbc="urn:oasis:names:specification:ubl:schema:xsd:SignatureBasicComponents-2">
+                                    <sac:SignatureInformation>
+                                        <cbc:ID>urn:oasis:names:specification:ubl:signature:1</cbc:ID>
+                                        <sbc:ReferencedSignatureID>urn:oasis:names:specification:ubl:signature:Invoice
+                                        </sbc:ReferencedSignatureID>
+                                        <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" Id="signature">
+                                            <ds:SignedInfo>
+                                                <ds:CanonicalizationMethod
+                                                        Algorithm="http://www.w3.org/2006/12/xml-c14n11" t-out=""/>
+                                                <ds:SignatureMethod
+                                                        Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"
+                                                        t-out=""/>
+                                                <ds:Reference Id="id-doc-signed-data" URI="">
+                                                    <ds:Transforms>
+                                                        <ds:Transform
+                                                                Algorithm="http://www.w3.org/TR/1999/REC-xpath-19991116">
+                                                            <ds:XPath>not(//ancestor-or-self::ext:UBLExtensions)
+                                                            </ds:XPath>
+                                                        </ds:Transform>
+                                                        <ds:Transform
+                                                                Algorithm="http://www.w3.org/TR/1999/REC-xpath-19991116">
+                                                            <ds:XPath>not(//ancestor-or-self::cac:Signature)</ds:XPath>
+                                                        </ds:Transform>
+                                                        <ds:Transform Algorithm="http://www.w3.org/2006/12/xml-c14n11"/>
+                                                    </ds:Transforms>
+                                                    <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"
+                                                                     t-out=""/>
+                                                    <ds:DigestValue t-out="signed_data_digest_values"/>
+                                                </ds:Reference>
+                                                <ds:Reference
+                                                        Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties"
+                                                        URI="#id-xades-signed-props">
+                                                    <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"
+                                                                     t-out=""/>
+                                                    <ds:DigestValue t-out="signed_propes_digest_value"/>
+                                                </ds:Reference>
+                                            </ds:SignedInfo>
+                                            <ds:SignatureValue t-out="signature_value"/>
+                                            <ds:KeyInfo>
+                                                <ds:X509Data>
+                                                    <ds:X509Certificate>
+                                                        MIIEQzCCAyugAwIBAgIhAOkUChItLeodmoK/A7B0XLcSUCvT4jgrSeYBOeZ1G8VPMA0GCSqGSIb3DQEBBQUAMIG9MQswCQYDVQQGEwJLTDEhMB8GA1UECgwYQ29udG9zbyBNYWxheXNpYSBTZG4gQmhkMSEwHwYDVQQLDBhDb250b3NvIE1hbGF5c2lhIFNkbiBCaGQxITAfBgNVBAMMGENvbnRvc28gTWFsYXlzaWEgU2RuIEJoZDEiMCAGCSqGSIb3DQEJARYTbm9lbWFpbEBjb250b3NvLmNvbTEhMB8GA1UEAwwYQ29udG9zbyBNYWxheXNpYSBTZG4gQmhkMB4XDTI0MDQwMzA5NTM1MFoXDTI3MDQwNDA5NTM1MFowgZoxCzAJBgNVBAYTAktMMSEwHwYDVQQKDBhDb250b3NvIE1hbGF5c2lhIFNkbiBCaGQxITAfBgNVBAsMGENvbnRvc28gTWFsYXlzaWEgU2RuIEJoZDEhMB8GA1UEAwwYQ29udG9zbyBNYWxheXNpYSBTZG4gQmhkMSIwIAYJKoZIhvcNAQkBFhNub2VtYWlsQGNvbnRvc28uY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA8yRxOigcbDzObxhNmVklzyJOItz4eSZHUv+JEy7nTosOg/wcFcDgrJDw6LZ/Mr6aW98VJ930hlSw52fOPiMnXTyJLF6ZjISPsTjlrn9eKnbWt6DWqFIDWDIaXVhAcfFRkKftSFgSIEO9NIb+kmV6K/LotWEiLglz6KZE3EopSF+pXa1LmwC8v0UhK8V8LcxqIe3dBq/jzyaWsLx5D4zdQqBSFEXrfp0A+N/93uAtQa35Fj3ypEpSzF/EQ6bDO/GwBKQm3lCny6AJB/I/kCbC/X+oMxkTOo9zW5hcdRiqmAa4iIrhORIOTlj5qfnngjulTnSMdK5kXSLJxC6SDlKtVwIDAQABo08wTTAdBgNVHQ4EFgQU2pvYc/z5Prqp8Dt8PM1C/df1ysQwHwYDVR0jBBgwFoAU2pvYc/z5Prqp8Dt8PM1C/df1ysQwCwYDVR0RBAQwAoIAMA0GCSqGSIb3DQEBBQUAA4IBAQBHzVHoQk+cAwunDlmrBjWYxfzmF3Adab81HKug+riDGiSG3bNntAwRVkDC4onG680Ucsuhxeyj18gkAtR/5ZWu3RDZwcYoBMuQzUSS9U5bwg5VqCqxEfTQCSERjuCa8lt99EcgY06e8a8WEwcY19LKVVwtrTJnlHvXhmcheumX3pfjPb5u0c0WKnbkj5mow75TuEmc0k1qow6Z6H5O6cPhX+eyNQSFZ3QnC0W2oIZTi96TVT4JH8LOPurZ5AdG9maQNIypaZ0gYPtAJISP+nxPOHmloicecdLLaMG/cvDf2+/bJR2P98dTuTZqgKrvWHkiMOma62MVx5dbcmbxgxU6
+                                                    </ds:X509Certificate>
+                                                </ds:X509Data>
+                                            </ds:KeyInfo>
+                                            <ds:Object>
+                                                <xades:QualifyingProperties
+                                                        xmlns:xades="http://uri.etsi.org/01903/v1.3.2#"
+                                                        Target="signature">
+                                                    <xades:SignedProperties Id="id-xades-signed-props">
+                                                        <xades:SignedSignatureProperties>
+                                                            <xades:SigningTime t-out="signing_time"/>
+                                                            <xades:SigningCertificate>
+                                                                <xades:Cert>
+                                                                    <xades:CertDigest>
+                                                                        <ds:DigestMethod
+                                                                                Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"
+                                                                                t-out=""/>
+                                                                        <ds:DigestValue t-out="digest_value"/>
+                                                                    </xades:CertDigest>
+                                                                    <xades:IssuerSerial>
+                                                                        <ds:X509IssuerName t-out="x509_issuer_name"/>
+                                                                        <!--                                                                                t-out="x509_serial_number"-->
+                                                                        <ds:X509SerialNumber>1</ds:X509SerialNumber>
+                                                                        <!--                                                                                t-out="x509_serial_number"/>-->
+                                                                        <!--                                                                        2475382886904809774818644480820936050208702411</ds:X509SerialNumber>-->
+                                                                    </xades:IssuerSerial>
+                                                                </xades:Cert>
+                                                            </xades:SigningCertificate>
+                                                        </xades:SignedSignatureProperties>
+                                                    </xades:SignedProperties>
+                                                </xades:QualifyingProperties>
+                                            </ds:Object>
+                                        </ds:Signature>
+                                    </sac:SignatureInformation>
+                                </sig:UBLDocumentSignatures>
+                            </ext:ExtensionContent>
+                        </ext:UBLExtension>
+                    </ext:UBLExtensions>
+                </t>
+                <cbc:ID t-out="vals['ID'][0].get('_')"/>
+                <cbc:IssueDate t-out="vals['IssueDate'][0].get('_')"/>
+                <cbc:IssueTime t-out="vals['IssueTime'][0].get('_')"/>
+
+                <t t-if="is_for_peppol">
+                    <cbc:InvoiceTypeCode t-if="peppol_invoice_type_code== 380" t-out="peppol_invoice_type_code"/>
+                    <cbc:TaxPointDate t-if="peppol_invoice_type_code==381" t-out="vals['IssueDate'][0].get('_')"/>
+<!--                        2023-11-30</cbc:TaxPointDate>-->
+                    <cbc:CreditNoteTypeCode t-if="peppol_invoice_type_code==381" t-out="peppol_invoice_type_code"/>
+                </t>
+                <t t-else="">
+                    <cbc:InvoiceTypeCode listVersionID="1.0" t-out="vals['InvoiceTypeCode'][0].get('_')"/>
+                </t>
+                <cbc:DocumentCurrencyCode t-out="vals['DocumentCurrencyCode'][0].get('_')"/>
+
+                <!-- need to setts this files-->
+                <t t-if="is_for_peppol">
+                    <cbc:BuyerReference>Cik Maria</cbc:BuyerReference>
+<!--                    <cac:InvoicePeriod> &lt;!&ndash; IBG-14 - INVOICING PERIOD &ndash;&gt;-->
+<!--                        <cbc:StartDate>2023-11-01</cbc:StartDate>-->
+<!--                        <cbc:EndDate>2023-11-30</cbc:EndDate>-->
+<!--                    </cac:InvoicePeriod>-->
+                </t>
+                <cac:InvoicePeriod t-foreach="vals.get('InvoicePeriod', [])" t-as="foreach_vals">
+                    <cbc:StartDate t-out="foreach_vals.get('StartDate')[0].get('_')"/>
+                    <cbc:EndDate t-out="foreach_vals.get('EndDate')[0].get('_')"/>
+<!--                    <cbc:Description t-out="foreach_vals.get('Description')[0].get('_')"/>-->
+                </cac:InvoicePeriod>
+                <cac:BillingReference t-if="vals.get('BillingReference')">
+                    <!--<t t-set="billing_reference_vals" t-value="vals.get('BillingReference')[0].get('AdditionalDocumentReference')[0].get('ID')[0].get('_')"/>-->
+                    <!--<cac:AdditionalDocumentReference>-->
+                    <!--    <cbc:ID t-out="billing_reference_vals"/>-->
+                    <!--                    <cbc:UUID t-out="billing_reference_vals.get('uuid')"/>-->
+                    <!--</cac:AdditionalDocumentReference>-->
+                    <t t-set="idr" t-value="vals.get('BillingReference')[0].get('InvoiceDocumentReference')[0]"/>
+                    <cac:InvoiceDocumentReference t-if="idr">
+                        <!--<cbc:DocumentUUID t-out="idr.get('UUID')[0].get('_')"/>-->
+                        <!--<cbc:UUID t-out="idr.get('UUID')[0].get('_')"/>-->
+                        <!--<cbc:ID t-out="idr.get('inv_number')[0].get('_')"/>-->
+                                                    <cbc:ID t-out="idr.get('inv_number')[0].get('_')"/>
+<!--                            INV/2024/00115</cbc:ID>-->
+                        <cbc:UUID t-out="idr.get('UUID')[0].get('_')"/>
+<!--                        <cbc:ID>INV/2024/00115</cbc:ID>-->
+<!--                        <cbc:UUID>3BKXFN0S0P8EEJH1JSVP541J10</cbc:UUID>-->
+                        <!--<cbc:IssueDate>2024-06-24</cbc:IssueDate>-->
+                    </cac:InvoiceDocumentReference>
+                </cac:BillingReference>
+                <cac:AdditionalDocumentReference t-foreach="vals.get('AdditionalDocumentReference',[])"
+                                                 t-as="foreach_vals">
+                    <cbc:ID t-if="foreach_vals.get('ID')" t-out="foreach_vals.get('ID')[0].get('_')"/>
+                    <cbc:DocumentType t-if="foreach_vals.get('DocumentType')"
+                                      t-out="foreach_vals.get('DocumentType')[0].get('_')"/>
+                    <cbc:DocumentDescription t-if="foreach_vals.get('DocumentDescription')"
+                                             t-out="foreach_vals.get('DocumentDescription')[0].get('_')"/>
+                </cac:AdditionalDocumentReference>
+                <cac:AccountingSupplierParty>
+                    <t t-set="accounting_supplier_vals" t-value="vals.get('AccountingSupplierParty', [])[0]"/>
+                    <cbc:AdditionalAccountID t-if="accounting_supplier_vals.get('AdditionalAccountID')"
+                                             t-att-schemeAgencyName="accounting_supplier_vals.get('AdditionalAccountID')[0].get('schemeAgencyName')"
+                                             t-out="accounting_supplier_vals.get('AdditionalAccountID')[0].get('_')"/>
+                    <cac:Party>
+                        <t t-set="accountsuppliervals" t-value="accounting_supplier_vals.get('Party',[])[0]"/>
+                        <t t-if="is_for_peppol">
+                            <cbc:EndpointID schemeID="0230" t-out="asp_endpoint_id"/>
+                        </t>
+                        <cbc:IndustryClassificationCode
+                                t-att-name="accountsuppliervals.get('IndustryClassificationCode')[0].get('name')"
+                                t-out="accountsuppliervals.get('IndustryClassificationCode')[0].get('_')">
+                        </cbc:IndustryClassificationCode>
+                        <t t-if="is_for_peppol">
+                            <cac:PartyIdentification>
+                                <cbc:ID schemeID="0230" t-out="asp_endpoint_id"/>
+                            </cac:PartyIdentification>
+                        </t>
+                        <t t-else="">
+                            <cac:PartyIdentification>
+                                <cbc:ID t-att-schemeID="accountsuppliervals.get('PartyIdentification')[0].get('ID')[0].get('schemeID')"
+                                        t-out="accountsuppliervals.get('PartyIdentification')[0].get('ID')[0].get('_')"/>
+                            </cac:PartyIdentification>
+                            <cac:PartyIdentification>
+                                <cbc:ID t-att-schemeID="accountsuppliervals.get('PartyIdentification')[1].get('ID')[0].get('schemeID')"
+                                        t-out="accountsuppliervals.get('PartyIdentification')[1].get('ID')[0].get('_')"/>
+                            </cac:PartyIdentification>
+                        </t>
+                        <cac:PostalAddress>
+                            <t t-set="accountsuppliervalsaddvals"
+                               t-value="accountsuppliervals.get('PostalAddress', [])[0]"/>
+                            <cbc:CityName t-out="accountsuppliervalsaddvals.get('CityName')[0].get('_')"/>
+                            <cbc:PostalZone t-out="accountsuppliervalsaddvals.get('PostalZone')[0].get('_')"/>
+                            <cbc:CountrySubentityCode
+                                    t-out="accountsuppliervalsaddvals.get('CountrySubentityCode')[0].get('_')"/>
+                            <t t-if="is_for_peppol and accountsuppliervalsaddvals.get('AddressLine')">
+                                <t t-set="aLine" t-value="accountsuppliervalsaddvals.get('AddressLine')[0]"/>
+                                <cac:AddressLine>
+                                    <cbc:Line t-out="aLine.get('Line')[0].get('_')"/>
+                                </cac:AddressLine>
+                            </t>
+                            <t t-else="">
+                                <cac:AddressLine t-foreach="accountsuppliervalsaddvals.get('AddressLine')" t-as="aLine">
+                                    <cbc:Line t-out="aLine.get('Line')[0].get('_')"/>
+                                </cac:AddressLine>
+                            </t>
+                            <cac:Country>
+                                <t t-set="country_vals" t-value="accountsuppliervalsaddvals.get('Country', [])[0]"/>
+                                <t t-if="is_for_peppol">
+                                    <cbc:IdentificationCode>MY</cbc:IdentificationCode>
+                                </t>
+                                <t t-else="">
+                                    <cbc:IdentificationCode
+                                            t-att-listID="country_vals.get('IdentificationCode')[0].get('listID')"
+                                            t-att-listAgencyID="country_vals.get('IdentificationCode')[0].get('listAgencyID')"
+                                            t-out="country_vals.get('IdentificationCode')[0].get('_')"/>
+                                </t>
+                            </cac:Country>
+                        </cac:PostalAddress>
+
+                        <cac:PartyTaxScheme
+                                t-if="is_for_peppol"> <!-- IBT-048 - Buyer tax registration MUST occur maximum once.  -->
+                            <cbc:CompanyID t-out="asp_tin"/>
+                            <cac:TaxScheme>
+                                <cbc:ID>GST</cbc:ID>
+                            </cac:TaxScheme>
+                        </cac:PartyTaxScheme>
+                        <cac:PartyTaxScheme t-if="is_for_peppol">
+                            <cbc:CompanyID
+                                    t-out="asp_sst"/><!-- IBT-031 - An Invoice shall have the Supplier’s STT Registration Number -->
+                            <cac:TaxScheme>
+                                <cbc:ID>VAT</cbc:ID>
+                            </cac:TaxScheme>
+                        </cac:PartyTaxScheme>
+                        <cac:PartyLegalEntity t-foreach="accountsuppliervals.get('PartyLegalEntity', [])"
+                                              t-as="foreach_vals">
+                            <cbc:RegistrationName t-out="foreach_vals.get('RegistrationName')[0].get('_')"/>
+                            <t t-if="is_for_peppol">
+                                <cbc:CompanyID t-out="asp_brn"/>
+                                <cbc:CompanyLegalForm t-out="foreach_vals.get('RegistrationName')[0].get('_')"/>
+                            </t>
+                            <!--                            <t t-else="">-->
+
+                            <!--                        <cbc:AdditionalAccountID schemeAgencyName="ATIGA"/>&lt;!&ndash; ==> Needs to an check the data&ndash;&gt;-->
+                            <!--                            </t>-->
+                        </cac:PartyLegalEntity>
+                        <cac:Contact>
+                            <t t-set="contact_vals" t-value="accountsuppliervals.get('Contact', [])[0]"/>
+                            <cbc:Telephone t-out="contact_vals.get('Telephone')[0].get('_')"/>
+                            <cbc:ElectronicMail t-if="contact_vals.get('ElectronicMail')"
+                                                t-out="contact_vals.get('ElectronicMail')[0].get('_')"/>
+                        </cac:Contact>
+
+                        <!--                ==> Needs to discuss with becsase large numbers od data is there isn dropdown fieled-->
+
+                    </cac:Party>
+                </cac:AccountingSupplierParty>
+                <cac:AccountingCustomerParty>
+                    <t t-set="accounting_customer_vals" t-value="vals.get('AccountingCustomerParty',[])[0]"/>
+                    <cac:Party>
+                        <t t-set="accountcustomervals" t-value="accounting_customer_vals.get('Party', [])[0]"/>
+                        <t t-if="is_for_peppol">
+                            <cbc:EndpointID schemeID="0230" t-out="acp_endpoint_id"/>
+                        </t>
+                        <t t-if="is_for_peppol">
+                            <cac:PartyIdentification>
+                                <cbc:ID schemeID="0230" t-out="acp_endpoint_id"/>
+                            </cac:PartyIdentification>
+                        </t>
+                        <t t-else="">
+                            <cac:PartyIdentification>
+                                <cbc:ID t-att-schemeID="accountcustomervals.get('PartyIdentification')[0].get('ID')[0].get('schemeID')"
+                                        t-out="accountcustomervals.get('PartyIdentification')[0].get('ID')[0].get('_')"/>
+                            </cac:PartyIdentification>
+                            <cac:PartyIdentification>
+                                <cbc:ID t-att-schemeID="accountcustomervals.get('PartyIdentification')[1].get('ID')[0].get('schemeID')"
+                                        t-out="accountcustomervals.get('PartyIdentification')[1].get('ID')[0].get('_')"/>
+                            </cac:PartyIdentification>
+                        </t>
+                        <cac:PostalAddress>
+                            <t t-set="accountcustomervalsaddvals"
+                               t-value="accountcustomervals.get('PostalAddress', [])[0]"/>
+                            <cbc:CityName t-out="accountcustomervalsaddvals.get('CityName')[0].get('_')"/>
+                            <cbc:PostalZone t-out="accountcustomervalsaddvals.get('PostalZone')[0].get('_')"/>
+                            <cbc:CountrySubentityCode
+                                    t-out="accountcustomervalsaddvals.get('CountrySubentityCode')[0].get('_')"/>
+
+                            <t t-if="is_for_peppol and accountsuppliervalsaddvals.get('AddressLine')">
+                                <t t-set="aLine" t-value="accountsuppliervalsaddvals.get('AddressLine')[0]"/>
+                                <cac:AddressLine>
+                                    <cbc:Line t-out="aLine.get('Line')[0].get('_')"/>
+                                </cac:AddressLine>
+                            </t>
+                            <t t-else="">
+                                <cac:AddressLine t-foreach="accountsuppliervalsaddvals.get('AddressLine')" t-as="aLine">
+                                    <cbc:Line t-out="aLine.get('Line')[0].get('_')"/>
+                                </cac:AddressLine>
+                            </t>
+                            <cac:Country>
+                                <t t-set="country_vals" t-value="accountcustomervalsaddvals.get('Country', [])[0]"/>
+                                <t t-if="is_for_peppol">
+                                    <cbc:IdentificationCode>MY</cbc:IdentificationCode>
+                                </t>
+                                <t t-else="">
+                                    <cbc:IdentificationCode
+                                            t-att-listID="country_vals.get('IdentificationCode')[0].get('listID')"
+                                            t-att-listAgencyID="country_vals.get('IdentificationCode')[0].get('listAgencyID')"
+                                            t-out="country_vals.get('IdentificationCode')[0].get('_')"/>
+                                </t>
+                            </cac:Country>
+                        </cac:PostalAddress>
+
+                        <!--<cac:PartyTaxScheme t-if="is_for_peppol"> -->
+                        <!-- IBT-048 - Buyer tax registration MUST occur maximum once.  -->
+                        <!--    <cbc:CompanyID t-out="acp_tin"/>-->
+                        <!--    <cac:TaxScheme>-->
+                        <!--        <cbc:ID>GST</cbc:ID>-->
+                        <!--    </cac:TaxScheme>-->
+                        <!--</cac:PartyTaxScheme>-->
+
+                        <cac:PartyTaxScheme t-if="is_for_peppol">
+                            <cbc:CompanyID
+                                    t-out="acp_sst"/><!-- IBT-031 - An Invoice shall have the Supplier’s STT Registration Number -->
+                            <cac:TaxScheme>
+                                <cbc:ID>VAT</cbc:ID>
+                            </cac:TaxScheme>
+                        </cac:PartyTaxScheme>
+
+
+                        <cac:PartyLegalEntity t-foreach="accountcustomervals.get('PartyLegalEntity', [])"
+                                              t-as="foreach_vals">
+                            <cbc:RegistrationName t-out="foreach_vals.get('RegistrationName')[0].get('_')"/>
+                            <t t-if="is_for_peppol">
+                                <cbc:CompanyID t-out="acp_brn"/>
+                                <cbc:CompanyLegalForm t-out="foreach_vals.get('RegistrationName')[0].get('_')"/>
+                            </t>
+
+                            <!--                        <cbc:AdditionalAccountID schemeAgencyName="ATIGA"/>&lt;!&ndash; ==> Needs to an check the data&ndash;&gt;-->
+                        </cac:PartyLegalEntity>
+                        <cac:Contact>
+                            <t t-set="contact_vals" t-value="accountcustomervals.get('Contact', [])[0]"/>
+                            <cbc:Telephone t-out="contact_vals.get('Telephone')[0].get('_')"/>
+                            <cbc:ElectronicMail t-if="contact_vals.get('ElectronicMail')"
+                                                t-out="contact_vals.get('ElectronicMail')[0].get('_')"/>
+                        </cac:Contact>
+                    </cac:Party>
+                </cac:AccountingCustomerParty>
+                <cac:Delivery t-foreach="vals.get('Delivery', [])" t-as="foreach_vals">
+                    <!--        <t t-call="{{DeliveryType_template}}">-->
+                    <t t-set="deliveryvals" t-value="foreach_vals"/>
+                    <cac:DeliveryParty t-if="deliveryvals.get('DeliveryParty')">
+                        <t t-set="deliverypartyvals" t-value="deliveryvals.get('DeliveryParty')[0]"/>
+
+                        <t t-if=" not is_for_peppol">
+
+                            <cac:PartyIdentification t-if="deliverypartyvals.get('PartyIdentification')">
+                                <cbc:ID t-att-schemeID="deliverypartyvals.get('PartyIdentification')[0].get('ID')[0].get('schemeID')"
+                                        t-out="deliverypartyvals.get('PartyIdentification')[0].get('ID')[0].get('_')"/>
+                            </cac:PartyIdentification>
+                            <cac:PartyIdentification t-if="deliverypartyvals.get('PartyIdentification')">
+                                <cbc:ID t-att-schemeID="deliverypartyvals.get('PartyIdentification')[1].get('ID')[0].get('schemeID')"
+                                        t-out="deliverypartyvals.get('PartyIdentification')[1].get('ID')[0].get('_')"/>
+                            </cac:PartyIdentification>
+                        </t>
+                        <cac:PostalAddress t-if="deliverypartyvals.get('PostalAddress')">
+                            <t t-set="deliverypartyaddvals" t-value="deliverypartyvals.get('PostalAddress', [])[0]"/>
+                            <cbc:CityName t-out="deliverypartyaddvals.get('CityName')[0].get('_')"/>
+                            <cbc:PostalZone t-out="deliverypartyaddvals.get('PostalZone')[0].get('_')"/>
+                            <cbc:CountrySubentityCode
+                                    t-out="deliverypartyaddvals.get('CountrySubentityCode')[0].get('_')"/>
+                            <cac:AddressLine t-foreach="deliverypartyaddvals.get('AddressLine')" t-as="aLine">
+                                <cbc:Line t-out="aLine.get('Line')[0].get('_')"/>
+                            </cac:AddressLine>
+                            <cac:Country>
+                                <t t-set="country_vals" t-value="deliverypartyaddvals.get('Country', [])[0]"/>
+                                <t t-if="is_for_peppol">
+                                    <cbc:IdentificationCode>MY</cbc:IdentificationCode>
+                                </t>
+                                <t t-else="">
+                                    <cbc:IdentificationCode
+                                            t-att-listID="country_vals.get('IdentificationCode')[0].get('listID')"
+                                            t-att-listAgencyID="country_vals.get('IdentificationCode')[0].get('listAgencyID')"
+                                            t-out="country_vals.get('IdentificationCode')[0].get('_')"/>
+                                </t>
+                            </cac:Country>
+                        </cac:PostalAddress>
+                        <cac:PartyLegalEntity t-foreach="deliverypartyvals.get('PartyLegalEntity', [])"
+                                              t-as="foreach_vals">
+                            <cbc:RegistrationName t-out="foreach_vals.get('RegistrationName')[0].get('_')"/>
+                            <!--                        <cbc:AdditionalAccountID schemeAgencyName="ATIGA"/>&lt;!&ndash; ==> Needs to an check the data&ndash;&gt;-->
+                        </cac:PartyLegalEntity>
+                    </cac:DeliveryParty>
+                    <cac:Shipment t-if="deliveryvals.get('Shipment')">
+                        <!--                    ==> Remainings to fills this fields data [Freights amountings chargeaas data]-->
+                        <cac:FreightAllowanceCharge>
+                            <cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+                            <!--                    <cbc:Amount currencyID="MYR" t-out="">100</cbc:Amount>-->
+                            <cbc:AllowanceChargeReason>Sample Description</cbc:AllowanceChargeReason>
+                        </cac:FreightAllowanceCharge>
+                    </cac:Shipment>
+                    <!--        </t>-->
+                </cac:Delivery>
+                <cac:PaymentMeans t-foreach="vals.get('PaymentMeans', [])" t-as="foreach_vals">
+                    <t t-set="paymentmeansvals" t-value="foreach_vals"/>
+                    <!--        Needs to an helps usings this givens link ==>https://sdk.myinvois.hasil.gov.my/codes/payment-methods/-->
+                    <cbc:PaymentMeansCode t-out="paymentmeansvals.get('PaymentMeansCode')[0].get('_')"/>
+                    <cac:PayeeFinancialAccount>
+                        <t t-set="payee_financial_account_vals"
+                           t-value="paymentmeansvals.get('PayeeFinancialAccount', [])[0]"/>
+                        <cbc:ID t-out="payee_financial_account_vals.get('ID')[0].get('_')"/>
+                    </cac:PayeeFinancialAccount>
+                </cac:PaymentMeans>
+                <cac:PaymentTerms t-foreach="vals.get('PaymentTerms', [])" t-as="foreach_vals">
+                    <t t-set="paymenttermvals" t-value="foreach_vals"/>
+                    <cbc:Note t-out="paymenttermvals.get('Note')[0].get('_')"/>
+                </cac:PaymentTerms>
+                <cac:PrepaidPayment t-if="vals.get('PrepaidPayment')">
+                    <cbc:ID t-out="vals.get('PrepaidPayment')[0].get('ID')[0].get('ID')"/>
+                    <cbc:PaidAmount
+                            t-att-currencyID="vals.get('PrepaidPayment')[0].get('PaidAmount')[0].get('currencyId')"
+                            t-out="vals.get('PrepaidPayment')[0].get('PaidAmount')[0].get('_')"/>
+                    <cbc:PaidDate t-out="vals.get('PrepaidPayment')[0].get('PaidDate')[0].get('_')"/>
+                    <cbc:PaidTime t-out="vals.get('PrepaidPayment')[0].get('PaidTime')[0].get('_')"/>
+                </cac:PrepaidPayment>
+                <cac:AllowanceCharge t-foreach="vals.get('AllowanceCharge', [])" t-as="foreach_vals">
+                    <t t-set="allwancechargevals" t-value="foreach_vals"/>
+                    <cbc:ChargeIndicator t-out="allwancechargevals.get('ChargeIndicator')[0].get('_')"/>
+                    <cbc:AllowanceChargeReason t-out="allwancechargevals.get('AllowanceChargeReason')[0].get('_')"/>
+                    <cbc:Amount t-att-currencyID="allwancechargevals.get('Amount')[0].get('currencyID')"
+                                t-out="allwancechargevals.get('Amount')[0].get('_')"/>
+                </cac:AllowanceCharge>
+
+                <cac:TaxTotal t-foreach="vals.get('TaxTotal', [])" t-as="foreach_vals_tt">
+                    <t t-set="taxtotalvals" t-value="foreach_vals_tt"/>
+                    <cbc:TaxAmount t-if="taxtotalvals.get('TaxAmount')"
+                                   t-att-currencyID="taxtotalvals.get('TaxAmount')[0].get('currencyID')"
+                                   t-out="taxtotalvals.get('TaxAmount')[0].get('_')"/>
+                    <t t-if="is_for_peppol">
+                        <cac:TaxSubtotal t-foreach="peppol_tax_subtotal_group" t-as="foreach_vals">
+                            <cbc:TaxableAmount t-if="foreach_vals.get('TaxableAmount')"
+                                               t-att-currencyID="foreach_vals.get('TaxableAmount').get('currency_id')"
+                                               t-out="foreach_vals.get('TaxableAmount').get('amount')"/>
+                            <cbc:TaxAmount t-if="foreach_vals.get('TaxAmount')"
+                                           t-att-currencyID="foreach_vals.get('TaxAmount').get('currency_id')"
+                                           t-out="foreach_vals.get('TaxAmount').get('amount')"/>
+                            <cac:TaxCategory t-if="foreach_vals.get('TaxCategory')">
+                                <!--                                <t t-set="taxccategvals" t-value="foreach_vals.get('TaxCategory', [])[0]"/>-->
+                                <!--                                <t t-if="is_for_peppol">-->
+                                <cbc:ID t-out="foreach_vals.get('TaxCategory').get('ID')"/>
+                                <!--                                T</cbc:ID>-->
+                                <!--                                Needs to check accordinglys to the fileas-->
+                                <cbc:Percent t-out="foreach_vals.get('TaxCategory').get('Percent')"/>
+                                <!--                                15</cbc:Percent>-->
+                                <!--                                </t>-->
+                                <!--                                <t t-else="">-->
+                                <!--                                    <cbc:ID t-out="taxccategvals.get('ID')[0].get('_')"/>-->
+                                <!--                                </t>-->
+                                <cac:TaxScheme>
+                                    <!--                                    <t t-set="tax_scheme_vals" t-value="taxccategvals.get('TaxScheme', [])[0]"/>-->
+                                    <!--                                    <t t-if="is_for_peppol">-->
+                                    <cbc:ID>VAT</cbc:ID>
+                                    <!--                                    </t>-->
+                                    <!--                                    <t t-else="">-->
+                                    <!--                                        <cbc:ID t-att-schemeID="tax_scheme_vals.get('ID')[0].get('schemeID')"-->
+                                    <!--                                                t-att-schemeAgencyID="tax_scheme_vals.get('ID')[0].get('schemeAgencyID')"-->
+                                    <!--                                                t-out="tax_scheme_vals.get('ID')[0].get('_')"/>-->
+                                    <!--                        NEEDA TO USE THIS LINKS ==>https://sdk.myinvois.hasil.gov.my/codes/tax-types/-->
+                                    <!--                            <cbc:TaxTypeCode t-out="tax_scheme_vals.get('tax_type_code'0"/>-->
+                                    <!--                                    </t>-->
+                                </cac:TaxScheme>
+                                <!--                        <cbc:TaxExemptionReasonCode t-out="taxccategvals.get('tax_exemption_reason_code')"/>-->
+                            </cac:TaxCategory>
+                        </cac:TaxSubtotal>
+                    </t>
+                    <t t-else="">
+                        <cac:TaxSubtotal t-foreach="taxtotalvals.get('TaxSubtotal', [])" t-as="foreach_vals">
+                            <cbc:TaxableAmount t-if="foreach_vals.get('TaxableAmount')"
+                                               t-att-currencyID="foreach_vals.get('TaxableAmount')[0].get('currencyID')"
+                                               t-out="foreach_vals.get('TaxableAmount')[0].get('_')"/>
+                            <cbc:TaxAmount t-if="foreach_vals.get('TaxAmount')"
+                                           t-att-currencyID="foreach_vals.get('TaxAmount')[0].get('currencyID')"
+                                           t-out="foreach_vals.get('TaxAmount')[0].get('_')"/>
+                            <cac:TaxCategory t-if="foreach_vals.get('TaxCategory')">
+                                <t t-set="taxccategvals" t-value="foreach_vals.get('TaxCategory', [])[0]"/>
+                                <cbc:ID t-out="taxccategvals.get('ID')[0].get('_')"/>
+                                <cac:TaxScheme>
+                                    <t t-set="tax_scheme_vals" t-value="taxccategvals.get('TaxScheme', [])[0]"/>
+                                    <cbc:ID t-att-schemeID="tax_scheme_vals.get('ID')[0].get('schemeID')"
+                                            t-att-schemeAgencyID="tax_scheme_vals.get('ID')[0].get('schemeAgencyID')"
+                                            t-out="tax_scheme_vals.get('ID')[0].get('_')"/>
+                                    <!--                        NEEDA TO USE THIS LINKS ==>https://sdk.myinvois.hasil.gov.my/codes/tax-types/-->
+                                    <!--                            <cbc:TaxTypeCode t-out="tax_scheme_vals.get('tax_type_code'0"/>-->
+                                    <!--                                </t>-->
+                                </cac:TaxScheme>
+                            </cac:TaxCategory>
+                        </cac:TaxSubtotal>
+
+                    </t>
+                </cac:TaxTotal>
+
+
+                <cac:LegalMonetaryTotal>
+                    <t t-set="legalmonetarytotalvals" t-value="vals.get('LegalMonetaryTotal', [])[0]"/>
+                    <cbc:LineExtensionAmount t-if="legalmonetarytotalvals.get('LineExtensionAmount')"
+                                             t-att-currencyID="legalmonetarytotalvals.get('LineExtensionAmount')[0].get('currencyID')"
+                                             t-out="legalmonetarytotalvals.get('LineExtensionAmount')[0].get('_')"/>
+                    <cbc:TaxExclusiveAmount
+                            t-att-currencyID="legalmonetarytotalvals.get('TaxExclusiveAmount')[0].get('currencyID')"
+                            t-out="legalmonetarytotalvals.get('TaxExclusiveAmount')[0].get('_')"/>
+                    <cbc:TaxInclusiveAmount
+                            t-att-currencyID="legalmonetarytotalvals.get('TaxInclusiveAmount')[0].get('currencyID')"
+                            t-out="legalmonetarytotalvals.get('TaxInclusiveAmount')[0].get('_')"/>
+                    <cbc:AllowanceTotalAmount t-if="legalmonetarytotalvals.get('AllowanceTotalAmount')"
+                                              t-att-currencyID="legalmonetarytotalvals.get('AllowanceTotalAmount')[0].get('currencyID')"
+                                              t-out="legalmonetarytotalvals.get('AllowanceTotalAmount')[0].get('_')"/>
+                    <cbc:ChargeTotalAmount t-if="legalmonetarytotalvals.get('ChargeTotalAmount')"
+                                           t-att-currencyID="legalmonetarytotalvals.get('ChargeTotalAmount')[0].get('currencyID')"
+                                           t-out="legalmonetarytotalvals.get('ChargeTotalAmount')[0].get('_')"/>
+                    <cbc:PayableRoundingAmount t-if="legalmonetarytotalvals.get('PayableRoundingAmount')"
+                                               t-att-currencyID="legalmonetarytotalvals.get('PayableRoundingAmount')[0].get('currencyID')"
+                                               t-out="legalmonetarytotalvals.get('PayableRoundingAmount')[0].get('_')"/>
+                    <cbc:PayableAmount
+                            t-att-currencyID="legalmonetarytotalvals.get('PayableAmount')[0].get('currencyID')"
+                            t-out="legalmonetarytotalvals.get('PayableAmount')[0].get('_')"/>
+                </cac:LegalMonetaryTotal>
+
+                <cac:CreditNoteLine t-foreach="vals.get('InvoiceLine', [])" t-as="foreach_vals">
+                    <t t-set="invvals" t-value="foreach_vals"/>
+                    <cbc:ID t-out="invvals.get('ID')[0].get('_')"/>
+                    <cbc:CreditedQuantity t-if="invvals.get('InvoicedQuantity')"
+                                          t-att-unitCode="invvals.get('InvoicedQuantity')[0].get('unitCode')"
+                                          t-out="invvals.get('InvoicedQuantity')[0].get('_')"/>
+                    <cbc:LineExtensionAmount t-att-currencyID="invvals.get('LineExtensionAmount')[0].get('currencyID')"
+                                             t-out="invvals.get('LineExtensionAmount')[0].get('_')"/>
+                    <cac:AllowanceCharge t-foreach="invvals.get('AllowanceCharge', [])" t-as="foreach_vals">
+                        <t t-set="lineallowancevals" t-value="foreach_vals"/>
+                        <cbc:ChargeIndicator t-out="lineallowancevals.get('ChargeIndicator')[0].get('_')"/>
+                        <cbc:AllowanceChargeReason t-out="lineallowancevals.get('AllowanceChargeReason')[0].get('_')"/>
+                        <cbc:MultiplierFactorNumeric
+                                t-out="lineallowancevals.get('MultiplierFactorNumeric')[0].get('_')"/>
+                        <cbc:Amount t-att-currencyID="lineallowancevals.get('Amount')[0].get('currencyID')"
+                                    t-out="lineallowancevals.get('Amount')[0].get('_')"/>
+                    </cac:AllowanceCharge>
+                    <t t-if="not is_for_peppol">
+                        <cac:TaxTotal t-foreach="invvals.get('TaxTotal', [])" t-as="foreach_vals">
+                            <t t-set="linetaxtotalvals" t-value="foreach_vals"/>
+                            <cbc:TaxAmount t-if="linetaxtotalvals.get('TaxAmount')"
+                                           t-att-currencyID="linetaxtotalvals.get('TaxAmount')[0].get('currencyID')"
+                                           t-out="linetaxtotalvals.get('TaxAmount')[0].get('_')"/>
+                            <cac:TaxSubtotal t-foreach="linetaxtotalvals.get('TaxSubtotal', [])" t-as="foreach_vals">
+                                <cbc:TaxableAmount t-if="foreach_vals.get('TaxableAmount')"
+                                                   t-att-currencyID="foreach_vals.get('TaxableAmount')[0].get('currencyID')"
+                                                   t-out="foreach_vals.get('TaxableAmount')[0].get('_')"/>
+                                <cbc:TaxAmount t-if="foreach_vals.get('TaxAmount')"
+                                               t-att-currencyID="foreach_vals.get('TaxAmount')[0].get('currencyID')"
+                                               t-out="foreach_vals.get('TaxAmount')[0].get('_')"/>
+                                <cac:TaxCategory t-if="foreach_vals.get('TaxCategory')">
+                                    <t t-set="linetaxcategvals" t-value="foreach_vals.get('TaxCategory', [])[0]"/>
+
+                                    <t t-if="is_for_peppol">
+                                        <cbc:ID>T</cbc:ID>
+                                    </t>
+                                    <t t-else="">
+                                        <cbc:ID t-out="linetaxcategvals.get('ID')[0].get('_')"/>
+                                    </t>
+                                    <cbc:Percent t-out="linetaxcategvals.get('Percent')[0].get('_')"/>
+                                    <cbc:TaxExemptionReason t-if="linetaxcategvals.get('TaxExemptionReason')"
+                                                            t-out="linetaxcategvals.get('TaxExemptionReason')[0].get('_')"/>
+                                    <cac:TaxScheme t-if="linetaxcategvals.get('TaxScheme')">
+                                        <t t-set="tax_scheme_vals" t-value="linetaxcategvals.get('TaxScheme', [])[0]"/>
+
+                                        <t t-if="is_for_peppol">
+                                            <cbc:ID>VAT</cbc:ID>
+                                        </t>
+                                        <t t-else="">
+
+                                            <cbc:ID schemeID="UN/ECE 5153" schemeAgencyID="6"
+                                                    t-out="tax_scheme_vals.get('id')"/>
+                                            <!--                        NEEDA TO USE THIS LINKS ==>https://sdk.myinvois.hasil.gov.my/codes/tax-types/-->
+                                            <cbc:TaxTypeCode t-out="tax_scheme_vals.get('ID')[0].get('_')"/>
+                                        </t>
+                                    </cac:TaxScheme>
+                                </cac:TaxCategory>
+                            </cac:TaxSubtotal>
+                        </cac:TaxTotal>
+                    </t>
+                    <cac:Item>
+                        <t t-set="item_vals" t-value="invvals.get('Item', [])[0]"/>
+                        <t t-if="is_for_peppol">
+                            <cbc:Name t-out="item_vals.get('Description')[0].get('_')"/>
+                        </t>
+                        <t t-else="">
+                            <cbc:Description t-out="item_vals.get('Description')[0].get('_')"/>
+                        </t>
+                        <cac:OriginCountry t-if="item_vals.get('OriginCountry') and item_vals.get('OriginCountry')[0]">
+                            <cbc:IdentificationCode
+                                    t-out="item_vals.get('OriginCountry')[0].get('IdentificationCode')[0].get('_')"/>
+                        </cac:OriginCountry>
+                        <t t-if="not is_for_peppol">
+                            <cac:CommodityClassification t-foreach="item_vals.get('CommodityClassification', [])"
+                                                         t-as="foreach_vals">
+                                <cbc:ItemClassificationCode
+                                        t-att-listID="foreach_vals.get('ItemClassificationCode')[0].get('listID')"
+                                        t-out="foreach_vals.get('ItemClassificationCode')[0].get('_')"/>
+                            </cac:CommodityClassification>
+                        </t>
+                        <t t-if="is_for_peppol">
+                            <t t-set="lineTaxPercent"
+                               t-value="invvals.get('TaxTotal', [])[0].get('TaxSubtotal',[])[0].get('TaxCategory',[])[0].get('Percent',[])[0].get('_')"/>
+
+                            <cac:ClassifiedTaxCategory> <!-- IBG-30 - LINE TAX INFORMATION -->
+                                <cbc:ID>T</cbc:ID> <!-- IBT-151 - Invoiced item TAX category code -->
+                                <cbc:Percent t-out="lineTaxPercent"/>
+                                <!--                                    15</cbc:Percent>-->
+                                <!-- IBT-152 - Invoiced item TAX rate -->
+                                <cac:TaxScheme>
+                                    <cbc:ID>VAT</cbc:ID> <!-- IBT-167 - Tax Scheme -->
+                                </cac:TaxScheme>
+                            </cac:ClassifiedTaxCategory>
+                        </t>
+
+                    </cac:Item>
+
+                    <cac:Price>
+                        <t t-set="pricevals" t-value="invvals.get('Price', [])[0]"/>
+                        <cbc:PriceAmount t-att-currencyID="pricevals.get('PriceAmount')[0].get('currencyID')"
+                                         t-out="pricevals.get('PriceAmount')[0].get('_')"/>
+                    </cac:Price>
+                    <cac:ItemPriceExtension>
+                        <t t-set="itempriceextvals" t-value="invvals.get('ItemPriceExtension', [])[0]"/>
+
+                        <cbc:Amount t-att-currencyID="itempriceextvals.get('Amount')[0].get('currencyID')"
+                                    t-out="itempriceextvals.get('Amount')[0].get('_')"/>
+                    </cac:ItemPriceExtension>
+
+                </cac:CreditNoteLine>
+
+
+            </CreditNote>
+
+        </template>
+
+        <template id="signed_properties_template">
+            <xades:SignedProperties Id="id-xades-signed-props" xmlns:xades="http://uri.etsi.org/01903/v1.3.2#"
+                                    xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                <xades:SignedSignatureProperties>
+                    <xades:SigningTime t-out="signing_time"/>
+                    <!--                        2024-04-01T00:41:21Z</xades:SigningTime>-->
+                    <xades:SigningCertificate>
+                        <xades:Cert>
+                            <xades:CertDigest>
+                                <ds:DigestMethod
+                                        Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" t-out=""/>
+                                <ds:DigestValue t-out="digest_value"/>
+                                <!--                                    YTJkM2JhYTcwZTBhZTAxOGYwODMyNzY3NTdkZDM3YzhjY2IxOTIyZDZhM2RlZGJiMGY0NDUzZWJhYWI4MDhmYg==-->
+                                <!--                                </ds:DigestValue>-->
+                            </xades:CertDigest>
+                            <xades:IssuerSerial>
+                                <ds:X509IssuerName t-out="x509_issuer_name"/>
+                                <ds:X509SerialNumber>1</ds:X509SerialNumber>
+                                <!--                                        t-out="x509_serial_number"/>-->
+                                <!--                                2475382886904809774818644480820936050208702411</ds:X509SerialNumber>-->
+                            </xades:IssuerSerial>
+                        </xades:Cert>
+                    </xades:SigningCertificate>
+                </xades:SignedSignatureProperties>
+            </xades:SignedProperties>
+        </template>
+
+    </data>
+</odoo>

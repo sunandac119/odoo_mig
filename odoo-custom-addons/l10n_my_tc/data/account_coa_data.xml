@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="base.user_admin" model="res.users">
+            <field name="groups_id" eval="[(4, ref('account.group_account_user'))]"/>
+        </record>
+
+        <!-- Fixed Assets Type COA (1 to 32) -->
+        <!-- END Fixed Assets Type COA -->
+
+
+        <!-- INVESTMENT Type COA (33 to 40) -->
+        <record id="ch_my_33" model="account.account">
+            <field name="code">211-000</field>
+            <field name="name">INVESTMENT IN SUBSIDIARIES</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="reconcile" eval="False"/>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+        </record>
+
+        /record>
+        <!-- END INVESTMENT Type COA -->
+
+        <!-- OTHER ASSETS Type COA (41 to 42) -->
+        <record id="ch_my_41" model="account.account">
+            <field name="code">220-000</field>
+            <field name="name">GOODWILL</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="reconcile" eval="False"/>
+            <field name="user_type_id" ref="account.data_account_type_non_current_assets"/>
+        </record>
+
+        
+        <!-- END OTHER ASSETS Type COA -->
+
+
+        <!-- CURRENT ASSETS Type COA (43 to 129) -->
+        <record id="ch_my_43" model="account.account">
+            <field name="code">300-000</field>
+            <field name="name">TRADE RECEIVABLES</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="reconcile" eval="False"/>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+        </record>
+
+        <record id="ch_my_44" model="account.account">
+            <field name="code">310-000</field>
+            <field name="name">STOCK</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="reconcile" eval="False"/>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+        </record>
+
+        <record id="ch_my_45" model="account.account">
+            <field name="code">320-000</field>
+            <field name="name">CASH IN HAND</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="reconcile" eval="False"/>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+        </record>
+
+        <record id="ch_my_46" model="account.account">
+            <field name="code">321-000</field>
+            <field name="name">CASH IN HAND</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="reconcile" eval="False"/>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+        </record>
+
+        <record id="ch_my_47" model="account.account">
+            <field name="code">322-000</field>
+            <field name="name">PETTY CASH</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="reconcile" eval="False"/>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+        </record>
+
+        <record id="ch_my_48" model="account.account">
+            <field name="code">330-000</field>
+            <field name="name">CASH AT BANK</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="reconcile" eval="False"/>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+        </record>
+
+      
+        <record id="ch_my_77" model="account.account">
+            <field name="code">340-000</field>
+            <field name="name">OTHER RECEIVABLES</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="reconcile" eval="False"/>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+        </record>
+
+      
+      
+        <record id="ch_my_94" model="account.account">
+            <field name="code">348-000</field>
+            <field name="name">ADVANCE TO STAFF</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="reconcile" eval="False"/>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+        </record>
+
+        <record id="ch_my_95" model="account.account">
+            <field name="code">350-000</field>
+            <field name="name">DEPOSITS</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="reconcile" eval="False"/>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+        </record>
+
+  
+
+        
+        <!-- END CURRENT ASSETS Type COA -->
+
+
+        <!-- CURRENT LIABILITIES Type COA (130 to 270) -->
+        <record id="ch_my_130" model="account.account">
+            <field name="code">400-000</field>
+            <field name="name">TRADE PAYABLES</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="reconcile" eval="False"/>
+            <field name="user_type_id" ref="account.data_account_type_current_liabilities"/>
+        </record>
+
+        <record id="ch_my_131" model="account.account">
+            <field name="code">410-000</field>
+            <field name="name">OTHER PAYABLES</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="reconcile" eval="False"/>
+            <field name="user_type_id" ref="account.data_account_type_current_liabilities"/>
+        </record>
+
+  
+
+  
+        <!-- END SALES ADJUSTMENT Type COA -->
+
+        <!-- COST OF GOODS SOLD Type COA (402 to 468) 67-->
+        <record id="ch_my_402" model="account.account">
+            <field name="code">600-100</field>
+            <field name="name">STOCKS AT THE BEGINNING OF YEAR</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="reconcile" eval="False"/>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+        </record>
+
+        <record id="ch_my_403" model="account.account">
+            <field name="code">600-200</field>
+            <field name="name">STOCKS AT THE END OF THE YEAR</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="reconcile" eval="False"/>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+        </record>
+
+        <record id="ch_my_404" model="account.account">
+            <field name="code">600-300</field>
+            <field name="name">PURCHASES</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="reconcile" eval="False"/>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+        </record>
+
+        <record id="ch_my_405" model="account.account">
+            <field name="code">600-400</field>
+            <field name="name">PURCHASES RETURNED</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="reconcile" eval="False"/>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+        </record>
+
+
+        <record id="ch_my_468" model="account.account">
+            <field name="code">699-000</field>
+            <field name="name">OTHERS</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="reconcile" eval="False"/>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+        </record>
+        <!-- COST OF GOODS SOLD Type COA -->
+
+
+        <!-- OTHER INCOME Type COA -->
+
+
+        <!-- END EXPENSES Type COA -->
+
+        <!-- TAXATION COA (709)-->
+        <!-- <record id="ch_my_709" model="account.account">
+            <field name="code">990-999</field>
+            <field name="name">TAXATION</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="reconcile" eval="False"/>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+        </record> -->
+        <!-- END TAXATION COA -->
+
+        <!-- APPROPRIATION ACCOUNT COA (710)-->
+        <!-- <record id="ch_my_710" model="account.account">
+            <field name="code">991-000</field>
+            <field name="name">DIVIDEND PAID</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="reconcile" eval="False"/>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+        </record> -->
+        <!-- END APPROPRIATION ACCOUNT COA -->
+
+    </data>
+
+
+</odoo>

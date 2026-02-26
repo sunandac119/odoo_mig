@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_productproduct_50X30">
+        <t t-name="product.report_producttemplatelabel_copy_3_copy_2">
+            <t t-call="web.basic_layout">
+                <div class="page">
+                    <t t-foreach="docs" t-as="product">
+                            <t t-call="product_label_multibarcode.product_label_price_50mm_30mm">
+                                <t t-set="product" t-value="product"/>
+                            </t>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template> 
+
+    <!-- <template id="report_noprice_productproduct_50X30">
+        <t t-name="product.report_producttemplatelabel_copy_3">
+            <t t-call="web.basic_layout">
+                <div class="page">
+                    <t t-foreach="docs" t-as="template">
+                        <t t-foreach="template.product_variant_ids" t-as="product">
+                            <t t-call="product.report_simple_label_copy_3">
+                                <t t-set="product" t-value="product"/>
+                            </t>
+                        </t>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template> -->
+    <template id="report_noprice_productproduct_50X30">
+        <t t-name="product.report_producttemplatelabel_copy_3">
+            <t t-call="web.basic_layout">
+                <div class="page">
+                    <t t-foreach="docs" t-as="product">
+                        <t t-call="product_label_multibarcode.product_label_noprice_50mm_30mm">
+                            <t t-set="product" t-value="product"/>
+                        </t>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+
+
+    <template id="report_product_ingredient">
+        <t t-name="product.report_producttemplatelabel_copy_3_copy_8">
+            <t t-call="web.basic_layout">
+                <div class="page">
+                    <t t-foreach="docs" t-as="product">
+                        <t t-call="product_label_multibarcode.report_simple_label_copy_3_copy_8_custom">
+                            <t t-set="product" t-value="product"/>
+                        </t>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_product_ingredient_new">
+        <t t-name="product.report_producttemplatelabel_copy_3_copy_8_copy_2">
+            <t t-call="web.basic_layout">
+                <div class="page">
+                    <t t-foreach="docs" t-as="product">
+                            <t t-call="product.report_simple_label_copy_3_copy_8_copy_2">
+                                <t t-set="product" t-value="product"/>
+                            </t>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_product_lable_apt_trading_sdn_bdh">
+        <t t-name="product.report_producttemplatelabel_copy_3_copy_8_copy_1">
+            <t t-call="web.basic_layout">
+                <div class="page">
+                    <t t-foreach="docs" t-as="product">
+                            <t t-call="product.report_simple_label_copy_3_copy_8_copy_1">
+                                <t t-set="product" t-value="product"/>
+                            </t>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+    
+    <template id="report_product_lable_expiry">
+        <t t-name="product.report_producttemplatelabel_copy_3_copy_4_copy_3">
+            <t t-call="web.basic_layout">
+                <div class="page">
+                    <t t-foreach="docs" t-as="product">
+                            <t t-call="product_label_multibarcode.product_expiry_label">
+                                <t t-set="product" t-value="product"/>
+                            </t>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_product_lable_trading">
+        <t t-name="product.report_producttemplatelabel_copy_3_copy_8_copy_1_copy_1">
+            <t t-call="web.basic_layout">
+                <div class="page">
+                    <t t-foreach="docs" t-as="product">
+                            <t t-call="product.report_simple_label_copy_3_copy_8_copy_1_copy_1">
+                                <t t-set="product" t-value="product"/>
+                            </t>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_product_lable_import_export">
+        <t t-name="product.report_producttemplatelabel_copy_3_copy_8_copy_1_copy_1_copy_1">
+            <t t-call="web.basic_layout">
+                <div class="page">
+                    <t t-foreach="docs" t-as="product">
+                            <t t-call="product.report_simple_label_copy_3_copy_8_copy_1_copy_1_copy_1">
+                                <t t-set="product" t-value="product"/>
+                            </t>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_product_label">
+        <t t-call="web.basic_layout">
+        </t>
+    </template>
+</odoo>

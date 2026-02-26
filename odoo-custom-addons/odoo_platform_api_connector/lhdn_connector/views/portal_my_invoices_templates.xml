@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="portal_my_home_invoices_templates" name="My Home Invoice Templates" inherit_id="portal.portal_my_home"
+              customize_show="True">
+
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <!--                <t t-set="icon" t-value="'/knowledge/static/src/img/Books.svg'"/>-->
+                <t t-set="title">Invoices Templates</t>
+                <t t-set="url" t-value="'/my/invoices_templates'"/>
+                <t t-set="text">Invoice Templates</t>
+                <!--                <t t-set="placeholder_count" t-value="'knowledge_count'"/>-->
+                <t t-set="config_card" t-value="True"/>
+            </t>
+        </xpath>
+    </template>
+
+
+    <template id="portal_my_invoice_templates" name="My Invoice Templates">
+    <t t-call="portal.portal_layout">
+        <t t-set="breadcrumbs_searchbar" t-value="True"/>
+        <t t-call="portal.portal_searchbar">
+            <t t-set="title">Credit Managements</t>
+        </t>
+        <div>
+            <div class="o_portal_my_invoice_templates">
+                <h2>
+                    <strong>Upload Your Invoice PDF Here:</strong>
+                </h2>
+                <div class="row">
+                    <div class="col-12">
+                        <label class="label form-label">File</label>
+                        <input type="file" id="files" name="files" multiple="multiple" class="form-control"/>
+                    </div>
+                </div>
+                <br/>
+                <button class="btn btn-primary o_button_uploadingeas" t-on-click="uploadDocuments()">
+                    Upload
+                </button>
+                <br/>
+            </div>
+            <input type="hidden" id="pdf_url_input" t-att-value="pdf_url"/>
+            <h2>Uploaded Invoice PDF</h2>
+            <div id="pdf-container" style="position: relative;">
+                <canvas id="pdf-canvas" width="600" height="800"></canvas>
+                <canvas id="overlay-canvas" width="600" height="800"
+                        style="position: absolute; top: 0; left: 0;"></canvas>
+            </div>
+            <div class="mt-3">
+                <button class="btn btn-secondary" t-on-click="goBack()">Go Back</button>
+            </div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf_viewer.min.css"/>
+        </div>
+    </t>
+</template>
+
+
+    <template id="render_pdf_template" name="Render PDF Template">
+        <!--        <t t-call="portal.portal_layout">-->
+
+        <div class="o_portal_my_invoice_templates">
+            <input type="hidden" id="pdf_url_input" t-att-value="pdf_url"/>
+            <h2>Uploaded Invoice PDF</h2>
+            <div id="pdf-container">
+                <canvas id="pdf-canvas" width="600" height="800"/>
+                <canvas id="overlay-canvas" width="600" height="800"
+                        style="position:absolute; top:0; left:0;"/>
+            </div>
+            <div class="mt-3">
+                <button class="btn btn-secondary" t-on-click="goBack()">Go Back</button>
+            </div>
+        </div>
+        <!--        </t>-->
+    </template>
+
+
+</odoo>

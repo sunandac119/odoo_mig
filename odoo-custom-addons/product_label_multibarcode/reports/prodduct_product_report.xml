@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="paperformat_label_50x30" model="report.paperformat">
+            <field name="name">Custom Product Label</field>
+            <field name="default" eval="False"/>
+            <field name="format">custom</field>
+            <field name="page_height">50</field>
+            <field name="page_width">30</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">3.0</field>
+            <field name="margin_bottom">1.0</field>
+            <field name="margin_left">5.0</field>
+            <field name="margin_right">1.0</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">1</field>
+            <field name="dpi">250</field>
+        </record>
+
+        <record id="action_report_productproduct_50X30" model="ir.actions.report">
+            <field name="name">Product Label (PDF) Price 50mm x 30mm</field>
+            <field name="model">product.product</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">product_label_multibarcode.report_productproduct_50X30</field>
+            <field name="report_file">product_label_multibarcode.report_productproduct_50X30</field>
+            <field name="paperformat_id" ref="product_label_multibarcode.paperformat_label_50x30"/>
+            <field name="print_report_name">'Products Label Price- %s' % (object.name)</field>
+            <field name="binding_type">report</field>
+        </record>
+        
+        <record id="action_report_no_price_productproduct_50X30" model="ir.actions.report">
+            <field name="name">Product Label (PDF) NoPrice 50mm x 30mm</field>
+            <field name="model">product.product</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">product_label_multibarcode.report_noprice_productproduct_50X30</field>
+            <field name="report_file">product_label_multibarcode.report_noprice_productproduct_50X30</field>
+            <field name="paperformat_id" ref="product_label_multibarcode.paperformat_label_50x30"/>
+            <field name="print_report_name">'Products Label No Price- %s' % (object.name)</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_product_ingredient" model="ir.actions.report">
+            <field name="name">Product Label (PDF) Ingredient</field>
+            <field name="model">product.product</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">product_label_multibarcode.report_product_ingredient</field>
+            <field name="report_file">product_label_multibarcode.report_product_ingredient</field>
+            <field name="paperformat_id" ref="product_label_multibarcode.paperformat_label_50x30"/>
+            <field name="print_report_name">'Product Label (PDF) Ingredient- %s' % (object.name)</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_product_ingredient_new" model="ir.actions.report">
+            <field name="name">Product Label (PDF) Ingredient New</field>
+            <field name="model">product.product</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">product_label_multibarcode.report_product_ingredient_new</field>
+            <field name="report_file">product_label_multibarcode.report_product_ingredient_new</field>
+            <field name="paperformat_id" ref="product_label_multibarcode.paperformat_label_50x30"/>
+            <field name="print_report_name">'Product Label (PDF) Ingredient New- %s' % (object.name)</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_product_lable_apt_trading_sdn_bdh" model="ir.actions.report">
+            <field name="name">Product Label (PDF) APT TRADING SDN BHD</field>
+            <field name="model">product.product</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">product_label_multibarcode.report_product_lable_apt_trading_sdn_bdh</field>
+            <field name="report_file">product_label_multibarcode.report_product_lable_apt_trading_sdn_bdh</field>
+            <field name="paperformat_id" ref="product_label_multibarcode.paperformat_label_50x30"/>
+            <field name="print_report_name">'Product Label (PDF) TRADING SDN BHD- %s' % (object.name)</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_product_lable_expiry" model="ir.actions.report">
+            <field name="name">Product Label Expiry</field>
+            <field name="model">product.product</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">product_label_multibarcode.report_product_lable_expiry</field>
+            <field name="report_file">product_label_multibarcode.report_product_lable_expiry</field>
+            <field name="paperformat_id" ref="product_label_multibarcode.paperformat_label_50x30"/>
+            <field name="print_report_name">'Product Label (PDF) Expiry- %s' % (object.name)</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_product_lable_trading" model="ir.actions.report">
+            <field name="name">Product Label (PDF) E &amp; I EASY TRADING</field>
+            <field name="model">product.product</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">product_label_multibarcode.report_product_lable_trading</field>
+            <field name="report_file">product_label_multibarcode.report_product_lable_trading</field>
+            <field name="paperformat_id" ref="product_label_multibarcode.paperformat_label_50x30"/>
+            <field name="print_report_name">'Product Label (PDF) trading- %s' % (object.name)</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_product_lable_import_export" model="ir.actions.report">
+            <field name="name">Product Label (PDF) Hui Huang Import &amp; Export S/B</field>
+            <field name="model">product.product</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">product_label_multibarcode.report_product_lable_import_export</field>
+            <field name="report_file">product_label_multibarcode.report_product_lable_import_export</field>
+            <field name="paperformat_id" ref="product_label_multibarcode.paperformat_label_50x30"/>
+            <field name="print_report_name">'Product Label (PDF) Import &amp; Export- %s' % (object.name)</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Normal QWeb Report -->
+        <record id="action_report_custom_product_labels" model="ir.actions.report">
+            <field name="name">Custom Product Labels</field>
+            <field name="model">product.product</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">product_label_multibarcode.report_product_label</field>
+            <field name="report_file">product_label_multibarcode.report_product_label</field>
+            <field name="binding_model_id" ref="product.model_product_product"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Wizard "report" action -->
+       <!--  <record id="action_print_label_from_product" model="ir.actions.act_window">
+            <field name="name">Custom Product Labels</field>
+            <field name="res_model">print.product.label</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="context">{'default_product_ids': active_ids}</field>
+            <field name="binding_model_id" ref="product.model_product_product"/>
+            <field name="binding_type">report</field>
+        </record> -->
+        
+        <record id="action_report_picking_barcode" model="ir.actions.report">
+            <field name="name">Picking Operations with barcode</field>
+            <field name="model">stock.picking</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">product_label_multibarcode.report_picking_operation_with_barcode</field>
+            <field name="report_file">product_label_multibarcode.report_picking_operation_with_barcode</field>
+            <field name="binding_model_id" ref="stock.model_stock_picking"/>
+            <field name="binding_type">report</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="aspl_pos_config_view_form" model="ir.ui.view">
+        <field name="name">pos.config.form.view</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='inventory_location']" position="after">
+                <center><h1><ul>Additional Features</ul></h1></center>
+                <div class="row mt16 o_settings_container" id="pos_login_screen">
+                    <div class="col-xs-12 col-md-6 o_setting_box" id="rounding">
+                        <div class="o_setting_left_pane">
+                            <field name="enable_rounding"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="enable_rounding" string="Rounding"/>
+                            <div class="text-muted">
+                                Rounding
+                            </div>
+                            <div class="content-group mt16" 
+                                 attrs="{'invisible' : [('enable_rounding', '=', False)],'required':[('enable_rounding','==',True)]}">
+                                <div class="row mt16">
+                                    <label string="Rounding Option" for="rounding_options" class="col-md-3 o_light_label"/>
+                                    <field name="rounding_options" />
+                                </div>
+                                <div class="row mt16">
+                                    <label string="Rounding Journal" for="rounding_journal_id" class="col-md-3 o_light_label"/>
+                                    <field name="rounding_journal_id"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

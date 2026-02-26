@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+        <record id="paperformat_landscape_clonet" model="report.paperformat">
+            <field name="name">European A4 Landscape</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">20</field>
+            <field name="margin_bottom">4</field>
+            <field name="margin_left">4</field>
+            <field name="margin_right">4</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">10</field>
+            <field name="dpi">90</field>
+        </record>
+
+	<report 
+        	id='action_print_category_clonet'
+        	string="POS Category"
+                model="pos.order" 
+                report_type="qweb-pdf"
+                file="mai_pos_advance_report.print_category_clonet" 
+                name="mai_pos_advance_report.print_category_clonet"
+                print_report_name="'POS Order Receipt - %s' % (object.name)"
+                paperformat="mai_pos_advance_report.paperformat_landscape_clonet"
+                menu="False"
+	/>
+
+        <report 
+                id='action_print_product_clonet'
+                string="POS Product"
+                model="pos.order" 
+                report_type="qweb-pdf"
+                file="mai_pos_advance_report.print_product_clonet" 
+                name="mai_pos_advance_report.print_product_clonet"
+                print_report_name="'POS Order Receipt - %s' % (object.name)"
+                paperformat="mai_pos_advance_report.paperformat_landscape_clonet"
+                menu="False"
+        />
+
+        <report 
+                id='action_print_product_stock_clonet'
+                string="POS Stock"
+                model="pos.order" 
+                report_type="qweb-pdf"
+                file="mai_pos_advance_report.print_product_stock_clonet" 
+                name="mai_pos_advance_report.print_product_stock_clonet"
+                print_report_name="'POS Order Receipt - %s' % (object.name)"
+                paperformat="mai_pos_advance_report.paperformat_landscape_clonet"
+                menu="False"
+        />
+
+        <report 
+                id='action_print_payment_clonet'
+                string="POS Payment"
+                model="pos.order" 
+                report_type="qweb-pdf"
+                file="mai_pos_advance_report.print_pos_payment_clonet" 
+                name="mai_pos_advance_report.print_pos_payment_clonet"
+                print_report_name="'POS Payment - %s' % (object.name)"
+                paperformat="mai_pos_advance_report.paperformat_landscape_clonet"
+                menu="False"
+        />
+
+
+</odoo>

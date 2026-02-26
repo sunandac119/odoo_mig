@@ -1,0 +1,296 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sh_pos_order_list
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-16 06:35+0000\n"
+"PO-Revision-Date: 2021-01-16 06:35+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sh_pos_order_list
+#: model:ir.model.fields,field_description:sh_pos_order_list.field_pos_order__assigned_config
+msgid " Sh Assigned Config"
+msgstr ""
+
+#. module: sh_pos_order_list
+#: model:ir.model.fields.selection,name:sh_pos_order_list.selection__pos_config__sh_load_order_by__all
+msgid "All"
+msgstr ""
+
+#. module: sh_pos_order_list
+#: model:ir.model.fields,field_description:sh_pos_order_list.field_pos_config__sh_enable_re_order
+msgid "Allow To ReOrder"
+msgstr ""
+
+#. module: sh_pos_order_list
+#: model:ir.model.fields,field_description:sh_pos_order_list.field_pos_config__sh_enable_order_reprint
+msgid "Allow To Reprint Order"
+msgstr ""
+
+#. module: sh_pos_order_list
+#. openerp-web
+#: code:addons/sh_pos_order_list/static/src/xml/screen.xml:0
+#, python-format
+msgid "Cancelled"
+msgstr ""
+
+#. module: sh_pos_order_list
+#: model:ir.model.fields.selection,name:sh_pos_order_list.selection__pos_config__sh_day_wise_option__current_day
+msgid "Current Day"
+msgstr ""
+
+#. module: sh_pos_order_list
+#: model:ir.model.fields.selection,name:sh_pos_order_list.selection__pos_config__sh_session_wise_option__current_session
+msgid "Current Session"
+msgstr ""
+
+#. module: sh_pos_order_list
+#. openerp-web
+#: code:addons/sh_pos_order_list/static/src/xml/screen.xml:0
+#, python-format
+msgid "Customer"
+msgstr ""
+
+#. module: sh_pos_order_list
+#. openerp-web
+#: code:addons/sh_pos_order_list/static/src/xml/screen.xml:0
+#, python-format
+msgid "Date"
+msgstr ""
+
+#. module: sh_pos_order_list
+#: model:ir.model.fields,field_description:sh_pos_order_list.field_pos_config__sh_day_wise_option
+msgid "Day Of"
+msgstr ""
+
+#. module: sh_pos_order_list
+#: model:ir.model.fields.selection,name:sh_pos_order_list.selection__pos_config__sh_load_order_by__day_wise
+msgid "Day Wise"
+msgstr ""
+
+#. module: sh_pos_order_list
+#. openerp-web
+#: code:addons/sh_pos_order_list/static/src/xml/screen.xml:0
+#, python-format
+msgid "Discard"
+msgstr ""
+
+#. module: sh_pos_order_list
+#. openerp-web
+#: code:addons/sh_pos_order_list/static/src/xml/screen.xml:0
+#, python-format
+msgid "Discount (%)"
+msgstr ""
+
+#. module: sh_pos_order_list
+#: model:ir.model.fields,field_description:sh_pos_order_list.field_pos_config__display_name
+#: model:ir.model.fields,field_description:sh_pos_order_list.field_pos_order__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: sh_pos_order_list
+#: model:ir.model.fields,field_description:sh_pos_order_list.field_pos_config__sh_enable_order_list
+msgid "Enable Order List"
+msgstr ""
+
+#. module: sh_pos_order_list
+#: model:ir.model.fields,field_description:sh_pos_order_list.field_pos_config__id
+#: model:ir.model.fields,field_description:sh_pos_order_list.field_pos_order__id
+msgid "ID"
+msgstr ""
+
+#. module: sh_pos_order_list
+#: model:ir.model.fields,field_description:sh_pos_order_list.field_pos_config____last_update
+#: model:ir.model.fields,field_description:sh_pos_order_list.field_pos_order____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: sh_pos_order_list
+#: model:ir.model.fields,field_description:sh_pos_order_list.field_pos_config__sh_last_no_days
+#: model:ir.model.fields.selection,name:sh_pos_order_list.selection__pos_config__sh_day_wise_option__last_no_day
+msgid "Last No Of Days"
+msgstr ""
+
+#. module: sh_pos_order_list
+#: model:ir.model.fields,field_description:sh_pos_order_list.field_pos_config__sh_last_no_session
+#: model:ir.model.fields.selection,name:sh_pos_order_list.selection__pos_config__sh_session_wise_option__last_no_session
+msgid "Last No Of Session"
+msgstr ""
+
+#. module: sh_pos_order_list
+#: code:addons/sh_pos_order_list/models/pos_config.py:0
+#, python-format
+msgid "Last Number Of Days must be positive."
+msgstr ""
+
+#. module: sh_pos_order_list
+#: code:addons/sh_pos_order_list/models/pos_config.py:0
+#, python-format
+msgid "Last Number Of Sessions must be positive."
+msgstr ""
+
+#. module: sh_pos_order_list
+#: model:ir.model.fields,field_description:sh_pos_order_list.field_pos_config__sh_load_order_by
+msgid "Load Order By"
+msgstr ""
+
+#. module: sh_pos_order_list
+#: model_terms:ir.ui.view,arch_db:sh_pos_order_list.view_pos_config_form
+msgid "Load Order of Current Days or Last No Of Days"
+msgstr ""
+
+#. module: sh_pos_order_list
+#: model_terms:ir.ui.view,arch_db:sh_pos_order_list.view_pos_config_form
+msgid "Load Order of Current Session or Last No Of Session"
+msgstr ""
+
+#. module: sh_pos_order_list
+#. openerp-web
+#: code:addons/sh_pos_order_list/static/src/xml/screen.xml:0
+#, python-format
+msgid "Name"
+msgstr ""
+
+#. module: sh_pos_order_list
+#. openerp-web
+#: code:addons/sh_pos_order_list/static/src/xml/screen.xml:0
+#, python-format
+msgid "New"
+msgstr ""
+
+#. module: sh_pos_order_list
+#. openerp-web
+#: code:addons/sh_pos_order_list/static/src/xml/action_button.xml:0
+#, python-format
+msgid "Order History"
+msgstr ""
+
+#. module: sh_pos_order_list
+#. openerp-web
+#: code:addons/sh_pos_order_list/static/src/xml/screen.xml:0
+#, python-format
+msgid "Order Ref."
+msgstr ""
+
+#. module: sh_pos_order_list
+#: model_terms:ir.ui.view,arch_db:sh_pos_order_list.view_pos_config_form
+msgid "Order Screen Configuration"
+msgstr ""
+
+#. module: sh_pos_order_list
+#. openerp-web
+#: code:addons/sh_pos_order_list/static/src/xml/screen.xml:0
+#, python-format
+msgid "Paid"
+msgstr ""
+
+#. module: sh_pos_order_list
+#: model:ir.model,name:sh_pos_order_list.model_pos_config
+msgid "Point of Sale Configuration"
+msgstr ""
+
+#. module: sh_pos_order_list
+#: model:ir.model,name:sh_pos_order_list.model_pos_order
+msgid "Point of Sale Orders"
+msgstr ""
+
+#. module: sh_pos_order_list
+#. openerp-web
+#: code:addons/sh_pos_order_list/static/src/xml/screen.xml:0
+#, python-format
+msgid "Posted"
+msgstr ""
+
+#. module: sh_pos_order_list
+#: model_terms:ir.ui.view,arch_db:sh_pos_order_list.view_pos_config_form
+msgid "Print Order Receipt From Order Screen"
+msgstr ""
+
+#. module: sh_pos_order_list
+#. openerp-web
+#: code:addons/sh_pos_order_list/static/src/xml/screen.xml:0
+#: code:addons/sh_pos_order_list/static/src/xml/screen.xml:0
+#, python-format
+msgid "Product"
+msgstr ""
+
+#. module: sh_pos_order_list
+#. openerp-web
+#: code:addons/sh_pos_order_list/static/src/xml/screen.xml:0
+#: code:addons/sh_pos_order_list/static/src/xml/screen.xml:0
+#, python-format
+msgid "Qty."
+msgstr ""
+
+#. module: sh_pos_order_list
+#: model_terms:ir.ui.view,arch_db:sh_pos_order_list.view_pos_config_form
+msgid "ReOrder POS Order From Order Screen"
+msgstr ""
+
+#. module: sh_pos_order_list
+#. openerp-web
+#: code:addons/sh_pos_order_list/static/src/xml/screen.xml:0
+#, python-format
+msgid "Refresh"
+msgstr ""
+
+#. module: sh_pos_order_list
+#. openerp-web
+#: code:addons/sh_pos_order_list/static/src/xml/screen.xml:0
+#, python-format
+msgid "Search..."
+msgstr ""
+
+#. module: sh_pos_order_list
+#: model:ir.model.fields,field_description:sh_pos_order_list.field_pos_config__sh_session_wise_option
+msgid "Session Of"
+msgstr ""
+
+#. module: sh_pos_order_list
+#: model:ir.model.fields.selection,name:sh_pos_order_list.selection__pos_config__sh_load_order_by__session_wise
+msgid "Session Wise"
+msgstr ""
+
+#. module: sh_pos_order_list
+#. openerp-web
+#: code:addons/sh_pos_order_list/static/src/xml/screen.xml:0
+#, python-format
+msgid "State"
+msgstr ""
+
+#. module: sh_pos_order_list
+#. openerp-web
+#: code:addons/sh_pos_order_list/static/src/xml/screen.xml:0
+#, python-format
+msgid "Sub Total"
+msgstr ""
+
+#. module: sh_pos_order_list
+#. openerp-web
+#: code:addons/sh_pos_order_list/static/src/xml/screen.xml:0
+#, python-format
+msgid "Table"
+msgstr ""
+
+#. module: sh_pos_order_list
+#. openerp-web
+#: code:addons/sh_pos_order_list/static/src/xml/screen.xml:0
+#, python-format
+msgid "Total"
+msgstr ""
+
+#. module: sh_pos_order_list
+#. openerp-web
+#: code:addons/sh_pos_order_list/static/src/xml/screen.xml:0
+#: code:addons/sh_pos_order_list/static/src/xml/screen.xml:0
+#, python-format
+msgid "Unit Price"
+msgstr ""

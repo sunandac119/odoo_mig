@@ -1,0 +1,15 @@
+<odoo>
+    <record id="view_users_form_pos_restrict" model="ir.ui.view">
+        <field name="name">res.users.form.pos.restrict</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='groups_id']" position="after">
+                <group string="POS Restrictions">
+                    <field name="allow_pos_discount"/>
+                    <field name="allow_pos_price"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

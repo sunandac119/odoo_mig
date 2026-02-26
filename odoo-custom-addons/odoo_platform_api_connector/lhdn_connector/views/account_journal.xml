@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="view_account_journal_forms_views_inheriteds" model="ir.ui.view">
+            <field name="name">view.account.journal.forms.views.inheriteds</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='type']" position="after">
+                    <!-- Add your fields or attributes here -->
+                    <field name="not_required_e_invoice"/>
+                </xpath>
+
+            </field>
+        </record>
+
+
+
+
+
+    </data>
+</odoo>

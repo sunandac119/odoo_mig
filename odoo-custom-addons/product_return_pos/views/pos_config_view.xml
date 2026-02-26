@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_pos_config_form_inherit_return" model="ir.ui.view">
+        <field name="name">pos.config.form.inherit.return</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_config_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='technical_features']" position="inside">
+                <field name="allow_pos_return"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

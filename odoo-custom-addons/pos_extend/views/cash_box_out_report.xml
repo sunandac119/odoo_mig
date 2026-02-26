@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_cash_out">
+            <t t-call="web.html_container">
+                <div class="page">
+				
+				<script type="text/javascript">
+				  window.onload = function() {
+					window.print();
+				  };
+				</script>
+
+                    <h3 style="padding-top:18px"><b><t t-esc="report_name"/></b></h3>
+
+                    <p>
+                        Ref : &#160;&#160;<t t-esc='session'/><br/>
+                        Counter : &#160;&#160;<t t-esc='counter_name'/><br/>
+                        Cashier : &#160;&#160;<t t-esc='cashier_name'/><br/>
+                        Biz Date: &#160;&#160;<t t-if="formatted_session_time" t-esc="formatted_session_time"/>
+                    </p>
+
+                    <table class="table table-sm o_main_table" style="width:100% !important;">
+                        <thead>
+                            <th style="width:10% !important;border-bottom:1px solid #333333 !important;">Value</th>
+                            <th style="width:10% !important;border-bottom:1px solid #333333 !important;">Qty</th>
+                            <th style="width:10% !important;border-bottom:1px solid #333333 !important;">Amount</th>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="cash_box_list" t-as="cash"> 
+                                <tr>
+                                    <td style="text-align:center !important"><t t-esc="cash['value']" t-options="{'widget': 'float', 'precision': 2}"/></td>
+                                    <td style="text-align:center !important"><t t-esc="cash['code']" t-options="{'widget': 'float', 'precision': 2}"/></td>
+                                    <td style="text-align:center !important"><t t-esc="cash['subtotal']" t-options="{'widget': 'float', 'precision': 2}"/></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td style="border-top:1px solid #333333 !important;text-align:center !important"><b> </b></td>
+                                <td style="border-top:1px solid #333333 !important;text-align:center !important"><b><t t-esc="qty_total" t-options="{'widget': 'float', 'precision': 2}"/></b></td>
+                                <td style="border-top:1px solid #333333 !important;text-align:center !important"><b><t t-esc="total" t-options="{'widget': 'float', 'precision': 2}"/></b></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+            </t>
+        </template>    
+
+
+
+
+		<template id="report_cash">
+			<t t-call="web.html_container">
+				<style>
+					@media print {
+						@page {
+							size: 80mm 5mm;
+							margin: 0;
+						}
+						body {
+							margin: 0;
+							font-family: Arial, sans-serif; /* Adjust font-family if needed */
+						}
+					}
+				</style>
+				<div class="page">					
+					<p>
+						OPEN DRAWER
+					</p>
+				</div>
+			</t>
+		</template>
+
+		<record id="paperformat_cash_balance" model="report.paperformat">
+            <field name="name">Paper Format Cash Balance</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">130</field>
+            <field name="page_width">70</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">1</field>
+            <field name="margin_bottom">1</field>
+            <field name="margin_left">1</field>
+            <field name="margin_right">3</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">0</field>
+            <field name="dpi">90</field>
+        </record>
+
+		<record id="action_cash_box_out_report_print" model="ir.actions.report">
+            <field name="name">Cash Box Out Report</field>
+            <field name="model">cash.box.out</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">pos_extend.report_cash_out</field>
+            <field name="report_file">pos_extend.report_cash_out</field>
+            <field name="binding_type">report</field>
+			<field name="paperformat_id" ref="pos_extend.paperformat_cash_balance"/>
+        </record>
+		
+
+		
+        <record id="action_cash_box_out_close_report_print" model="ir.actions.report">
+            <field name="name">Cash Box Out Close Report</field>
+            <field name="model">account.bank.statement.cashbox</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">pos_extend.report_cash_out</field>
+            <field name="report_file">pos_extend.report_cash_out</field>
+            <field name="binding_type">report</field>
+			<field name="paperformat_id" ref="pos_extend.paperformat_cash_balance"/>
+        </record>
+
+        <record id="action_cash_box_out_close_report_1_print" model="ir.actions.report">
+            <field name="name">Cash Box Out Close Report1</field>
+            <field name="model">account.bank.statement.cashbox</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">pos_extend.report_cash</field>
+            <field name="report_file">pos_extend.report_cash</field>
+            <field name="binding_type">report</field>
+			<field name="paperformat_id" ref="pos_extend.paperformat_cash_balance"/>
+        </record>
+
+		<record id="action_cash_box_out_report_1_print" model="ir.actions.report">
+            <field name="name">Cash Box Out Report1</field>
+            <field name="model">cash.box.out</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">pos_extend.report_cash</field>
+            <field name="report_file">pos_extend.report_cash</field>
+            <field name="binding_type">report</field>
+			<field name="paperformat_id" ref="pos_extend.paperformat_cash_balance"/>
+        </record>		
+		
+
+		
+	
+
+	</data>
+</odoo>

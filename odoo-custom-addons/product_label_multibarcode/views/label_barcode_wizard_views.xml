@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_label_barcode_wizard_form" model="ir.ui.view">
+        <field name="name">label.barcode.wizard.form</field>
+        <field name="model">label.barcode.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Print Labels (Multi-UoM)">
+                <group>
+                    <group>
+                        <field name="barcode_type"/>
+                        <field name="include_humanreadable"/>
+                        <field name="label_cols"/>
+                        <field name="print_layout_id"/>
+                    </group>
+                    <group>
+                        <field name="desired_uom_id"/>
+                        <button string="Select by UoM" type="object" name="action_select_by_uom" class="btn-secondary"/>
+                        <button string="Unselect All" type="object" name="action_unselect_all" class="btn-secondary"/>
+                    </group>
+                </group>
+                <separator string="Select barcodes to print"/>
+                <field name="line_ids" context="{'default_wizard_id': active_id}">
+                    <tree editable="bottom">
+                        <field name="select" widget="boolean_toggle"/>
+                        <field name="display_name" readonly="1"/>
+                        <field name="product_tmpl_id" invisible="1"/>
+                        <field name="uom_id" context="{'restrict_uom_product_tmpl_id_wizard': product_tmpl_id}"/>
+                        <field name="barcode"/>
+                        <field name="qty"/>
+                    </tree>
+                </field>
+                <footer>
+                    <button string="Print" type="object" name="action_print" class="btn-primary"/>
+                    <button string="Close" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_open_label_barcode_wizard" model="ir.actions.act_window">
+        <field name="name">Print Labels (Multi-UoM)</field>
+        <field name="res_model">label.barcode.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{"default_barcode_type": "Code128"}</field>
+    </record>
+</odoo>

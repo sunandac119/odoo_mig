@@ -1,0 +1,40 @@
+.o_print_systray_item {
+    &.o_print_tray_menu {
+        .fa-print {
+            font-size: 1.2em;
+            
+            &.text-success {
+                color: #ffffff !important;
+            }
+            
+            &.text-danger {
+                color: #dc3545 !important;
+            }
+            
+            &.text-muted {
+                color: #8395a4 !important;
+            }
+        }
+    }
+}
+
+.o_print_tray_dropdown {
+    padding: 0;
+    margin-top: 0;
+    
+    .dropdown-item {
+        padding: 10px 15px;
+        
+        &.printer-status-unknown {
+            color: #6c757d;
+        }
+        
+        &.printer-status-online {
+            color: #28a745;
+        }
+        
+        &.printer-status-offline {
+            color: #dc3545;
+        }
+    }
+}

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ====================================================== -->
+    <!-- Scenario 1 - Proforma Invoice -->
+    <!-- ====================================================== -->
+    <template id="report_saleorder_document_inherit"
+              inherit_id="sale.report_saleorder_document"
+              priority="50">
+
+        <xpath expr="//td[@name='td_name']" position="before">
+            <td name="td_barcode">
+                <span t-if="line.x_scanned_barcode"
+                      t-field="line.x_scanned_barcode"/>
+                <span t-else=""
+                      t-field="line.product_id.barcode"/>
+            </td>
+        </xpath>
+
+    </template>
+
+
+    <!-- ====================================================== -->
+    <!-- Scenario 2 - Pricelist -->
+    <!-- ====================================================== -->
+    <record id="view_product_pricelist_form_inherit" model="ir.ui.view">
+        <field name="name">product.pricelist.form.inherit</field>
+        <field name="model">product.pricelist</field>
+        <field name="inherit_id" ref="product.product_pricelist_view"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='min_quantity']" position="after">
+                <field name="percent_price"/>
+            </xpath>
+
+            <xpath expr="//field[@name='date_end']" position="after">
+                <field name="write_date"/>
+            </xpath>
+
+        </field>
+    </record>
+
+
+    <!-- ====================================================== -->
+    <!-- Scenario 3 - Warehouse Stock Request -->
+    <!-- ====================================================== -->
+    <record id="stock_request_cus_from_view" model="ir.ui.view">
+        <field name="name">stock.request.cus.form.view</field>
+        <field name="model">stock.request</field>
+        <field name="arch" type="xml">
+
+            <form string="Warehouse Stock Request">
+                <sheet>
+                    <notebook>
+                        <page string="Stock Request Lines">
+                            <field name="stock_line_ids">
+                                <tree editable="bottom">
+                                    <field name="x_scanned_barcode" placeholder="Barcode"/>
+                                    <field name="product_id" invisible="1"/>
+                                    <field name="description"/>
+                                    <field name="product_qty"/>
+                                    <field name="product_uom"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+
+
+    <!-- ====================================================== -->
+    <!-- Scenario 4 - Picking Report (SAFE VERSION) -->
+    <!-- ====================================================== -->
+    <template id="report_picking_inherit_sc"
+              inherit_id="stock.report_picking"
+              priority="50">
+
+        <!-- Add Barcode Header -->
+        <xpath expr="//table//thead//th[.//strong[normalize-space()='Product']]" position="after">
+            <th>
+                <strong>Barcode</strong>
+            </th>
+        </xpath>
+
+        <!-- Add Barcode Column -->
+        <xpath expr="//table//tbody//td[span[@t-field='ml.product_id.display_name']]" position="after">
+            <td>
+                <span t-if="ml.x_scanned_barcode"
+                      t-field="ml.x_scanned_barcode"/>
+                <span t-else=""
+                      t-field="ml.product_id.barcode"/>
+            </td>
+        </xpath>
+
+        <!-- Replace Product Name With Description -->
+        <xpath expr="//table//tbody//td[span[@t-field='ml.product_id.display_name']]" position="replace">
+            <td>
+                <span t-if="ml.description"
+                      t-field="ml.description"/>
+                <span t-else=""
+                      t-field="ml.product_id.display_name"/>
+            </td>
+        </xpath>
+
+    </template>
+
+
+    <!-- ====================================================== -->
+    <!-- Scenario 5 - Warehouse Stock Request Report -->
+    <!-- ====================================================== -->
+    <template id="report_warhouse_stock_request_inherit"
+              inherit_id="warehouse_stock_request_app.report_warhouse_stock_request"
+              priority="50">
+
+        <xpath expr="//t[@t-foreach='doc.stock_line_ids']//tr/td[1]"
+               position="replace">
+            <td style="border:1px solid">
+                <span t-field="p.x_scanned_barcode"/>
+            </td>
+        </xpath>
+
+        <xpath expr="//table[contains(@class,'table')]//tr[1]/td[1]"
+               position="replace">
+            <td style="border:1px solid">
+                <strong>Barcode</strong>
+            </td>
+        </xpath>
+
+    </template>
+
+</odoo>

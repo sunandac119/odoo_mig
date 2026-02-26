@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_account_payment_form_inherit" model="ir.ui.view">
+        <field name="name">account.payment.inherite</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+ <!--        <header>
+        <button name="button_first_approve" class="oe_highlight" string="Confirm" type="object" states="posted" attrs="{'invisible': ['|',('account_first_approval', '=', False),('account_second_approval', '=', False)]}"/>
+
+        </header>
+            <xpath expr="//button[@name='action_post']" position="attributes">
+                <attribute name="attrs">{'invisible': ['|',('account_first_approval', '=', True),('account_second_approval', '=', True)]}</attribute>
+            </xpath> -->
+
+            <xpath expr="//button[@name='action_post']" position="before">
+                <button name="button_second_approve" class="oe_highlight" string="Second Approval" type="object"
+                    attrs="{'invisible': ['|','|',('account_second_approval', '=', False),('state', '!=', 'second_approve'),('partner_type', '=', 'supplier')]}"
+                    groups="bi_payment_double_approval.group_payment_second_approval" />
+
+
+                <button name="button_second_approve" class="oe_highlight" string="Second Approval" type="object"
+                    attrs="{'invisible': ['|','|',('account_second_approval', '=', False),('state', '!=', 'second_approve'),('partner_type', '=', 'customer')]}"
+                    groups="bi_payment_double_approval.group_payment_second_approval" />
+
+                <button name="button_payment_post_first" class="oe_highlight" string="Validate" type="object" attrs="{'invisible': ['|','|',('account_first_approval', '=', False),('state', '!=', 'first_approve'),('partner_type', '=', 'supplier')]}"  groups="bi_payment_double_approval.group_payment_first_approval"/>
+
+                <button name="button_payment_post_first" class="oe_highlight" string="Validate" type="object" attrs="{'invisible': ['|','|',('account_first_approval', '=', False),('state', '!=', 'first_approve'),('partner_type', '=', 'customer')]}" groups="bi_payment_double_approval.group_payment_first_approval" />
+
+            </xpath>
+            <xpath expr="//field[@name='ref']" position="after">
+                <field name="account_first_approval"  invisible="1"/>
+                <field name="account_second_approval" invisible="1"/>
+                <field name="approval_customer" invisible="1"/>
+                <field name="approval_vendor" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+

@@ -1,0 +1,11 @@
+<odoo>
+    <!-- Top Menu -->
+    <menuitem id="menu_bi_report_root" name="BI Report" sequence="10"/>
+
+    <!-- Submenus -->
+    <menuitem id="menu_bi_management" name="Management" parent="menu_bi_report_root" sequence="1"/>
+    <menuitem id="menu_bi_operation" name="Operation" parent="menu_bi_report_root" sequence="2"/>
+    <menuitem id="menu_bi_inventory" name="Inventory" parent="menu_bi_report_root" sequence="3"/>
+    <menuitem id="menu_bi_marketing" name="Marketing" parent="menu_bi_report_root" sequence="4"/>
+    <menuitem id="menu_bi_finance" name="Finance" parent="menu_bi_report_root" sequence="5"/>
+</odoo>

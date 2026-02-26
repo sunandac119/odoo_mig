@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="inherit_view_pos_config_reports">
+        <field name="name">pos.config.form.view.inherit</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='receipt']" position='inside'>
+                 <div class="col-xs-12 col-md-6 o_setting_box">
+                    <div class="o_setting_left_pane">
+                        <field name="enable_session_report"/>
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <label for="enable_session_report"/>
+                        <div class="text-muted">
+                            This will allow to print Session Report directly from POS screen.
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_pos_session_form_report_button" model="ir.ui.view">
+        <field name="name">pos.session.form.view.session.button</field>
+        <field name="model">pos.session</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_session_form"></field>
+        <field name="arch" type="xml">
+            <xpath expr="//header/button[@name='action_pos_session_closing_control']" position='after'>
+                <button name="view_session_report" type="object" string="View Session Report" class="oe_highlight"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+

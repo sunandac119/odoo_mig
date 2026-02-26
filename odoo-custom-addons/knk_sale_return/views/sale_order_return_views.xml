@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="knk_sale_order_return_tree" model="ir.ui.view">
+        <field name="name">knk.sale.order.return.tree</field>
+        <field name="model">sale.order.return</field>
+        <field name="arch" type="xml">
+            <tree string="Returns" default_order="id desc">
+                <field name="name" />
+                <field name="partner_id" />
+                <field name="date_of_return" />
+                <field name="user_id" widget="many2one_avatar_user" />
+                <field name="team_id" options="{'no_create': True}" />
+                <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company" />
+            </tree>
+        </field>
+    </record>
+    <record id="knk_sale_order_return_form" model="ir.ui.view">
+        <field name="name">knk.sale.order.return.form</field>
+        <field name="model">sale.order.return</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button type="object" name="button_confirm" string="Confirm" attrs="{'invisible': [('state', '=', 'confirm')]}" />
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_in_picking" type="object" class="oe_stat_button" icon="fa-truck" attrs="{'invisible':[('incoming_count', '&lt;=', 0)]}">
+                            <field name="incoming_count" widget="statinfo" string="Return" help="Incoming Shipments" />
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1" />
+                        </h1>
+                    </div>
+                    <group name="knk_sale_return_header">
+                        <group name="knk_partner_details">
+                            <field name="partner_id" widget="res_partner_many2one" context="{'show_address': 1, 'default_type':'delivery'}" options='{"always_reload": True}' attrs="{'readonly': [('state', '=', 'confirm')]}" />
+                            <field name="knk_sale_order_id" attrs="{'readonly': [('state', '=', 'confirm')]}" />
+                            <field name="partner_invoice_id" groups="sale.group_delivery_invoice_address" context="{'default_type':'invoice'}" options='{"always_reload": True}' />
+                            <field name="partner_shipping_id" groups="sale.group_delivery_invoice_address" context="{'default_type':'delivery'}" options='{"always_reload": True}' />
+                        </group>
+                        <group>
+                            <field name="date_of_return" attrs="{'readonly': [('state', '=', 'confirm')]}" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Return lines">
+                            <field name="knk_sale_order_return_line_ids" attrs="{'readonly': [('state', '=', 'confirm')]}">
+                                <!-- tree view attr=> options="{'no_create': True, 'no_create_edit':True}" -->
+                                <tree editable="bottom">
+                                    <field name="knk_sale_return_id" invisible="1" />
+                                    <field name="knk_product_id" />
+                                    <field name="knk_product_qty" />
+                                    <field name="reason_to_return" />
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Other Info">
+                            <group>
+                                <group>
+                                    <field name="user_id" widget="many2one_avatar_user" attrs="{'readonly': [('state', '=', 'confirm')]}" />
+                                    <field name="team_id" options="{'no_create': True}" attrs="{'readonly': [('state', '=', 'confirm')]}" />
+                                    <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company" attrs="{'readonly': [('state', '=', 'confirm')]}" />
+                                </group>
+                                <group>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                    <field name="note" placeholder="Notes..." />
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" />
+                    <field name="activity_ids" />
+                    <field name="message_ids" />
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="knk_sale_order_return_action" model="ir.actions.act_window">
+        <field name="name">Return Orders</field>
+        <field name="res_model">sale.order.return</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="knk_sale_order_return_menu" name="Return Sale Orders" parent="sale.sale_order_menu" action="knk_sale_return.knk_sale_order_return_action" sequence="5" />
+</odoo>

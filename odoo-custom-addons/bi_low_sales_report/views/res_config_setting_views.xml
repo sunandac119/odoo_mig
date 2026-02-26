@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="view_res_config_sale_inherit" model="ir.ui.view">
+			<field name="name">sale.res.config.settings.inherite</field>
+			<field name="model">res.config.settings</field>
+			<field name="inherit_id" ref="sale.res_config_settings_view_form"/>
+
+			<field name="arch" type="xml">
+				<xpath expr="//div[@groups='sales_team.group_sale_manager']" position="inside">
+					 <h2>Low Sales Report</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-md-6 col-xs-12 o_setting_box"  > 
+                                <div class="o_setting_right_pane">
+                                	<label for="quantity"/>
+                                	<field name="quantity"/>
+                                	<div class="text-muted">
+                                       Default Critical level(quantity)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xs-12 o_setting_box"  >
+                                <div class="o_setting_right_pane">
+                                	<label for="amount"/>
+                                
+                                	<field name="amount"/>
+                                	<div class="text-muted">
+                                         Default Critical level(amount)
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+					</xpath>	
+			</field>
+		</record>         
+</odoo>

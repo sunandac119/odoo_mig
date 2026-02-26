@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_report_sh_customer_statement_xls" model="ir.actions.report">
+        <field name="name">Customer Statement</field>
+        <field name="model">res.partner</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">sh_account_statement.sh_vendor_statement_template</field>
+        <field name="report_file">sh_account_statement.sh_vendor_statement_template</field>
+        <field name="binding_model_id" ref="model_res_partner" />
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

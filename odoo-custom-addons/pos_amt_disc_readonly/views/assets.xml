@@ -1,0 +1,7 @@
+<odoo>
+    <template id="assets_backend" name="POS ReadOnly Buttons" inherit_id="point_of_sale.assets">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/pos_amt_disc_readonly/static/src/js/disable_buttons.js"/>
+        </xpath>
+    </template>
+</odoo>

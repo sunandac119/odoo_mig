@@ -1,0 +1,13 @@
+<odoo>
+    <data>
+       <report
+            string="Purchase Return"
+            id="action_report_purchase_return_order"
+            model="purchase.return"
+            report_type="qweb-pdf"
+            name="wedo_purchase_return_managment.report_purchasereturnorder"
+            file="wedo_purchase_return_managment.report_purchasereturnorder"
+            menu="True"
+            print_report_name="'Purchase Return =%s'% (object.name)"/>
+    </data>
+</odoo>

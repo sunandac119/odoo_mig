@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Define the report layout -->
+        <template id="report_pos_summary">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h1>POS Summary Report</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p>Report Date: <t t-esc="data['date']"/></p>
+                        </div>
+                    </div>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Shop</th>
+                                <th>Session</th>
+                                <th>Opening Date</th>
+                                <th>Closing Date</th>
+                                <th>Opening Cash</th>
+                                <th>Cash Sale</th>
+                                <th>Bank Sale</th>
+                                <th>Credit Card Sale</th>
+                                <th>Debit Card Sale</th>
+                                <th>E-Wallet Sale</th>
+                                <th>IBG Sale</th>
+                                <th>Credit Sale</th>
+                                <th>Total Sale</th>
+                                <th>Available Cash</th>
+                                <th>Closing Cash</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="data['pos_data']" t-as="session">
+                                <tr>
+                                    <td><t t-esc="session['name']"/></td>
+                                    <td><t t-esc="session['session']"/></td>
+                                    <td><t t-esc="session['start_at']"/></td>
+                                    <td><t t-esc="session['stop_at']"/></td>
+                                    <td><t t-esc="session['opening_cash']"/></td>
+                                    <td><t t-esc="session['cash_sale']"/></td>
+                                    <td><t t-esc="session['bank_sale']"/></td>
+                                    <td><t t-esc="session['ccard_sale']"/></td>
+                                    <td><t t-esc="session['dcard_sale']"/></td>
+                                    <td><t t-esc="session['ewallet_sale']"/></td>
+                                    <td><t t-esc="session['ibg_sale']"/></td>
+                                    <td><t t-esc="session['credit_sale']"/></td>
+                                    <td><t t-esc="session['total_sale']"/></td>
+                                    <td><t t-esc="session['available_cash']"/></td>
+                                    <td><t t-esc="session['closing_cash']"/></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>Total</td>
+                                <td/>
+                                <td/>
+                                <td/>
+                                <td><t t-esc="data['pos_total']['opening_cash']"/></td>
+                                <td><t t-esc="data['pos_total']['cash_sale']"/></td>
+                                <td><t t-esc="data['pos_total']['bank_sale']"/></td>
+                                <td><t t-esc="data['pos_total']['ccard_sale']"/></td>
+                                <td><t t-esc="data['pos_total']['dcard_sale']"/></td>
+                                <td><t t-esc="data['pos_total']['ewallet_sale']"/></td>
+                                <td><t t-esc="data['pos_total']['ibg_sale']"/></td>
+                                <td><t t-esc="data['pos_total']['credit_sale']"/></td>
+                                <td><t t-esc="data['pos_total']['total_sale']"/></td>
+                                <td><t t-esc="data['pos_total']['available_cash']"/></td>
+                                <td><t t-esc="data['pos_total']['closing_cash']"/></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

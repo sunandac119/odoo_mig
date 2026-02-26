@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="wizard_inventory_valuation_qty_view_form_inherit" model="ir.ui.view">
+            <field name="name">wizard.inventory.valuation.qty.form.view.inherit</field>
+            <field name="model">wizard.inventory.valuation.qty</field>
+            <field name="inherit_id" ref="order_report.wizard_inventory_valuation_qty_form_view"/>
+            <field name="arch" type="xml">
+
+                <!-- Zone field -->
+                <xpath expr="//field[@name='warehouse_ids']" position="after">
+                    <field name="zone"
+                           attrs="{'invisible': [('show_product_zone','!=',True)]}"
+                           help="Key in zone suffix only (e.g. A, B, A1). System matches Display Location like DC01-A."/>
+                    <field name="show_product_zone" invisible="1"/>
+                </xpath>
+
+                <!-- Hide vendor filter when show_product_zone = True -->
+                <xpath expr="//field[@name='seller_ids']" position="attributes">
+                    <attribute name="attrs">
+                        {'invisible': [('show_product_zone','=',True)]}
+                    </attribute>
+                </xpath>
+
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record model="ir.actions.act_window" id="action_dc_ordering_report">
+            <field name="name">DC Ordering Report</field>
+            <field name="res_model">wizard.inventory.valuation.qty</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="order_report.wizard_inventory_valuation_qty_form_view"/>
+            <field name="target">new</field>
+            <field name="context">{'show_product_zone': True}</field>
+        </record>
+
+        <!-- Menu -->
+        <menuitem id="dc_ordering_report_menu"
+                  action="action_dc_ordering_report"
+                  parent="stock.menu_warehouse_report"
+                  sequence="4"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="pos_payment_method_view_forms_inheritedeas" model="ir.ui.view">
+            <field name="name">pos.payment.method.view.forms.inheritedeas</field>
+            <field name="model">pos.payment.method</field>
+            <field name="inherit_id" ref="point_of_sale.pos_payment_method_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet/group[1]/group[2]/field[@name='use_payment_terminal']" position="after">
+                    <field name="saturn1000_serial_port"
+                           attrs="{'required':[('use_payment_terminal','=','saturn_1000')],'invisible':[('use_payment_terminal','!=','saturn_1000')]}"/>
+                    <field name="baudrate"
+                           attrs="{'required':[('use_payment_terminal','=','saturn_1000')],'invisible':[('use_payment_terminal','!=','saturn_1000')]}"/>
+                    <field name="saturn_1000_payments_ways"
+                           attrs="{'required':[('use_payment_terminal','=','saturn_1000')],'invisible':[('use_payment_terminal','!=','saturn_1000')]}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

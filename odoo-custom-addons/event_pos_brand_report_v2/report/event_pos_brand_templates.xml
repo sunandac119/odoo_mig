@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_pdf">
+        <t t-call="web.html_container">
+            <t t-foreach="brand_pages" t-as="page" t-key="page">
+                <t t-if="not loop.first">
+                    <div style="page-break-before: always;"></div>
+                </t>
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 style="margin:0 0 8px 0;">Event POS Brand Report</h2>
+                        <p style="margin:0 0 4px 0;">
+                            <strong>Date:</strong> <span t-esc="day_str"/>
+                            | <strong>Sales Team:</strong> <span t-esc="sales_team_name"/>
+                        </p>
+                        <h3 style="margin:12px 0 8px 0;" t-esc="page['brand_name']"/>
+                        <table class="table table-sm o_main_table" style="width:100%;">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:left;">Product</th>
+                                    <th style="text-align:left;">Barcode</th>
+                                    <th style="text-align:left;">Default Code</th>
+                                    <th style="text-align:left;">UoM</th>
+                                    <t t-if="show_ctn_qty">
+                                        <th style="text-align:right;">CTN Qty</th>
+                                    </t>
+                                    <th style="text-align:right;">List Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="page['products']" t-as="p" t-key="p['name'] + p.get('barcode','')">
+                                    <td><span t-esc="p['name']"/></td>
+                                    <td><span t-esc="p['barcode']"/></td>
+                                    <td><span t-esc="p['default_code']"/></td>
+                                    <td><span t-esc="p['uom']"/></td>
+                                    <t t-if="show_ctn_qty">
+                                        <td style="text-align:right;">
+                                            <span t-esc="p.get('ctn_qty') if p.get('ctn_qty') not in (False, None) else ''"/>
+                                        </td>
+                                    </t>
+                                    <td style="text-align:right;"><span t-esc="'{:,.2f}'.format(p['list_price'])"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

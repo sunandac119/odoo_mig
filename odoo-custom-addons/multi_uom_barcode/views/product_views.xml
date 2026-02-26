@@ -1,0 +1,20 @@
+<odoo>
+    <record id="view_product_form_multi_uom_barcode" model="ir.ui.view">
+        <field name="name">product.template.form.uom.barcode</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="UoM Barcodes">
+                    <field name="uom_barcode_ids">
+                        <tree editable="bottom">
+                            <field name="uom_id"/>
+                            <field name="barcode"/>
+                            <field name="price"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="view_low_sales_report_pivot" model="ir.ui.view">
+            <field name="name">Low Sales Report Analysis</field>
+            <field name="model">low.sales.report.pivot</field>
+            <field name="arch" type="xml">
+                <pivot string="Low Sales Report Analysis">
+                    <field name="product_id" type="row" string="Product"/>
+                    <field name="total_qty_sold" type="measure" string="Total Quantity Sold"/>
+                    <field name="unit_price" type="measure" string="Unit Price"/>
+                    <field name="total_revenue" type="measure" string="Revenue"/>
+                </pivot>
+            </field>
+         </record>
+
+        <record id="view_low_sales_report_pivot_tree" model="ir.ui.view">
+            <field name="name">low.sales.report.pivot.tree</field>
+            <field name="model">low.sales.report.pivot</field>
+            <field name="arch" type="xml">
+                <tree string="Low Sales Report Analysis">
+                    <field name="product_id"/>
+                    <field name="total_qty_sold"/>
+                    <field name="unit_price"/>
+                </tree>
+            </field>
+        </record>
+
+         <record id="view_low_sales_report_pivot_form" model="ir.ui.view">
+            <field name="name">low.sales.report.pivot.form</field>
+            <field name="model">low.sales.report.pivot</field>
+            <field name="arch" type="xml">
+                <form string="Low Sales Report Analysis">
+                    <sheet>
+                        <group>      
+                            <group>
+                                 <field name="product_id" />
+                                 <field name="total_qty_sold"/>
+                            </group>
+                            <group string="     ">
+                                 <field name="unit_price" />
+                            </group>  
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>     
+
+        <record id="action_low_sales_report_pivot" model="ir.actions.act_window">      
+            <field name="name">Low Sales Report Analysis </field>      
+            <field name="res_model">low.sales.report.pivot</field>      
+            <field name="view_mode">pivot</field>      
+            <field name="domain">[]</field>
+            <field name="view_id" ref="view_low_sales_report_pivot" />
+         </record>
+
+         <menuitem name="Low Sales Report Analysis" 
+                id="menu_sale_report"  
+                parent="bi_low_sales_report.low_sales_report_menu" 
+                action="action_low_sales_report_pivot" 
+                sequence="5"/>
+
+
+    </data>
+</odoo>

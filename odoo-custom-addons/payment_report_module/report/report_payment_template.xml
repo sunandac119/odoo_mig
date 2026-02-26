@@ -1,0 +1,35 @@
+<odoo>
+    <template id="report_payment_receipt_document">
+        <t t-call="web.external_layout">
+            <t t-set="o" t-value="o.with_context(lang=lang)"/>
+            <div class="page">
+                <div class="row">
+                    <div class="col h2 text-center o_bold">
+                        <span>Daily Payment Check List</span>
+                    </div>
+                </div>
+                <div class="row mb64"></div>
+                <table class="table o_report_block_table">
+                    <thead>
+                        <tr>
+                            <th><span>Date</span></th>
+                            <th><span>Vendor</span></th>
+                            <th><span>Amount</span></th>
+                            <th><span>Journal</span></th>
+                            <th><span>Last Updated by</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="docs" t-as="table_line">
+                            <td><span t-field="table_line.date"/></td>
+                            <td><span t-field="table_line.partner_id.name"/></td>
+                            <td><span t-field="table_line.amount"/></td>
+                            <td><span t-field="table_line.x_studio_related_field_GvWuh"/></td>
+                            <td><span t-field="table_line.write_uid.name"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+</odoo>

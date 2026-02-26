@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <record id="lhdn_setup_view_form" model="ir.ui.view">
+            <field name="name">lhdn.setup.view.form</field>
+            <field name="model">lhdn.setup</field>
+            <field name="arch" type="xml">
+                <form create="0">
+                    <header>
+                        <button string="Test PeppolSync Connection" type="object"
+                                name="test_lhdn_api_connection" class="btn-primary"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="choose_submission_way" required="1"/>
+                                <field name="lhdn_connection_server_type"/>
+                                <field name="lhdn_sandbox_base_url"
+                                       attrs="{'invisible': [('choose_submission_way', '=', 'intermediate_api')]}"/>
+                                <field name="lhdn_production_base_url"
+                                       attrs="{'invisible': [('choose_submission_way', '=', 'intermediate_api')]}"/>
+                            </group>
+                            <group>
+                                <field name="create_invoice_using_sftp_server"/>
+                                <field name="sftp_server_ip" attrs="{
+                                       'invisible': [('create_invoice_using_sftp_server', '=', False)],
+                                       'required': [('create_invoice_using_sftp_server', '=', True)]
+                                   }"/>
+                                <field name="sftp_server_user" attrs="{
+                                       'invisible': [('create_invoice_using_sftp_server', '=', False)],
+                                       'required': [('create_invoice_using_sftp_server', '=', True)]
+                                   }"/>
+                                <field name="sftp_server_passwords" attrs="{
+                                       'invisible': [('create_invoice_using_sftp_server', '=', False)],
+                                       'required': [('create_invoice_using_sftp_server', '=', True)]
+                                   }"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group string="Peppol Sync API">
+                                <field name="peppol_sync_api_client_id" required="1"/>
+                                <field name="peppol_sync_api_client_password" required="1"/>
+                                <field name="peppol_sync_api_base_url" required="1"/>
+                                <field name="api_subscription_type"/>
+                                <field name="api_subscription_status"/>
+                                <field name="peppol_credit"/>
+                                <field name="my_company_msic_code_id"/>
+                            </group>
+                            <group string="LHDN API" attrs="{'invisible': [('choose_submission_way', '!=', 'direct_api')]}">
+                                <field name="lhdn_api_client_id" attrs="{'required': [('choose_submission_way', '=', 'direct_api')]}"/>
+                                <field name="lhdn_api_client_password" attrs="{'required': [('choose_submission_way', '=', 'direct_api')]}"/>
+                                <field name="lhdn_token" readonly="1" force_save="1"/>
+                                <field name="lhdn_token_updateds_time" readonly="1" force_save="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group string="Data Importing">
+                                <label for="msic_code_import_url"/>
+                                <div class="o_row">
+                                    <field name="msic_code_import_url"/>
+                                    <button name="import_msic_code" type="object" string="Import"/>
+                                </div>
+
+                                <label for="item_classification_code_url"/>
+                                <div class="o_row">
+                                    <field name="item_classification_code_url"/>
+                                    <button name="import_item_classification_code" type="object" string="Import"/>
+                                </div>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="lhdn_setup_view_tree" model="ir.ui.view">
+            <field name="name">lhdn.setup.view.tree</field>
+            <field name="model">lhdn.setup</field>
+            <field name="arch" type="xml">
+                <tree string="lhdn_Setup_tree">
+                    <field name="peppol_sync_api_client_id" required="1"/>
+                    <field name="peppol_sync_api_client_password" required="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="lhdn_setup_action" model="ir.actions.act_window">
+            <field name="name">LHDN Setup</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">lhdn.setup</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_lhdn_connector" name="LHDN Connector" web_icon="lhdn_connector,static/description/icon.png"/>
+        <menuitem id="lhdn_setup_menu" name="LHDN Setup"
+                  parent="lhdn_connector.menu_lhdn_connector"
+                  action="lhdn_connector.lhdn_setup_action"/>
+    </data>
+</odoo>

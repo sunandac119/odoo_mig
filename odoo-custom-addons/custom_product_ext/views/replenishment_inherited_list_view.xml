@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_warehouse_orderpoint_tree_editable_inherited" model="ir.ui.view">
+            <field name="name">stock.warehouse.orderpoint.tree.editable.inherit</field>
+            <field name="model">stock.warehouse.orderpoint</field>
+            <field name="inherit_id" ref="stock.view_warehouse_orderpoint_tree_editable"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="inside">
+                    <field name="product_on_hand_qty"/>
+                    <field name="unit_qty"/>
+                    <field name="ctn_qty"/>
+<!--                      <field name="parent_template_id"/>-->
+                     <field name="parent_on_hand_qty"/>
+                     <field name="parent_product_ctn_qty"/>
+<!--                    <field name="parent_qty_available"/>-->
+                </xpath>
+            </field>
+        </record>
+       <record id="view_orderpoint_search_inherit" model="ir.ui.view">
+        <field name="name">stock.warehouse.orderpoint.search.inherit</field>
+        <field name="model">stock.warehouse.orderpoint</field>
+        <field name="inherit_id" ref="stock.stock_reorder_report_search"/>
+        <field name="arch" type="xml">
+             <xpath expr="//filter[@name='groupby_category']" position="after">
+                    <filter  name="grp_by_warehouse" context="{'group_by':'warehouse_id'}"/>
+                    <filter  name="grp_by_parent_product_template" context="{'group_by':'parent_template_id'}"/>
+                </xpath>
+        </field>
+    </record>
+    </data>
+</odoo>

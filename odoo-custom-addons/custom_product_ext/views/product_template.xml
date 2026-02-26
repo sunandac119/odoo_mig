@@ -1,0 +1,44 @@
+<!-- views.xml -->
+
+<odoo>
+    <data>
+        <record id="view_product_template_form_inherit" model="ir.ui.view">
+            <field name="name">product.template.form.inherit</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <field name="product_variant_id" position="after">
+                    <field name="parent_template_id"/>
+                    <field name="unit_qty"/>
+                    <field name="ctn_qty"/>
+                    <field name="parent_qty_available" readonly="1"/>
+                    <field name="total_cost" readonly="1"/>
+                </field>
+            </field>
+        </record>
+
+
+
+       <record id="view_product_template_search_inherit" model="ir.ui.view">
+            <field name="name">product.template.search.inherit</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_search_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='categ_id']" position="after">
+                    <filter  name="grp_by_warehouse" context="{'group_by':'warehouse_id'}"/>
+                    <filter  name="grp_by_parent_product_template" context="{'group_by':'parent_template_id'}"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <!-- Action for Running Cron Job -->
+        <record id="action_cron_update_standard_price" model="ir.actions.server">
+            <field name="name">Run Update Standard Price Cron</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_product_template"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_update_standard_price()</field>
+        </record>
+    </data>
+</odoo>

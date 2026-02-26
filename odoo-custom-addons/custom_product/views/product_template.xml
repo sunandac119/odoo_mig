@@ -1,0 +1,16 @@
+<!-- views.xml -->
+
+<odoo>
+    <data>
+
+
+        <!-- Action for Running Cron Job -->
+        <record id="action_cron_update_standard_price" model="ir.actions.server">
+            <field name="name">Run Update Standard Price Cron</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_product_template"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_update_standard_price()</field>
+        </record>
+    </data>
+</odoo>

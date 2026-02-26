@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_picking_form_branch_inherit" model="ir.ui.view">
+            <field name="name">stock.picking.inherite</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='origin']" position="after">
+                    <field string="Branch Name" name="branch_id" />
+<!--                    <field string="Branch" name="branch_id" attrs="{'invisible': [('branch_id', '=', False)]}"/>-->
+<!--                    <field string="Branch" name="branch_id_del" attrs="{'invisible': [('branch_id_del', '=', False)]}"/>-->
+                </xpath>
+            </field>
+        </record>
+
+        <record id="vpicktree_branch_inherit" model="ir.ui.view">
+            <field name="name">stock.picking.tree.inherite</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.vpicktree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='company_id']" position="before">
+                    <field string="Branch Name" name="branch_id"/>
+                </xpath>
+            </field>
+        </record>
+
+
+
+    </data>
+</odoo>

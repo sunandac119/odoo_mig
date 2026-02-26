@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="0">
+
+		<template id="report_picking_inherit" inherit_id="stock.report_picking">
+			<!-- Replace Barcode with QR in Header section above addresses -->
+			<xpath expr="//div[@name='right_box']/img" position="replace">
+				<t t-if="o.get_qr_picking_operations_settings()">
+					<div>
+						<img t-att-src="'/report/barcode/?type=QR&amp;value=%s&amp;width=150&amp;height=150&amp;humanreadable=1' % o.name"/>
+					</div>
+				</t>
+				<t t-else="">
+					<div t-field="o.name" t-options="{'widget': 'barcode', 'width': 600, 'height': 100, 'img_style': 'width:300px;height:50px;'}"/>
+				</t>
+			</xpath>
+
+			<!-- Replace Barcode with QR for product lines for Lot/Serial No.s -->
+			<xpath expr="//img[@t-if='has_serial_number and (ml.lot_id or ml.lot_name)']" position="replace">
+				<t t-if="o.get_qr_picking_operations_settings()">
+					<img t-if="has_serial_number and (ml.lot_id or ml.lot_name)" t-att-src="'/report/barcode/?type=QR&amp;value=%s&amp;width=50&amp;height=50&amp;humanreadable=1' % ml.lot_id.name or ml.lot_name" style="height:35px;" alt="QR Code"/>
+				</t>
+				<t t-else="">
+					<img t-if="has_serial_number and (ml.lot_id or ml.lot_name)" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s&amp;humanreadable=1' % ('Code128', ml.lot_id.name or ml.lot_name, 400, 100)" style="width:100%;height:35px;" alt="Barcode"/>
+				</t>
+			</xpath>
+
+			<xpath expr="//span[@t-if='move.product_id and move.product_id.barcode']" position="attributes">
+				<attribute name="t-if">
+					move.product_id and move.product_id.barcode and not o.get_qr_picking_operations_settings()
+				</attribute>
+			</xpath>
+			<!-- Replace Barcode with QR for product lines for Product's Barcode field -->
+			<xpath expr="//t[@t-if='product_barcode != move.product_id.barcode']/span" position="after">
+				<span t-else="">
+					<img t-att-src="'/report/barcode/?type=QR&amp;value=%s&amp;width=100&amp;height=100&amp;humanreadable=1' % move.product_id.barcode"/>
+				</span>
+			</xpath>
+
+			<!-- Replace Barcode with QR for packages' details -->
+			<xpath expr="//td[@name='td_pk_barcode']/img" position="replace">
+				<t t-if="o.get_qr_picking_operations_settings()">=
+					<img t-att-src="'/report/barcode/?type=QR&amp;value=%s&amp;width=100&amp;height=100&amp;humanreadable=1' % package.package_id.name"
+					     alt="QR Code"/>
+				</t>
+				<t t-else="">
+					<img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s&amp;humanreadable=1' % ('Code128', package.package_id.name, 600, 100)" style="width:300px;height:50px; margin-left: -50px;" alt="Barcode"/><br/>
+				</t>
+			</xpath>
+
+		</template>
+
+	</data>
+</odoo>

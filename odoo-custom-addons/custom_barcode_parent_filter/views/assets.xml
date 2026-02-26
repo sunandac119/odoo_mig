@@ -1,0 +1,7 @@
+<odoo>
+    <template id="assets_backend" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/custom_barcode_parent_filter/static/src/js/barcode_filter.js"/>
+        </xpath>
+    </template>
+</odoo>

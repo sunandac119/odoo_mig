@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="portal_my_home_credit_managements" name="My Credit Managements" inherit_id="portal.portal_my_home"
+              customize_show="True">
+
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <!--                <t t-set="icon" t-value="'/knowledge/static/src/img/Books.svg'"/>-->
+                <t t-set="title">Credit Managements</t>
+                <t t-set="url" t-value="'/my/credit_managements'"/>
+                <t t-set="text">Check your Credit Here</t>
+                <!--                <t t-set="placeholder_count" t-value="'knowledge_count'"/>-->
+                <t t-set="config_card" t-value="True"/>
+            </t>
+        </xpath>
+    </template>
+
+
+    <template id="portal_my_credit_managements" name="My Credit Managements">
+
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <!--            <form id="stock_transfer_forms">-->
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Credit Managements</t>
+            </t>
+            <!--            </form>-->
+            <div>
+                <h2>Credit Informations</h2>
+                <t t-if="error">
+                    <p>
+                        <span style="color:red;" t-out="error"/>
+                    </p>
+                </t>
+                <t t-else="">
+                    <p><b>Company Name :</b>
+                        <span t-out="company_name"/>
+                    </p>
+                    <p><b>TIN :</b>
+                        <span t-out="tin"/>
+                    </p>
+                    <p>
+                        <b>From Date :</b><t t-out="start_date"/> <br/>
+                        <b>To Date :</b><t t-out="end_date"/>
+                    </p>
+                    <p>
+                        <b>Total Credit Usage : </b><t t-out="total_usages"/>
+                    </p>
+                    <t t-call="portal.portal_table">
+                        <thead>
+                            <tr>
+                                <th>Request ID</th>
+                                <th>User ID</th>
+                                <th>Service Type</th>
+                                <th>Status</th>
+                                <th>Usage</th>
+                                <th>Auth Method</th>
+                                <th>Create At</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="credit_usage_list" t-as="cs">
+                                <tr>
+                                    <td t-out="cs.get('requestId')"/>
+                                    <td t-out="cs.get('userId')"/>
+                                    <td t-out="cs.get('serviceType')"/>
+                                    <td t-out="cs.get('status')"/>
+                                    <td t-out="cs.get('usage')"/>
+                                    <td t-out="cs.get('authMethod')"/>
+                                    <td t-out="cs.get('createdAt')"/>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </t>
+<!--                    <p>Remaining Credit:-->
+<!--                        <span t-out="remainingCredit"/>-->
+<!--                    </p>-->
+<!--                    <p>Credit Service 2:-->
+<!--                        <span t-out="credit_service_2"/>-->
+<!--                    </p>-->
+<!--                    <p>Credit Service 3:-->
+<!--                        <span t-out="credit_service_3"/>-->
+<!--                    </p>-->
+<!--                    <p>Credit Service 4:-->
+<!--                        <span t-out="credit_service_4"/>-->
+<!--                    </p>-->
+<!--                    <p>Credit Service 5:-->
+<!--                        <span t-out="credit_service_5"/>-->
+<!--                    </p>-->
+                </t>
+            </div>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="assets_backend" name="omni_print assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" type="text/scss" href="/omni_print/static/src/scss/print_tray_menu.scss"/>
+
+                <script type="text/javascript" src="/omni_print/static/src/service/heartbeat.js"/>
+                <script type="text/javascript" src="/omni_print/static/src/components/systray.js"/>
+                <script type="text/javascript" src="/omni_print/static/src/libs/download.js"/>
+                <!-- Add other JS files as needed -->
+
+            </xpath>
+        </template>
+    </data>
+</odoo>

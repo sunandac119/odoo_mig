@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="account_move_report_inherit" inherit_id="account.report_invoice_document">
+		<!-- <xpath expr="//table[@name='invoice_line_table']/thead/tr/th[@name='th_description']" position="before">
+            <th name="th_barcode" class="text-center"><span>Barcode</span></th>
+		</xpath>
+		<xpath expr="//tbody[@class='invoice_tbody']//td[@name='account_invoice_line_name']" position="before">
+			<td name="account_invoice_line_barcode"><span t-field="line.x_scanned_barcode" t-options="{'widget': 'text'}"/></td>
+		</xpath>
+ -->		<xpath expr="//table[@name='invoice_line_table']/thead/tr/th[@name='th_description']" position="before">
+	        <th name="th_barcode" class="text-center" t-if="o.move_type != 'in_invoice'">
+	            <span>Barcode</span>
+	        </th>
+	    </xpath>
+
+	    <xpath expr="//tbody[@class='invoice_tbody']//td[@name='account_invoice_line_name']" position="before">
+	        <td name="account_invoice_line_barcode" t-if="o.move_type != 'in_invoice'">
+	            <span t-field="line.x_scanned_barcode"
+	                  t-options="{'widget': 'text'}"/>
+	        </td>
+	    </xpath>
+	</template>
+</odoo>

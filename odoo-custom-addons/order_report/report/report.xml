@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="inventory_quantity_paperformat" model="report.paperformat">
+            <field name="name">Inventory Ordering Report</field>
+            <field name="default" eval="True"/>
+            <field name="orientation">Landscape</field>
+        </record>
+
+        <report
+            id="action_inventory_valuation_template"
+            model="wizard.inventory.valuation.qty"
+            string="Inventory Ordering Report"
+            report_type="qweb-pdf"
+            name="order_report.inventory_valuation_qty_report"
+            file="order_report.inventory_valuation_qty_report"
+            menu="False"
+            paperformat="inventory_quantity_paperformat"
+        />
+
+    </data>
+</odoo>

@@ -1,0 +1,5 @@
+id,name,model_id:model,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_report_report_users,sale.report,sale.report,report_access_control.group_report_users,1,0,0,0
+access_account_invoice_report_report_users,account.invoice.report,account.invoice.report,report_access_control.group_report_users,1,0,0,0
+access_stock_report_report_users,stock.report,stock.report,report_access_control.group_report_users,1,0,0,0
+access_pos_order_report_report_users,pos.order.report,pos.order.report,report_access_control.group_report_users,1,0,0,0

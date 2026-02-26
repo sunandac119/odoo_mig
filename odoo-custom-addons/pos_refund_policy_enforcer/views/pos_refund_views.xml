@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Optional: show returned/refund links on POS order form (backend) -->
+    <record id="view_pos_order_form_refund_links" model="ir.ui.view">
+        <field name="name">pos.order.form.refund.links</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='amount_total']" position="after">
+                <group string="Refund">
+                    <field name="returned_order_id" readonly="1"/>
+                    <field name="refund_order_qty" readonly="1"/>
+                    <field name="refund_order_ids" readonly="1" context="{'default_returned_order_id': active_id}" nolabel="1">
+                        <tree editable="false">
+                            <field name="name"/>
+                            <field name="date_order"/>
+                            <field name="amount_total"/>
+                            <field name="state"/>
+                        </tree>
+                        <form string="Refund Order">
+                            <sheet>
+                                <group>
+                                    <field name="name"/>
+                                    <field name="date_order"/>
+                                    <field name="session_id"/>
+                                    <field name="amount_total"/>
+                                </group>
+                            </sheet>
+                        </form>
+                    </field>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

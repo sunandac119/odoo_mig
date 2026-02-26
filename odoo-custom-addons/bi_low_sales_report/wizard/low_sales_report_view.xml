@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <record id="low_sales_report_form" model="ir.ui.view">
+            <field name="name">low.sales.report.form.view</field>
+            <field name="model">low.sales.report</field>
+            <field name="arch" type="xml">
+                <form string="Low Sales Report">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="report_type"/>
+                                <field name="date_from"/>
+                                <field name="date_to"/>
+                            </group>
+                            <group>
+                                <field name="product_category_ids" widget="many2many_tags" attrs="{'invisible': [ ('report_type','!=','product_category')],'required':[('report_type','=', 'product_category')]}"/>
+                                <field name="quantity"/>
+                                <field name="amount"/>
+                            </group>
+                        </group>
+                    </sheet>
+                   <footer>
+                        <button name="low_sales_pdf_report" type="object" string="Print Pdf Report" class="btn btn-primary"/>
+                        <button name="low_sales_xls" type="object" string="XLS Report" class="btn btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="low_sales_report_action_form" model="ir.actions.act_window">
+            <field name="name">Low Sales Report</field>
+            <field name="res_model">low.sales.report</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="low_sales_report_menu" 
+                name="Low Sales Report"
+                parent = "sale.menu_sale_report"/>
+
+
+        <menuitem id="generate_product_catalog_view_menu" 
+                parent="bi_low_sales_report.low_sales_report_menu"
+                name = "Low Sales Report" 
+                action="low_sales_report_action_form"
+                sequence="1"/>
+    </data>
+</odoo>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_stock_checking_wizard_form" model="ir.ui.view">
+        <field name="name">stock.checking.wizard.form</field>
+        <field name="model">stock.checking.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Stock Checking Wizard">
+                <div class="text-center">
+                    <field name="type_msg" invisible="1"/>
+                    <div class="alert alert-success" role="status"
+                         attrs="{'invisible': [('type_msg', '!=', 'success')]}">
+                        <field name="message"/>
+                    </div>
+                    <div class="alert alert-info" role="status"
+                         attrs="{'invisible': [('type_msg', '!=', 'info')]}">
+                        <field name="message"/>
+                    </div>
+                    <div class="alert alert-danger" role="status"
+                         attrs="{'invisible': [('type_msg', '!=', 'not_found')]}">
+                        <field name="message"/>
+                    </div>
+                </div>
+                <group>
+                    <group>
+                        <div class="oe_title">
+                            <field name="product_id" invisible="1"/>
+                            <field name="company_id" invisible="1"/>
+                            <field name="product_tracking" invisible="1"/>
+                            <field name="_barcode_scanned" widget="barcode_handler"/>
+                            <h1>
+                                <field name="last_barcode" string="Last Barcode" readonly="1"/>
+                            </h1>
+
+                        </div>
+                    </group>
+                    <group>
+                        <div style="padding-left: 200px;" class="oe_title"
+                             attrs="{'invisible': ['|',('product_id','=',False),('product_tracking', '=', 'none')]}">
+                            <label for="prod_lot_id"/>
+                            <div class="row">
+                                <h5>
+                                    <field name="prod_lot_id" domain="[('product_id', '=', product_id)]"
+                                           attrs="{'invisible': [('product_tracking', '=', 'none')]}"
+                                           context="{'default_product_id':product_id, 'default_company_id':company_id }"/>
+                                </h5>
+                                <button name="button_lot_confirm" type="object"
+                                        string="Confirm" class="oe_highlight"/>
+                            </div>
+                        </div>
+                    </group>
+                </group>
+                <footer>
+                    <button string="Done" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_stock_checking_wizard" model="ir.actions.act_window">
+        <field name="name">Barcode Scanning</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">stock.checking.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

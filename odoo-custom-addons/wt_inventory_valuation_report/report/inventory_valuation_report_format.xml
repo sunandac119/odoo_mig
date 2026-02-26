@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="inventory_valuation_report_document_format">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <br/>
+                    <style>
+                        #table_css {
+                            border: 1px solid black
+                            border-collapse: collapse;
+                            border-spacing : 0px;
+                            border-top-spacing : 0px;
+                        }
+                        #table_css td, #table_css th {
+                            border: 1px solid black
+                        }
+                        #table_css tr: {
+                            border: 1px solid black
+                        }
+                        #table_css th {
+                            style="border: 1px solid black"
+                        }
+                    </style>
+                    <div class="row">
+                        <span style="font-size:16px;text-align:left;padding-left:15px;">
+                            Vendor: <span t-esc="docs.seller_ids.mapped('name')"/>
+                        </span> 
+                    </div>
+                    <t t-foreach="docs.warehouse_ids" t-as="wh">
+                        <t t-set="warehouses" t-value="get_product_sale_qtyy(docs, wh, product=None)"/> 
+
+                        <t t-foreach="warehouses" t-as="warehouse">
+                            <div class="row">
+                                <div style="width:100%;font-size:18px;font-weight:bold;text-align:center;">
+                                    Management Report
+                                </div>
+                            </div>
+                            <div class="row">
+                                <span style="font-size:16px;text-align:left;padding-left:15px;">
+                                    Date:
+                                    <span t-esc="docs.start_date.strftime('%d-%m-%Y')"/>
+                                    To
+                                    <span t-esc="docs.end_date.strftime('%d-%m-%Y')"/>
+                                </span>
+                                <span style="font-size:16px;text-align:right;padding-left:710px;">
+                                    Warehouse: <span t-esc="warehouse.name"/>
+                                </span>
+                            </div>
+
+                            <table class="table table-sm" id="table_css">
+                                <thead>
+                                    <tr style="background-color:#c9df8a;vertical-align:middle">
+                                        <th>Detail Description</th>
+                                        <!-- <th>Costing Method</th> -->
+                                        <th>BARCODE</th>
+                                        <th>UOM</th>
+                                        <!-- <th t-if="docs.location_ids">Location</th> -->
+                                        <th>OPENING STOCK BY LAST COST/QTY</th>
+                                        <th>GOODS RECEIVE VALUE/QTY</th>
+                                        <!-- <th>PURCHASE DN (NETT)</th> -->
+                                        <!-- <th>PROMOTION CLAIM DN</th> -->
+                                        <!-- <th>IN-KIND STOCK REC</th> -->
+                                        <th>STOCK TRANSFER</th>
+                                        <th>STOCK ADJUSTMENT</th>
+                                        <th>TOTAL STOCK VALUE BY LAST COST/QTY</th>
+
+                                        <!-- <th>TOTAL COGS (UP) / CONDIBUTION STOCK MOVE (DOWN)</th> -->
+
+
+                                        <th>POS SALES/QTY</th>
+                                        <th>CREDIT SALES/QTY</th>
+                                        <th>ONLINE SALES/QTY</th>
+
+
+                                        <!-- <th>ONLINE SALES BY INVOICE AFTER DISC / ONLINE DISC BY INVOICE</th> -->
+                                        <th>TOTAL SALES/QTY</th>
+                                        <!-- <th>GROSS PROFIT BEFORE SHRINKAGE (UP) / MARGIN % (DOWN)</th>
+                                        <th>DISPOSAL BY VALUE (UP) / % DISPOSAL</th>
+                                        <th>UNKNOWN SHRINKAGE BY VALUE (UP) / % UNKNOW SHRINKAGE</th> -->
+                                        <!-- <th>GROSS PROFIT AFTER DISPOSAL &amp; SHRINKAGE</th> -->
+                                        <th>GP VALUE/%</th>
+                                        <!-- <th>INV DAY ON HAND (FOLLOW TOTAL DATE WE CHOICE)</th> -->
+                                        <th>STOCK TURN</th>
+                                        <th>REMARK</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="invoice_tbody">
+                                    <tr>
+                                        <!-- <t t-if="docs.location_ids">
+                                            <td colspan="4" rowspan="2">
+                                                <span>SUM TOTAL ( AT RIGHT)</span>
+                                            </td>
+                                        </t>
+                                        <t t-else="">
+                                            <td colspan="3" rowspan="2">
+                                                <span>SUM TOTAL ( AT RIGHT)</span>
+                                            </td>
+                                        </t> -->
+                                        <td colspan="3" rowspan="2">
+                                            <span>SUM TOTAL</span>
+                                        </td>
+                                        <td>
+                                            <!-- <span t-esc="warehouses.get(warehouse, {}).get('warehouse_data', {}).get('sum_begning_value_warehouse')"/> -->
+
+                                            <span t-esc="'%.2f'% warehouses.get(warehouse, {}).get('warehouse_data', {}).get('sum_begning_value_warehouse')"/>
+
+                                        </td>
+                                        <td>
+                                            <span t-esc="'%.2f' % warehouses.get(warehouse, {}).get('warehouse_data', {}).get('sum_categ_product_qty_in_value_warehouse')"/>
+                                        </td>
+                                        <!-- <td rowspan="2">
+                                            <span t-esc="'%.2f' % warehouses.get(warehouse, {}).get('warehouse_data', {}).get('purchase_rtn_val_warehouse')"/>
+                                        </td>
+                                        <td rowspan="2">
+                                            <span t-esc="'%.2f' % warehouses.get(warehouse, {}).get('warehouse_data', {}).get('promotion_claim_val_warehouse')"/>
+                                        </td> -->
+                                        <!-- <td rowspan="2">
+                                            <span t-esc="'%.2f' % warehouses.get(warehouse, {}).get('warehouse_data', {}).get('in_kind_stock_val_warehouse')"/>
+                                        </td> -->
+                                        <td>
+                                            <span t-esc="'%.2f' % warehouses.get(warehouse, {}).get('warehouse_data', {}).get('sum_categ_product_qty_internal_value_warehouse')"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="'%.2f' % warehouses.get(warehouse, {}).get('warehouse_data', {}).get('sum_categ_product_qty_adjustment_value')"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="'%.2f' % warehouses.get(warehouse, {}).get('warehouse_data', {}).get('total_stock_value_warehouse')"/>
+                                        </td>
+
+
+                                        <!-- <td>
+                                            <span t-esc="'%.2f' % warehouses.get(warehouse, {}).get('warehouse_data', {}).get('total_cogs_val_warehouse')"/>
+                                        </td> -->
+                                        <td>
+                                            <span t-esc="'%.2f' % warehouses.get(warehouse, {}).get('warehouse_data', {}).get('pos_sales_after_discount_val_warehouse')"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="'%.2f' % warehouses.get(warehouse, {}).get('warehouse_data', {}).get('credit_sales_val_warehouse')"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="'%.2f' % warehouses.get(warehouse, {}).get('warehouse_data', {}).get('online_sales_val_warehouse')"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="'%.2f' % warehouses.get(warehouse, {}).get('warehouse_data', {}).get('total_sales_amount_after_discount_warehouse')"/>
+                                        </td>
+                                        <!-- <td>
+                                            <span t-esc="'%.2f' % warehouses.get(warehouse, {}).get('warehouse_data', {}).get('gross_profit_before_shrinkage_warehouse')"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="'%.2f' % warehouses.get(warehouse, {}).get('warehouse_data', {}).get('disposal_val_warehouse')"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="'%.2f' % warehouses.get(warehouse, {}).get('warehouse_data', {}).get('unknown_shrinkage_val_warehouse')"/>
+                                        </td> -->
+                                        <td>
+                                            <span t-esc="'%.2f' % warehouses.get(warehouse, {}).get('warehouse_data', {}).get('gross_profit_after_discount_shrinkage_val_warehouse')"/>
+                                        </td>
+                                        <td>
+                                            
+                                        </td>
+                                        <td rowspan="2">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <!-- <td>
+                                            <span t-esc="warehouses.get(warehouse, {}).get('warehouse_data', {}).get('total_cogs_percent_warehouse')"/>
+                                        </td> -->
+
+                                        <td>
+                                            <span t-esc="'%.2f' % warehouses.get(warehouse, {}).get('warehouse_data', {}).get('sum_beginning_qty_warehouse')"/>
+                                        </td>
+
+                                        <td>
+                                            <span t-esc="'%.2f' % warehouses.get(warehouse, {}).get('warehouse_data', {}).get('sum_categ_product_qty_in_warehouse')"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="'%.2f' % warehouses.get(warehouse, {}).get('warehouse_data', {}).get('sum_categ_product_qty_internal_warehouse')"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="'%.2f' % warehouses.get(warehouse, {}).get('warehouse_data', {}).get('sum_categ_product_qty_adjustment_warehouse')"/>
+                                        </td>
+
+                                        <td>
+                                            <span t-esc="'%.2f' % warehouses.get(warehouse, {}).get('warehouse_data', {}).get('total_stock_qty_warehouse')"/>
+                                        </td>
+
+                                        <td>
+                                            <span t-esc="'%.2f' % warehouses.get(warehouse, {}).get('warehouse_data', {}).get('pos_sales_after_discount_qty_warehouse')"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="'%.2f' % warehouses.get(warehouse, {}).get('warehouse_data', {}).get('credit_sales_qty_warehouse')"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="'%.2f' % warehouses.get(warehouse, {}).get('warehouse_data', {}).get('online_sales_qty_warehouse')"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="'%.2f' % warehouses.get(warehouse, {}).get('warehouse_data', {}).get('total_sale_qty_after_discount_warehouse')"/>
+                                        </td>
+                                        <!-- <td>
+                                            <span t-esc="'%.2f' % warehouses.get(warehouse, {}).get('warehouse_data', {}).get('gross_profit_before_shrinkage_percent_warehouse')"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="'%.2f' % warehouses.get(warehouse, {}).get('warehouse_data', {}).get('disposal_percent_warehouse')"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="'%.2f' % warehouses.get(warehouse, {}).get('warehouse_data', {}).get('unknown_shrinkage_val_percent_warehouse')"/>
+                                        </td> -->
+                                        <td>
+                                            <span t-esc="'%.2f' % warehouses.get(warehouse, {}).get('warehouse_data', {}).get('gross_profit_after_discount_shrinkage_percent_warehouse')"/>
+                                            <!-- <span t-esc="'%.2f'% warehouses.get(warehouse, {}).get('warehouse_data', {}).get('gross_profit_after_discount_shrinkage_percent_warehouse')"/> -->
+                                        </td>
+                                        <td>
+                                            <span t-esc="'%.2f' % warehouses.get(warehouse, {}).get('warehouse_data', {}).get('inv_day_on_hand_percent_warehouse')"/>
+                                        </td>
+
+                                    </tr>
+                                    <!-- <tr colspan="21"></tr> -->
+                                    <t t-set="sum_begning" t-value="0.0"/>
+                                    <t t-set="sum_begning_value" t-value="0.0"/>
+                                    <t t-set="sum_product_qty_in" t-value="0.0"/>
+                                    <t t-set="sum_product_qty_in_value" t-value="0.0"/>
+                                    <t t-set="sum_product_qty_out" t-value="0.0"/>
+                                    <t t-set="sum_product_qty_out_value" t-value="0.0"/>
+                                    <t t-set="sum_product_qty_internal" t-value="0.0"/>
+                                    <t t-set="sum_product_qty_internal_value" t-value="0.0"/>
+                                    <t t-set="sum_product_qty_adjustment" t-value="0.0"/>
+                                    <t t-set="sum_product_qty_adjustment_value" t-value="0.0"/>
+                                    <t t-set="sum_ending_qty_value" t-value="0.0"/>
+                                    <t t-foreach="warehouses.get(warehouse)" t-as="product_categ">
+                                        <t t-if="product_categ != 'warehouse_data'">
+                                            <t t-set="sum_categ_begning" t-value="0.0"/>
+                                            <t t-set="sum_categ_begning_val" t-value="0.0"/>
+                                            <t t-set="sum_categ_product_qty_in" t-value="0.0"/>
+                                            <t t-set="sum_categ_product_qty_in_val" t-value="0.0"/>
+                                            <t t-set="sum_categ_product_qty_out" t-value="0.0"/>
+                                            <t t-set="sum_categ_product_qty_out_val" t-value="0.0"/>
+                                            <t t-set="sum_categ_product_qty_internal" t-value="0.0"/>
+                                            <t t-set="sum_categ_product_qty_internal_val" t-value="0.0"/>
+                                            <t t-set="sum_categ_product_qty_adjustment" t-value="0.0"/>
+                                            <t t-set="sum_categ_product_qty_adjustment_val" t-value="0.0"/>
+                                            <t t-set="sum_categ_ending" t-value="0.0"/>
+                                            <t t-set="sum_categ_ending_val" t-value="0.0"/>
+                                            <span t-set="product_categ_id" t-value="request.env['product.category'].browse(product_categ)"/>
+
+                                            <t t-set="category_level_data" t-value="warehouses.get(warehouse).get(product_categ)[-1]"/>
+                                            <tr>
+                                                <td colspan="21">
+                                                </td> 
+                                            </tr>
+                                            <tr style="background-color:#c9df8a;">
+                                                <th rowspan="2">
+                                                    <span t-esc="product_categ_id.name"/>
+                                                </th>
+                                                <th rowspan="2">BARCODE</th>
+                                                <th rowspan="2">UOM</th>
+                                                <!-- <th t-if="docs.location_ids" rowspan="2">
+                                                    Location
+                                                </th> -->
+                                                <th>
+                                                    <t t-esc="'%.2f' % category_level_data.get('sum_begning_value_categ')"/>
+                                                </th>
+                                                <th>
+                                                    <t t-esc="'%.2f' % category_level_data.get('sum_categ_product_qty_in_value_categ')"/>
+                                                </th>
+
+                                                <!-- <th rowspan="2">
+                                                    <t t-esc="'%.2f' % category_level_data.get('purchase_rtn_val_categ')"/>
+                                                </th>
+                                                <th rowspan="2">
+                                                    <t t-esc="'%.2f' % category_level_data.get('promotion_claim_val_categ')"/>
+                                                </th> -->
+                                                <!-- <th rowspan="2">
+                                                    <t t-esc="'%.2f' % category_level_data.get('in_kind_stock_val_categ')"/>
+                                                </th> -->
+                                                <th>
+                                                    <t t-esc="'%.2f' % category_level_data.get('sum_categ_product_qty_internal_value_categ')"/>
+                                                </th>
+                                                <th>
+                                                    <t t-esc="'%.2f' % category_level_data.get('sum_categ_product_qty_adjustment_value')"/>
+                                                </th>
+                                                <th>
+                                                    <t t-esc="'%.2f' % category_level_data.get('total_stock_value_categ')"/>
+                                                </th>
+
+                                                <!-- <th>
+                                                    <t t-esc="'%.2f' % category_level_data.get('total_cogs_val_categ')"/>
+                                                </th> -->
+
+                                                <th>
+                                                    <t t-esc="'%.2f' % category_level_data.get('pos_sales_after_discount_val_categ')"/>
+                                                </th>
+                                                <th>
+                                                    <t t-esc="'%.2f' % category_level_data.get('credit_sales_val_categ')"/>
+                                                </th>
+                                                <th>
+                                                    <t t-esc="'%.2f' % category_level_data.get('online_sales_val_categ')"/>
+                                                </th>
+                                                <th>
+                                                    <t t-esc="'%.2f' % category_level_data.get('total_sales_amount_after_discount_categ')"/>
+                                                </th>
+
+                                                <!-- <th>
+                                                    <t t-esc="'%.2f' % category_level_data.get('gross_profit_before_shrinkage_categ')"/>
+                                                </th>
+
+                                                <th>
+                                                    <t t-esc="'%.2f' % category_level_data.get('disposal_val_categ')"/>
+                                                </th>
+
+                                                <th>
+                                                    <t t-esc="'%.2f' % category_level_data.get('unknown_shrinkage_val_categ')"/>
+                                                </th> -->
+
+                                                <th>
+                                                    <t t-esc="'%.2f' % category_level_data.get('gross_profit_after_discount_shrinkage_val_categ')"/>
+                                                </th>
+                                                <th>
+                                                    
+                                                </th>
+                                                <th rowspan="2"/>
+                                            </tr>
+                                            <tr style="background-color:#c9df8a;">
+                                                <!-- <th>
+                                                    <t t-esc="category_level_data.get('total_cogs_percent_categ')"/>
+                                                </th> -->
+
+                                                <th>
+                                                    <t t-esc="'%.2f'%category_level_data.get('sum_beginning_qty_categ')"/>
+                                                </th>
+
+                                                <th>
+                                                    <t t-esc="'%.2f'%category_level_data.get('sum_categ_product_qty_in_categ')"/>
+                                                </th>
+                                                <th>
+                                                    <t t-esc="'%.2f'%category_level_data.get('sum_categ_product_qty_internal_categ')"/>
+                                                </th>
+                                                <th>
+                                                    <t t-esc="'%.2f'%category_level_data.get('sum_categ_product_qty_adjustment_categ')"/>
+                                                </th>
+
+                                                <th>
+                                                    <t t-esc="'%.2f'%category_level_data.get('total_stock_qty_categ')"/>
+                                                </th>
+
+                                                <th>
+                                                    <t t-esc="'%.2f'%category_level_data.get('pos_sales_after_discount_qty_categ')"/>
+                                                </th>
+                                                <th>
+                                                    <t t-esc="'%.2f'%category_level_data.get('credit_sales_qty_categ')"/>
+                                                </th>
+                                                <th>
+                                                    <t t-esc="'%.2f'%category_level_data.get('online_sales_qty_categ')"/>
+                                                </th>
+                                                <th>
+                                                    <t t-esc="'%.2f'%category_level_data.get('total_sale_qty_after_discount_categ')"/>
+                                                </th>
+                                                <!-- <th>
+                                                    <t t-esc="'%.2f'%category_level_data.get('gross_profit_before_shrinkage_percent_categ')"/>
+                                                </th>
+                                                <th>
+                                                    <t t-esc="'%.2f'%category_level_data.get('disposal_percent_categ')"/>
+                                                </th>
+                                                <th>
+                                                    <t t-esc="'%.2f'%category_level_data.get('unknown_shrinkage_val_percent_categ')"/>
+                                                </th> -->
+                                                <th>
+                                                    <t t-esc="'%.2f'%category_level_data.get('gross_profit_after_discount_shrinkage_percent_categ')"/>
+                                                    <!-- <t t-esc="'%.2f'% category_level_data.get('gross_profit_after_discount_shrinkage_percent_categ')"/> -->
+
+                                                </th>
+                                                <th>
+                                                    <t t-esc="'%.2f'%category_level_data.get('inv_day_on_hand_percent_categ')"/>
+                                                </th>
+                                            </tr>
+                                            <t t-foreach="warehouses.get(warehouse).get(product_categ)" t-as="product_categ_data">
+                                                <t t-if="product_categ_data.get('product_id')">
+                                                    <t t-set="product_id" t-value="product_categ_data['product_id']"/>
+                                                    <t t-value="product_categ_data['product_beg_qty']" t-set="product_beg_qty"/>
+                                                    <span t-set="product_id" t-value="request.env['product.product'].browse(product_id)"/>
+                                                    <!-- <t t-if="not docs.location_ids"> -->
+                                                        <tr>
+                                                            <td rowspan="2">
+                                                                <span t-esc="product_id.display_name"/>
+                                                            </td>
+                                                            <td rowspan="2">
+                                                                <span t-esc="product_id.barcode"/>
+                                                            </td>
+                                                            <td rowspan="2">
+                                                                <span t-esc="product_id.uom_id.name"/>
+                                                            </td>
+
+                                                            <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('sum_begning_value')"/>
+                                                            </td>
+                                                            <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('sum_categ_product_qty_in_value')"/>
+                                                            </td>
+                                                            <!-- <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('purchase_rtn_val')"/>
+                                                            </td>
+                                                            <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('promotion_claim_val')"/>
+                                                            </td> -->
+                                                            <!-- <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('in_kind_stock_val')"/>
+                                                            </td> -->
+                                                            <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('sum_categ_product_qty_internal_value')"/>
+                                                            </td>
+                                                            <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('sum_categ_product_qty_adjustment_value')"/>
+                                                            </td>
+                                                            <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('total_stock_value')"/>
+                                                            </td>
+                                                            <!-- <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('total_cogs_val')"/>
+                                                            </td> -->
+                                                            <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('pos_sales_after_discount_val')"/>
+                                                            </td>
+                                                            <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('credit_sales_val')"/>
+                                                            </td>
+                                                            <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('online_sales_val')"/>
+                                                            </td>
+                                                            <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('total_sales_amount_after_discount')"/>
+                                                            </td>
+                                                            <!-- <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('gross_profit_before_shrinkage')"/>
+                                                            </td>
+                                                            <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('disposal_val')"/>
+                                                            </td>
+                                                            <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('unknown_shrinkage_val')"/>
+                                                            </td> -->
+                                                            <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('gross_profit_after_discount_shrinkage_val')"/>
+                                                            </td>
+                                                            <td>
+                                                                
+                                                            </td>
+                                                            <td rowspan="2">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('product_beg_qty')"/>
+                                                            </td>
+                                                            <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('product_qty_in')"/>
+                                                            </td>
+                                                            <!-- <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('purchase_rtn_qty')"/>
+                                                            </td>
+                                                            <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('promotion_claim_qty')"/>
+                                                            </td> -->
+                                                            <!-- <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('in_kind_stock_qty')"/>
+                                                            </td> -->
+                                                            <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('product_qty_internal')"/>
+                                                            </td>
+                                                            <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('product_qty_adjustment')"/>
+                                                            </td>
+                                                            <td>
+                                                                <span t-esc="'%.2f'% product_categ_data.get('total_stock_qty')"/>
+                                                            </td>
+                                                            <!-- <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('toal_cogs_percent')"/>
+                                                            </td> -->
+                                                            <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('pos_sales_after_discount_qty')"/>
+                                                            </td>
+                                                            <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('credit_sales_qty')"/>
+                                                            </td>
+                                                            <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('online_sales_qty')"/>
+                                                            </td>
+                                                            <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('total_sale_qty_after_discount')"/>
+                                                            </td>
+                                                            <!-- <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('gross_profit_before_shrinkage_percent')"/>
+                                                            </td>
+                                                            <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('disposal_percent')"/>
+                                                            </td>
+                                                            <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('unknown_shrinkage_val_percent')"/>
+                                                            </td> -->
+                                                            <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('gross_profit_after_discount_shrinkage_percent')"/>
+                                                                <!-- <span t-esc="'%.2f'% product_categ_data.get('gross_profit_after_discount_shrinkage_percent')"/> -->
+                                                            </td>
+                                                            <td>
+                                                                <span t-esc="'%.2f'%product_categ_data.get('inv_day_on_hand_percent')"/>
+                                                            </td>
+                                                        </tr>
+                                                    <!-- </t> -->
+                                                </t>
+                                            </t>
+                                        </t>
+                                    </t>
+                                </tbody>
+                            </table>
+                            <p style="page-break-before:always;"/>
+                        </t>
+                    </t>
+                </div>
+            </t>
+        </template>
+
+        <template id="inventory_valuation_report">
+            <t t-call="web.html_container">
+                <t t-if="docs.new_format" t-call="wt_inventory_valuation_report.inventory_valuation_report_document_format"/>
+                <t t-else="">
+                    <t t-call="wt_inventory_valuation_report.inventory_valuation_report_document"/>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

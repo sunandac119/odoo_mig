@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="portal_my_details_fields_myinvoiceas" name="portal_my_details_fields_myinvoiceas"
+              inherit_id="portal.portal_my_details">
+
+        <xpath expr="//input[@name='vat']/.." position="after">
+            <div t-attf-class="mb-3 #{error.get('company_start_date') and 'o_has_error' or ''} col-xl-6">
+                <label class="col-form-label" for="company_start_date">Start Date of your company</label>
+                <input type="date" name="company_start_date"
+                       t-attf-class="form-control #{error.get('company_start_date') and 'is-invalid' or ''}"
+                       t-att-value="company_start_date or partner.company_start_date"/>
+            </div>
+
+            <div t-attf-class="mb-3 #{error.get('is_vendor_or_customer') and 'o_has_error' or ''} col-xl-6">
+                <label class="col-form-label" for="is_vendor_or_customer">Are you an Vendor or Customer?</label>
+                <!--                <input type="tel" name="is_vendor_or_customer"-->
+                <!--                       t-attf-class="form-control #{error.get('is_vendor_or_customer') and 'is-invalid' or ''}"-->
+                <!--                       t-att-value="is_vendor_or_customer or partner.is_vendor_or_customer"/>-->
+
+
+                <!--                <label class="col-form-label" for="selection_field">Selection Field</label>-->
+                <select name="is_vendor_or_customer"
+                        t-attf-class="form-control #{error.get('is_vendor_or_customer') and 'is-invalid' or ''}">
+                    <option t-att-value="''" t-if="not is_vendor_or_customer">-- Select an Option --</option>
+                    <t t-foreach="[('customer', 'Customer'), ('vendor', 'Vendor')]" t-as="option">
+                        <option t-att-value="option[0]"
+                                t-att-selected="option[0] == (is_vendor_or_customer or partner.is_vendor_or_customer)">
+                            <t t-esc="option[1]"/>
+                        </option>
+                    </t>
+                </select>
+            </div>
+
+            <div t-attf-class="mb-3 #{error.get('tin') and 'o_has_error' or ''} col-xl-6">
+                <label class="col-form-label" for="tin">TIN</label>
+                <input type="text" name="tin"
+                       t-attf-class="form-control #{error.get('tin') and 'is-invalid' or ''}"
+                       t-att-value="tin or partner.tin"/>
+            </div>
+
+            <div t-attf-class="mb-3 #{error.get('sst') and 'o_has_error' or ''} col-xl-6">
+                <label class="col-form-label" for="tin">SST</label>
+                <input type="text" name="sst"
+                       t-attf-class="form-control #{error.get('sst') and 'is-invalid' or ''}"
+                       t-att-value="sst or partner.sst"/>
+            </div>
+
+
+            <div t-attf-class="mb-3 #{error.get('brn') and 'o_has_error' or ''} col-xl-6">
+                <label class="col-form-label" for="brn">BRN</label>
+                <input type="text" name="brn"
+                       t-attf-class="form-control #{error.get('brn') and 'is-invalid' or ''}"
+                       t-att-value="brn or partner.brn"/>
+            </div>
+
+
+            <div t-attf-class="mb-3 #{error.get('old_brn') and 'o_has_error' or ''} col-xl-6">
+                <label class="col-form-label" for="old_brn">Old BRN</label>
+                <input type="text" name="old_brn"
+                       t-attf-class="form-control #{error.get('old_brn') and 'is-invalid' or ''}"
+                       t-att-value="old_brn or partner.old_brn"/>
+            </div>
+
+            <div t-attf-class="mb-3 #{error.get('sst_group') and 'o_has_error' or ''} col-xl-6">
+                <label class="col-form-label" for="sst_group">SST Group</label>
+                <input type="text" name="sst_group"
+                       t-attf-class="form-control #{error.get('sst_group') and 'is-invalid' or ''}"
+                       t-att-value="sst_group or partner.sst_group"/>
+            </div>
+
+            <div t-attf-class="mb-3 #{error.get('tourism_tax_no') and 'o_has_error' or ''} col-xl-6">
+                <label class="col-form-label" for="tourism_tax_no">Tourism Tax No</label>
+                <input type="text" name="tourism_tax_no"
+                       t-attf-class="form-control #{error.get('tourism_tax_no') and 'is-invalid' or ''}"
+                       t-att-value="tourism_tax_no or partner.tourism_tax_no"/>
+            </div>
+
+            <div t-attf-class="mb-3 #{error.get('msic_code_id') and 'o_has_error' or ''} col-xl-6">
+                <label class="col-form-label" for="msic_code_id">MSIC Code ID</label>
+                <!--                <input type="text" name="msic_code_id"-->
+                <!--                       t-attf-class="form-control #{error.get('msic_code_id') and 'is-invalid' or ''}"-->
+                <!--                       t-att-value="msic_code_id or partner.msic_code_id"/>-->
+
+
+                <!--                <select name="msic_code_id"-->
+                <!--                        t-attf-class="form-control #{error.get('msic_code_id') and 'is-invalid' or ''}">-->
+                <!--                    <option t-att-value="''" t-if="not msic_code_id">&#45;&#45; Select an Option &#45;&#45;</option>-->
+                <!--                    <t t-foreach="[('customer', 'Customer'), ('vendor', 'Vendor')]" t-as="option">-->
+                <!--                        <option t-att-value="option[0]"-->
+                <!--                                t-att-selected="option[0] == (msic_code_id or partner.msic_code_id)">-->
+                <!--                            <t t-esc="option[1]"/>-->
+                <!--                        </option>-->
+                <!--                    </t>-->
+                <!--                </select>-->
+                <t t-set="msic_codes" t-value="request.env['lhdn.msic.code'].sudo().search([])"/>
+                <div class="form-group">
+                    <label for="msic_code">MSIC Code</label>
+                    <select name="msic_code_id" class="form-control">
+                        <option t-att-value="''">-- Select MSIC Code --</option>
+                        <t t-foreach="msic_codes" t-as="msic">
+                            <option t-att-value="msic.id" t-att-selected="msic.id == partner.msic_code_id.id">
+                                [<t t-esc="msic.code"/>] <t t-esc="msic.name"/>
+                            </option>
+                        </t>
+                    </select>
+                </div>
+            </div>
+
+        </xpath>
+
+
+        <xpath expr="//input[@name='phone']/.." position="after">
+            <div t-attf-class="mb-3 #{error.get('mobile') and 'o_has_error' or ''} col-xl-6">
+                <label class="col-form-label" for="mobile">Mobile</label>
+                <input type="tel" name="mobile"
+                       t-attf-class="form-control #{error.get('mobile') and 'is-invalid' or ''}"
+                       t-att-value="mobile or partner.mobile"/>
+            </div>
+        </xpath>
+
+        <xpath expr="//input[@name='street']/.." position="after">
+            <div t-attf-class="mb-3 #{error.get('street2') and 'o_has_error' or ''} col-xl-6">
+                <label class="col-form-label" for="street2">Street-2</label>
+                <input type="text" name="street2"
+                       t-attf-class="form-control #{error.get('street2') and 'is-invalid' or ''}"
+                       t-att-value="street2 or partner.street2"/>
+            </div>
+
+        </xpath>
+
+    </template>
+
+</odoo>

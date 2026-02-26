@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_account_tree_l10n_my" model="ir.ui.view">
+            <field name="name">l10n_my.account.tree</field>
+            <field name="model">account.account</field>
+            <field name="inherit_id" ref="account.view_account_list"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='code']" position="before">
+                    <header>
+                        <button class="btn btn-primary" type="object" name="action_import_coa" string="Import COA"/>
+                    </header>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_account_form_l10n_my" model="ir.ui.view">
+            <field name="name">l10n_my.account.form</field>
+            <field name="model">account.account</field>
+            <field name="inherit_id" ref="account.view_account_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='user_type_id']" position="after">
+                    <field name="special_user_type_id" widget="account_hierarchy_selection"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

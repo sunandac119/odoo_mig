@@ -1,0 +1,5 @@
+/* Visually disable buttons */
+.disabled-mode {
+    opacity: 0.4;
+    pointer-events: none;
+}

@@ -1,0 +1,2 @@
+/* Hide the Price button visually */
+.mode-button[data-mode="price"] { display: none !important; }

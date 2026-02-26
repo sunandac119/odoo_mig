@@ -1,0 +1,24 @@
+<odoo>
+    <record id="view_bi_inventory_summary_mv_tree" model="ir.ui.view">
+        <field name="name">bi.inventory.summary.mv.tree</field>
+        <field name="model">bi.inventory.summary.mv</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="x_date"/>
+                <field name="x_warehouse"/>
+                <field name="x_product_name"/>
+                <field name="x_qty_in"/>
+                <field name="x_qty_out"/>
+                <field name="x_qty_internal"/>
+                <field name="x_qty_adjustment"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_bi_inventory_summary_mv" model="ir.actions.act_window">
+        <field name="name">BI Inventory Summary</field>
+        <field name="res_model">bi.inventory.summary.mv</field>
+        <field name="view_mode">tree,pivot</field>
+        <field name="target">current</field>
+    </record>
+</odoo>
