@@ -1,0 +1,11 @@
+<odoo>
+    <template id="hide_external_link" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <style type="text/css">
+                .o_external_button {
+                    display: none !important;
+                }
+            </style>
+        </xpath>
+    </template>
+</odoo>
